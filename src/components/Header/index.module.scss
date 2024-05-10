@@ -1,0 +1,67 @@
+@use '../../styles/index.scss' as index;
+
+.header{
+    padding: 1rem 23.44rem 1rem 23.44rem;
+    background-color: index.$base-color;
+
+    .header_container {
+        width: 100%;
+        padding: 0;
+        padding-left: 30px;
+        padding-right: 30px;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+
+        .menu_container{
+            display: flex;
+            align-items: center;
+        }
+
+        .search_container{
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+    }
+
+    .logo{
+        width: 3.13rem;
+        height: 2.69rem;
+        margin-right: 15px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .menu_item{
+        display: flex;
+        padding: 12px;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+            cursor: pointer;
+
+            .title{
+                color: index.$focus_color;
+            }
+
+            .item_icon * {
+                fill: index.$focus_color;
+            }
+        }
+    }
+
+    .item_icon{
+        width: 1.33rem;
+        height: 1.12rem;
+
+    }
+
+    .title{
+        @include index.menu_text();
+        text-align: left;
+    }
+}
