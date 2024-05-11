@@ -9,7 +9,6 @@ jobs:
 
   deploy:
     name: Deploy
-    needs: lint
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using ssh key
