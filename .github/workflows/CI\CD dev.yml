@@ -1,7 +1,7 @@
 name: CI\CD DEV
 on:
   push:
-    branches: [ "dev", "cicd" ]
+    branches: [ "dev" ]
 
   workflow_dispatch:
   
