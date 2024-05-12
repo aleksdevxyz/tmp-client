@@ -18,6 +18,7 @@ jobs:
         username: root
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
+        script_stop: true
         script: |
                 cd /home/teleshtorm_reps/teleshtorm_front
                 git pull https://${{ secrets.GH_TOKEN }}@github.com/Delitel-WEB/teleshtorm_front.git dev
