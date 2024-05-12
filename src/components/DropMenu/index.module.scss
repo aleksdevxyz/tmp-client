@@ -1,0 +1,95 @@
+@use '../../styles/index.scss' as index;
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin: 0;
+    margin-left: 5px;
+    padding: 7px;
+    list-style: none;
+    position: relative;
+
+    
+
+
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        &:hover {
+            cursor: pointer;
+        }
+
+    }
+
+    .image{
+        width: 22px;
+        height: 16px;
+    }
+
+    .title{
+        color: rgb(120, 129, 137);
+        font-family: 'Roboto-Light';
+        font-size: 1rem;
+        line-height: 1.19rem;
+        letter-spacing: 0%;
+        text-align: left;
+        margin: 0;
+    }
+}
+
+.list{
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #fff;
+    border-radius: 7px;
+    border: 1px solid #DEE2E4;
+    padding: 6px 12px;
+
+    .header{
+        color: #788189;
+        font-family: 'Roboto-Light';
+        font-size: 13px;
+        margin: 0;
+        padding: 0;
+        padding-top: 6px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #DEE2E4;
+        width: 100%;
+    }
+
+    .item_menu{
+        display: flex;
+        align-items: center;
+        gap:8px;
+        border-radius: 4px;
+        transition: all 0.3s;
+        padding: 6px 12px;
+
+        &:hover {
+            background-color: #DDD;
+        }
+    }
+
+    .title_menu{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #788189;
+        font-family: 'Roboto-Light';
+        font-size: 16px;
+        text-decoration: none;
+        margin: 0;
+    }
+
+    &._active{
+        display: block;
+    }
+}
+
+

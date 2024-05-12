@@ -4,13 +4,13 @@
     display: flex;
     align-items: center;
     width: 328px;
-    height: 100%;
-    padding: 5px;
+    height: 33px;
     margin: 0;
     border: 0.06rem solid rgb(48, 54, 61);
     background-color: rgb(13, 17, 23);
     border-radius: 0.38rem;
     box-sizing: border-box;
+    position: relative;
 
     &:hover {
         .icon * {
@@ -21,6 +21,11 @@
     .icon {
         width: 30px;
         height: 30px;
+
+        &:hover {
+            cursor: pointer;
+
+        }
     }
 
     .input {
@@ -37,6 +42,7 @@
         line-height: 1.19rem;
         letter-spacing: 0%;
         text-align: left;
+        width: 100%;
 
         &::placeholder {
             color: rgb(117, 117, 117);
@@ -49,6 +55,133 @@
 
         &:focus {
             outline: none;
+        }
+
+    }
+
+    .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border-radius: 6px 6px 10px 10px;
+        border: 1px solid #DEE2E4;
+        background: #FFF;
+        max-height: 385px;
+        max-width: 325px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        z-index: 2;
+
+        &._active{
+            display: block;
+        }
+
+
+        .dropdown_content {
+            position: relative;
+            min-height: 20px;
+            max-height: 385px;
+            width: 328px;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+
+            .dropdown_item {
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                padding: 7px 0 7px 14px;
+                border-bottom: 1px solid #DEE2E4;
+                text-decoration: none;
+
+                &:last-child {
+                    margin-bottom: 20px;
+                    border: none;
+                }
+
+                .dropdown_arrow{
+                    margin-left: auto;
+                    margin-right: 14.5px;
+                }
+
+
+                .dropdown_img {
+                    min-width: 55px;
+                    max-width: 55px;
+                    object-fit: cover;
+                    height: 55px;
+                    border-radius: 50%;
+                }
+
+                .dropdown_text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+
+                    .dropdown_name {
+                        font-family: 'Roboto-Light';
+                        color: #677179;
+                        font-size: 15px;
+                        margin: 0;
+                    }
+
+                    .dropdown_subscribe {
+                        font-family: 'Roboto-Light';
+                        color: #677179;
+                        font-size: 10px;
+                        margin: 0;
+
+                        .dropdown_number {
+                            margin: 0;
+                            margin-right: 4px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dropdown_button {
+            display: block;
+            box-sizing: border-box;
+            width: 328px;
+            position: sticky;
+            bottom: -1px;
+            text-align: center;
+            color: #677179;
+            font-size: 16px;
+            font-weight: 300;
+            white-space: nowrap;
+            border-radius: 0px 0px 10px 10px;
+            border: 1px solid #DEE2E4;
+            border-left: none;
+            background: #FFF;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            height: 38px;
+
+
+
+
+            &::before {
+                content: "Показать больше";
+                color: rgb(103, 113, 121);
+                font-size: 15px;
+                font-weight: 300;
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                height: 38px;
+                width: 328px;
+                box-sizing: border-box;
+                text-align: center;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                white-space: nowrap;
+                border-top: 1px solid #DEE2E4;
+                background: rgb(255, 255, 255);
+            }
         }
     }
 }

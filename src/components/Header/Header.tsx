@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./index.module.scss";
 import { CatalogLogo, Logo, StaticLogo, ChatsLogo, BotsLogo } from "../svgs";
 import SearchInput from "../SearchInput/SearchInput";
+import DropMenu from "../DropMenu/DropMenu";
 
 export default function Header() {
   return (
@@ -29,6 +30,7 @@ export default function Header() {
 
         <div className={styles.search_container}>
           <SearchInput />
+          <DropMenu/>
         </div>
       </div>
     </div>
