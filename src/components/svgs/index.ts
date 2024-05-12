@@ -11,6 +11,11 @@ export {default as Español} from './Español.svg'
 export {default as Français} from './Français.svg'
 export {default as Italiano} from './Italiano.svg'
 export {default as Arrow} from './arrow-return-right.svg'
+export {default as AddSquare} from './Add Square.svg'
+export {default as ArrowBack} from './Arrow-Back.svg'
+export {default as ArrowForward} from './Arrow-forward.svg'
+
+
 
 
 
