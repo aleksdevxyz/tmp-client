@@ -13,6 +13,7 @@ import {
   Portugal,
 } from "../svgs";
 import cn from "classnames";
+import Link from "next/link";
 
 const active = cn(styles._active, styles.list);
 
@@ -44,7 +45,7 @@ export default function DropMenu() {
       <ul onClick={onClickMenu} className={styles.container}>
         <li className={styles.item}>
           <Image src={ru} alt="image" className={styles.image} />
-          <p className={styles.title}>Russian</p>
+          <Link href={'/'} locale='ru' className={styles.title}>Russian</Link>
           <Image src={icon} alt="image" className={styles.drop_icon} />
         </li>
         <div
@@ -55,31 +56,31 @@ export default function DropMenu() {
         <p className={styles.header}>Язык сайта</p>
         <div className={styles.item_menu}>
         <Image src={ru} alt="image" className={styles.image} />
-          <p className={styles.title_menu}>Russian</p>
+          <Link href={'/'} locale='ru' className={styles.title_menu}>Russian</Link>
         </div>
         <div className={styles.item_menu}>
           <Deutsch className={styles.image}/>
-          <p className={styles.title_menu}>Deutsch</p>
+          <Link href={'/'} locale='de' className={styles.title_menu}>Deutsch</Link>
         </div>
         <div className={styles.item_menu}>
           <English className={styles.image}/>
-          <p className={styles.title_menu}>English</p>
+          <Link locale='en' href={'/'} className={styles.title_menu}>English</Link>
         </div>
         <div className={styles.item_menu}>
           <Español className={styles.image}/>
-          <p className={styles.title_menu}>Español</p>
+          <Link href={'/'} locale='es' className={styles.title_menu}>Español</Link>
         </div>
         <div className={styles.item_menu}>
           <Français className={styles.image}/>
-          <p className={styles.title_menu}>Français</p>
+          <Link href={'/'} locale='fr' className={styles.title_menu}>Français</Link>
         </div>
         <div className={styles.item_menu}>
           <Italiano className={styles.image}/>
-          <p className={styles.title_menu}>Italiano</p>
+          <Link href={'/'} locale='it' className={styles.title_menu}>Italiano</Link>
         </div>
         <div className={styles.item_menu}>
           <Portugal className={styles.image}/>
-          <p className={styles.title_menu}>Português</p>
+          <Link href={'/'} locale='pt' className={styles.title_menu}>Português</Link>
         </div>
       </div>
       </ul>

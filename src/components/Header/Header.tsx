@@ -6,7 +6,7 @@ import DropMenu from "../DropMenu/DropMenu";
 
 export default function Header() {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.header_container}>
         <div className={styles.menu_container}>
           <Logo className={styles.logo} />
@@ -33,6 +33,6 @@ export default function Header() {
           <DropMenu/>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

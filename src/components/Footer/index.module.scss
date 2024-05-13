@@ -1,0 +1,43 @@
+.footer {
+    width: 100%;
+    padding: 13px 30px;
+    color: #788189;
+    font-size: 13px;
+    font-family: 'Roboto-Light';
+    border-top: 1px solid #DEE2E4;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 41px;
+
+            .footer__link {
+                position: relative;
+                color: #788189;
+                font-family: 'Roboto-Normal';
+                font-size: 13px;
+                font-style: normal;
+                line-height: normal;
+                white-space: nowrap;
+                transition: all .3s;
+                text-decoration: underline;
+                text-decoration-skip-ink: none;
+
+                &:hover {
+                    color: #55AFDA;
+                }
+            }
+
+        }
+
+        .paragraph {
+            margin: 0;
+        }
+    }
+}

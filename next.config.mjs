@@ -12,6 +12,10 @@ const nextConfig = {
         })
         return config;
     },
+    i18n:{
+        locales:['ru', 'en', 'es', 'fr','de', 'it', 'pt'],
+        defaultLocale: 'ru'
+    }
 };
 
 export default nextConfig;

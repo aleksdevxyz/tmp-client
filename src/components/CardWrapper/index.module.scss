@@ -1,0 +1,72 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #DEE2E4;
+    background: #FFF;
+    align-items: center;
+    transition: all .3s;
+    max-width: 366px;
+    max-height: 120px;
+
+    &:hover {
+        border-color: #494D53;
+        transition: all .3s;
+        cursor: pointer;
+    }
+
+    .container {
+        color: #677179;
+        font-size: 10px;
+        font-weight: 300;
+
+        .title {
+            font-family: 'Roboto-Bold';
+            color: #677179;
+            font-size: clamp(0.875rem, 0.815rem + 0.27vw, 1rem);
+            font-weight: 700;
+            line-height: 16px;
+            margin-bottom: 8px;
+            transition: all .3s;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 212px;
+            text-overflow: ellipsis;
+            max-width: 233px;
+            
+        }
+
+        .subtitle {
+            font-family: 'Roboto-Light';
+            color: #788189;
+            font-size: clamp(0.75rem, 0.72rem + 0.13vw, 0.813rem);
+            font-weight: 300;
+            max-width: 250px;
+            max-height: clamp(2.25rem, 2.16rem + 0.4vw, 2.438rem);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 233px;
+
+        }
+
+        .count {
+            color: #677179;
+            font-size: 10px;
+            font-weight: 700;
+            margin-right: 2px;
+        }
+    }
+
+    .image {
+        border-radius: 89px;
+        border: 1px solid #DEE2E4;
+        padding: 3px;
+        transition: all .3s;
+        width: 91px;
+        height: 91px;
+        object-fit: cover;
+    }
+}

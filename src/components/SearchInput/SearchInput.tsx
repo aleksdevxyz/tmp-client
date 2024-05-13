@@ -29,18 +29,15 @@ export default function SearchInput() {
   );
   const dropRef: React.RefObject<HTMLDivElement> = React.useRef(null);
 
-  const searchRequest = (value:string) => {
+  const searchRequest = (value: string) => {
     if (value) {
-      const res = axios.get(
-        `https://test-api-teleshtorm.teleshtorm.org/channels/search?query=${value}&page=0&limit=31`,
-        {
-          headers: {
-            "X-CSRF-Token": "262f06b948efa287aabe7fa3427186d5a585e27e",
-          },
-        }
-      );
-
-      res.then((res) => setSearchResult(res.data.data));
+      axios
+        .get(
+          `https://test-api-teleshtorm.teleshtorm.org/channels/search_suggest?query=${value}`
+        )
+        .then((res) => {
+          setSearchResult(res.data);
+        });
     }
   };
 
@@ -62,6 +59,14 @@ export default function SearchInput() {
     return () => document.removeEventListener("click", handleOverlayClick);
   }, []);
 
+  const changeSubscribers = (subscribers: string) => {
+    const lastDigit = parseInt(subscribers.slice(-1));
+    if ([2, 3, 4].includes(lastDigit)) {
+      return "Подписчика";
+    }
+    return "Подписчиков";
+  };
+
   return (
     <div className={styles.input_container}>
       <SearchIcon className={styles.icon} />
@@ -73,30 +78,31 @@ export default function SearchInput() {
         type="text"
       />
       <div ref={dropRef} className={activeMenu ? active : styles.dropdown}>
-        {searchResult?.map((item) => (
-          <div key={item.id} className={styles.dropdown_content}>
-            <Link className={styles.dropdown_item} href={"/"}>
-              <Image
-                alt="Картинка из поиска"
-                className={styles.dropdown_img}
-                src={item.image}
-              />
+        <div className={styles.dropdown_list}>
+          {searchResult?.map((item) => (
+            <div key={item.id} className={styles.dropdown_content}>
+              <Link className={styles.dropdown_item} href={"/"}>
+                <img
+                  alt="Картинка из поиска"
+                  className={styles.dropdown_img}
+                  src={item.image}
+                />
 
-              <div className={styles.dropdown_text}>
-                <p className={styles.dropdown_name}>{item.name}</p>
-                <p className={styles.dropdown_subscribe}>
-                  <span className={styles.dropdown_number}>
-                    {item.subscribers}
-                  </span>
-                  {item.description}
-                </p>
-              </div>
-              <Arrow className={styles.dropdown_arrow} />
-            </Link>
-          </div>
-        ))}
-        <Link href={"/"} className={styles.dropdown_button} />
+                <div className={styles.dropdown_text}>
+                  <p className={styles.dropdown_name}>{item.name}</p>
+                  <p className={styles.dropdown_subscribe}>
+                    <span className={styles.dropdown_number}>
+                      {item.subscribers}
+                    </span>
+                    {changeSubscribers(item.subscribers.toString())}
+                  </p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
+      <Link href={"/"} className={styles.dropdown_button} />
     </div>
   );
 }

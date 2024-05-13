@@ -1,2 +1,18 @@
 @import '../vendor/index.scss';
 
+html {
+    scrollbar-color: #e0e0e0;
+    scrollbar-width: thin;
+}
+
+.wrapper{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+}
+
+*{
+    box-sizing: border-box;
+}

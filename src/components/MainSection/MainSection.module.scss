@@ -5,12 +5,13 @@
     flex-direction: column;
     align-items: center;
     padding: 0;
-    padding-top: 25px;
+    padding-top: 94px;
 
     .subtitle {
         margin: auto;
         width: 100%;
         max-width: 1140px;
+        padding: 0 15px;
         box-sizing: border-box;
 
         .subtitle_container {
@@ -54,7 +55,7 @@
 
                     &:hover {
                         color: #161B22;
-                        transition: all .3s;
+                        transition: all .3s ease-in-out;
                         cursor: pointer;
 
                     }
@@ -78,8 +79,8 @@
         position: relative;
 
 
-
         .arrow_back {
+            visibility: hidden;
             background-color: transparent;
             border: none;
             position: absolute;
@@ -87,13 +88,19 @@
             left: -20px;
             width: 12px;
             height: 24px;
+
             &:hover * {
                 cursor: pointer;
                 transition: all .3s;
             }
+
+            &._active {
+                visibility: visible;
+            }
         }
 
         .arrow_forward {
+            visibility: hidden;
             background-color: transparent;
             border: none;
             position: absolute;
@@ -101,11 +108,16 @@
             right: -20px;
             width: 12px;
             height: 24px;
+
             &:hover * {
                 cursor: pointer;
                 transition: all .3s;
             }
-            
+
+            &._active {
+                visibility: visible;
+            }
+
         }
 
         .content {
@@ -114,38 +126,68 @@
             border: 1px solid #C9CDD0;
             background: #FFF;
             max-width: 1140px;
-            overflow: hidden;
+            min-height: 226px;
+            max-height: 226px;
             padding: 24px;
+            box-sizing: border-box;
+            overflow: hidden;
 
 
             .content_list {
-                display: flex;
+                display: block;
+                max-width: 1140px;
+                box-sizing: border-box;
 
-                .list {
+
+                .slide {
                     display: flex;
                     flex-direction: column;
-                    list-style: none;
-                    gap: 10px;
+                    gap: 8px;
+                    justify-content: space-between;
                     padding: 0 10px 0 10px;
-                    margin: 0;
-                    width: 366px;
+                    max-width: 366px;
+                    box-sizing: border-box;
+                    flex-wrap: wrap;
+                    height: 100%;
 
                     .list_item {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        padding: 0;
                         margin: 0;
+                        width: 100%;
+                        line-height: 15px;
+                        color: #788189;
 
-                        .list_title{
+
+                        .list_title {
+                            color: #788189;
                             margin: 0;
+                            font-size: 16px;
+                            box-sizing: border-box;
+                            font-family: 'Roboto-Light';
+                            font-weight: 300;
+                            text-decoration: none;
+
+                            &:hover {
+                                color: #161B22;
+                                transition: all .3s ease-in-out;
+                                cursor: pointer;
+                            }
                         }
 
-                        .list_subscribers{
+                        .list_subscribers {
                             margin: 0;
+                            font-size: 14px;
+                            box-sizing: border-box;
+                            font-family: 'Roboto-Light';
+                            font-weight: 300;
                         }
                     }
                 }
+
+
+
             }
 
 
