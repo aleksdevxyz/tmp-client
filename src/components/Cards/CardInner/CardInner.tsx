@@ -46,7 +46,7 @@ export default function CardInner({
             <p className={styles.people}>{subscribers} подписчиков</p>
             <Link
               className={styles.category_link}
-              href={`/channel/category/${category.translit_name}`}
+              href={`/`}
             >
               {category.translit_name}
             </Link>
