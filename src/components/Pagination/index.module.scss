@@ -1,0 +1,13 @@
+.container {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+
+
+    .prev_button {}
+
+    .next_button {
+        border: 0.06rem solid rgb(198, 202, 207);
+        border-radius: 0.25rem;
+    }
+}

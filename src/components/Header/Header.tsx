@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import { CatalogLogo, Logo, StaticLogo, ChatsLogo, BotsLogo } from "../svgs";
 import SearchInput from "../SearchInput/SearchInput";
 import DropMenu from "../DropMenu/DropMenu";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -12,7 +13,7 @@ export default function Header() {
           <Logo className={styles.logo} />
           <div className={styles.menu_item}>
             <CatalogLogo className={styles.item_icon} />
-            <p className={styles.title}>Каталог</p>
+            <Link href={'/'} className={styles.title}>Каталог</Link>
           </div>
           <div className={styles.menu_item}>
             <ChatsLogo className={styles.item_icon} />

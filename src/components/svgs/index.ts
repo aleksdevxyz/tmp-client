@@ -14,6 +14,9 @@ export {default as Arrow} from './arrow-return-right.svg'
 export {default as AddSquare} from './Add Square.svg'
 export {default as ArrowBack} from './Arrow-Back.svg'
 export {default as ArrowForward} from './Arrow-forward.svg'
+export {default as ForwardButton} from './ForwardButton.svg'
+
+
 
 
 

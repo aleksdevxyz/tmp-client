@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import styles from "./MainSection.module.scss";
 import { AddSquare, ArrowBack, ArrowForward } from "../svgs";
 import cn from "classnames";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import { Navigation } from "swiper/modules";
@@ -26,9 +26,9 @@ export default function MainSection() {
     null
   );
 
+  const sliderChannelsRef = React.useRef<SwiperRef>(null);
+
   const [swiperSlides, setSwiperSlides] = React.useState(null)
-
-
 
   const mainRef = React.useRef(null);
 
@@ -39,6 +39,17 @@ export default function MainSection() {
         setCategories(res.data);
       });
   }, []);
+
+  const handlePrev = React.useCallback(() => {
+    if (!sliderChannelsRef.current) return;
+    sliderChannelsRef.current.swiper.slidePrev();
+  }, []);
+
+  const handleNext = React.useCallback(() => {
+    if (!sliderChannelsRef.current) return;
+    sliderChannelsRef.current.swiper.slideNext();
+  }, []);
+
 
 
   useEffect(() => {
@@ -79,17 +90,20 @@ export default function MainSection() {
         </div>
         <div className={styles.content_container}>
           <ArrowBack
+            onClick={handlePrev}
             className={!arrowsActive ? activeBack : styles.arrow_back}
           />
           <div className={styles.content}>
             <div className={styles.content_list}>
               <Swiper
+                ref={sliderChannelsRef}
+                onSwiper={swiper => {
+                if (sliderChannelsRef.current){
+                  sliderChannelsRef.current.swiper = swiper
+                }
+              }}
                 slidesPerView={3}
                 loop={true}
-                navigation={{
-                  nextEl: activeForward,
-                  prevEl: activeBack,
-                }}
                 modules={[Navigation]}
               >
                 {swiperSlides}
@@ -97,6 +111,7 @@ export default function MainSection() {
             </div>
           </div>
           <ArrowForward
+            onClick={handleNext}
             className={!arrowsActive ? activeForward : styles.arrow_forward}
           />
         </div>

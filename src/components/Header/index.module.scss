@@ -70,5 +70,6 @@
     .title{
         @include index.menu_text();
         text-align: left;
+        text-decoration: none;
     }
 }
