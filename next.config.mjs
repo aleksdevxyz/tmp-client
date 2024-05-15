@@ -15,6 +15,14 @@ const nextConfig = {
     i18n:{
         locales:['ru', 'en', 'es', 'fr','de', 'it', 'pt'],
         defaultLocale: 'ru'
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'cdn.teleshtorm.org'
+            }
+        ]
     }
 };
 

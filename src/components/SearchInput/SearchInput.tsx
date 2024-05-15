@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect } from "react";
 import styles from "./index.module.scss";
-import { Arrow, SearchIcon } from "../svgs";
-import Image from "next/image";
+import { SearchIcon } from "../svgs";
 import Link from "next/link";
 import cn from "classnames";
 import axios from "axios";
-import Logo from "../../../public/RU.png";
+import Image from "next/image";
 
 interface SearchResult {
   id: number;
@@ -81,8 +80,10 @@ export default function SearchInput() {
         <div className={styles.dropdown_list}>
           {searchResult?.map((item) => (
             <div key={item.id} className={styles.dropdown_content}>
-              <Link className={styles.dropdown_item} href={"/"}>
-                <img
+              <Link className={styles.dropdown_item} href={`/channel/${item.id}`}>
+                <Image
+                  width={55}
+                  height={55}
                   alt="Картинка из поиска"
                   className={styles.dropdown_img}
                   src={item.image}

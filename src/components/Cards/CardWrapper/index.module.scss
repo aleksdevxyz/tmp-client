@@ -10,6 +10,7 @@
     transition: all .3s;
     max-width: 366px;
     max-height: 120px;
+    text-decoration: none;
 
     &:hover {
         border-color: #494D53;
@@ -65,8 +66,6 @@
         border: 1px solid #DEE2E4;
         padding: 3px;
         transition: all .3s;
-        width: 91px;
-        height: 91px;
         object-fit: cover;
     }
 }

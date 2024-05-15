@@ -10,10 +10,14 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.header_container}>
         <div className={styles.menu_container}>
-          <Logo className={styles.logo} />
+          <Link href={"/"} className={styles.logo_container}>
+            <Logo className={styles.logo} />
+          </Link>
           <div className={styles.menu_item}>
             <CatalogLogo className={styles.item_icon} />
-            <Link href={'/'} className={styles.title}>Каталог</Link>
+            <Link href={"/"} className={styles.title}>
+              Каталог
+            </Link>
           </div>
           <div className={styles.menu_item}>
             <ChatsLogo className={styles.item_icon} />
@@ -31,7 +35,7 @@ export default function Header() {
 
         <div className={styles.search_container}>
           <SearchInput />
-          <DropMenu/>
+          <DropMenu />
         </div>
       </div>
     </header>

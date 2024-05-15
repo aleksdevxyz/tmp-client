@@ -1,16 +1,19 @@
 import React from 'react'
 import styles from './index.module.scss'
+import Link from 'next/link'
+import Image from 'next/image'
 
 interface CardWrapperProps {
     src: string
     title: string
     description: string
     count: number
+    id: number
 }
 
-export default function CardWrapper({src, title, description, count}: CardWrapperProps) {
+export default function CardWrapper({src, title, description, count, id}: CardWrapperProps) {
   return (
-    <div className={styles.card}>
+    <Link href={`/channel/${id}`} className={styles.card}>
         <div className={styles.container}>
             <h4 className={styles.title}>{title}</h4>
             <p className={styles.subtitle}>{description}</p>
@@ -19,7 +22,7 @@ export default function CardWrapper({src, title, description, count}: CardWrappe
                 Подписчиков
             </div>
         </div>
-        <img className={styles.image} src={src} alt={title}/>
-    </div>
+        <Image width={91} height={91} className={styles.image} src={src} alt={title}/>
+    </Link>
   )
 }
