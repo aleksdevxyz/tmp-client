@@ -5,6 +5,8 @@ FROM node:${NODE_VERSION}-alpine as base
 # хост апихи
 ARG BASE_URL 
 
+ENV BASE_URL ${BASE_URL}
+
 WORKDIR /usr/src/app
 
 COPY . .
