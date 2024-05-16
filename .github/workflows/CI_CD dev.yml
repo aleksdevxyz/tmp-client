@@ -23,7 +23,7 @@ jobs:
                 cd /home/teleshtorm_reps/teleshtorm_front
                 git pull https://${{ secrets.GH_TOKEN }}@github.com/Delitel-WEB/teleshtorm_front.git dev
                 git checkout dev
-                docker build -t teleshtorm_front:dev .
+                docker build --build-arg BASE_URL=${{secrets.API_URL_DEV}} -t teleshtorm_front:dev .
                 cd /home/Teleshtorm
                 docker-compose stop teleshtorm_front_dev
                 docker-compose rm -f teleshtorm_front_dev
