@@ -6,6 +6,7 @@ import Link from "next/link";
 import cn from "classnames";
 import axios from "axios";
 import Image from "next/image";
+import { useDebouncedCallback } from "use-debounce";
 
 interface SearchResult {
   id: number;
@@ -40,12 +41,14 @@ export default function SearchInput() {
     }
   };
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setActiveMenu(!!value);
-    setSearchPhrase(value);
-    setTimeout(() => searchRequest(value), 1000);
-  };
+  const handleSearch = useDebouncedCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      if (value === "") return setSearchResult(null);
+      searchRequest(value);
+    },
+    300
+  );
 
   const handleOverlayClick = (event: MouseEvent) => {
     if (dropRef.current && !dropRef.current.contains(event.target as Node)) {
@@ -67,20 +70,23 @@ export default function SearchInput() {
   };
 
   return (
-    <div className={styles.input_container}>
+    <div ref={dropRef} className={styles.input_container}>
       <SearchIcon className={styles.icon} />
       <input
-        value={searchPhrase}
-        onChange={handleSearch}
+        onFocus={() => setActiveMenu(true)}
+        onChange={(e) => handleSearch(e)}
         placeholder="Поиск..."
         className={styles.input}
         type="text"
       />
-      <div ref={dropRef} className={activeMenu ? active : styles.dropdown}>
+      <div className={activeMenu ? active : styles.dropdown}>
         <div className={styles.dropdown_list}>
           {searchResult?.map((item) => (
             <div key={item.id} className={styles.dropdown_content}>
-              <Link className={styles.dropdown_item} href={`/channel/${item.id}`}>
+              <Link
+                className={styles.dropdown_item}
+                href={`/channel/${item.id}`}
+              >
                 <Image
                   width={55}
                   height={55}
@@ -88,7 +94,6 @@ export default function SearchInput() {
                   className={styles.dropdown_img}
                   src={item.image}
                 />
-
                 <div className={styles.dropdown_text}>
                   <p className={styles.dropdown_name}>{item.name}</p>
                   <p className={styles.dropdown_subscribe}>
@@ -102,8 +107,8 @@ export default function SearchInput() {
             </div>
           ))}
         </div>
+        <Link href={"/"} className={styles.dropdown_button}/>
       </div>
-      <Link href={"/"} className={styles.dropdown_button} />
     </div>
   );
 }

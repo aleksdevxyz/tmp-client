@@ -67,88 +67,98 @@
         border-radius: 6px 6px 10px 10px;
         border: 1px solid #DEE2E4;
         background: #FFF;
-        max-height: 385px;
-        max-width: 325px;
-        overflow-y: auto;
-        overflow-x: hidden;
 
-        .dropdown_list{
+
+        .dropdown_list {
             position: relative;
-        }
-
-        &._active{
-            display: block;
-        }
-
-
-        .dropdown_content {
-            position: relative;
-            min-height: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
             max-height: 385px;
-            width: 328px;
-            border-bottom: 1px solid #DEE2E4;
-            &::-webkit-scrollbar{
-                border-radius: 2px;
-                background: #D9D9D9;
+            max-width: 325px;
+
+            &::-webkit-scrollbar {
                 width: 5px;
             }
 
-            .dropdown_item {
+            &::-webkit-scrollbar-thumb {
+                border-radius: 2px;
+                background: #D9D9D9;
+            }
+
+            .dropdown_content {
                 position: relative;
-                display: flex;
-                align-items: center;
-                gap: 14px;
-                padding: 7px 0 7px 14px;
-                text-decoration: none;
-                overflow-y: auto;
-                overflow-x: hidden;
+                min-height: 20px;
+                max-height: 385px;
+                max-width: 328px;
+                border-bottom: 1px solid #DEE2E4;
 
 
-                &:last-child {
-                    margin-bottom: 20px;
-                    border: none;
-                }
 
-                .dropdown_arrow{
-                    margin-left: auto;
-                    margin-right: 14.5px;
-                }
-
-
-                .dropdown_img {
-                    min-width: 55px;
-                    max-width: 55px;
-                    object-fit: cover;
-                    border-radius: 50%;
-                }
-
-                .dropdown_text {
+                .dropdown_item {
+                    position: relative;
                     display: flex;
-                    flex-direction: column;
-                    gap: 2px;
-                    max-width: 200px;
+                    align-items: center;
+                    gap: 14px;
+                    padding: 7px 0 7px 14px;
+                    text-decoration: none;
+                    overflow-y: auto;
+                    overflow-x: hidden;
 
-                    .dropdown_name {
-                        font-family: 'Roboto-Light';
-                        color: #677179;
-                        font-size: 15px;
-                        margin: 0;
+
+                    &:last-child {
+                        margin-bottom: 20px;
+                        border: none;
                     }
 
-                    .dropdown_subscribe {
-                        font-family: 'Roboto-Light';
-                        color: #677179;
-                        font-size: 10px;
-                        margin: 0;
+                    .dropdown_arrow {
+                        margin-left: auto;
+                        margin-right: 14.5px;
+                    }
 
-                        .dropdown_number {
+
+                    .dropdown_img {
+                        min-width: 55px;
+                        max-width: 55px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+
+                    .dropdown_text {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2px;
+                        max-width: 200px;
+
+                        .dropdown_name {
+                            font-family: 'Roboto-Light';
+                            color: #677179;
+                            font-size: 15px;
                             margin: 0;
-                            margin-right: 4px;
+                        }
+
+                        .dropdown_subscribe {
+                            font-family: 'Roboto-Light';
+                            color: #677179;
+                            font-size: 10px;
+                            margin: 0;
+
+                            .dropdown_number {
+                                margin: 0;
+                                margin-right: 4px;
+                            }
                         }
                     }
                 }
             }
+
         }
+
+        &._active {
+            display: block;
+        }
+
+
+
 
         .dropdown_button {
             position: relative;
@@ -191,5 +201,6 @@
                 background: rgb(255, 255, 255);
             }
         }
+
     }
 }

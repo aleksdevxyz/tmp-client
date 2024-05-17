@@ -10,19 +10,19 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.header_container}>
         <div className={styles.menu_container}>
-          <Link href={"/"} className={styles.logo_container}>
+          <Link href={"/"} className={styles.logo}>
             <Logo className={styles.logo} />
           </Link>
-          <div className={styles.menu_item}>
+          <Link href={"/"} className={styles.menu_item}>
             <CatalogLogo className={styles.item_icon} />
-            <Link href={"/"} className={styles.title}>
+            <p className={styles.title}>
               Каталог
-            </Link>
-          </div>
-          <div className={styles.menu_item}>
+            </p>
+          </Link>
+          <Link href={"/chats"} className={styles.menu_item}>
             <ChatsLogo className={styles.item_icon} />
             <p className={styles.title}>Чаты</p>
-          </div>
+          </Link>
           <div className={styles.menu_item}>
             <BotsLogo className={styles.item_icon} />
             <p className={styles.title}>Боты</p>

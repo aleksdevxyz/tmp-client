@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.scss";
 import CardWrapper from "../Cards/CardWrapper/CardWrapper";
-import AdvertisementCard from "../Cards/AdvertisementCard/AdvertisementCard";
+
 
 export default async function ChannelsList({data}: any) {
 

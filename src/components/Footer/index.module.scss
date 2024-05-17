@@ -5,11 +5,15 @@
     font-size: 13px;
     font-family: 'Roboto-Light';
     border-top: 1px solid #DEE2E4;
+    margin-top: auto;
+    height: 42px;
+
 
     .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
 
         .links {
             display: flex;

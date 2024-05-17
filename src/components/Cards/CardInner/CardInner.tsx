@@ -4,12 +4,14 @@ import React from "react";
 import styles from "./index.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import hiddenImg from "../../../../public/+18.png";
 export interface Props {
   name: string;
   description: string;
   image: string;
   subscribers: number;
   link_tg: string;
+  hidden: boolean;
   category: Category;
 }
 
@@ -26,6 +28,7 @@ export default function CardInner({
   description,
   subscribers,
   category,
+  hidden,
 }: Props) {
   return (
     <div className={styles.container}>
@@ -35,27 +38,39 @@ export default function CardInner({
           className={styles.image}
           width={208}
           height={208}
-          src={image}
+          src={hidden ? hiddenImg : image}
         />
         <div className={styles.info}>
-          <h3 className={styles.title}>{name}</h3>
-          <div className={styles.description_container}>
-            <Link className={styles.link} href={`${link_tg}`}>
-              {link_tg}
-            </Link>
-            <p className={styles.people}>{subscribers} подписчиков</p>
-            <Link
-              className={styles.category_link}
-              href={`/`}
-            >
-              {category.translit_name}
-            </Link>
-          </div>
-          <hr className={styles.line} />
-          <p className={styles.channel_description}>{description}</p>
-          <Link href={link_tg} className={styles.button}>
-            Открыть канал
-          </Link>
+          {hidden ? (
+            <>
+              <p className={styles.channel_description_ban}>
+                Содержимое скрыто по причине наличия контента, нарушающего
+                законодательство
+              </p>
+              <hr className={styles.line} />
+            </>
+          ) : (
+            <>
+              <h3 className={styles.title}>{name}</h3>
+              <div className={styles.description_container}>
+                <Link className={styles.link} href={`${link_tg}`}>
+                  {link_tg}
+                </Link>
+                <p className={styles.people}>{subscribers} подписчиков</p>
+                <Link
+                  className={styles.category_link}
+                  href={`/category/${category.translit_name}`}
+                >
+                  {category.translit_name}
+                </Link>
+              </div>
+              <hr className={styles.line} />
+              <p className={styles.channel_description}>{description}</p>
+              <Link href={link_tg} className={styles.button}>
+                Открыть канал
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -12,54 +12,18 @@
     max-height: 120px;
     text-decoration: none;
 
-    &:hover {
-        border-color: #494D53;
+    &:hover  {
+        border-color: rgb(85, 175, 218);
         transition: all .3s;
         cursor: pointer;
     }
 
-    .container {
-        color: #677179;
-        font-size: 10px;
-        font-weight: 300;
-
-        .title {
-            font-family: 'Roboto-Bold';
-            color: #677179;
-            font-size: clamp(0.875rem, 0.815rem + 0.27vw, 1rem);
-            font-weight: 700;
-            line-height: 16px;
-            margin-bottom: 8px;
-            transition: all .3s;
-            white-space: nowrap;
-            overflow: hidden;
-            max-width: 212px;
-            text-overflow: ellipsis;
-            max-width: 233px;
-            
-        }
-
-        .subtitle {
-            font-family: 'Roboto-Light';
-            color: #788189;
-            font-size: clamp(0.75rem, 0.72rem + 0.13vw, 0.813rem);
-            font-weight: 300;
-            max-width: 250px;
-            max-height: clamp(2.25rem, 2.16rem + 0.4vw, 2.438rem);
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            max-width: 233px;
-
-        }
-
-        .count {
-            color: #677179;
-            font-size: 10px;
-            font-weight: 700;
-            margin-right: 2px;
-        }
+    &:hover .title  {
+        color: rgb(85, 175, 218);
+        transition: all .3s;
+        cursor: pointer;
     }
+
 
     .image {
         border-radius: 89px;
@@ -67,5 +31,48 @@
         padding: 3px;
         transition: all .3s;
         object-fit: cover;
+    }
+}
+
+.container {
+    color: #677179;
+    font-size: 10px;
+    font-weight: 300;
+    
+    .title {
+        font-family: 'Roboto-Bold';
+        color: #677179;
+        font-size: clamp(0.875rem, 0.815rem + 0.27vw, 1rem);
+        font-weight: 700;
+        line-height: 16px;
+        margin-bottom: 8px;
+        transition: all .3s;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 212px;
+        text-overflow: ellipsis;
+        max-width: 233px;
+        
+    }
+
+    .subtitle {
+        font-family: 'Roboto-Light';
+        color: #788189;
+        font-size: clamp(0.75rem, 0.72rem + 0.13vw, 0.813rem);
+        font-weight: 300;
+        max-width: 250px;
+        max-height: clamp(2.25rem, 2.16rem + 0.4vw, 2.438rem);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 233px;
+
+    }
+
+    .count {
+        color: #677179;
+        font-size: 10px;
+        font-weight: 700;
+        margin-right: 2px;
     }
 }

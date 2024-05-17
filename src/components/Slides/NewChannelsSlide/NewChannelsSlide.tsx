@@ -17,7 +17,7 @@ export default function NewChannelsSlide({
 }: slideRes) {
   return (
     <Link href={`/channel/${id}`} className={styles.item} key={id}>
-      <Image width={46} height={46} src={image} alt={styles.name} className={styles.image} />
+      <Image width={46} height={46} src={image} alt={name} className={styles.image} />
       <div className={styles.text_container}>
         <p className={styles.title}>{name}</p>
         <p className={styles.description}>{subscribers} подписчиков</p>

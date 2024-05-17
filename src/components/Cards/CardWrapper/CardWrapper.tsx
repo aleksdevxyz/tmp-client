@@ -15,7 +15,7 @@ export default function CardWrapper({src, title, description, count, id}: CardWr
   return (
     <Link href={`/channel/${id}`} className={styles.card}>
         <div className={styles.container}>
-            <h4 className={styles.title}>{title}</h4>
+            <h3 className={styles.title}>{title}</h3>
             <p className={styles.subtitle}>{description}</p>
             <div className={styles.container}>
                 <span className={styles.count}>{count}</span>

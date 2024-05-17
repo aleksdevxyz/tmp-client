@@ -2,20 +2,21 @@
 
 import React, { useEffect, useRef } from "react";
 import { Navigation } from "swiper/modules";
+import styles from "./index.module.scss";
 
 import "swiper/css";
 
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import ChannelSlide from "../Slides/CategorySlide/CategorySlide";
-import { ArrowBack, ArrowForward } from "../svgs";
+import { AddSquare, ArrowBack, ArrowForward } from "../svgs";
 
 type Props = {
   data: any;
-  styles: any;
   count: number;
+  main: boolean;
 };
 
-export default function SwiperMainComponent({ data, styles, count }: Props) {
+export default function SwiperMainComponent({ data, count, main }: Props) {
   const slideRef = useRef<SwiperRef>(null);
 
   const [slides, setSlides] = React.useState<React.ReactNode[]>([]);
@@ -42,6 +43,7 @@ export default function SwiperMainComponent({ data, styles, count }: Props) {
           <SwiperSlide key={i} className={styles.slide}>
             {chunk.map((item: any) => (
               <ChannelSlide
+                main={main}
                 key={item.id}
                 name={item.name}
                 id={item.id}
@@ -56,25 +58,43 @@ export default function SwiperMainComponent({ data, styles, count }: Props) {
 
       setSlides(swiperSlides);
     }
-  }, [data,styles.slide]);
+  }, [data, main]);
 
   return (
-    <>
-      <ArrowBack onClick={handlePrev} className={styles.arrow_back} />
-      <Swiper
-        ref={slideRef}
-        onSwiper={(swiper) => {
-          if (slideRef.current) {
-            slideRef.current.swiper = swiper;
-          }
-        }}
-        loop={data && true}
-        slidesPerView={count}
-        modules={[Navigation]}
-      >
-        {slides}
-      </Swiper>
-      <ArrowForward onClick={handleNext} className={styles.arrow_forward} />
-    </>
+    <div className={styles.section}>
+      <div className={styles.subtitle}>
+        <div className={styles.subtitle_container}>
+          <h3 className={styles.subtitle_text}>Все категории</h3>
+          <button className={styles.button}>
+            <AddSquare className={styles.icon_add} />
+            <p className={styles.button_text}>Добавить канал</p>
+          </button>
+        </div>
+        <div className={styles.content_container}>
+          <div className={styles.content}>
+            <div className={styles.content_list}>
+              <ArrowBack onClick={handlePrev} className={styles.arrow_back} />
+              <Swiper
+                ref={slideRef}
+                onSwiper={(swiper) => {
+                  if (slideRef.current) {
+                    slideRef.current.swiper = swiper;
+                  }
+                }}
+                loop={data && true}
+                slidesPerView={count}
+                modules={[Navigation]}
+              >
+                {slides}
+              </Swiper>
+              <ArrowForward
+                onClick={handleNext}
+                className={styles.arrow_forward}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
