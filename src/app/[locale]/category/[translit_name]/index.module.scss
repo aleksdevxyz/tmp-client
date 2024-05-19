@@ -19,12 +19,18 @@
 
 
     .channel_section {
+        max-width: 1140px;
+        width: 100%;
+        margin: auto;
+
         .subtitle {
             color: #677179;
             font-size: 20px;
             font-family: 'Roboto-Bold';
             font-weight: 700;
+            margin: auto;
             margin-bottom: 12px;
+            margin-top: 25px;
         }
     }
 }

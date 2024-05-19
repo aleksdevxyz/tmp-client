@@ -16,10 +16,9 @@ import { CategoryResponse } from "@/app/[locale]/api/categoryApi";
 type Props = {
   data: CategoryResponse[];
   count: number;
-  main: boolean;
 };
 
-export default function SwiperMainComponent({ data, count, main }: Props) {
+export default function SwiperMainComponent({ data, count }: Props) {
   const t = useLocale();
   
   const slideRef = useRef<SwiperRef>(null);
@@ -48,7 +47,6 @@ export default function SwiperMainComponent({ data, count, main }: Props) {
           <SwiperSlide key={i} className={styles.slide}>
             {chunk.map(({ id, name, translit_name, channels_count }) => (
               <ChannelSlide
-                main={main}
                 key={id}
                 name={name}
                 id={id}
@@ -63,7 +61,7 @@ export default function SwiperMainComponent({ data, count, main }: Props) {
 
       setSlides(swiperSlides);
     }
-  }, [data, main]);
+  }, [data]);
 
   
 
@@ -74,7 +72,7 @@ export default function SwiperMainComponent({ data, count, main }: Props) {
           <h3 className={styles.subtitle_text}>Все категории</h3>
           <button className={styles.button}>
             <AddSquare className={styles.icon_add} />
-            <Link  href={`${t}/add_channel`} className={styles.button_text}>Добавить канал</Link>
+            <Link  href={`/${t}/add_channel`} className={styles.button_text}>Добавить канал</Link>
           </button>
         </div>
         <div className={styles.content_container}>

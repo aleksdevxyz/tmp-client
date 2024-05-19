@@ -34,7 +34,7 @@ export default async function HomePage({
       <h2 className={styles.title}>
         Поиск телеграм каналов по {query}
       </h2>
-      <SwiperMainComponent count={3} data={categoryList} main={false} />
+      <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>
         <ChannelsList path="channel" data={AccurateCategory} />
       </div>

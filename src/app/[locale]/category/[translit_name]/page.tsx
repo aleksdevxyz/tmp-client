@@ -33,7 +33,7 @@ export default async function Categories({
       <h2 className={styles.title}>
         Каталог телеграм каналов в категории: {translitName}
       </h2>
-      <SwiperMainComponent count={3} data={categoryList} main={false} />
+      <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>
         <h3 className={styles.subtitle}>Телеграмм каналы</h3>
         <ChannelsList path="channel" data={AccurateCategory} />
