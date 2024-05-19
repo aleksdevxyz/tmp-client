@@ -2,7 +2,6 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 30px;
     max-width: 581px;
 
     .form_container {
@@ -50,10 +49,20 @@
                 background: transparent;
                 padding-left: 6px;
                 padding-right: 20px;
+                color: rgb(55, 57, 63);
+
+
+                &._active {
+                    color: #fff;
+                    background-color: black;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
 
                 .button_text {
                     margin: 0;
-                    color: rgb(55, 57, 63);
                     font-family: 'Roboto-500';
                     font-size: 15px;
                     font-weight: 500;
@@ -73,21 +82,34 @@
             }
         }
 
-        
-
-    .text_container {
+}
 
 
-        .text {
+        .text_container {
 
-            .title {
-                margin: 0;
-            }
 
-            .subtitle {
-                margin: 0;
+            .text {
+
+                .quest_title {
+                    color: #788189;
+                    font-family: 'Roboto-Bold';
+                    font-size: 20px;
+                    font-weight: 700;
+                    line-height: 23px;
+
+                    padding-top: 11px;
+                    margin: 0;
+                }
+
+                .quest_subtitle {
+                    color: #788189;
+                    font-family: 'Roboto-Light';
+                    font-size: 20px;
+                    font-weight: 300;
+                    line-height: 23px;
+                    padding-top: 6px;
+                    margin: 0;
+                }
             }
         }
-    }
-}
 }

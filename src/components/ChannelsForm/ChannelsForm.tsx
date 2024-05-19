@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useTranslations } from "next-intl";
 import styles from "./index.module.scss";
@@ -7,36 +7,40 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 import { useFormState } from "react-dom";
 import { postChannel } from "@/app/[locale]/api/postChannel";
 
-
-export default function ChannelsForm({category} : {category : CategoryResponse[]}) {
+export default function ChannelsForm({
+  category,
+}: {
+  category?: CategoryResponse[];
+}) {
   const t = useTranslations("AddForm");
-  const [state, formAction] = useFormState(postChannel, 'Канал')
-  
+  const [state, formAction] = useFormState(postChannel, "");
+
   return (
     <>
       <form action={formAction} className={styles.form}>
-        <label className={styles.label}>
-          {t("Ссылка на канал")}
-        </label>
+        <label className={styles.label}>{t("Ссылка на канал")}</label>
         <input
           name="link"
           className={styles.input}
           type="text"
           placeholder={t("Поле ввода")}
         />
-        <label className={styles.label}>
-          {t("Категория канала")}
-        </label>
+        <label className={styles.label}>{t("Категория канала")}</label>
         <select className={styles.select} name="category">
-          {category.map(({ id, name }) => {
+          {category?.map(({ id, name }) => {
             return (
-              <option value={name} className={styles.option} key={id} >
+              <option value={name} className={styles.option} key={id}>
                 {name}
               </option>
             );
           })}
         </select>
-        <h3 className="error">{state.detail}</h3>
+        {state != "" && (
+          <div className={styles.error}>
+            <h3 className={styles.text_error}>{state}</h3>
+          </div>
+        )}
+
         <SubmitButton />
       </form>
     </>

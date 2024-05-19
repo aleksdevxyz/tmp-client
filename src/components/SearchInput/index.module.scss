@@ -92,6 +92,12 @@
                 max-width: 328px;
                 border-bottom: 1px solid #DEE2E4;
 
+                .arrow {
+                    position: absolute;
+                    right: 15px;
+                    bottom: 30px;
+                    cursor: pointer;
+                }
 
 
                 .dropdown_item {
@@ -99,22 +105,14 @@
                     display: flex;
                     align-items: center;
                     gap: 14px;
+                    max-width: 250px;
                     padding: 7px 0 7px 14px;
                     text-decoration: none;
                     overflow-y: auto;
                     overflow-x: hidden;
 
 
-                    &:last-child {
-                        margin-bottom: 20px;
-                        border: none;
-                    }
-
-                    .dropdown_arrow {
-                        margin-left: auto;
-                        margin-right: 14.5px;
-                    }
-
+                    
 
                     .dropdown_img {
                         min-width: 55px;

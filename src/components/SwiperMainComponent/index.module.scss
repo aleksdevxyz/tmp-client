@@ -1,13 +1,12 @@
 @use '../../styles/index' as index;
 
 .section {
-
+    width: 100%;
     &:hover .arrow_back {
         opacity: 1;
         transition: opacity .5s ease-in-out;
     }
 
-    
     &:hover .arrow_forward {
         opacity: 1;
         transition: opacity .5s ease-in-out;
@@ -19,7 +18,6 @@
     margin: auto;
     width: 100%;
     max-width: 1140px;
-    padding: 0 15px;
     box-sizing: border-box;
 
     .subtitle_container {

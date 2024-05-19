@@ -1,0 +1,27 @@
+{
+    "Index": {
+        "title": "Teleshtorm – search in Telegram channels. Catalog of Telegram channels.",
+        "description": "Teleshtorm – convenient search in Telegram channels, as well as a structured catalog containing more than 150,000 Telegram channels."
+      },
+      "Header" : {
+        "Каталог": "Catalog",
+        "Поиск": "Search...",
+        "Чаты": "Chats",
+        "Статьи": "Articles",
+        "Боты": "Bots",
+        "Язык сайта": "English"
+      }
+      ,
+    "Main" : {
+        "Телеграм каналы": "Telegram channel"
+    },
+    "AddForm" : {
+        
+    },
+    "Footer" : {
+      "Права":"© 2024 teleshtorm.com — Telegram search, the site does not store personal data",
+      "Ссылка телеграм": "Our Telegram channel",
+      "Правообладатели":"For copyright holders",
+      "Техподдержка":"Contact support"
+    }
+}

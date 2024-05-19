@@ -5,6 +5,7 @@ import styles from "./index.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import hiddenImg from "../../../../public/+18.png";
+import { useLocale } from "next-intl";
 export interface Props {
   name: string;
   description: string;
@@ -30,6 +31,7 @@ export default function CardInner({
   category,
   hidden,
 }: Props) {
+  const locale = useLocale();
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -59,7 +61,7 @@ export default function CardInner({
                 <p className={styles.people}>{subscribers} подписчиков</p>
                 <Link
                   className={styles.category_link}
-                  href={`/category/${category.translit_name}`}
+                  href={`/${locale}/category/${category.translit_name}`}
                 >
                   {category.translit_name}
                 </Link>

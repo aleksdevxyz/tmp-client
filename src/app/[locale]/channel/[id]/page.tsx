@@ -55,7 +55,7 @@ export default async function ChannelCard({ params: { id } }:{
     </div>
     <div className={styles.simular_section}>
       <h2 className={styles.title}>Похожие каналы</h2>
-      <ChannelsList data={similarChannels}/>
+      <ChannelsList path="channel" data={similarChannels}/>
     </div>
   </div>;
 }

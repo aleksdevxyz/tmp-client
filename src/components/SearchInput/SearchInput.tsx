@@ -7,7 +7,9 @@ import cn from "classnames";
 import axios from "axios";
 import Image from "next/image";
 import { useDebouncedCallback } from "use-debounce";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter, useSearchParams } from "next/navigation";
+import { changeSubscribers } from "@/helpers/changeSubs";
 
 interface SearchResult {
   id: number;
@@ -21,15 +23,17 @@ interface SearchResult {
 const active = cn(styles._active, styles.dropdown);
 
 export default function SearchInput() {
+  const searchParams = useSearchParams();
+  const [inputValue, setInputValue] = React.useState("");
   const [activeMenu, setActiveMenu] = React.useState(false);
-
-  const t = useTranslations("Header")
-
+  const t = useTranslations("Header");
   const [searchResult, setSearchResult] = React.useState<SearchResult[] | null>(
     null
   );
-  const dropRef: React.RefObject<HTMLDivElement> = React.useRef(null);
+  const {replace} = useRouter()
+  const locale = useLocale();
 
+  const dropRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const searchRequest = (value: string) => {
     if (value) {
       axios
@@ -51,42 +55,56 @@ export default function SearchInput() {
     300
   );
 
+  const handleSearchParams = () => {
+    const search = new URLSearchParams(searchParams);
+    search.set("term", inputValue);
+    console.log(search.toString());
+    replace(`/${locale}/search?${search.toString()}`);
+  };
+
+  const handleKeyPress = (event: { key: any; }) => {
+
+    if (event.key === "Enter") return handleSearchParams()
+
+}
+
   const handleOverlayClick = (event: MouseEvent) => {
     if (dropRef.current && !dropRef.current.contains(event.target as Node)) {
       setActiveMenu(false);
     }
   };
-
+  
   useEffect(() => {
     document.addEventListener("click", handleOverlayClick);
     return () => document.removeEventListener("click", handleOverlayClick);
   }, []);
 
-  const changeSubscribers = (subscribers: string) => {
-    const lastDigit = parseInt(subscribers.slice(-1));
-    if ([2, 3, 4].includes(lastDigit)) {
-      return "Подписчика";
-    }
-    return "Подписчиков";
-  };
-
   return (
     <div ref={dropRef} className={styles.input_container}>
       <SearchIcon className={styles.icon} />
       <input
+        minLength={1}
+        min={1}
+        onKeyDown={handleKeyPress}
         onFocus={() => setActiveMenu(true)}
-        onChange={(e) => handleSearch(e)}
+        onChange={(e) => {
+          setInputValue(e.target.value);
+          handleSearch(e);
+        }}
         placeholder={t("Поиск")}
         className={styles.input}
         type="text"
+        value={inputValue}
       />
       <div className={activeMenu ? active : styles.dropdown}>
         <div className={styles.dropdown_list}>
           {searchResult?.map((item) => (
-            <div key={item.id} className={styles.dropdown_content}>
+            <div onClick={() => setActiveMenu(false)} key={item.id} className={styles.dropdown_content}>
+            <Image className={styles.arrow} alt="arrow" src={'/arrow-return-right.svg'} width={15} height={15}/>
+              
               <Link
                 className={styles.dropdown_item}
-                href={`/channel/${item.id}`}
+                href={`/${locale}/channel/${item.id}`}
               >
                 <Image
                   width={55}
@@ -108,7 +126,7 @@ export default function SearchInput() {
             </div>
           ))}
         </div>
-        <Link href={"/"} className={styles.dropdown_button}/>
+        <div onClick={handleSearchParams} className={styles.dropdown_button} />
       </div>
     </div>
   );

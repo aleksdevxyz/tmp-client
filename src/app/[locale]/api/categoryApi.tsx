@@ -1,4 +1,4 @@
-const BASE_URL ='https://test-api-teleshtorm.teleshtorm.org';
+const BASE_URL = process.env.BASE_URL;
 
 export interface CategoryResponse {
     id: string

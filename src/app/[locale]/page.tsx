@@ -8,9 +8,6 @@ import RecList from "@/components/RecList/RecList";
 import { Metadata } from "next";
 import { getTotalPages } from "@/helpers/getTotalPages";
 import { getTranslations } from "next-intl/server";
-import { cookies } from "next/headers";
-import { getToken } from "./api/getToken";
-import { updateToken } from "./layout";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Index");
 
@@ -43,13 +40,11 @@ async function getChannelsList(page: number) {
 
 export default async function Home({
   searchParams,
-  params : {locale}
 }: {
   searchParams?: {
     page?: number;
     totalPages?: number;
   }, 
-  params : {locale : string}
 }) {
   const currentPage = Number(searchParams?.page) || 1;
 
@@ -63,7 +58,7 @@ export default async function Home({
         <MainSection />
         <div className={styles.section}>
           <h2 className={styles.title}>{t("Телеграм каналы")}</h2>
-          <ChannelsList data={ChannelsData} />
+          <ChannelsList path="channel" data={ChannelsData} />
         </div>
         <div className={styles.section}>
           <h2 className={styles.title}>Новые каналы</h2>

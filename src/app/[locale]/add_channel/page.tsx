@@ -1,10 +1,13 @@
 import AddForm from '@/components/AddForm/AddForm'
 import styles from './index.module.scss'
+import { getCategory } from '../api/categoryApi';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const category = await getCategory();
+
   return (
     <div className={styles.section}>
-        <AddForm />
+        <AddForm category={category}/>
     </div>
   )
 }

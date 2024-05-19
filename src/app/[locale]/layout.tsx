@@ -7,9 +7,6 @@ import Footer from "@/components/Footer/Footer";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import {unstable_setRequestLocale} from 'next-intl/server';
-import { cookies } from "next/headers";
-import { getToken } from "./api/getToken";
-import { NextRequest } from "next/server";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,8 +38,6 @@ export default async function RootLayout({
 }>) {
   const messages = await getMessages();
   unstable_setRequestLocale(locale);
-  // const token = await getToken()
-  updateToken('token')
   
   
   return (

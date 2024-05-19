@@ -38,7 +38,7 @@ export default async function HomePage({
       <h2 className={styles.title}>Каталог телеграмм чатов</h2>
       <div className={styles.section}>
         <h3 className={styles.subtitle}>Телеграм чаты</h3>
-        <ChannelsList data={data} />
+        <ChannelsList path="chats" data={data} />
       </div>
       <Pagination data={data} totalPages={totalPages} currentPage={currentPage} />
       <div className={styles.section_rec}>

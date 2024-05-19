@@ -24,7 +24,7 @@ export default async function RecList() {
   const recData = await getRec();
 
   return (
-    <>
+    <div className={styles.section}>
       <h2 className={styles.title}>Рекомендуем почитать</h2>
       <div className={styles.container}>
         {recData?.map((item: recRes) => (
@@ -44,6 +44,6 @@ export default async function RecList() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

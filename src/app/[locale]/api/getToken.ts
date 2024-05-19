@@ -1,6 +1,6 @@
 'use server'
 
-const BASE_URL='https://test-api-teleshtorm.teleshtorm.org'
+const BASE_URL= process.env.BASE_URL
 
 const request = async (): Promise<{ csrf_token: string }> => {
     const res = await fetch(`${BASE_URL}/get_csrf_tokens`);
