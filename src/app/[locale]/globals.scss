@@ -1,4 +1,4 @@
-@import '../vendor/index.scss';
+@import '../../vendor/index.scss';
 
 html {
     scrollbar-color: #e0e0e0;
@@ -7,5 +7,6 @@ html {
 
 
 *{
+    // outline: 1px solid green !important;
     box-sizing: border-box;
 }

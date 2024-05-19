@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "./index.module.scss";
 import CardWrapper from "../Cards/CardWrapper/CardWrapper";
 
 
-export default async function ChannelsList({data}: any) {
+export default async function ChannelsList({data}: {data:any}) {
 
   return ( 
     <section className={styles.list}>

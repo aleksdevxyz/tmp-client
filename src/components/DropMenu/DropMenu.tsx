@@ -1,26 +1,23 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
-import ru from "../../../public/RU.png";
-import icon from "../../../public/chevron-compact-down.png";
 import Image from "next/image";
-import {
-  Deutsch,
-  English,
-  Español,
-  Français,
-  Italiano,
-  Portugal,
-} from "../svgs";
 import cn from "classnames";
-import Link from "next/link";
+import { Link, usePathname } from "@/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { switchFlag } from "@/helpers/SwitchFlag";
 
 const active = cn(styles._active, styles.list);
 
 export default function DropMenu() {
+  
   const [activeMenu, setActiveMenu] = useState(false);
   const listRef: React.RefObject<HTMLDivElement> = React.createRef();
-
+  const pathName = usePathname()  
+  const t = useTranslations('Header')
+  const locale = useLocale()
+  
   const onClickMenu = () => {
     setActiveMenu(!activeMenu);
   };
@@ -40,13 +37,16 @@ export default function DropMenu() {
     return () => document.removeEventListener("click", handleOverlayClick);
   })
 
+  
+
+
   return (
     <>
       <ul onClick={onClickMenu} className={styles.container}>
         <li className={styles.item}>
-          <Image src={ru} alt="image" className={styles.image} />
-          <Link href={'/'} locale='ru' className={styles.title}>Russian</Link>
-          <Image src={icon} alt="image" className={styles.drop_icon} />
+          <Image src={`${switchFlag(locale)}`} alt="image" width={22} height={16} className={styles.image} />
+          <p className={styles.title}>{t('Язык сайта')}</p>
+          <Image src={'/chevron-compact-down.png'} alt="image" width={10} height={16} />
         </li>
         <div
         ref={listRef}
@@ -55,31 +55,31 @@ export default function DropMenu() {
       >
         <p className={styles.header}>Язык сайта</p>
         <div className={styles.item_menu}>
-        <Image src={ru} alt="image" className={styles.image} />
-          <Link href={'/'} locale='ru' className={styles.title_menu}>Russian</Link>
+        <Image src={"/Russian.svg"} width={22} height={16} alt="image" className={styles.image} />
+          <Link href={`${pathName}`} locale='ru' className={styles.title_menu}>Russian</Link>
         </div>
         <div className={styles.item_menu}>
-          <Deutsch className={styles.image}/>
+          <Image src={"/Deutsch.svg"} alt="image" width={22} height={16} className={styles.image}/>
           <Link href={'/'} locale='de' className={styles.title_menu}>Deutsch</Link>
         </div>
         <div className={styles.item_menu}>
-          <English className={styles.image}/>
-          <Link locale='en' href={'/'} className={styles.title_menu}>English</Link>
+          <Image src={"/English.svg"} alt="image" width={22} height={16} className={styles.image}/>
+          <Link href={`${pathName}`} locale='en' className={styles.title_menu}>English</Link>
         </div>
         <div className={styles.item_menu}>
-          <Español className={styles.image}/>
+          <Image src={"/Español.svg"} alt="image" width={22} height={16} className={styles.image}/>
           <Link href={'/'} locale='es' className={styles.title_menu}>Español</Link>
         </div>
         <div className={styles.item_menu}>
-          <Français className={styles.image}/>
+          <Image src={"/Français.svg"} alt="image" width={22} height={16} className={styles.image}/>
           <Link href={'/'} locale='fr' className={styles.title_menu}>Français</Link>
         </div>
         <div className={styles.item_menu}>
-          <Italiano className={styles.image}/>
+          <Image src={"/Italiano.svg"} alt="image" width={22} height={16} className={styles.image}/>
           <Link href={'/'} locale='it' className={styles.title_menu}>Italiano</Link>
         </div>
         <div className={styles.item_menu}>
-          <Portugal className={styles.image}/>
+          <Image src={"/Portugal.svg"} alt="image" width={22} height={16} className={styles.image}/>
           <Link href={'/'} locale='pt' className={styles.title_menu}>Português</Link>
         </div>
       </div>

@@ -13,14 +13,20 @@ import { useRouter } from "next/navigation";
 
 const active = cn(styles._active, styles.link);
 
-export default function Pagination({ currentPage, totalPages }: {totalPages: number, currentPage: number }) {
+export default function Pagination({
+  currentPage,
+  totalPages,
+  data,
+}: {
+  totalPages: number[];
+  currentPage: number;
+  data: any
+}) {
   const [pageNumber, setPageNumber] = useState(currentPage);
-  const [ perPage, setPerPage ] = useState(totalPages)
   const router = useRouter();
 
   useEffect(() => {
     setPageNumber(currentPage);
-    setPerPage(totalPages);
   }, [currentPage, totalPages]);
 
   const pageParams = useSearchParams();
@@ -36,43 +42,59 @@ export default function Pagination({ currentPage, totalPages }: {totalPages: num
 
   return (
     <div className={styles.container}>
-      {pageNumber === 1 ? null : (
+      {pageNumber <= 1 ? null : (
         <div
           onClick={() => {
             handleClick(pageNumber - 1);
-            setPageNumber(pageNumber - 1);
-            setPerPage(perPage - 1);
           }}
           className={styles.next_button}
         >
           <BackButton style={{ transform: "rotate(180deg)" }} />
         </div>
       )}
-      <div onClick={() => handleClick(currentPage)} className={styles.counter}>
-        {[...Array(perPage)].map((_, index) => (
-          <Link
-            onClick={() => {
-              setPageNumber(index + 1);
-              handleClick(index + 1);
-            }}
-            key={Math.random()}
-            href={`?page=${index + 1}`}
-            className={pageNumber === index + 1 ? active : styles.link}
-          >
-            {index + 1}
-          </Link>
-        ))}
+      <div className={styles.counter}>
+        {totalPages.length > 1 ? (
+          totalPages.map((item, index) => (
+            <Link
+              key={index}
+              href={`?page=${item}`}
+              className={pageNumber === item ? active : styles.link}
+            >
+              <p
+                style={{ margin: "0", padding: "0" }}
+                onClick={() => {
+                  handleClick(item);
+                }}
+              >
+                {pageNumber === 0 ? 1 : item}
+              </p>
+            </Link>
+          ))
+        ) : data.length < 31 && (
+          (
+            <Link
+              href={`?page=1`}
+              className={active}
+            >
+              <p
+                style={{ margin: "0", padding: "0" }}
+              >
+                1 
+              </p>
+            </Link>
+          )
+        )}
       </div>
-      <div
-        onClick={() => {
-          handleClick(pageNumber + 1);
-          setPageNumber(pageNumber + 1);
-          setPerPage(perPage + 1);
-        }}
-        className={styles.next_button}
-      >
-        <ForwardButton />
-      </div>
+      {pageNumber >= totalPages[totalPages.length - 1] ? null : (
+        <div
+          onClick={() => {
+            handleClick(pageNumber + 1);
+          }}
+          className={styles.next_button}
+        >
+          <ForwardButton />
+        </div>
+      )}
     </div>
   );
 }

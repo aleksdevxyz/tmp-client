@@ -41,9 +41,8 @@
 @font-face {
     font-family: 'Roboto-Thin';
     src: 
-    url('../vendor/fonts/Roboto-Regular.woff'), 
-    url('../vendor/fonts/Roboto-Regular.woff2');
-    font-weight: 100;
+    url('../vendor/fonts/Roboto-Thin.woff'), 
+    url('../vendor/fonts/Roboto-Thin.woff2');
     font-style: normal;
     font-display: swap;
 }
@@ -64,6 +63,16 @@
     url('../vendor/fonts/Roboto-Regular.woff'), 
     url('../vendor/fonts/Roboto-Regular.woff2');
     font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto-500';
+    src: 
+    url('../vendor/fonts/Roboto-Regular.woff'), 
+    url('../vendor/fonts/Roboto-Regular.woff2');
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
 }

@@ -18,7 +18,8 @@
         }
 
         .info {
-            display: block;
+            display: flex;
+            flex-direction: column;
             width: 100%;
             .title {
                 margin: 0;
@@ -117,17 +118,21 @@
                 margin-bottom: clamp(1.25rem, -2.271rem + 8.41vw, 3.563rem);;
             }
 
-            .button{
+            .button {
+                max-width: 148px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 color: #FFF;
                 font-size: 12px;
                 font-family: 'Roboto-Light';
                 line-height: 0px;
                 border-radius: 7px;
                 background: #161B22;
-                padding: 15px 32px;
-                display: inline-block;
                 transition: all .3s;
                 text-decoration: none;
+                margin-top: auto;
 
                 &:hover{
                     background: #494D53;

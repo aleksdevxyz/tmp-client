@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
 const nextConfig = {
     webpack(config) {
         config.module.rules.push({
@@ -12,10 +16,6 @@ const nextConfig = {
         })
         return config;
     },
-    i18n:{
-        locales:['ru', 'en', 'es', 'fr','de', 'it', 'pt'],
-        defaultLocale: 'ru'
-    },
     images: {
         remotePatterns: [
             {
@@ -26,4 +26,4 @@ const nextConfig = {
     }
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

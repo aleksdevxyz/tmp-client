@@ -1,10 +1,8 @@
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import { Metadata } from "next";
 import styles from "./index.module.scss";
-import AdvertisementCard from "@/components/Cards/AdvertisementCard/AdvertisementCard";
-import CardInner from "@/components/Cards/CardInner/CardInner";
 import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
-import { getCategory } from "@/app/api/categoryApi";
+import { getCategory } from "@/app/[locale]/api/categoryApi";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,18 +20,18 @@ async function getAcuurateCategory(translit_name: string) {
 }
 
 export default async function Categories({
-  params,
+  params : {translit_name, locale},
 }: {
-  params: { translit_name: string };
+  params: { translit_name: string, locale: string};
 }) {
-  const translit_name = params.translit_name;
-  const AccurateCategory = await getAcuurateCategory(translit_name);
+  const translitName = translit_name;
+  const AccurateCategory = await getAcuurateCategory(translitName);
   const categoryList = await getCategory();
 
   return (
     <div className={styles.section}>
       <h2 className={styles.title}>
-        Каталог телеграм каналов в категории: {translit_name}
+        Каталог телеграм каналов в категории: {translitName}
       </h2>
       <SwiperMainComponent count={3} data={categoryList} main={false} />
       <div className={styles.channel_section}>

@@ -38,10 +38,9 @@ async function getSimilarChannels(id: string) {
   return res.json()
 }
 
-export default async function ChannelCard({ params }:{
+export default async function ChannelCard({ params: { id } }:{
   params: { id: string }
 }) {
-  const id = params.id
   
   const data = await getCard(id)
   const similarChannels = await getSimilarChannels(id)

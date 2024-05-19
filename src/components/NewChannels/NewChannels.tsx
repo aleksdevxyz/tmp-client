@@ -1,4 +1,3 @@
-
 import SwiperNewComponent from "../SwiperNewComponent/SwiperNewComponent";
 import styles from "./index.module.scss";
 
@@ -14,7 +13,7 @@ async function getData() {
 
 export default async function NewChannels() {
   const data = await getData();
-
+  
   return (
     <div className={styles.swipper}>
       <SwiperNewComponent count={4} styles={styles} data={data} />

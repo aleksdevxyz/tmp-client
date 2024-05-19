@@ -7,6 +7,7 @@ import cn from "classnames";
 import axios from "axios";
 import Image from "next/image";
 import { useDebouncedCallback } from "use-debounce";
+import { useTranslations } from "next-intl";
 
 interface SearchResult {
   id: number;
@@ -22,7 +23,7 @@ const active = cn(styles._active, styles.dropdown);
 export default function SearchInput() {
   const [activeMenu, setActiveMenu] = React.useState(false);
 
-  const [searchPhrase, setSearchPhrase] = React.useState("");
+  const t = useTranslations("Header")
 
   const [searchResult, setSearchResult] = React.useState<SearchResult[] | null>(
     null
@@ -75,7 +76,7 @@ export default function SearchInput() {
       <input
         onFocus={() => setActiveMenu(true)}
         onChange={(e) => handleSearch(e)}
-        placeholder="Поиск..."
+        placeholder={t("Поиск")}
         className={styles.input}
         type="text"
       />

@@ -1,4 +1,4 @@
-import { getCategory } from "@/app/api/categoryApi";
+import { getCategory } from "../../app/[locale]/api/categoryApi";
 import styles from "./MainSection.module.scss";
 import SwiperMainComponent from "../SwiperMainComponent/SwiperMainComponent";
 

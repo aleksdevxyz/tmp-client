@@ -1,0 +1,74 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 4px;
+
+    .label {
+        margin: 0;
+        margin-top: 9px;
+        color: #788189;
+        font-family: 'Roboto-500';
+        font-size: 15px;
+        font-style: normal;
+        line-height: 120%;
+    }
+
+    .input {
+        width: 100%;
+        color: #788189;
+        font-family: 'Roboto-Thin';
+        font-size: 15px;
+        border-radius: 7px;
+        border: 1px solid #897878;
+        background: #FDFEFF;
+        padding: 10px 9px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #788189;
+            font-family: 'Roboto-Thin';
+            font-size: 15px;
+        }
+    }
+
+    .select {
+        border: none;
+        padding: 10px 9px;
+        border-radius: 7px;
+        background: #EFEFEF url('/select-icon.svg') no-repeat;
+        color: #788189;
+        font-family: 'Roboto-Light';
+        font-size: 16px;
+        margin: 0;
+        font-style: normal;
+        font-weight: 300;
+        appearance: none;
+        line-height: 19px;
+
+        &:focus {
+            outline: none;
+        }
+
+        .option {
+            color: #788189;
+            background: #EFEFEF;
+            color: #788189;
+            font-family: 'Roboto-Light';
+            font-size: 16px;
+            margin: 0;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 19px;
+
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}

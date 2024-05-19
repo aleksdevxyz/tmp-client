@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import { Metadata } from "next";
 import RecList from "@/components/RecList/RecList";
 import Pagination from "@/components/Pagination/Pagination";
+import { getTotalPages } from "@/helpers/getTotalPages";
 
 export const metadata: Metadata = {
   title: "Teleshtorm – поиск по Telegram чатам. Каталог телеграмм чатов.",
@@ -24,11 +25,14 @@ export default async function HomePage({
 }: {
   searchParams?: {
     page?: number;
-  };
+  }
 }) {
-  const currentPage = Number(searchParams?.page) || 0;
+  const currentPage = Number(searchParams?.page) || 1;
 
-  const data = await getChatsList(currentPage);
+  const data = await getChatsList(currentPage > 1 ? currentPage : 0);
+  
+  const totalPages = await getTotalPages(currentPage, data);
+
   return (
     <>
       <h2 className={styles.title}>Каталог телеграмм чатов</h2>
@@ -36,8 +40,7 @@ export default async function HomePage({
         <h3 className={styles.subtitle}>Телеграм чаты</h3>
         <ChannelsList data={data} />
       </div>
-
-      <Pagination totalPages={4} currentPage={currentPage} />
+      <Pagination data={data} totalPages={totalPages} currentPage={currentPage} />
       <div className={styles.section_rec}>
         <RecList />
       </div>

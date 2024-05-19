@@ -9,14 +9,19 @@ import "swiper/css";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import ChannelSlide from "../Slides/CategorySlide/CategorySlide";
 import { AddSquare, ArrowBack, ArrowForward } from "../svgs";
+import Link from "next/link";
+import { useLocale } from "next-intl";
+import { CategoryResponse } from "@/app/[locale]/api/categoryApi";
 
 type Props = {
-  data: any;
+  data: CategoryResponse[];
   count: number;
   main: boolean;
 };
 
 export default function SwiperMainComponent({ data, count, main }: Props) {
+  const t = useLocale();
+  
   const slideRef = useRef<SwiperRef>(null);
 
   const [slides, setSlides] = React.useState<React.ReactNode[]>([]);
@@ -41,14 +46,14 @@ export default function SwiperMainComponent({ data, count, main }: Props) {
 
         const slide = (
           <SwiperSlide key={i} className={styles.slide}>
-            {chunk.map((item: any) => (
+            {chunk.map(({ id, name, translit_name, channels_count }) => (
               <ChannelSlide
                 main={main}
-                key={item.id}
-                name={item.name}
-                id={item.id}
-                translit_name={item.translit_name}
-                channels_count={item.channels_count}
+                key={id}
+                name={name}
+                id={id}
+                translit_name={translit_name}
+                channels_count={channels_count}
               />
             ))}
           </SwiperSlide>
@@ -60,6 +65,8 @@ export default function SwiperMainComponent({ data, count, main }: Props) {
     }
   }, [data, main]);
 
+  
+
   return (
     <div className={styles.section}>
       <div className={styles.subtitle}>
@@ -67,7 +74,7 @@ export default function SwiperMainComponent({ data, count, main }: Props) {
           <h3 className={styles.subtitle_text}>Все категории</h3>
           <button className={styles.button}>
             <AddSquare className={styles.icon_add} />
-            <p className={styles.button_text}>Добавить канал</p>
+            <Link  href={`${t}/add_channel`} className={styles.button_text}>Добавить канал</Link>
           </button>
         </div>
         <div className={styles.content_container}>
