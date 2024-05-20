@@ -27,11 +27,14 @@ export default async function Categories({
   const translitName = params.translit_name;
   const AccurateCategory = await getAcuurateCategory(translitName);
   const categoryList = await getCategory();
+  const matchingCategory = categoryList.find((item) => item.translit_name === translitName);
+  const name = matchingCategory ? matchingCategory.name : '';
+  
 
   return (
     <div className={styles.section}>
       <h2 className={styles.title}>
-        Каталог телеграм каналов в категории: {translitName}
+        Каталог телеграм каналов в категории: {name}
       </h2>
       <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>

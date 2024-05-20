@@ -6,6 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import hiddenImg from "../../../../public/+18.png";
 import { useLocale } from "next-intl";
+import cn from "classnames";
+import Modal from "../Modal/Modal";
+const active = cn(styles._active, styles.dots_container);
 export interface Props {
   name: string;
   description: string;
@@ -32,49 +35,85 @@ export default function CardInner({
   hidden,
 }: Props) {
   const locale = useLocale();
+  const [activeMenu, setActiveMenu] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
+  
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <Image
-          alt="Avatar"
-          className={styles.image}
-          width={208}
-          height={208}
-          src={hidden ? hiddenImg : image}
-        />
-        <div className={styles.info}>
-          {hidden ? (
-            <>
-              <p className={styles.channel_description_ban}>
-                Содержимое скрыто по причине наличия контента, нарушающего
-                законодательство
+    <>
+      <Modal open={openModal} setOpen={setOpenModal} />
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <Image
+            onClick={() => setActiveMenu(!activeMenu)}
+            className={styles.dots}
+            alt="three dots"
+            src={"/три точки.svg"}
+            width={24}
+            height={24}
+          />
+          <div className={activeMenu ? active : styles.dots_container}>
+            <div onClick={() => setOpenModal(true)} className={styles.option}>
+              <Image
+                alt="Жалоба"
+                src={"/complaint.svg"}
+                width={16}
+                height={16}
+              />
+              <p className={styles.text}>Пожаловаться на страницу</p>
+            </div>
+            <div className={styles.option}>
+              <Image alt="Жалоба" src={"/recIcon.svg"} width={16} height={16} />
+              <p className={styles.text}>
+                Как работают <span className={styles.link}>рекомендации?</span>
               </p>
-              <hr className={styles.line} />
-            </>
-          ) : (
-            <>
-              <h3 className={styles.title}>{name}</h3>
-              <div className={styles.description_container}>
-                <Link className={styles.link} href={`${link_tg}`}>
-                  {link_tg}
+            </div>
+          </div>
+          <Image
+            alt="Avatar"
+            className={styles.image}
+            width={208}
+            height={208}
+            src={hidden ? hiddenImg : image}
+          />
+          <div className={styles.info}>
+            {hidden ? (
+              <>
+                <p className={styles.channel_description_ban}>
+                  Содержимое скрыто по причине наличия контента, нарушающего
+                  законодательство
+                </p>
+                <hr className={styles.line} />
+              </>
+            ) : (
+              <>
+                <h3 className={styles.title}>{name}</h3>
+                <div className={styles.description_container}>
+                  {link_tg ? (
+                    <Link className={styles.link} href={`${link_tg}`}>
+                      {link_tg}
+                    </Link>
+                  ) : null}
+
+                  <p className={styles.people}>{subscribers} подписчиков</p>
+                  {category ? (
+                    <Link
+                      className={styles.category_link}
+                      href={`/${locale}/category/${category.translit_name}`}
+                    >
+                      {category.translit_name}
+                    </Link>
+                  ) : null}
+                </div>
+                <hr className={styles.line} />
+                <p className={styles.channel_description}>{description}</p>
+                <Link href={link_tg} className={styles.button}>
+                  Открыть канал
                 </Link>
-                <p className={styles.people}>{subscribers} подписчиков</p>
-                <Link
-                  className={styles.category_link}
-                  href={`/${locale}/category/${category.translit_name}`}
-                >
-                  {category.translit_name}
-                </Link>
-              </div>
-              <hr className={styles.line} />
-              <p className={styles.channel_description}>{description}</p>
-              <Link href={link_tg} className={styles.button}>
-                Открыть канал
-              </Link>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

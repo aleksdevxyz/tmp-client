@@ -6,10 +6,72 @@
     display: flex;
     margin-bottom: 25px;
 
+
+
     .content {
         display: flex;
         gap: 60px;
         flex: 1;
+        position: relative;
+
+        .dots {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+
+        .dots_container {
+            display: none;
+            position: absolute;
+            right: 0px;
+            top: 28px;
+            border-radius: 7px;
+            border: 1px solid #DEE2E4;
+            background: #FFF;
+            padding: 12px;
+
+            &._active {
+                display: block;
+
+            }
+
+            .option {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                cursor: pointer;
+
+                &:last-child{
+                        margin-top: 13px;
+                    }
+
+                .link {
+                    color: rgb(120, 129, 137);
+                    font-family: 'Inter-Normal';
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 15px;
+                    letter-spacing: 0%;
+                    text-align: left;
+                    margin: 0;
+                    text-decoration: underline;
+                }
+
+                .text {
+                    color: rgb(120, 129, 137);
+                    font-family: 'Inter-Normal';
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 15px;
+                    letter-spacing: 0%;
+                    text-align: left;
+                    margin: 0;
+
+                    
+                }
+            }
+        }
 
         .image {
             padding: 3px;
@@ -21,6 +83,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+
             .title {
                 margin: 0;
                 margin-bottom: 15px;
@@ -115,7 +178,8 @@
                 color: #788189;
                 font-size: 13px;
                 font-family: 'Inter-Extra-Light';
-                margin-bottom: clamp(1.25rem, -2.271rem + 8.41vw, 3.563rem);;
+                margin-bottom: clamp(1.25rem, -2.271rem + 8.41vw, 3.563rem);
+                ;
             }
 
             .button {
@@ -134,7 +198,7 @@
                 text-decoration: none;
                 margin-top: auto;
 
-                &:hover{
+                &:hover {
                     background: #494D53;
                 }
             }

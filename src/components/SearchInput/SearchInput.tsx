@@ -58,13 +58,15 @@ export default function SearchInput() {
   const handleSearchParams = () => {
     const search = new URLSearchParams(searchParams);
     search.set("term", inputValue);
-    console.log(search.toString());
     replace(`/${locale}/search?${search.toString()}`);
   };
 
   const handleKeyPress = (event: { key: any; }) => {
 
-    if (event.key === "Enter") return handleSearchParams()
+    if (event.key === "Enter"){
+      handleSearchParams()
+      setActiveMenu(false)
+    }
 
 }
 
@@ -83,6 +85,7 @@ export default function SearchInput() {
     <div ref={dropRef} className={styles.input_container}>
       <SearchIcon className={styles.icon} />
       <input
+        required
         minLength={1}
         min={1}
         onKeyDown={handleKeyPress}
@@ -126,7 +129,10 @@ export default function SearchInput() {
             </div>
           ))}
         </div>
-        <div onClick={handleSearchParams} className={styles.dropdown_button} />
+        <div onClick={() => {
+          handleSearchParams()
+          setActiveMenu(false);
+          }} className={styles.dropdown_button} />
       </div>
     </div>
   );

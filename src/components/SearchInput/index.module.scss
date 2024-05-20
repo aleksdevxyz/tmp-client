@@ -169,6 +169,10 @@
             background: #FFF;
             height: 38px;
 
+            &:hover {
+                cursor: pointer;
+            }
+
             &::before {
                 content: "Показать больше";
                 color: rgb(103, 113, 121);
