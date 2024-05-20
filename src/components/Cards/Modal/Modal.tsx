@@ -36,7 +36,7 @@ export default function Modal({
           <Image
             onClick={() => setOpen(false)}
             style={{ cursor: "pointer" }}
-            src={"/close.svg"}
+            src={"/Close.svg"}
             alt="close"
             width={15}
             height={15}

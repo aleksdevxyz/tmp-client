@@ -47,7 +47,7 @@ export default function CardInner({
             onClick={() => setActiveMenu(!activeMenu)}
             className={styles.dots}
             alt="three dots"
-            src={"/три точки.svg"}
+            src={"/dots.svg"}
             width={24}
             height={24}
           />
