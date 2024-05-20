@@ -46,7 +46,7 @@ export default async function Home({
     totalPages?: number;
   }, 
 }) {
-  const currentPage = Number(searchParams?.page) || 1;
+  const currentPage = Number(searchParams?.page) || 0;
 
   const ChannelsData = await getChannelsList(currentPage);
 

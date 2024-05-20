@@ -1,16 +1,20 @@
-'use server'
 
 const BASE_URL= process.env.BASE_URL
 
-const request = async (): Promise<{ csrf_token: string }> => {
-    const res = await fetch(`${BASE_URL}/get_csrf_tokens`);
+export const req = async (): Promise<any> => {
+    const res = await fetch(`https://test-api-teleshtorm.teleshtorm.org/get_csrf_tokens`);
     if (!res.ok) {
         throw new Error('Failed to fetch data');
     }
-    return res.json();
+
+    
+    const data = await res.json()
+
+    
+    return data;
 };
 
 export async function getToken() {
-    const token = await request()
-    return token.csrf_token;
+    const token = await req()
+    return token;
 }

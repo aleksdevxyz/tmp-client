@@ -6,10 +6,10 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import {unstable_setRequestLocale} from 'next-intl/server';
+import { unstable_setRequestLocale } from "next-intl/server";
+import Modal from "@/components/Cards/Modal/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export const metadata: Metadata = {
   icons: {
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
   },
 };
 
-export async function updateToken(token:string) {
+export async function updateToken(token: string) {
   console.log(token);
-  
-  const res = await fetch('http://localhost:3000/ru/api/get-token', {
+
+  const res = await fetch("http://localhost:3000/ru/api/get-token", {
     method: "POST",
     headers: {},
-    body: JSON.stringify({token})
-  })
+    body: JSON.stringify({ token }),
+  });
   // const data = await res.json();
   // return data
 }
@@ -38,8 +38,7 @@ export default async function RootLayout({
 }>) {
   const messages = await getMessages();
   unstable_setRequestLocale(locale);
-  
-  
+
   return (
     <html lang={locale}>
       <body suppressHydrationWarning={true} className={inter.className}>
@@ -53,9 +52,10 @@ export default async function RootLayout({
           }}
         >
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Header/>
+            <Header />
             {children}
             <Footer />
+            
           </NextIntlClientProvider>
         </main>
       </body>
