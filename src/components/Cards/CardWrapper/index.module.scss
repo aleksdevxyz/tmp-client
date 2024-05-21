@@ -13,13 +13,13 @@
     text-decoration: none;
 
     &:hover  {
-        border-color: rgb(85, 175, 218);
+        border-color: rgb(97, 97, 97);
         transition: all .3s;
         cursor: pointer;
     }
 
     &:hover .title  {
-        color: rgb(85, 175, 218);
+        color: rgb(97, 97, 97);
         transition: all .3s;
         cursor: pointer;
     }

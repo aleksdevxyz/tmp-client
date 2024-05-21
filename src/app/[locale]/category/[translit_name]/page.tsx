@@ -1,8 +1,8 @@
+import { getCategory } from "@/app/api/categoryApi";
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
+import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
 import { Metadata } from "next";
 import styles from "./index.module.scss";
-import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
-import { getCategory } from "@/app/[locale]/api/categoryApi";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 async function getAcuurateCategory(translit_name: string) {
   const res = await fetch(
-    `https://test-api-teleshtorm.teleshtorm.org/categories/channels?page=0&limit=31&category_translit=${translit_name}`
+    `${process.env.BASE_URL}/categories/channels?page=0&limit=31&category_translit=${translit_name}`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -22,14 +22,15 @@ async function getAcuurateCategory(translit_name: string) {
 export default async function Categories({
   params,
 }: {
-  params: { translit_name: string, locale: string };
+  params: { translit_name: string; locale: string };
 }) {
   const translitName = params.translit_name;
   const AccurateCategory = await getAcuurateCategory(translitName);
   const categoryList = await getCategory();
-  const matchingCategory = categoryList.find((item) => item.translit_name === translitName);
-  const name = matchingCategory ? matchingCategory.name : '';
-  
+  const matchingCategory = categoryList.find(
+    (item) => item.translit_name === translitName
+  );
+  const name = matchingCategory ? matchingCategory.name : "";
 
   return (
     <div className={styles.section}>

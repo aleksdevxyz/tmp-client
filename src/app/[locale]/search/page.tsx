@@ -1,9 +1,9 @@
+import { getCategory } from "@/app/api/categoryApi";
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
+import RecList from "@/components/RecList/RecList";
+import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
 import { Metadata } from "next";
 import styles from "./index.module.scss";
-import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
-import { getCategory } from "@/app/[locale]/api/categoryApi";
-import RecList from "@/components/RecList/RecList";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 async function searchCategory(query: string) {
   const res = await fetch(
-    `https://test-api-teleshtorm.teleshtorm.org/channels/search?query=${query}&page=0&limit=31`
+    `${process.env.BASE_URL}/channels/search?query=${query}&page=0&limit=31`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -23,17 +23,15 @@ async function searchCategory(query: string) {
 export default async function HomePage({
   searchParams,
 }: {
-    searchParams?: { term?: string };
+  searchParams?: { term?: string };
 }) {
-  const query = searchParams?.term || '';
+  const query = searchParams?.term || "";
   const AccurateCategory = await searchCategory(query);
   const categoryList = await getCategory();
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.title}>
-        Поиск телеграм каналов по {query}
-      </h2>
+      <h2 className={styles.title}>Поиск телеграм каналов по {query}</h2>
       <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>
         <ChannelsList path="channel" data={AccurateCategory} />

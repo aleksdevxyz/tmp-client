@@ -97,7 +97,7 @@
                         border-radius: 50%;
                         font-size: 16px;
                         text-align: center;
-                        background-color: #408aac;
+                        background-color: rgb(22, 27, 34);
                     }
 
                 }
@@ -141,6 +141,7 @@
             font-weight: 300;
             line-height: 16px;
             letter-spacing: 0%;
+            background-color: rgb(240, 240, 240);
 
             &:focus {
                 outline: none;
@@ -149,12 +150,12 @@
         }
 
         .button {
-            width: 196px;
+            width: 100%;
             align-self: center;
             padding: 20px 58px;
-            border: 1px solid rgb(85, 175, 218);
-            border-radius: 7px;
-            background: rgb(85, 175, 218);
+            border: 1px solid rgb(22, 27, 34);
+            border-radius: 14px;
+            background: rgb(22, 27, 34);
             color: rgb(255, 255, 255);
             font-family: 'Roboto-Light';
             font-size: 16px;
@@ -162,7 +163,7 @@
             line-height: 0px;
             letter-spacing: 0%;
             text-align: left;
-            margin-top: 12px;
+            margin-top: 35px;
             text-align: center;
 
             &:hover {

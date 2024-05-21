@@ -10,7 +10,6 @@ import { getTotalPages } from "@/helpers/getTotalPages";
 import { getTranslations } from "next-intl/server";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Index");
-
   return {
     title: t("title"),
     description: t("description"),
@@ -28,7 +27,7 @@ export interface ChannelsProps {
 
 async function getChannelsList(page: number) {
   const res = await fetch(
-    `https://test-api-teleshtorm.teleshtorm.org/channels?page=${page}&limit=31`
+    `${process.env.BASE_URL}/channels?page=${page}&limit=31`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");

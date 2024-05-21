@@ -90,7 +90,7 @@ export default function Modal({
         </ul>
         <h3 className={styles.subtitle}>Другое:</h3>
 
-        <textarea name="other" className={styles.text_area}></textarea>
+        <textarea onClick={(e) => e.stopPropagation()} name="other" className={styles.text_area}></textarea>
 
         <button type="submit" className={styles.button}>{pending ? <span className={styles.loader}></span> : 'Отправить'}</button>
       </form>

@@ -1,11 +1,12 @@
 "use client";
-const BASE_URL = process.env.BASE_URL;
-import { useTranslations } from "next-intl";
-import styles from "./index.module.scss";
-import { CategoryResponse } from "@/app/[locale]/api/categoryApi";
-import SubmitButton from "../SubmitButton/SubmitButton";
-import { useState } from "react";
+
+import { CategoryResponse } from "@/app/api/categoryApi";
 import axios from "axios";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+import SubmitButton from "../SubmitButton/SubmitButton";
+import styles from "./index.module.scss";
+import cn from "classnames";
 
 export default function ChannelsForm({
   category,
@@ -13,45 +14,61 @@ export default function ChannelsForm({
   category?: CategoryResponse[];
 }) {
   const t = useTranslations("AddForm");
+
   const [formState, setFormState] = useState({
-    input:'',
-    select: ''
+    input: "",
+    select: "",
   });
 
-  const handleSumbit = async (e: any) => {
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const link = formState.input
-    const category = formState.select
-    
-    const req = async (): Promise<any> => {
-      const res = await fetch(`/get_csrf_tokens`);
-      if (!res.ok) {
-          throw new Error('Failed to fetch data');
-      }
-      return res.json();
-    };
+    const link = formState.input;
+    const category = formState.select;
+    const { data } = await axios.post(`/api/get_token`);
+    await axios
+      .post(`/api/post_channel`, {
+        link,
+        category,
+        csrf_token: data,
+      })
+      .then((res) => {
+        const { detail } = res.data;
+        setSuccess(detail);
+        setError("");
+      })
+      .catch((err) => {
+        const { detail } = err.response.data;
+        setError(detail);
+        setSuccess("");
+      });
+  };
 
-    const csrf_token = await req();
-    
-    axios
-    .post(`/request_to_add?type=Канал&link=${link}&category=${category}`, csrf_token)
-    .then((res) => res.data)
-  }
-
+  
 
   return (
     <>
-      <form method="POST" onSubmit={handleSumbit} className={styles.form}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <label className={styles.label}>{t("Ссылка на канал")}</label>
         <input
           name="link"
           className={styles.input}
           type="text"
           placeholder={t("Поле ввода")}
-          onChange={(e) => setFormState({ ...formState, input: e.target.value })}
+          onChange={(e) =>
+            setFormState({ ...formState, input: e.target.value })
+          }
         />
         <label className={styles.label}>{t("Категория канала")}</label>
-        <select onChange={(e) => setFormState({ ...formState, select: e.target.value })} className={styles.select} name="category">
+        <select
+          className={styles.select}
+          name="category"
+          onChange={(e) =>
+            setFormState({ ...formState, select: e.target.value })
+          }
+        >
           {category?.map(({ id, name }) => {
             return (
               <option id={id} value={id} className={styles.option} key={id}>
@@ -60,13 +77,12 @@ export default function ChannelsForm({
             );
           })}
         </select>
-        {/* {state != "" && (
-          <div className={styles.error}>
-            <h3 className={styles.text_error}>{state}</h3>
+        { (success || error) && (
+          <div className={cn(styles.msg, { [styles.success]: success, [styles.error]: error })}>
+            <h3 className={styles.text_error}>{success || error}</h3>
           </div>
-        )} */}
-
-        <SubmitButton onSubmit={handleSumbit} />
+        )}
+        <SubmitButton />
       </form>
     </>
   );

@@ -23,7 +23,7 @@ export async function generateMetadata(
   
 
 async function getBots(id: string) {
-  const res = await fetch(`https://test-api-teleshtorm.teleshtorm.org/bot/${id}`)
+  const res = await fetch(`${process.env.BASE_URL}/bot/${id}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -31,7 +31,7 @@ async function getBots(id: string) {
 }
 
 async function getSimilarBots(id: string) {
-  const res = await fetch(`https://test-api-teleshtorm.teleshtorm.org/bot/${id}/similar_bots`)
+  const res = await fetch(`${process.env.BASE_URL}/bot/${id}/similar_bots`)
   if (!res.ok) {
     throw new Error(res.statusText)
   }

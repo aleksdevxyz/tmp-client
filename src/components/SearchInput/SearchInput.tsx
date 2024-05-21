@@ -88,7 +88,7 @@ export default function SearchInput() {
         required
         minLength={1}
         min={1}
-        onKeyDown={handleKeyPress}
+        onKeyUp={handleKeyPress}
         onFocus={() => setActiveMenu(true)}
         onChange={(e) => {
           setInputValue(e.target.value);

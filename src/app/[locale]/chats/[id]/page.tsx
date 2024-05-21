@@ -23,7 +23,7 @@ export async function generateMetadata(
   
 
 async function getChats(id: string) {
-  const res = await fetch(`https://test-api-teleshtorm.teleshtorm.org/chat/${id}`)
+  const res = await fetch(`${process.env.BASE_URL}/chat/${id}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -31,7 +31,7 @@ async function getChats(id: string) {
 }
 
 async function getSimilarChats(id: string) {
-  const res = await fetch(`https://test-api-teleshtorm.teleshtorm.org/chat/${id}/similar_chats`)
+  const res = await fetch(`${process.env.BASE_URL}/chat/${id}/similar_chats`)
   if (!res.ok) {
     throw new Error(res.statusText)
   }

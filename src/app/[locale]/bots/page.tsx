@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 async function getBotsList(page: number) {
   const res = await fetch(
-    `https://test-api-teleshtorm.teleshtorm.org/bots?page=${page}&limit=31`
+    `${process.env.BASE_URL}/bots?page=${page}&limit=31`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");

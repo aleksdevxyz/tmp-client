@@ -20,14 +20,10 @@ export default function Pagination({
 }: {
   totalPages: number[];
   currentPage: number;
-  data: any
+  data: any;
 }) {
-  const [pageNumber, setPageNumber] = useState(currentPage);
+  const [pageNumber, setPageNumber] = useState(1);
   const router = useRouter();
-
-  useEffect(() => {
-    setPageNumber(currentPage);
-  }, [currentPage, totalPages]);
 
   const pageParams = useSearchParams();
   const handleClick = (pageNumber: number) => {
@@ -46,6 +42,7 @@ export default function Pagination({
         <div
           onClick={() => {
             handleClick(pageNumber - 1);
+            setPageNumber(pageNumber - 1);
           }}
           className={styles.next_button}
         >
@@ -53,42 +50,34 @@ export default function Pagination({
         </div>
       )}
       <div className={styles.counter}>
-        {totalPages.length > 1 ? (
-          totalPages.map((item, index) => (
-            <Link
-              key={index}
-              href={`?page=${item}`}
-              className={pageNumber === item ? active : styles.link}
-            >
-              <p
-                style={{ margin: "0", padding: "0" }}
-                onClick={() => {
-                  handleClick(item);
-                }}
+        {totalPages.length > 1
+          ? totalPages.map((item, index) => (
+              <Link
+                key={index}
+                href={`?page=${item}`}
+                className={pageNumber === item ? active : styles.link}
               >
-                {pageNumber === 0 ? 1 : item}
-              </p>
-            </Link>
-          ))
-        ) : data.length < 31 && (
-          (
-            <Link
-              href={`?page=1`}
-              className={active}
-            >
-              <p
-                style={{ margin: "0", padding: "0" }}
-              >
-                1 
-              </p>
-            </Link>
-          )
-        )}
+                <p
+                  style={{ margin: "0", padding: "0" }}
+                  onClick={() => {
+                    handleClick(item);
+                  }}
+                >
+                  {item}
+                </p>
+              </Link>
+            ))
+          : data.length < 31 && (
+              <Link href={`?page=1`} className={active}>
+                <p style={{ margin: "0", padding: "0" }}>1</p>
+              </Link>
+            )}
       </div>
       {pageNumber >= totalPages[totalPages.length - 1] ? null : (
         <div
           onClick={() => {
             handleClick(pageNumber + 1);
+            setPageNumber(pageNumber + 1);
           }}
           className={styles.next_button}
         >

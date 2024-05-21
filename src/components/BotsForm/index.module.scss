@@ -38,52 +38,28 @@
         }
     }
 
-    .select {
-        border: none;
-        padding: 10px 9px;
-        border-radius: 7px;
-        background: #EFEFEF url('/select-icon.svg') no-repeat;
-        color: #788189;
-        font-family: 'Roboto-Light';
-        font-size: 16px;
-        margin: 0;
-        font-style: normal;
-        font-weight: 300;
-        appearance: none;
-        line-height: 19px;
-
-        &:focus {
-            outline: none;
-        }
-
-        .option {
-            color: #788189;
-            background: #EFEFEF;
-            color: #788189;
-            font-family: 'Roboto-Light';
-            font-size: 16px;
-            margin: 0;
-            font-style: normal;
-            font-weight: 300;
-            line-height: 19px;
-
-
-            &:focus {
-                outline: none;
-            }
-        }
-    }
-
-    .error {
+    .msg {
         width: 100%;
-        padding: 10px 9px;
+        padding: 10px 10px;
         border-radius: 7px;
         margin-top: 10px;
-        background-color: rgba(250, 69, 69, 0.3);
+        height: auto;
+        transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+
+        &.success {
+            border: 1px solid rgb(175, 255, 192);
+            border-radius: 5px;
+            background: rgb(221, 255, 228);
+        }
+
+        &.error {
+            border: 1px solid rgb(254, 212, 212);
+            border-radius: 5px;
+            background: rgb(254, 225, 225);
+        }
 
         .text_error {
             margin: 0;
-            margin-top: 9px;
             color: #212223;
             font-family: 'Roboto-500';
             font-size: 15px;

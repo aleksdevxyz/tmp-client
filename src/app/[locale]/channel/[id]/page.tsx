@@ -23,7 +23,7 @@ export async function generateMetadata(
   
 
 async function getCard(id: string) {
-  const res = await fetch(`https://test-api-teleshtorm.teleshtorm.org/channel/${id}`)
+  const res = await fetch(`${process.env.BASE_URL}/channel/${id}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -31,7 +31,7 @@ async function getCard(id: string) {
 }
 
 async function getSimilarChannels(id: string) {
-  const res = await fetch(`https://test-api-teleshtorm.teleshtorm.org/channel/${id}/similar_channels`)
+  const res = await fetch(`${process.env.BASE_URL}/channel/${id}/similar_channels`)
   if (!res.ok) {
     throw new Error(res.statusText)
   }

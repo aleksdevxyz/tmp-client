@@ -4,6 +4,11 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
+    async rewrites(){
+        return {
+            
+        }
+    },
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,

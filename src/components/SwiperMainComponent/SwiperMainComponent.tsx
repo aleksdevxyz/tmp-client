@@ -6,12 +6,12 @@ import styles from "./index.module.scss";
 
 import "swiper/css";
 
+import { CategoryResponse } from "@/app/api/categoryApi";
+import { useLocale } from "next-intl";
+import Link from "next/link";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import ChannelSlide from "../Slides/CategorySlide/CategorySlide";
 import { AddSquare, ArrowBack, ArrowForward } from "../svgs";
-import Link from "next/link";
-import { useLocale } from "next-intl";
-import { CategoryResponse } from "@/app/[locale]/api/categoryApi";
 
 type Props = {
   data: CategoryResponse[];
@@ -20,7 +20,7 @@ type Props = {
 
 export default function SwiperMainComponent({ data, count }: Props) {
   const t = useLocale();
-  
+
   const slideRef = useRef<SwiperRef>(null);
 
   const [slides, setSlides] = React.useState<React.ReactNode[]>([]);
@@ -63,8 +63,6 @@ export default function SwiperMainComponent({ data, count }: Props) {
     }
   }, [data]);
 
-  
-
   return (
     <div className={styles.section}>
       <div className={styles.subtitle}>
@@ -72,7 +70,9 @@ export default function SwiperMainComponent({ data, count }: Props) {
           <h3 className={styles.subtitle_text}>Все категории</h3>
           <button className={styles.button}>
             <AddSquare className={styles.icon_add} />
-            <Link  href={`/${t}/add_channel`} className={styles.button_text}>Добавить канал</Link>
+            <Link href={`/${t}/add_channel`} className={styles.button_text}>
+              Добавить канал
+            </Link>
           </button>
         </div>
         <div className={styles.content_container}>

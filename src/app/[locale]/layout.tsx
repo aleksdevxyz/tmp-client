@@ -7,7 +7,7 @@ import Footer from "@/components/Footer/Footer";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
-import Modal from "@/components/Cards/Modal/Modal";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,18 +16,6 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
 };
-
-export async function updateToken(token: string) {
-  console.log(token);
-
-  const res = await fetch("http://localhost:3000/ru/api/get-token", {
-    method: "POST",
-    headers: {},
-    body: JSON.stringify({ token }),
-  });
-  // const data = await res.json();
-  // return data
-}
 
 export default async function RootLayout({
   children,
@@ -49,6 +37,7 @@ export default async function RootLayout({
             flexDirection: "column",
             minHeight: "100vh",
             position: "relative",
+            backgroundColor: "rgb(250, 251, 254)",
           }}
         >
           <NextIntlClientProvider locale={locale} messages={messages}>

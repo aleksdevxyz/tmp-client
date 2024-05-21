@@ -1,21 +1,24 @@
-'use client'
+"use client";
 
-import React from "react";
-import styles from "./index.module.scss";
-import ChannelsForm from "../ChannelsForm/ChannelsForm";
-import Image from "next/image";
-import cn from 'classnames'
+import { CategoryResponse } from "@/app/api/categoryApi";
+import cn from "classnames";
 import { useTranslations } from "next-intl";
-import { CategoryResponse } from "@/app/[locale]/api/categoryApi";
-import ChatForm from "../ChatForm/ChatForm";
+import Image from "next/image";
+import React from "react";
+import ChannelsForm from "../ChannelsForm/ChannelsForm";
+import ChatForm from "../BotsForm/BotsForm";
+import styles from "./index.module.scss";
 
 const chanelActive = cn(styles._active, styles.button_select);
 
-export default  function AddForm({category}: {category: CategoryResponse[]}) {
-
+export default function AddForm({
+  category,
+}: {
+  category: CategoryResponse[];
+}) {
   const [acitveSelect, setActiveSelect] = React.useState(true);
 
-  const t =  useTranslations("AddForm");
+  const t = useTranslations("AddForm");
   return (
     <div className={styles.container}>
       <div className={styles.form_container}>
