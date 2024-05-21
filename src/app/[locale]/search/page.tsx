@@ -1,6 +1,6 @@
 import { getCategory } from "@/app/api/categoryApi";
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
-import RecList from "@/components/RecList/RecList";
+import RecList from "@/components/RecListMain/RecListMain";
 import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
 import { Metadata } from "next";
 import styles from "./index.module.scss";

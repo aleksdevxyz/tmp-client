@@ -27,7 +27,7 @@ export default function ChannelsForm({
     e.preventDefault();
     const link = formState.input;
     const category = formState.select;
-    const { data } = await axios.post(`/api/get_token`);
+    const {data}  = await axios.post(`/api/get_token`);
     await axios
       .post(`/api/post_channel`, {
         link,
@@ -43,9 +43,10 @@ export default function ChannelsForm({
         const { detail } = err.response.data;
         setError(detail);
         setSuccess("");
-      });
+      })
   };
 
+  
   
 
   return (
@@ -56,13 +57,16 @@ export default function ChannelsForm({
           name="link"
           className={styles.input}
           type="text"
+          value={formState.input}
           placeholder={t("Поле ввода")}
           onChange={(e) =>
             setFormState({ ...formState, input: e.target.value })
           }
         />
         <label className={styles.label}>{t("Категория канала")}</label>
-        <select
+        <select 
+          defaultValue={category?.[0]?.id}
+          value={formState.select}
           className={styles.select}
           name="category"
           onChange={(e) =>

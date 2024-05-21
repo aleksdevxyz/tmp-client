@@ -132,6 +132,8 @@
         .text_area {
             border-radius: 10px;
             width: 450px;
+            max-width: 450px;
+            min-width: 450px;
             height: 101px;
             padding: 12px;
             color: rgb(103, 113, 121);

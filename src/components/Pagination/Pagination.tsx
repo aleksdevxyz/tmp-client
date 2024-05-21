@@ -8,24 +8,22 @@ import { BackButton, ForwardButton } from "../svgs";
 
 import cn from "classnames";
 
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const active = cn(styles._active, styles.link);
 
 export default function Pagination({
-  currentPage,
   totalPages,
   data,
 }: {
   totalPages: number[];
-  currentPage: number;
   data: any;
 }) {
   const [pageNumber, setPageNumber] = useState(1);
   const router = useRouter();
-
   const pageParams = useSearchParams();
+
   const handleClick = (pageNumber: number) => {
     const params = new URLSearchParams(pageParams);
     if (pageNumber > 0) {
@@ -34,6 +32,16 @@ export default function Pagination({
       params.delete("page");
     }
     router.replace(`?${params.toString()}`);
+  };
+  
+  const getCurrentQuery = (page: number) => {
+    const params = new URLSearchParams(pageParams);
+    if (page > 0) {
+      params.set("page", String(page));
+    } else {
+      params.delete("page");
+    }
+    return `?${params.toString()}`;
   };
 
   return (
@@ -54,7 +62,7 @@ export default function Pagination({
           ? totalPages.map((item, index) => (
               <Link
                 key={index}
-                href={`?page=${item}`}
+                href={getCurrentQuery(item)}
                 className={pageNumber === item ? active : styles.link}
               >
                 <p
@@ -68,12 +76,12 @@ export default function Pagination({
               </Link>
             ))
           : data.length < 31 && (
-              <Link href={`?page=1`} className={active}>
+              <Link href={getCurrentQuery(1)} className={active}>
                 <p style={{ margin: "0", padding: "0" }}>1</p>
               </Link>
             )}
       </div>
-      {pageNumber >= totalPages[totalPages.length - 1] ? null : (
+      {pageNumber >= totalPages.length ? null : (
         <div
           onClick={() => {
             handleClick(pageNumber + 1);

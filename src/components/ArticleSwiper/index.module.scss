@@ -1,0 +1,50 @@
+.section {
+    max-width: 1110px;
+    margin: auto;
+
+    .swiper_article {
+        width: 100%;
+
+        .slide_article {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+
+            .image {
+                border: 1px solid rgb(222, 226, 228);
+                border-radius: 15px;
+                box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+            }
+
+            .container {
+                .title {
+                    color: rgb(62, 67, 71);
+                    font-family: 'Roboto-SemiBold';
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 30px;
+                    letter-spacing: 0%;
+                    text-align: left;
+                    margin: 0;
+                    margin-top: 19.5px;
+                    margin-bottom: 6.5px;
+                }
+
+                .subtitle {
+                    color: rgb(120, 129, 137);
+                    font-family: 'Roboto-Light';
+                    font-size: 16px;
+                    font-weight: 300;
+                    line-height: 19px;
+                    letter-spacing: 0%;
+                    text-align: left;
+                    margin: 0;
+                }
+            }
+
+
+        }
+    }
+
+}

@@ -1,19 +1,17 @@
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import styles from "./index.module.scss";
 
-import { Metadata } from "next";
-import RecList from "@/components/RecList/RecList";
 import Pagination from "@/components/Pagination/Pagination";
+import RecList from "@/components/RecListMain/RecListMain";
 import { getTotalPages } from "@/helpers/getTotalPages";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Teleshtorm – поиск по Telegram чатам. Каталог телеграмм чатов.",
 };
 
 async function getBotsList(page: number) {
-  const res = await fetch(
-    `${process.env.BASE_URL}/bots?page=${page}&limit=31`
-  );
+  const res = await fetch(`${process.env.BASE_URL}/bots?page=${page}&limit=31`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -25,12 +23,12 @@ export default async function HomePage({
 }: {
   searchParams?: {
     page?: number;
-  }
+  };
 }) {
   const currentPage = Number(searchParams?.page) || 1;
 
   const data = await getBotsList(currentPage > 1 ? currentPage : 0);
-  
+
   const totalPages = await getTotalPages(currentPage, data);
 
   return (
@@ -40,7 +38,10 @@ export default async function HomePage({
         <h3 className={styles.subtitle}>Телеграм боты</h3>
         <ChannelsList path="bots" data={data} />
       </div>
-      <Pagination data={data} totalPages={totalPages} currentPage={currentPage} />
+      <Pagination
+        data={data}
+        totalPages={totalPages}
+      />
       <div className={styles.section_rec}>
         <RecList />
       </div>

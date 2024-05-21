@@ -1,9 +1,9 @@
-import React, { MouseEventHandler, useEffect } from "react";
+import { useState } from "react";
 import styles from "./index.module.scss";
 import Image from "next/image";
 import cn from "classnames";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
-import { useFormStatus } from "react-dom";
+import { useParams, usePathname } from "next/navigation";
+import axios from "axios";
 
 const active = cn(styles.close, styles.overlay);
 export default function Modal({
@@ -13,11 +13,55 @@ export default function Modal({
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const { id } = useParams();
   const pathName = usePathname();
-  const id = pathName?.split("/").at(-1);
   const type = pathName?.split("/").at(-2);
+  const [formState, setFormState] = useState({
+    link_not_work: false,
+    drugs: false,
+    false_information: false,
+    child_abuse: false,
+    other: "",
+    isLoading: false,
+    id: id,
+    type: type === 'channel' ? 'Канал' : type === 'bots' ? 'Бот' : 'Чат',
+  });
 
-  const {pending} = useFormStatus()
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState({ ...formState, isLoading: true });
+    const {data} = await axios.post(`/api/get_token`);
+    
+    const { link_not_work, drugs, false_information, child_abuse, other, id, type } = formState;
+    await axios
+      .post(`/api/post_complaint`, {
+        id,
+        type,
+        link_not_work,
+        drugs,
+        false_information,
+        child_abuse,
+        other,
+        csrf_token: data,
+      })
+      .then((res) => {
+        const { detail } = res.data;
+        setOpen(false);
+      })
+      .catch((err) => {
+        const { detail } = err.response.data;
+        setOpen(false);
+
+      })
+      .finally(() => {
+        setFormState({ ...formState, 
+          link_not_work: false, 
+          drugs: false, false_information: false, 
+          child_abuse: false, other: "", 
+          isLoading: false });
+      });
+  }
+  
 
   return (
     <div
@@ -27,6 +71,7 @@ export default function Modal({
       className={open ? styles.overlay : active}
     >
       <form
+        onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
         className={styles.form}
         action=""
@@ -45,6 +90,8 @@ export default function Modal({
         <ul className={styles.options}>
           <li className={styles.option}>
             <input
+              checked={formState.link_not_work}
+              onChange={(e) => setFormState({...formState, link_not_work: e.target.checked})}
               type="checkbox"
               id="link_not_work"
               name="link_not_work"
@@ -56,6 +103,8 @@ export default function Modal({
           </li>
           <li className={styles.option}>
             <input
+            checked={formState.drugs}
+              onChange={(e) => setFormState({...formState, drugs: e.target.checked})}
               type="checkbox"
               id="drugs"
               name="drugs"
@@ -67,6 +116,8 @@ export default function Modal({
           </li>
           <li className={styles.option}>
             <input
+            checked={formState.false_information}
+              onChange={(e) => setFormState({...formState, false_information: e.target.checked})}
               type="checkbox"
               id="false_information"
               name="false_information"
@@ -78,6 +129,8 @@ export default function Modal({
           </li>
           <li className={styles.option}>
             <input
+              checked={formState.child_abuse}
+              onChange={(e) => setFormState({...formState, child_abuse: e.target.checked})}
               type="checkbox"
               id="child_abuse"
               name="child_abuse"
@@ -90,9 +143,9 @@ export default function Modal({
         </ul>
         <h3 className={styles.subtitle}>Другое:</h3>
 
-        <textarea onClick={(e) => e.stopPropagation()} name="other" className={styles.text_area}></textarea>
+        <textarea onChange={(e) => setFormState({...formState, other: e.target.value})} onClick={(e) => e.stopPropagation()} name="other" className={styles.text_area}></textarea>
 
-        <button type="submit" className={styles.button}>{pending ? <span className={styles.loader}></span> : 'Отправить'}</button>
+        <button type="submit" className={styles.button}>{formState.isLoading ? <span className={styles.loader}></span> : 'Отправить'}</button>
       </form>
     </div>
   );

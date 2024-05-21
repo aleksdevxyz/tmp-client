@@ -1,14 +1,12 @@
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req:NextRequest, res: NextResponse) {
 
-    const request = await req.json();
-    const signed_token = req.cookies.get("csrf-token")?.value
-    const { csrf_token } = request.csrf_token
-    
-    const link = request.link
-    const category = request.category
+    const {link, category,csrf_token} = await req.json();
+    const signed_token = cookies().get("csrf-token")?.value
 
+    
     const post = await fetch(`${process.env.BASE_URL}/request_to_add?type=Канал&link=${link}&category=${category}`, {
         method: "POST",
         headers: {

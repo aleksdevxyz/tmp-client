@@ -1,4 +1,4 @@
-export async function getTotalPages(page: number, data: any) {
+export function getTotalPages(page: number, data: any) {
     const totalPages: number[] = [];
   
     if (data.length < 30) {

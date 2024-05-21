@@ -44,30 +44,13 @@ export default function CardInner({
       <div className={styles.container}>
         <div className={styles.content}>
           <Image
-            onClick={() => setActiveMenu(!activeMenu)}
+            onClick={() => setOpenModal(true)}
             className={styles.dots}
             alt="three dots"
             src={"/dots.svg"}
             width={24}
             height={24}
           />
-          <div className={activeMenu ? active : styles.dots_container}>
-            <div onClick={() => setOpenModal(true)} className={styles.option}>
-              <Image
-                alt="Жалоба"
-                src={"/complaint.svg"}
-                width={16}
-                height={16}
-              />
-              <p className={styles.text}>Пожаловаться на страницу</p>
-            </div>
-            <div className={styles.option}>
-              <Image alt="Жалоба" src={"/recIcon.svg"} width={16} height={16} />
-              <p className={styles.text}>
-                Как работают <span className={styles.link}>рекомендации?</span>
-              </p>
-            </div>
-          </div>
           <Image
             alt="Avatar"
             className={styles.image}

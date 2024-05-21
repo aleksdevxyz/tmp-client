@@ -30,10 +30,10 @@ export default function Header() {
             <BotsLogo className={styles.item_icon} />
             <p className={styles.title}>{t('Боты')}</p>
           </Link>
-          <div className={styles.menu_item}>
+          <Link href={`/${locale}/articles`} className={styles.menu_item}>
             <StaticLogo className={styles.item_icon} />
             <p className={styles.title}>{t('Статьи')}</p>
-          </div>
+          </Link>
         </nav>
 
         <div className={styles.search_container}>

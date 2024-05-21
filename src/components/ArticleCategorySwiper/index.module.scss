@@ -1,0 +1,39 @@
+.section {
+    max-width: 1110px;
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 25px;
+
+    .swiper {
+        width: 100%;
+
+        .slide {
+            width: 131px;
+            border: 1px solid rgb(217, 217, 217);
+            border-radius: 25px;
+            text-align: center;
+            padding: 8.5px 0 8.5px 0;
+            transition: background-color .3s ease-in-out;
+
+            &.active {
+                background-color: rgb(22, 27, 34);
+                transition: background-color .3s ease-in-out;
+
+                .link{
+                    color: #fff;
+                }
+            }
+
+            .link {
+                color: rgb(120, 129, 137);
+                text-decoration: none;
+                font-family: 'Roboto-SemiBold';
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 19px;
+                letter-spacing: 0%;
+                text-align: center;
+            }
+        }
+    }
+}

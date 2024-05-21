@@ -1,21 +1,22 @@
 import axios from "axios";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import setCookie from "set-cookie-parser";
-import cookie from "cookie";
+import { cookies } from "next/headers";
 
-export async function POST() {
+export async function POST(req: NextRequest,res: NextResponse) {
+
   const request = await axios.get(
     `${process.env.BASE_URL}/get_csrf_tokens`,
     {
       withCredentials: true,
     }
   );
-  const cookies = setCookie.parse(request.headers["set-cookie"] as string[], {
+  const cookiesList = setCookie.parse(request.headers["set-cookie"] as string[], {
     map: true,
   });
 
-  const setCookies = Object.values(cookies).map((cookieObj) => {
-    return cookie.serialize(cookieObj.name, cookieObj.value, {
+  Object.values(cookiesList).map((cookieObj) => {
+    return cookies().set(cookieObj.name, cookieObj.value, {
       httpOnly: true,
       maxAge: 600,
       path: "/",
@@ -24,10 +25,7 @@ export async function POST() {
     });
   });
 
-  
-  const response = NextResponse.json({});
-  response.headers.set("Set-Cookie", setCookies.join("; "));
   const csrf_token = request.data.csrf_token
-  return NextResponse.json({csrf_token}, response);
-
+  
+  return NextResponse.json(csrf_token);
 }
