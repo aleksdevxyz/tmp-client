@@ -1,6 +1,8 @@
-import AddForm from "@/components/AddForm/AddForm";
+import AddForm from "@/components/AddChannelComponents/AddForm/AddForm";
 import { getCategory } from "../../api/categoryApi";
 import styles from "./index.module.scss";
+
+
 
 export default async function HomePage() {
   const category = await getCategory();

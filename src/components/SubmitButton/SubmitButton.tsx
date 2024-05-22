@@ -5,10 +5,11 @@ import { useFormStatus } from "react-dom";
 
 export default function SubmitButton() {
   const t = useTranslations("AddForm");
+  const {pending} = useFormStatus()
 
   return (
     <button type="submit" className={styles.conf_button}>
-        {t("Добавить")} 
+        {pending ? <span className={styles.loader}></span> : t("Добавить")}
     </button>
   );
 }

@@ -4,10 +4,13 @@
 html {
     scrollbar-color: #e0e0e0;
     scrollbar-width: thin;
+    scrollbar-gutter: stable;
+
+    
 }
 
 
-*{
+* {
     // outline: 1px solid green !important;
     box-sizing: border-box;
 }

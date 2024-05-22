@@ -5,8 +5,8 @@ import cn from "classnames";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
-import ChannelsForm from "../ChannelsForm/ChannelsForm";
 import ChatForm from "../BotsForm/BotsForm";
+import ChannelsForm from "../ChannelsForm/ChannelsForm";
 import styles from "./index.module.scss";
 
 const chanelActive = cn(styles._active, styles.button_select);

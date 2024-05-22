@@ -1,0 +1,122 @@
+import React, { useState } from "react";
+import styles from "./index.module.scss";
+import Image from "next/image";
+import { useParams, usePathname } from "next/navigation";
+import Button from "./Button";
+import classNames from "classnames";
+
+export default function Form({
+  setOpen,
+}: {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const { id } = useParams();
+  const pathName = usePathname();
+  const type = pathName?.split("/").at(-2);
+  const curent_type =
+    type === "channel" ? "Канал" : type === "bots" ? "Бот" : "Чат";
+
+  const [msg, setMsg] = useState({
+    msg: "",
+    status: 0,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleAction = async (formData: FormData) => {
+    setIsLoading(true);
+    const res = await fetch("/api/post_complaint", {
+      method: "POST",
+      body: formData,
+    });
+
+    const { message, status } = await res.json();
+    setMsg({ msg: message, status: status });
+    setIsLoading(false);
+  };
+
+  return (
+    <form
+      onClick={(e) => e.stopPropagation()}
+      className={styles.form}
+      action={handleAction}
+    >
+      <div className={styles.text_container}>
+        <p className={styles.title}>Опишите причину жалобы</p>
+        <Image
+          onClick={() => setOpen(false)}
+          style={{ cursor: "pointer" }}
+          src={"/Close.svg"}
+          alt="close"
+          width={15}
+          height={15}
+        />
+      </div>
+      <ul className={styles.options}>
+        <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="type" value={curent_type} />
+        <li className={styles.option}>
+          <input
+            type="checkbox"
+            id="link_not_work"
+            name="link_not_work"
+            className={styles.input}
+          />
+          <label htmlFor="link_not_work" className={styles.label}>
+            Ссылка на телеграм канал/чат/бот не работает
+          </label>
+        </li>
+        <li className={styles.option}>
+          <input
+            type="checkbox"
+            id="drugs"
+            name="drugs"
+            className={styles.input}
+          />
+          <label htmlFor="drugs" className={styles.label}>
+            Пропаганда наркотиков
+          </label>
+        </li>
+        <li className={styles.option}>
+          <input
+            type="checkbox"
+            id="false_information"
+            name="false_information"
+            className={styles.input}
+          />
+          <label htmlFor="false_information" className={styles.label}>
+            Ложная информация
+          </label>
+        </li>
+        <li className={styles.option}>
+          <input
+            type="checkbox"
+            id="child_abuse"
+            name="child_abuse"
+            className={styles.input}
+          />
+          <label htmlFor="child_abuse" className={styles.label}>
+            Жестокое обращение с детьми
+          </label>
+        </li>
+      </ul>
+      <h3 className={styles.subtitle}>Другое:</h3>
+
+      <textarea
+        onClick={(e) => e.stopPropagation()}
+        name="other"
+        className={styles.text_area}
+      ></textarea>
+      {msg.msg != "" && (
+        <div
+          className={classNames(styles.msg, {
+            [styles.success]: msg.status === 200,
+            [styles.error]: msg?.status !== 200,
+          })}
+        >
+          <h3 className={styles.text_error}>{msg.msg}</h3>
+        </div>
+      )}
+      <Button isLoading={isLoading} />
+    </form>
+  );
+}

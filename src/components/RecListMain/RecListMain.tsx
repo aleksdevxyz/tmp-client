@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import styles from "./index.module.scss";
 import axios from "axios";
 import Image from "next/image";
+import { getLocale } from "next-intl/server";
+import Link from "next/link";
 
 export interface recRes {
   name: string;
@@ -22,13 +24,14 @@ async function getRec() {
 
 export default async function RecListMain() {
   const recData = await getRec();
+  const locale = await getLocale()
 
   return (
     <div className={styles.section}>
       <h2 className={styles.title}>Рекомендуем почитать</h2>
       <div className={styles.container}>
-        {recData?.map((item: recRes) => (
-          <div key={Math.random()} className={styles.slide}>
+        {recData?.map((item: recRes, index: React.Key | null | undefined) => (
+          <Link href={`/${locale}/article/${item.translit_name}`} key={index} className={styles.slide}>
             <Image
               alt={item.name}
               width={366}
@@ -41,7 +44,7 @@ export default async function RecListMain() {
               <p className={styles.subtitle}>{item.description}</p>
               <p className={styles.button}>Читать дальше ...</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
