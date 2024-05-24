@@ -1,6 +1,5 @@
 import { Article } from "@/app/[locale]/articles/[translit_name]/page";
 import { formatDate } from "@/helpers/formatDate";
-import { useLocale } from "next-intl";
 import { getLocale } from "next-intl/server";
 import Image from "next/image";
 import ArticleInnerContent from "../ArticleInnerContent/ArticleInnerContent";
@@ -13,9 +12,10 @@ export default async function ArticleContent({
   description,
   content,
   image,
+  translit_name
 }: Article) {
   const locale = await getLocale();
-
+  
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -38,7 +38,7 @@ export default async function ArticleContent({
         </div>
         <ArticleInnerContent content={content} />
       </div>
-      <ArticleRecSidebar />
+      <ArticleRecSidebar translit_name={translit_name} />
     </div>
   );
 }

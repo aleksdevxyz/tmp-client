@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./index.module.scss";
-import axios from "axios";
 import Image from "next/image";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 export interface recRes {
@@ -25,10 +24,11 @@ async function getRec() {
 export default async function RecListMain() {
   const recData = await getRec();
   const locale = await getLocale()
+  const t = await getTranslations('Main')
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.title}>Рекомендуем почитать</h2>
+      <h2 className={styles.title}>{t('Рекомендуем почитать')}</h2>
       <div className={styles.container}>
         {recData?.map((item: recRes, index: React.Key | null | undefined) => (
           <Link href={`/${locale}/articles/${item.translit_name}`} key={index} className={styles.slide}>
@@ -42,7 +42,7 @@ export default async function RecListMain() {
             <div className={styles.text_container}>
               <h3 className={styles.title}>{item.name}</h3>
               <p className={styles.subtitle}>{item.description}</p>
-              <p className={styles.button}>Читать дальше ...</p>
+              <p className={styles.button}>{`${t('Читать дальше')} ...`}</p>
             </div>
           </Link>
         ))}

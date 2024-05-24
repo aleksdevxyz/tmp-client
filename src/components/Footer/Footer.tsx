@@ -1,17 +1,20 @@
 import React from 'react'
 import styles from './index.module.scss'
 import Link from 'next/link'
+import { getLocale, getTranslations } from 'next-intl/server'
 
 
-export default function Footer() {
+export default async function Footer() {
+  const t = await getTranslations('Footer')
+  const locale = await getLocale()
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <p className={styles.paragraph}>© 2024 teleshtorm.com — поиск в Telegram, сайт не хранит персональные данные</p>
+        <p className={styles.paragraph}>{t('Права')}</p>
         <div className={styles.links}>
-          <Link href="/" className={styles.footer__link}>Наш телеграм-канал</Link>
-          <Link href="/" className={styles.footer__link}>Для правообладателей</Link>
-          <Link href="/" className={styles.footer__link}>Связаться с техподдержкой</Link>
+          <Link href="https://t.me/teleshtorm_com" className={styles.footer__link}>{t('Ссылка телеграм')}</Link>
+          <Link href={`/${locale}/articles/dmca`} className={styles.footer__link}>{t('Правообладатели')}</Link>
+          <Link href="https://t.me/teleshtorm_bot" className={styles.footer__link}>{t('Техподдержка')}</Link>
         </div>
       </div>
     </footer>

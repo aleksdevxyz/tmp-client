@@ -92,6 +92,7 @@
         border: none;
         position: absolute;
         top: 50%;
+        transform: translateY(-50%);
         left: -20px;
         width: 12px;
         height: 24px;
@@ -109,6 +110,7 @@
         border: none;
         position: absolute;
         top: 50%;
+        transform: translateY(-50%);
         right: -20px;
         width: 12px;
         height: 24px;

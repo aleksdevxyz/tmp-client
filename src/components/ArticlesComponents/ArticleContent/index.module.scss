@@ -1,6 +1,9 @@
 .container {
     display: flex;
-    gap: 36px;
+    gap: 34px;
+    position: relative;
+    max-width: 1110px;
+    
     .content {
         max-width: 756px;
 

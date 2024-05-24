@@ -3,16 +3,19 @@ import MainSection from "@/components/MainSection/MainSection";
 import NewChannels from "@/components/NewChannels/NewChannels";
 import Pagination from "@/components/Pagination/Pagination";
 import RecList from "@/components/RecListMain/RecListMain";
-import { getTotalPages } from "@/helpers/getTotalPages";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import styles from "./page.module.scss";
-import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Index");
   return {
     title: t("title"),
     description: t("description"),
+    keywords: t("keywords"),
+    robots: {
+      index: true,
+      follow: true
+    }
   };
 }
 
@@ -57,7 +60,7 @@ export default async function Home({
         <ChannelsList data={ChannelsData} />
       </div>
       <div className={styles.section}>
-        <h2 className={styles.title}>Новые каналы</h2>
+        <h2 className={styles.title}>{t("Новые каналы")}</h2>
         <NewChannels />
       </div>
       <div className={styles.counter}>

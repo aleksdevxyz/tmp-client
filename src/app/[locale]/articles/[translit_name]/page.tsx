@@ -2,6 +2,31 @@ import styles from "./index.module.scss";
 import ArticleContent from "@/components/ArticlesComponents/ArticleContent/ArticleContent";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import RecListMain from "@/components/RecListMain/RecListMain";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+type Props = {
+  params: { translit_name: string }
+}
+
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata>{
+  const translit_name = params.translit_name
+  const data = await getArticle(translit_name)
+
+  const t = await getTranslations("IndexArticle")
+  
+  return {
+    title: `${t("title", { name: data.name })}`,
+    description: `${t('description')} ${data.name}. ${data.description}.`,
+    keywords: `${t('keywords')}, ${data.name}`,
+    robots: {
+      index: true,
+      follow: true
+    }
+  }
+}
 
 export interface Article {
   name: string;
@@ -36,7 +61,7 @@ export default async function HomePage({
   const data: Article = await getArticle(translit_name);
 
   return (
-    <div style={{paddingTop: '106px'}}>
+    <div style={{paddingTop: '94px'}}>
       <BreadCrumbs name={data.name} />
       <section className={styles.section}>
         <ArticleContent

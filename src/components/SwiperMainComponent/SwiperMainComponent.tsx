@@ -7,7 +7,7 @@ import styles from "./index.module.scss";
 import "swiper/css";
 
 import { CategoryResponse } from "@/app/api/categoryApi";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import ChannelSlide from "../Slides/CategorySlide/CategorySlide";
@@ -19,7 +19,8 @@ type Props = {
 };
 
 export default function SwiperMainComponent({ data, count }: Props) {
-  const t = useLocale();
+  const locale = useLocale();
+  const t = useTranslations('Main')
 
   const slideRef = useRef<SwiperRef>(null);
 
@@ -67,11 +68,11 @@ export default function SwiperMainComponent({ data, count }: Props) {
     <div className={styles.section}>
       <div className={styles.subtitle}>
         <div className={styles.subtitle_container}>
-          <h3 className={styles.subtitle_text}>Все категории</h3>
+          <h3 className={styles.subtitle_text}>{t("Все категории")}</h3>
           <button className={styles.button}>
             <AddSquare className={styles.icon_add} />
-            <Link href={`/${t}/add_channel`} className={styles.button_text}>
-              Добавить канал
+            <Link href={`/${locale}/add_channel`} className={styles.button_text}>
+              {t("Добавить канал")}
             </Link>
           </button>
         </div>

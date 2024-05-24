@@ -43,13 +43,26 @@
             border-radius: 4px;
 
             .button_select {
-                border: none;
-                display: flex;
-                padding: 4px 0;
-                background: transparent;
-                padding-left: 6px;
-                padding-right: 20px;
-                color: rgb(55, 57, 63);
+                font-family: "Roboto-Normal";
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 120%;
+                border-radius: 2px 0px 0px 2px;
+                padding: 6px 20px 4px 34px;
+                position: relative;
+
+                &:last-child{
+                padding: 6px 8px 4px 34px;
+                }
+
+                &::after {
+                    content: url('/form-icon.svg');
+                    position: absolute;
+                    left: 4px;
+                    bottom: 2px;
+                    width: 21px;
+                    height: 21px;
+                }
 
 
                 &._active {
@@ -61,55 +74,37 @@
                     cursor: pointer;
                 }
 
-                .button_text {
-                    margin: 0;
-                    font-family: 'Roboto-500';
-                    font-size: 15px;
-                    font-weight: 500;
-                    line-height: 18px;
-                    letter-spacing: 0%;
-                    text-align: left;
-                }
-
-                &:last-child {
-                    padding-left: 20px;
-                    padding-right: 6px;
-                }
-
-                .image {
-                    margin-right: 7px;
-                }
             }
         }
 
-}
+    }
 
 
-        .text_container {
+    .text_container {
 
 
-            .text {
+        .text {
 
-                .quest_title {
-                    color: #788189;
-                    font-family: 'Roboto-Bold';
-                    font-size: 20px;
-                    font-weight: 700;
-                    line-height: 23px;
+            .quest_title {
+                color: #788189;
+                font-family: 'Roboto-Bold';
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 23px;
 
-                    padding-top: 11px;
-                    margin: 0;
-                }
+                padding-top: 11px;
+                margin: 0;
+            }
 
-                .quest_subtitle {
-                    color: #788189;
-                    font-family: 'Roboto-Light';
-                    font-size: 20px;
-                    font-weight: 300;
-                    line-height: 23px;
-                    padding-top: 6px;
-                    margin: 0;
-                }
+            .quest_subtitle {
+                color: #788189;
+                font-family: 'Roboto-Light';
+                font-size: 20px;
+                font-weight: 300;
+                line-height: 23px;
+                padding-top: 6px;
+                margin: 0;
             }
         }
+    }
 }

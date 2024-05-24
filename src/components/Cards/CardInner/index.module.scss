@@ -25,13 +25,40 @@
             right: 0;
             cursor: pointer;
 
-            .social{
+            .vk{
                 display: grid;
                 place-items: center;
-                
-                .image{
-                    z-index: 2;
-                }
+                background-image: url('/Vk.svg');
+                width: 28px;
+                height: 28px;
+            }
+            .TG{
+                display: grid;
+                place-items: center;
+                background-image: url('/TG.svg');
+                width: 28px;
+                height: 28px;
+            }
+            .tw{
+                display: grid;
+                place-items: center;
+                background-image: url('/Twitter.svg');
+                width: 28px;
+                height: 28px;
+            }
+            .fb{
+                display: grid;
+                place-items: center;
+                background-image: url('/FaceBook.svg');
+                width: 28px;
+                height: 28px;
+            }
+            .wp{
+                display: grid;
+                place-items: center;
+                background-image: url('/Whatsup.svg');
+                width: 28px;
+                height: 28px;
             }
     }
 

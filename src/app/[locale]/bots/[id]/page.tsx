@@ -4,20 +4,30 @@ import styles from "./index.module.scss";
 import AdvertisementCard from "@/components/Cards/AdvertisementCard/AdvertisementCard";
 import CardInner from "@/components/Cards/CardInner/CardInner";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const id = params.id;
-  const data = await getBots(id);
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata>{
+  const id = params.id
+  const data = await getBots(id)
 
+  const t = await getTranslations("IndexBot")
+  
   return {
-    title: `Телеграмм канал ${data.name}. Поиск по Telegram каналам. Каталог телеграмм каналов.`,
-    description: data.description,
-  };
+    title: `${t("title", { name: data.name })}`,
+    description: `${t('description')} ${data.name}. ${data.description}.`,
+    keywords: `${t('keywords')}, ${data.name}`,
+    robots: {
+      index: true,
+      follow: true
+    }
+  }
 }
 
 async function getBots(id: string) {
@@ -43,12 +53,14 @@ export default async function BotsCard({
 }) {
   const data = await getBots(id);
   const similarChannels = await getSimilarBots(id);
+  const t = await getTranslations("Card")
 
   return (
     <div className={styles.section}>
       <BreadCrumbs name={data.name} />
       <div className={styles.card_section}>
         <CardInner
+          id={id}
           hidden={data.hidden}
           category={data.category}
           subscribers={data.subscribers}
@@ -63,7 +75,7 @@ export default async function BotsCard({
         <AdvertisementCard />
       </div>
       <div className={styles.simular_section}>
-        <h2 className={styles.title}>Похожие каналы</h2>
+        <h2 className={styles.title}>{t('Похожие каналы')}</h2>
         <ChannelsList path="bots" data={similarChannels} />
       </div>
     </div>

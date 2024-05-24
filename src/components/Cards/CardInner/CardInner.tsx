@@ -5,8 +5,9 @@ import styles from "./index.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import hiddenImg from "../../../../public/+18.png";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Modal from "../Modal/Modal";
+import { useParams, usePathname } from "next/navigation";
 export interface Props {
   name: string;
   description: string;
@@ -15,6 +16,7 @@ export interface Props {
   link_tg: string;
   hidden: boolean;
   category: Category;
+  id: string
 }
 
 export interface Category {
@@ -31,10 +33,13 @@ export default function CardInner({
   subscribers,
   category,
   hidden,
+  id
 }: Props) {
   const locale = useLocale();
-  const [activeMenu, setActiveMenu] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
+  const t = useTranslations('Card')
+  const pathame = usePathname();
+  
 
   return (
     <>
@@ -43,70 +48,30 @@ export default function CardInner({
         <div className={styles.content}>
           <div className={styles.social_container}>
             <Link
-              href={`${link_tg}`}
+              href={`https://vkontakte.ru/share.php?url=${pathame}`}
               target="_blank"
-              className={styles.social}
-            >
-              <Image
-                src={"/whatsup.svg"}
-                alt="telegram"
-                className={styles.image}
-                width={28}
-                height={28}
-              />
-            </Link>
+              className={styles.vk}
+            />
             <Link
-              href={`${link_tg}`}
+              href={`https://telegram.me/share/url?url=${pathame}`}
               target="_blank"
-              className={styles.social}
-            >
-              <Image
-                src={"/whatsup.svg"}
-                alt="telegram"
-                className={styles.image}
-                width={28}
-                height={28}
-              />
-            </Link>
+              className={styles.TG}
+            />
             <Link
-              href={`${link_tg}`}
+              href={`https://twitter.com/intent/tweet?text=${pathame}`}
               target="_blank"
-              className={styles.social}
-            >
-              <Image
-                src={"/whatsup.svg"}
-                alt="telegram"
-                className={styles.image}
-                width={28}
-                height={28}
-              />
-            </Link>
+              className={styles.tw}
+            />
             <Link
-              href={`${link_tg}`}
+              href={`${pathame}`}
               target="_blank"
-              className={styles.social}
-            >
-              <Image
-                src={"/whatsup.svg"}
-                alt="telegram"
-                className={styles.image}
-                width={28}
-                height={28}
-              />
-            </Link>
+              className={styles.fb}
+            />
             <Link
-              href={`${link_tg}`}
+              href={`https://api.whatsapp.com/send/?text=${pathame}`}
               target="_blank"
-              className={styles.social}
-            >
-              <Image
-                src={"/whatsup.svg"}
-                alt="telegram"
-                className={styles.image}
-                width={28}
-                height={28}
-              />
-            </Link>
+              className={styles.wp}
+            />
           </div>
           <Image
             onClick={() => setOpenModal(true)}
@@ -127,8 +92,7 @@ export default function CardInner({
             {hidden ? (
               <>
                 <p className={styles.channel_description_ban}>
-                  Содержимое скрыто по причине наличия контента, нарушающего
-                  законодательство
+                  {t('18+')}
                 </p>
                 <hr className={styles.line} />
               </>
@@ -142,7 +106,7 @@ export default function CardInner({
                     </Link>
                   ) : null}
 
-                  <p className={styles.people}>{subscribers} подписчиков</p>
+                  <p className={styles.people}>{subscribers} {t('подписчиков')}</p>
                   {category ? (
                     <Link
                       className={styles.category_link}
@@ -155,7 +119,7 @@ export default function CardInner({
                 <hr className={styles.line} />
                 <p className={styles.channel_description}>{description}</p>
                 <Link href={link_tg} className={styles.button}>
-                  Открыть канал
+                  {t('Открыть канал')}
                 </Link>
               </>
             )}

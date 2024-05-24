@@ -1,9 +1,10 @@
 import ChannelsList from "@/components/ChannelsList/ChannelsList"
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import styles from './index.module.scss'
 import AdvertisementCard from "@/components/Cards/AdvertisementCard/AdvertisementCard";
 import CardInner from "@/components/Cards/CardInner/CardInner";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   params: { id: string }
@@ -15,14 +16,21 @@ export async function generateMetadata(
 ): Promise<Metadata>{
   const id = params.id
   const data = await getCard(id)
+
+  const t = await getTranslations("IndexChannel")
   
   return {
-    title: `Телеграмм канал ${data.name}. Поиск по Telegram каналам. Каталог телеграмм каналов.`,
-    description: data.description
+    title: `${t("title", { name: data.name })}`,
+    description: `${t('description')} ${data.name}. ${data.description}.`,
+    keywords: `поиск, каталог, телеграм, telegram, канал, ${data.name}`,
+    robots: {
+      index: true,
+      follow: true
+    }
   }
 }
-  
 
+ 
 async function getCard(id: string) {
   const res = await fetch(`${process.env.BASE_URL}/channel/${id}`)
   if (!res.ok) {
@@ -45,18 +53,19 @@ export default async function ChannelCard({ params: { id } }:{
   
   const data = await getCard(id)
   const similarChannels = await getSimilarChannels(id)
+  const t = await getTranslations("Card")
 
   return <div className={styles.section}>
     <BreadCrumbs name={data.name}/>
     <div className={styles.card_section}>
-      <CardInner hidden={data.hidden} category={data.category} subscribers={data.subscribers} description={data.description} link_tg={data.link_tg} name={data.name} image={data.image}/>
+      <CardInner hidden={data.hidden} category={data.category} subscribers={data.subscribers} description={data.description} link_tg={data.link_tg} name={data.name} id={id} image={data.image}/>
     </div>
     <div className={styles.advertisement_section}>
     <AdvertisementCard/>
     <AdvertisementCard/>
     </div>
     <div className={styles.simular_section}>
-      <h2 className={styles.title}>Похожие каналы</h2>
+      <h2 className={styles.title}>{t('Похожие каналы')}</h2>
       <ChannelsList path="channel" data={similarChannels}/>
     </div>
   </div>;

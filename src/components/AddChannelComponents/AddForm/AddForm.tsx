@@ -29,27 +29,13 @@ export default function AddForm({
             onClick={() => setActiveSelect(true)}
             className={acitveSelect ? chanelActive : styles.button_select}
           >
-            <Image
-              className={styles.image}
-              src="/form-icon.svg"
-              alt="form-icon"
-              width={21}
-              height={21}
-            />
-            <p className={styles.button_text}>{t("Канал")}</p>
+            {t("Канал")}
           </div>
           <div
             onClick={() => setActiveSelect(false)}
             className={!acitveSelect ? chanelActive : styles.button_select}
           >
-            <Image
-              className={styles.image}
-              src="/form-icon.svg"
-              alt="form-icon"
-              width={21}
-              height={21}
-            />
-            <p className={styles.button_text}>{t("Чат/Бот")}</p>
+            {t("Чат/Бот")}
           </div>
         </div>
         {acitveSelect ? <ChannelsForm category={category} /> : <ChatForm />}

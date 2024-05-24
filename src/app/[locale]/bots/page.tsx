@@ -5,10 +5,20 @@ import Pagination from "@/components/Pagination/Pagination";
 import RecList from "@/components/RecListMain/RecListMain";
 import { getTotalPages } from "@/helpers/getTotalPages";
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Teleshtorm – поиск по Telegram чатам. Каталог телеграмм чатов.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("IndexBots");
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
+    robots: {
+      index: true,
+      follow: true
+    }
+  };
+}
 
 async function getBotsList(page: number) {
   const res = await fetch(`${process.env.BASE_URL}/bots?page=${page}&limit=31`);
@@ -29,13 +39,12 @@ export default async function HomePage({
 
   const data = await getBotsList(currentPage > 1 ? currentPage : 0);
 
-  const totalPages = await getTotalPages(currentPage, data);
-
+  const t = await getTranslations("Bots");
   return (
     <>
-      <h2 className={styles.title}>Каталог телеграмм ботов</h2>
+      <h2 className={styles.title}>{t('Каталог телеграмм ботов')}</h2>
       <div className={styles.section}>
-        <h3 className={styles.subtitle}>Телеграм боты</h3>
+        <h3 className={styles.subtitle}>{t('Телеграм боты')}</h3>
         <ChannelsList path="bots" data={data} />
       </div>
       <Pagination

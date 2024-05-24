@@ -6,10 +6,20 @@ import { getTotalPages } from "@/helpers/getTotalPages";
 import ArticleSwiper from "@/components/ArticlesComponents/ArticleSwiper/ArticleSwiper";
 import ArticleCategorySwiper from "@/components/ArticlesComponents/ArticleCategorySwiper/ArticleCategorySwiper";
 import RecList from "@/components/ArticlesComponents/ArticleList/ArticleList";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Teleshtorm – поиск по Telegram чатам. Каталог телеграмм чатов.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("IndexArticles");
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
+    robots: {
+      index: true,
+      follow: true
+    }
+  };
+}
 
 export interface Article {
   name: string;

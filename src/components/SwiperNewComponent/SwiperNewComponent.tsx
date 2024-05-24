@@ -3,19 +3,21 @@
 import React, { useEffect, useRef } from "react";
 import { Navigation } from "swiper/modules";
 
+import styles from "./index.module.scss";
+
 import "swiper/css";
 
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import { ArrowBack, ArrowForward } from "../svgs";
 import NewChannelsSlide from "../Slides/NewChannelsSlide/NewChannelsSlide";
+import Image from "next/image";
+import classNames from "classnames";
 
 type Props = {
   data: any;
-  styles: any;
   count: number;
 };
 
-export default function SwiperNewComponent({ data, styles, count }: Props) {
+export default function SwiperNewComponent({ data, count }: Props) {
   const slideNewRef = useRef<SwiperRef>(null);
 
   const [slidesNew, setSlidesNew] = React.useState<React.ReactNode[]>([]);
@@ -55,11 +57,18 @@ export default function SwiperNewComponent({ data, styles, count }: Props) {
 
       setSlidesNew(swiperSlides);
     }
-  }, [data,styles.slider]);
+  }, [data]);
 
   return (
-    <>
-      <ArrowBack onClick={handlePrev} className={styles.arrow_back} />
+    <div className={styles.container}>
+      <Image
+        width={12}
+        height={24}
+        alt="arrow-back"
+        src={"/Arrow-Back.svg"}
+        onClick={handlePrev}
+        className={classNames(styles.arrow_new_back, styles.arrow_new_back_visible)}
+      />
       <Swiper
         ref={slideNewRef}
         onSwiper={(swiper) => {
@@ -73,7 +82,14 @@ export default function SwiperNewComponent({ data, styles, count }: Props) {
       >
         {slidesNew}
       </Swiper>
-      <ArrowForward onClick={handleNext} className={styles.arrow_forward} />
-    </>
+      <Image
+        width={12}
+        height={24}
+        alt="arrow-forward"
+        src={"/Arrow-forward.svg"}
+        onClick={handleNext}
+        className={classNames(styles.arrow_new_forward, styles.arrow_new_forward_visible)}
+      />
+    </div>
   );
 }

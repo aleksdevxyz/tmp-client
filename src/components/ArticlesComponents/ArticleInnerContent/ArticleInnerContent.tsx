@@ -4,9 +4,11 @@ import styles from "./index.module.scss";
 import Image from "next/image";
 import cn from "classnames";
 import Markdown from "markdown-to-jsx";
+import { useTranslations } from "next-intl";
 
 export default function ArticleInnerContent({ content }: { content: string }) {
   const [showContent, setShowContent] = React.useState(false);
+  const t = useTranslations("Article");
 
   return (
     <>
@@ -15,7 +17,7 @@ export default function ArticleInnerContent({ content }: { content: string }) {
         onClick={() => setShowContent(!showContent)}
         className={styles.button}
       >
-        <h3 className={styles.title}>Содержание</h3>
+        <h3 className={styles.title}>{t('Содержание')}</h3>
         <Image
           src={"/chevron-bar-expand.svg"}
           alt="show"

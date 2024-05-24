@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
 import Button from "./Button";
 import classNames from "classnames";
+import { useTranslations } from "next-intl";
 
 export default function Form({
   setOpen,
@@ -15,7 +16,7 @@ export default function Form({
   const type = pathName?.split("/").at(-2);
   const curent_type =
     type === "channel" ? "Канал" : type === "bots" ? "Бот" : "Чат";
-
+  const t = useTranslations("Modal");
   const [msg, setMsg] = useState({
     msg: "",
     status: 0,
@@ -41,7 +42,7 @@ export default function Form({
       action={handleAction}
     >
       <div className={styles.text_container}>
-        <p className={styles.title}>Опишите причину жалобы</p>
+        <p className={styles.title}>{t('Опишите причину жалобы')}</p>
         <Image
           onClick={() => setOpen(false)}
           style={{ cursor: "pointer" }}
@@ -62,7 +63,7 @@ export default function Form({
             className={styles.input}
           />
           <label htmlFor="link_not_work" className={styles.label}>
-            Ссылка на телеграм канал/чат/бот не работает
+            {t('Ссылка на телеграм канал/чат/бот не работает')}
           </label>
         </li>
         <li className={styles.option}>
@@ -73,7 +74,7 @@ export default function Form({
             className={styles.input}
           />
           <label htmlFor="drugs" className={styles.label}>
-            Пропаганда наркотиков
+            {t('Пропаганда наркотиков')}
           </label>
         </li>
         <li className={styles.option}>
@@ -84,7 +85,7 @@ export default function Form({
             className={styles.input}
           />
           <label htmlFor="false_information" className={styles.label}>
-            Ложная информация
+            {t('Ложная информация')}
           </label>
         </li>
         <li className={styles.option}>
@@ -95,11 +96,11 @@ export default function Form({
             className={styles.input}
           />
           <label htmlFor="child_abuse" className={styles.label}>
-            Жестокое обращение с детьми
+            {t('Жестокое обращение с детьми')}
           </label>
         </li>
       </ul>
-      <h3 className={styles.subtitle}>Другое:</h3>
+      <h3 className={styles.subtitle}>{`${t('Другое')}:`}</h3>
 
       <textarea
         onClick={(e) => e.stopPropagation()}

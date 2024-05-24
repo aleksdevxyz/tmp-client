@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import styles from "./index.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,12 +11,13 @@ export default function BreadCrumbs({ name }: any) {
     .split("/")
     .slice(2, -1)
     .map((item) => item.replace("channel", "Каналы"));
+  const t = useTranslations('Breadcrumb')
 
   return (
     <ul className={styles.breadCrumbs}>
       <li className={styles.breadCrumbs_item}>
         <Link className={styles.breadCrumbs_item} href={"/"}>
-          Каталог
+          {t('Каталог')}
         </Link>
       </li>
       {currentPath.map((item, index) => {
@@ -26,7 +27,7 @@ export default function BreadCrumbs({ name }: any) {
               className={styles.breadCrumbs_item}
               href={`/${locale}/${item}`}
             >
-              {item === "bots" ? "Боты" : item === "chats" ? "Чаты" : "Статьи"}
+              {item === "bots" ? t('Боты') : item === "chats" ? t('Чаты') : t('Статьи')}
             </Link>
           </li>
         );

@@ -38,7 +38,7 @@ export default function SearchInput() {
     if (value) {
       axios
         .get(
-          `${process.env.BASE_URL}/channels/search_suggest?query=${value}`
+          `https://test-api-teleshtorm.teleshtorm.org/channels/search_suggest?query=${value}`
         )
         .then((res) => {
           setSearchResult(res.data);
