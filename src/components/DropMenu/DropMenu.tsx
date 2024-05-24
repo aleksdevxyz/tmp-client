@@ -60,7 +60,7 @@ export default function DropMenu() {
         </div>
         <div className={styles.item_menu}>
           <Image src={"/Deutsch.svg"} alt="image" width={22} height={16} className={styles.image}/>
-          <Link href={'/'} locale='de' className={styles.title_menu}>Deutsch</Link>
+          <Link href={`${pathName}`} locale='de' className={styles.title_menu}>Deutsch</Link>
         </div>
         <div className={styles.item_menu}>
           <Image src={"/English.svg"} alt="image" width={22} height={16} className={styles.image}/>
@@ -68,19 +68,19 @@ export default function DropMenu() {
         </div>
         <div className={styles.item_menu}>
           <Image src={"/Español.svg"} alt="image" width={22} height={16} className={styles.image}/>
-          <Link href={'/'} locale='es' className={styles.title_menu}>Español</Link>
+          <Link href={`${pathName}`} locale='es' className={styles.title_menu}>Español</Link>
         </div>
         <div className={styles.item_menu}>
           <Image src={"/Français.svg"} alt="image" width={22} height={16} className={styles.image}/>
-          <Link href={'/'} locale='fr' className={styles.title_menu}>Français</Link>
+          <Link href={`${pathName}`} locale='fr' className={styles.title_menu}>Français</Link>
         </div>
         <div className={styles.item_menu}>
           <Image src={"/Italiano.svg"} alt="image" width={22} height={16} className={styles.image}/>
-          <Link href={'/'} locale='it' className={styles.title_menu}>Italiano</Link>
+          <Link href={`${pathName}`} locale='it' className={styles.title_menu}>Italiano</Link>
         </div>
         <div className={styles.item_menu}>
           <Image src={"/Portugal.svg"} alt="image" width={22} height={16} className={styles.image}/>
-          <Link href={'/'} locale='pt' className={styles.title_menu}>Português</Link>
+          <Link href={`${pathName}`} locale='pt' className={styles.title_menu}>Português</Link>
         </div>
       </div>
       </ul>
