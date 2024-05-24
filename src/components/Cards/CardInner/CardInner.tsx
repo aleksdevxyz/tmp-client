@@ -6,9 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import hiddenImg from "../../../../public/+18.png";
 import { useLocale } from "next-intl";
-import cn from "classnames";
 import Modal from "../Modal/Modal";
-const active = cn(styles._active, styles.dots_container);
 export interface Props {
   name: string;
   description: string;
@@ -37,12 +35,79 @@ export default function CardInner({
   const locale = useLocale();
   const [activeMenu, setActiveMenu] = React.useState(false);
   const [openModal, setOpenModal] = React.useState(false);
-  
+
   return (
     <>
       <Modal open={openModal} setOpen={setOpenModal} />
       <div className={styles.container}>
         <div className={styles.content}>
+          <div className={styles.social_container}>
+            <Link
+              href={`${link_tg}`}
+              target="_blank"
+              className={styles.social}
+            >
+              <Image
+                src={"/whatsup.svg"}
+                alt="telegram"
+                className={styles.image}
+                width={28}
+                height={28}
+              />
+            </Link>
+            <Link
+              href={`${link_tg}`}
+              target="_blank"
+              className={styles.social}
+            >
+              <Image
+                src={"/whatsup.svg"}
+                alt="telegram"
+                className={styles.image}
+                width={28}
+                height={28}
+              />
+            </Link>
+            <Link
+              href={`${link_tg}`}
+              target="_blank"
+              className={styles.social}
+            >
+              <Image
+                src={"/whatsup.svg"}
+                alt="telegram"
+                className={styles.image}
+                width={28}
+                height={28}
+              />
+            </Link>
+            <Link
+              href={`${link_tg}`}
+              target="_blank"
+              className={styles.social}
+            >
+              <Image
+                src={"/whatsup.svg"}
+                alt="telegram"
+                className={styles.image}
+                width={28}
+                height={28}
+              />
+            </Link>
+            <Link
+              href={`${link_tg}`}
+              target="_blank"
+              className={styles.social}
+            >
+              <Image
+                src={"/whatsup.svg"}
+                alt="telegram"
+                className={styles.image}
+                width={28}
+                height={28}
+              />
+            </Link>
+          </div>
           <Image
             onClick={() => setOpenModal(true)}
             className={styles.dots}

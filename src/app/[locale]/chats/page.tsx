@@ -42,7 +42,6 @@ export default async function HomePage({
       </div>
       <Pagination
         data={data}
-        totalPages={totalPages}
       />
       <div className={styles.section_rec}>
         <RecList />

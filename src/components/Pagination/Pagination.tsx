@@ -8,21 +8,25 @@ import { BackButton, ForwardButton } from "../svgs";
 
 import cn from "classnames";
 
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { getTotalPages } from "@/helpers/getTotalPages";
 
 const active = cn(styles._active, styles.link);
 
 export default function Pagination({
-  totalPages,
   data,
 }: {
-  totalPages: number[];
   data: any;
 }) {
   const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState<number[] | null>([]);
   const router = useRouter();
   const pageParams = useSearchParams();
+
+  useEffect(() => {
+    setTotalPages(getTotalPages(pageNumber, data));
+  },[pageNumber, data]);
 
   const handleClick = (pageNumber: number) => {
     const params = new URLSearchParams(pageParams);
@@ -31,6 +35,7 @@ export default function Pagination({
     } else {
       params.delete("page");
     }
+    setPageNumber(pageNumber);
     router.replace(`?${params.toString()}`);
   };
   
@@ -44,6 +49,7 @@ export default function Pagination({
     return `?${params.toString()}`;
   };
 
+  
   return (
     <div className={styles.container}>
       {pageNumber <= 1 ? null : (
@@ -58,7 +64,7 @@ export default function Pagination({
         </div>
       )}
       <div className={styles.counter}>
-        {totalPages.length > 1
+        {totalPages != null
           ? totalPages.map((item, index) => (
               <Link
                 key={index}
@@ -75,13 +81,13 @@ export default function Pagination({
                 </p>
               </Link>
             ))
-          : data.length < 31 && (
+          : totalPages === null && (
               <Link href={getCurrentQuery(1)} className={active}>
                 <p style={{ margin: "0", padding: "0" }}>1</p>
               </Link>
             )}
       </div>
-      {pageNumber >= totalPages.length ? null : (
+      {totalPages === null ? null : pageNumber >= totalPages[totalPages.length - 1]  ? null : (
         <div
           onClick={() => {
             handleClick(pageNumber + 1);

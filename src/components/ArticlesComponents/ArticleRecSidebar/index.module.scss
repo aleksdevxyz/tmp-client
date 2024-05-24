@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .title {
+        color: rgb(103, 113, 121);
+        font-family: 'Roboto-Light';
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        text-align: left;
+        margin: 0;
+    }
+
+    .article {
+        text-decoration: none;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+            transition: all .3s ease-in-out;
+        }
+
+        .image {
+            border-radius: 10px;
+        }
+
+        .text {
+            color: rgb(62, 67, 71);
+            font-family: 'Roboto-Light';
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 19px;
+            overflow: hidden;
+            margin: 0;
+            margin-top: 12px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            white-space: normal;
+        }
+    }
+
+
+}

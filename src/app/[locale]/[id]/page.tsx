@@ -3,6 +3,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import styles from './index.module.scss'
 import AdvertisementCard from "@/components/Cards/AdvertisementCard/AdvertisementCard";
 import CardInner from "@/components/Cards/CardInner/CardInner";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 type Props = {
   params: { id: string }
@@ -46,6 +47,7 @@ export default async function ChannelCard({ params: { id } }:{
   const similarChannels = await getSimilarChannels(id)
 
   return <div className={styles.section}>
+    <BreadCrumbs name={data.name}/>
     <div className={styles.card_section}>
       <CardInner hidden={data.hidden} category={data.category} subscribers={data.subscribers} description={data.description} link_tg={data.link_tg} name={data.name} image={data.image}/>
     </div>

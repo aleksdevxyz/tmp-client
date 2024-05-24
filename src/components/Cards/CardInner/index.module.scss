@@ -7,12 +7,33 @@
     margin-bottom: 25px;
 
 
+    
+
 
     .content {
         display: flex;
         gap: 60px;
         flex: 1;
         position: relative;
+
+        .social_container{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: pointer;
+
+            .social{
+                display: grid;
+                place-items: center;
+                
+                .image{
+                    z-index: 2;
+                }
+            }
+    }
 
         .dots {
             position: absolute;
@@ -102,6 +123,7 @@
                     color: #788189;
                     font-size: 13px;
                     font-family: 'Inter-Normal';
+                    font-weight: 400;
                     position: relative;
                     margin: 0;
                     text-decoration: none;
@@ -170,14 +192,14 @@
             .channel_description {
                 color: #788189;
                 font-size: 13px;
-                font-family: 'Inter-Extra-Light';
+                font-family: 'Inter-Normal';
                 margin-bottom: 17px;
             }
 
             .channel_description_ban {
                 color: #788189;
                 font-size: 13px;
-                font-family: 'Inter-Extra-Light';
+                font-family: 'Inter-Normal';
                 margin-bottom: clamp(1.25rem, -2.271rem + 8.41vw, 3.563rem);
                 ;
             }

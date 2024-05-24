@@ -7,6 +7,7 @@ import { getTotalPages } from "@/helpers/getTotalPages";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import styles from "./page.module.scss";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Index");
   return {
@@ -45,8 +46,7 @@ export default async function Home({
   const currentPage = Number(searchParams?.page) || 0;
 
   const ChannelsData = await getChannelsList(currentPage);
-
-  const totalPages = await getTotalPages(currentPage, ChannelsData);
+  
   const t = await getTranslations("Main");
 
   return (
@@ -54,7 +54,7 @@ export default async function Home({
       <MainSection />
       <div className={styles.section}>
         <h2 className={styles.title}>{t("Телеграм каналы")}</h2>
-        <ChannelsList path="channel" data={ChannelsData} />
+        <ChannelsList data={ChannelsData} />
       </div>
       <div className={styles.section}>
         <h2 className={styles.title}>Новые каналы</h2>
@@ -63,7 +63,6 @@ export default async function Home({
       <div className={styles.counter}>
         <Pagination
           data={ChannelsData}
-          totalPages={totalPages}
         />
       </div>
       <div className={styles.section}>

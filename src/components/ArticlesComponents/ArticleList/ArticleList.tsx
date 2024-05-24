@@ -11,7 +11,7 @@ export default async function ArticleList({ articles }: Articles) {
     <section className={styles.section}>
       {articles.map((article, index) => {
         return (
-          <Link href={`/${locale}/article/${article.translit_name}`} key={index} className={styles.card}>
+          <Link href={`/${locale}/articles/${article.translit_name}`} key={index} className={styles.card}>
             <Image className={styles.image} src={article.image} alt="Article" width={356} height={204} />
             <div className={styles.container}>
               <h3 className={styles.title}>{article.name}</h3>

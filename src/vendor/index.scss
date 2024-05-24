@@ -21,8 +21,8 @@
 @font-face {
     font-family: 'Inter-Bold';
     src:
-        url('../vendor/fonts/Inter-Regular.woff'),
-        url('../vendor/fonts/Inter-Regular.woff2');
+        url('../vendor/fonts/Inter-Bold.woff'),
+        url('../vendor/fonts/Inter-Bold.woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -80,8 +80,8 @@
 @font-face {
     font-family: 'Roboto-SemiBold';
     src: 
-    url('../vendor/fonts/Roboto-Regular.woff'), 
-    url('../vendor/fonts/Roboto-Regular.woff2');
+    url('../vendor/fonts/Roboto-Bold.woff'), 
+    url('../vendor/fonts/Roboto-Bold.woff2');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -90,8 +90,9 @@
 @font-face {
     font-family: 'Roboto-Bold';
     src: 
-    url('../vendor/fonts/Roboto-Regular.woff'), 
-    url('../vendor/fonts/Roboto-Regular.woff2');
+    url('../vendor/fonts/Roboto-Bold.woff'), 
+    url('../vendor/fonts/Roboto-Bold.woff2');
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
 }

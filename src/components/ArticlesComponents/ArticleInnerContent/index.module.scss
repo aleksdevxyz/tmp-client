@@ -29,6 +29,7 @@
     opacity: 0;
     overflow: hidden;
     padding-top: 25px;
+    padding-inline: 19px;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
     &.hidden {

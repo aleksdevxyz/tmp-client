@@ -6,12 +6,15 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
 import { Articles } from "@/app/[locale]/articles/page";
-import './pagination.css'
+import "./pagination.css";
 
-import 'swiper/css'
+import "swiper/css";
+import Link from "next/link";
+import { useLocale } from "next-intl";
 
 export default function ArticleSwiper({ articles }: Articles) {
   const AsliderRef = useRef<SwiperRef>(null);
+  const locale = useLocale();
 
   return (
     <div className={styles.section}>
@@ -24,32 +27,34 @@ export default function ArticleSwiper({ articles }: Articles) {
         }}
         slidesPerView={1}
         spaceBetween={40}
-        pagination={{ clickable: true,
-            el: '.swiper-pagination',
-         }}
+        pagination={{ clickable: true}}
         modules={[Pagination]}
         className={styles.swiper_article}
       >
         {articles.map((article, index) => {
           return (
             <SwiperSlide className={styles.slide_article} key={index}>
-              <Image
-                className={styles.image}
-                width={460}
-                height={260}
-                alt="article"
-                src={article.image}
-              />
-              <div className={styles.container}>
-                <h2 className={styles.title}>{article.name}</h2>
-                <p className={styles.subtitle}>{article.description}</p>
-              </div>
+              <Link
+                className={styles.slide_article}
+                href={`/${locale}/articles/${article.translit_name}`}
+              >
+                <Image
+                  className={styles.image}
+                  width={460}
+                  height={260}
+                  alt="article"
+                  src={article.image}
+                />
+                <div className={styles.container}>
+                  <h2 className={styles.title}>{article.name}</h2>
+                  <p className={styles.subtitle}>{article.description}</p>
+                </div>
+              </Link>
             </SwiperSlide>
           );
         })}
       </Swiper>
-      <div className='swiper-pagination'>
-      </div>
+      <div className="swiper-pagination"></div>
     </div>
   );
 }

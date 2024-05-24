@@ -1,6 +1,6 @@
-import Image from "next/image";
 import styles from "./index.module.scss";
 import ArticleContent from "@/components/ArticlesComponents/ArticleContent/ArticleContent";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import RecListMain from "@/components/RecListMain/RecListMain";
 
 export interface Article {
@@ -26,22 +26,19 @@ async function getArticle(translit_name: string): Promise<Article> {
   }
   return res.json();
 }
-export default async function HomePage({params}: {params: {translit_name: string}}) {
+export default async function HomePage({
+  params,
+}: {
+  params: { translit_name: string };
+}) {
+  const translit_name = params.translit_name;
 
-  const translit_name = params.translit_name
-  
   const data: Article = await getArticle(translit_name);
 
   return (
-    <section className={styles.section}>
-      <div className={styles.article}>
-        <Image
-          className={styles.image}
-          src={data.image}
-          alt="Article"
-          width={756}
-          height={413}
-        />
+    <div style={{paddingTop: '106px'}}>
+      <BreadCrumbs name={data.name} />
+      <section className={styles.section}>
         <ArticleContent
           image={data.image}
           translit_name={translit_name}
@@ -51,8 +48,8 @@ export default async function HomePage({params}: {params: {translit_name: string
           description={data.description}
           content={data.content}
         />
-      </div>
-      <RecListMain />
-    </section>
+        <RecListMain />
+      </section>
+    </div>
   );
 }

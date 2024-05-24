@@ -1,31 +1,44 @@
-'use client'
-
-import { Article } from "@/app/[locale]/article/[translit_name]/page";
-import styles from "./index.module.scss";
-import ArticleInnerContent from "../ArticleInnerContent/ArticleInnerContent";
-import { useLocale } from "next-intl";
+import { Article } from "@/app/[locale]/articles/[translit_name]/page";
 import { formatDate } from "@/helpers/formatDate";
-export default function ArticleContent({
+import { useLocale } from "next-intl";
+import { getLocale } from "next-intl/server";
+import Image from "next/image";
+import ArticleInnerContent from "../ArticleInnerContent/ArticleInnerContent";
+import ArticleRecSidebar from "../ArticleRecSidebar/ArticleRecSidebar";
+import styles from "./index.module.scss";
+export default async function ArticleContent({
   created_at,
   category,
   name,
   description,
   content,
+  image,
 }: Article) {
-
-  const locale = useLocale()
+  const locale = await getLocale();
 
   return (
-    <div className={styles.content}>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <Image
+          className={styles.image}
+          src={image}
+          alt="Article"
+          width={756}
+          height={413}
+        />
         <div className={styles.category}>
           <p className={styles.creadet_at}>{formatDate(created_at, locale)}</p>
-          <p className={styles.category_name}>{category != null ? category.name : '' }</p>
+          <p className={styles.category_name}>
+            {category != null ? category.name : ""}
+          </p>
         </div>
-      <div className={styles.content_container}>
-        <h2 className={styles.title}>{name}</h2>
-        <p className={styles.description}>{description}</p>
+        <div className={styles.content_container}>
+          <h2 className={styles.title}>{name}</h2>
+          <p className={styles.description}>{description}</p>
+        </div>
+        <ArticleInnerContent content={content} />
       </div>
-      <ArticleInnerContent content={content}/>
+      <ArticleRecSidebar />
     </div>
   );
 }

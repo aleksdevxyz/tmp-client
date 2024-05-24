@@ -1,52 +1,64 @@
-.content {
-    padding: 0 19px 0 19px;
+.container {
+    display: flex;
+    gap: 36px;
+    .content {
+        max-width: 756px;
 
-    .category {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
+        .image{
+            border-radius: 9px;
+        }
+        .category {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            padding-inline: 19px;
+            padding-top: 25px;
 
-        .creadet_at {
-            color: rgb(62, 67, 71);
-            font-family: 'Roboto-Light';
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 24px;
-            text-align: left;
-            margin: 0;
+
+            .creadet_at {
+                color: rgb(62, 67, 71);
+                font-family: 'Roboto-Light';
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 24px;
+                text-align: left;
+                margin: 0;
+            }
+
+            .category_name {
+                color: rgb(62, 67, 71);
+                font-family: 'Roboto-Light';
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 24px;
+                margin: 0;
+            }
         }
 
-        .category_name {
-            color: rgb(62, 67, 71);
-            font-family: 'Roboto-Light';
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 24px;
-            margin: 0;
-        }
-    }
+        .content_container {
+            padding-bottom: 25px;
+        padding-inline: 19px;
 
-    .content_container {
-        padding-bottom: 25px;
 
-        .title {
-            color: rgb(62, 67, 71);
-            font-family: 'Roboto-Bold';
-            font-size: 42px;
-            font-weight: 700;
-            line-height: 49px;
-            margin: 0;
-            margin-top: 12px;
-        }
+            .title {
+                color: rgb(62, 67, 71);
+                font-family: 'Roboto-Bold';
+                font-size: 42px;
+                font-weight: 700;
+                line-height: 49px;
+                margin: 0;
+                margin-top: 12px;
+            }
 
-        .description {
-            color: rgb(62, 67, 71);
-            font-family: 'Roboto-Light';
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 24px;
-            margin: 0;
-            margin-top: 12px;
+            .description {
+                color: rgb(62, 67, 71);
+                font-family: 'Roboto-Light';
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 24px;
+                margin: 0;
+                margin-top: 12px;
+            }
         }
     }
 }

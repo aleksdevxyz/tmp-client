@@ -72,7 +72,7 @@ export default async function HomePage({
         <ArticleSwiper articles={RecArticles} />
         <ArticleCategorySwiper categories={categoriesArticle}/>
         <RecList articles={RecArticles}/>
-        <Pagination totalPages={totalPages} data={RecArticles}/>
+        <Pagination data={RecArticles}/>
       </div>
     </>
   );
