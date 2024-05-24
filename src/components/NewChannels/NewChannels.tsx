@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 
 async function getData() {
   const res = await fetch(
-    "https://test-api-teleshtorm.teleshtorm.org/channels?page=0&limit=31"
+    `${process.env.BASE_URL}/channels?page=0&limit=31`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");

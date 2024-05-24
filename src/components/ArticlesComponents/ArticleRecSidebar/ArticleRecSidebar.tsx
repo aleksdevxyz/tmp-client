@@ -14,7 +14,7 @@ export interface recArticle {
 
 async function getRec(): Promise<recArticle[]> {
   const res = await fetch(
-    "https://test-api-teleshtorm.teleshtorm.org/articles/recommended"
+    `${process.env.BASE_URL}/articles/recommended`
   );
   if (res.ok) {
     return res.json();
