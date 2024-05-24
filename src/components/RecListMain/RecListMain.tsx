@@ -31,7 +31,7 @@ export default async function RecListMain() {
       <h2 className={styles.title}>Рекомендуем почитать</h2>
       <div className={styles.container}>
         {recData?.map((item: recRes, index: React.Key | null | undefined) => (
-          <Link href={`/${locale}/article/${item.translit_name}`} key={index} className={styles.slide}>
+          <Link href={`/${locale}/articles/${item.translit_name}`} key={index} className={styles.slide}>
             <Image
               alt={item.name}
               width={366}
