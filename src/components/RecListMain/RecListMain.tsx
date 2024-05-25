@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
+import SwiperRec from "./SwiperRec";
 
 export interface recRes {
   name: string;
@@ -12,9 +13,7 @@ export interface recRes {
 }
 
 async function getRec() {
-  const res = await fetch(
-    `${process.env.BASE_URL}/articles/recommended`
-  );
+  const res = await fetch(`${process.env.BASE_URL}/articles/recommended`);
   if (res.ok) {
     return res.json();
   }
@@ -23,29 +22,13 @@ async function getRec() {
 
 export default async function RecListMain() {
   const recData = await getRec();
-  const locale = await getLocale()
-  const t = await getTranslations('Main')
+  const t = await getTranslations("Main");
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.title}>{t('Рекомендуем почитать')}</h2>
       <div className={styles.container}>
-        {recData?.map((item: recRes, index: React.Key | null | undefined) => (
-          <Link href={`/${locale}/articles/${item.translit_name}`} key={index} className={styles.slide}>
-            <Image
-              alt={item.name}
-              width={366}
-              height={192}
-              className={styles.image}
-              src={item.image}
-            />
-            <div className={styles.text_container}>
-              <h3 className={styles.title}>{item.name}</h3>
-              <p className={styles.subtitle}>{item.description}</p>
-              <p className={styles.button}>{`${t('Читать дальше')} ...`}</p>
-            </div>
-          </Link>
-        ))}
+        <h2 className={styles.title}>{t("Рекомендуем почитать")}</h2>
+        <SwiperRec data={recData} />
       </div>
     </div>
   );

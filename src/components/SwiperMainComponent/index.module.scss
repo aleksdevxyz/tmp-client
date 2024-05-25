@@ -83,6 +83,7 @@
     margin: 0;
     box-sizing: border-box;
     position: relative;
+    justify-content: center;
 
 
     .arrow_back {
@@ -97,6 +98,10 @@
         width: 12px;
         height: 24px;
         cursor: pointer;
+
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
 
         &:hover {
             opacity: 1;
@@ -117,6 +122,10 @@
         cursor: pointer;
         opacity: 0;
 
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
+
 
         &:hover {
             opacity: 1;
@@ -136,6 +145,10 @@
         box-sizing: border-box;
         overflow: hidden;
 
+        @media screen and (max-width: 480px) {
+            max-width: 100%;
+        }
+
 
         .content_list {
             display: block;
@@ -149,11 +162,13 @@
                 gap: 8px;
                 justify-content: space-between;
                 padding: 0 10px 0 10px;
-                max-width: 366px;
-                box-sizing: border-box;
+                width: 354px;
                 flex-wrap: wrap;
                 height: 100%;
 
+                @media screen and (max-width: 480px) {
+                    width: 400px;
+                }
 
             }
         }

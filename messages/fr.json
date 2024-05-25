@@ -63,7 +63,7 @@
   "Article": {
     "Рекомендуем статьи": "Articles recommandés",
     "Содержание": "Contenu",
-    "Поделиться":"Partager"
+    "Поделиться": "Partager"
   },
   "Header": {
     "Каталог": "Catalogue",
@@ -126,6 +126,14 @@
     "Подзаголовок 1 вопроса": "Le catalogue accepte les chaînes et les groupes qui ne violent pas les règles de Telegram et comptent plus de 100 abonnés.",
     "Заголовок 2 вопроса": "Comment savoir si ma chaîne a déjà été ajoutée?",
     "Подзаголовок 2 вопроса": "Pour cela, utilisez la recherche sur le site, entrez dans la barre de recherche le lien vers votre chaîne que vous avez indiqué lors de l'ajout de la chaîne au catalogue."
+  },
+  "BurgerMenu": {
+    "Каталог": "Catalogue",
+    "Чаты": "Chats",
+    "Боты": "Bots",
+    "Статьи": "Articles",
+    "Поддержка": "Support",
+    "Наш канал": "Notre chaîne"
   },
   "Footer": {
     "Права": "2024 teleshtorm.com — recherche sur Telegram, le site ne stocke pas de données personnelles",

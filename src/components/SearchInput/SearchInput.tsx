@@ -10,6 +10,7 @@ import { useDebouncedCallback } from "use-debounce";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { changeSubscribers } from "@/helpers/changeSubs";
+import classNames from "classnames";
 
 interface SearchResult {
   id: number;
@@ -22,7 +23,7 @@ interface SearchResult {
 
 const active = cn(styles._active, styles.dropdown);
 
-export default function SearchInput() {
+export default function SearchInput({open,setOpenSearch = () => {}}: {open?: boolean,setOpenSearch?:React.Dispatch<React.SetStateAction<boolean>>}) {
   const searchParams = useSearchParams();
   const [inputValue, setInputValue] = React.useState("");
   const [activeMenu, setActiveMenu] = React.useState(false);
@@ -84,6 +85,7 @@ export default function SearchInput() {
   return (
     <div ref={dropRef} className={styles.input_container}>
       <SearchIcon className={styles.icon} />
+      {open && <Image onClick={() => setOpenSearch(false)} className={styles.close_icon} src={'/CloseIcon.svg'} width={15} height={15} alt="close"/>}
       <input
         required
         minLength={1}
@@ -104,10 +106,9 @@ export default function SearchInput() {
           {searchResult?.map((item) => (
             <div onClick={() => setActiveMenu(false)} key={item.id} className={styles.dropdown_content}>
             <Image className={styles.arrow} alt="arrow" src={'/arrow-return-right.svg'} width={15} height={15}/>
-              
               <Link
                 className={styles.dropdown_item}
-                href={`/${locale}/channel/${item.id}`}
+                href={`/${locale}/${item.id}`}
               >
                 <Image
                   width={55}
@@ -134,6 +135,7 @@ export default function SearchInput() {
           setActiveMenu(false);
           }} className={styles.dropdown_button} />
       </div>
+      <div onClick={() => setActiveMenu(false)} className={classNames(styles.overlay, !activeMenu && styles.hidden)}></div>
     </div>
   );
 }

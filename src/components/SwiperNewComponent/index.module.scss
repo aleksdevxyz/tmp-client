@@ -5,6 +5,10 @@
     background: rgb(255, 255, 255);
     padding: 27px 31px;
 
+    @media screen and (max-width: 480px) {
+        padding: 15px;
+    }
+
     &:hover {
         .arrow_new_back_visible {
             visibility: visible;
@@ -46,6 +50,9 @@
         left: -20px;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
     }
 
     .arrow_new_forward {
@@ -59,5 +66,9 @@
         transform: translateY(-50%);
         cursor: pointer;
         transition: all 0.3s ease-in-out;
+
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
     }
 }

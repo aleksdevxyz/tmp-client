@@ -25,6 +25,15 @@ export default function ArticleSwiper({ articles }: Articles) {
             AsliderRef.current.swiper = swiper;
           }
         }}
+        breakpoints={{
+          1920: {
+            slidesPerView: 1,
+          },
+          480: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+        }}
         slidesPerView={1}
         spaceBetween={40}
         pagination={{ clickable: true}}

@@ -6,6 +6,12 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 25px 21px;
 
+    @media screen and (max-width: 480px) {
+        max-width: 390px;
+        padding-inline: 12px;
+        grid-template-columns: 1fr;
+    }
+
     .card {
         max-width: 356px;
         display: flex;
@@ -23,6 +29,10 @@
             border: 1px solid rgb(222, 226, 228);
             border-radius: 15px;
             transition: all .3s ease-in-out;
+
+            @media screen and (max-width: 480px) {
+                width: 366px;
+            }
         }
 
         .container {

@@ -11,6 +11,10 @@
     max-width: 366px;
     max-height: 120px;
     text-decoration: none;
+    @media screen and (max-width: 480px) {
+        max-width: 450px;
+
+    }
 
     &:hover {
         border-color: rgb(97, 97, 97);
@@ -39,6 +43,10 @@
     font-size: 10px;
     font-weight: 300;
 
+    @media screen and (max-width: 480px) {
+        flex: 1;
+    }
+
     .title {
         font-family: 'Roboto-Bold';
         color: #677179;
@@ -62,7 +70,7 @@
         font-size: clamp(0.75rem, 0.72rem + 0.13vw, 0.813rem);
         font-weight: 300;
         margin: 0;
-margin-bottom: 10px;
+        margin-bottom: 10px;
         max-width: 250px;
         max-height: clamp(2.25rem, 2.20rem + 0.4vw, 2.88rem);
         overflow: hidden;
@@ -72,6 +80,10 @@ margin-bottom: 10px;
         -webkit-box-orient: vertical;
         white-space: normal;
         max-width: 233px;
+
+        @media screen and (max-width: 480px) {
+            max-height: none;
+        }
 
     }
 

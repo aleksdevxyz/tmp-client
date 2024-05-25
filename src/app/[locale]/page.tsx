@@ -68,9 +68,7 @@ export default async function Home({
           data={ChannelsData}
         />
       </div>
-      <div className={styles.section}>
         <RecList />
-      </div>
     </main>
   );
 }

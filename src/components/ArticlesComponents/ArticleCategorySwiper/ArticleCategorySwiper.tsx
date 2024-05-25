@@ -22,7 +22,7 @@ export default function ArticleCategorySwiper({
 }) {
   const slideRef = useRef<SwiperRef>(null);
   const { replace } = useRouter();
-  const [activeCategory, setActiveCategory] = useState("");
+  const [activeCategory, setActiveCategory] = useState("1");
   const locale = useLocale();
 
   const handlePrev = useCallback(() => {
@@ -44,17 +44,18 @@ export default function ArticleCategorySwiper({
 
   return (
     <section className={styles.section}>
-      <div onClick={handlePrev} className={classNames(styles.arrow_prev, styles.arrow_prev_active)}>
+      <div className={classNames(styles.arrow_prev, styles.arrow_prev_active)}>
         <Image
-          style={{ transform: "rotate(180deg)" }}
+          onClick={handlePrev}
           src={"/arrow-sm.svg"}
           width={10}
           height={12}
           alt="arrow"
         />
       </div>
-      <div onClick={handleNext} className={classNames(styles.arrow_next, styles.arrow_next_active)}>
+      <div className={classNames(styles.arrow_next, styles.arrow_next_active)}>
         <Image
+          onClick={handleNext}
           src={"/arrow-sm.svg"}
           width={10}
           height={12}
@@ -68,12 +69,18 @@ export default function ArticleCategorySwiper({
             slideRef.current.swiper = swiper;
           }
         }}
-        spaceBetween={23}
-        slidesPerView={7}
+        breakpoints={{
+          1920: {
+            slidesPerView: 7,
+            spaceBetween: 23,
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+        }}
         className={styles.swiper}
         modules={[Navigation]}
-        loop={true}
-        
       >
         {categories.map((category) => {
           return (
@@ -97,10 +104,13 @@ export default function ArticleCategorySwiper({
 
         <SwiperSlide
           onClick={() => handleClick("Категория 2")}
-          className={styles.slide}
+          className={classNames(
+            styles.slide,
+            activeCategory === "1" && styles.active
+          )}
         >
           <Link href={"/"} className={styles.link}>
-            Категория 2
+            Кат
           </Link>
         </SwiperSlide>
         <SwiperSlide
@@ -108,38 +118,15 @@ export default function ArticleCategorySwiper({
           className={styles.slide}
         >
           <Link href={"/"} className={styles.link}>
-            Категория 2
+            Кат
           </Link>
         </SwiperSlide>
-        
-        <SwiperSlide className={styles.slide}>
+        <SwiperSlide
+          onClick={() => handleClick("Категория 2")}
+          className={styles.slide}
+        >
           <Link href={"/"} className={styles.link}>
-            Категория 3
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Link href={"/"} className={styles.link}>
-            Категория 4
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Link href={"/"} className={styles.link}>
-            Категория 5
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Link href={"/"} className={styles.link}>
-            Категория 6
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Link href={"/"} className={styles.link}>
-            Категория 7
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Link href={"/"} className={styles.link}>
-            Категория 1
+            Кат
           </Link>
         </SwiperSlide>
       </Swiper>

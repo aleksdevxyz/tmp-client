@@ -7,6 +7,7 @@ import Footer from "@/components/Footer/Footer";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import BurgerMenu from "@/components/BurgerMenu/BurgerMenu";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -50,6 +51,7 @@ export default async function RootLayout({
         >
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Header />
+            <BurgerMenu/>
             {children}
             <Footer />
             

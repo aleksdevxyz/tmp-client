@@ -7,15 +7,26 @@
     margin: 0;
     padding-top: 94px;
     margin-bottom: 25px;
+
+    @media screen and (max-width: 480px) {
+        width: 253px;
+        margin: 0 auto;
+    }
 }
 
 .section {
-    min-width: 1140px;
-    padding: 0 15px;
+    padding-inline: 15px;
     margin: 0 auto;
     height: 100%;
     margin: auto;
     text-align: left;
+    max-width: 1140px;
+
+    @media screen and (max-width: 480px) {
+        max-width: 100%;
+        padding-inline: 12px;
+
+    }
 
     .subtitle {
         color: #677179;
@@ -31,4 +42,8 @@
     width: 1140px;
     margin: auto;
     padding: 0 15px;
+
+    @media screen and (max-width: 480px) {
+        width: 366px;
+    }
 }

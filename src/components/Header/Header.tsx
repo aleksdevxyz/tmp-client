@@ -11,6 +11,7 @@ export default function Header() {
   
   return (
     <header className={styles.header}>
+      <div className={styles.container_inner}>
       <div className={styles.header_container}>
         <nav className={styles.menu_container}>
           <Link locale={locale} href={`/${locale}`} className={styles.logo}>
@@ -40,6 +41,7 @@ export default function Header() {
           <SearchInput />
           <DropMenu />
         </div>
+      </div>
       </div>
     </header>
   );

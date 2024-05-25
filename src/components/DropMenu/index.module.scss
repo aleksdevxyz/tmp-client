@@ -11,19 +11,31 @@
     list-style: none;
     position: relative;
 
-    
+
     .item {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 12px;
+
+        .chevron {
+            display: block;
+
+            @media screen and (max-width: 480px) {
+                display: none;
+            }
+        }
+
+
+
+
         &:hover {
             cursor: pointer;
         }
 
     }
 
-    .title{
+    .title {
         color: rgb(120, 129, 137);
         font-family: 'Roboto-Light';
         font-size: 1rem;
@@ -32,10 +44,14 @@
         text-align: left;
         margin: 0;
         text-decoration: none;
+
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
     }
 }
 
-.list{
+.list {
     display: none;
     position: absolute;
     top: 40px;
@@ -45,7 +61,11 @@
     border: 1px solid #DEE2E4;
     padding: 6px 12px;
 
-    .header{
+    @media screen and (max-width: 480px) {
+        padding: 0;
+    }
+
+    .header {
         color: #788189;
         font-family: 'Roboto-Light';
         font-size: 13px;
@@ -55,22 +75,30 @@
         padding-bottom: 5px;
         border-bottom: 1px solid #DEE2E4;
         width: 100%;
+
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
     }
 
-    .item_menu{
+    .item_menu {
         display: flex;
         align-items: center;
-        gap:8px;
+        gap: 8px;
         border-radius: 4px;
         transition: all 0.3s;
         padding: 6px 12px;
+
+        @media screen and (max-width: 480px) {
+        padding: 6px;
+    }
 
         &:hover {
             background-color: #DDD;
         }
     }
 
-    .title_menu{
+    .title_menu {
         display: flex;
         align-items: center;
         gap: 8px;
@@ -80,11 +108,13 @@
         text-decoration: none;
         margin: 0;
         text-decoration: none;
+
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
     }
 
-    &._active{
+    &._active {
         display: block;
     }
 }
-
-

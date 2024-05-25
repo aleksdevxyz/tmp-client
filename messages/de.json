@@ -127,6 +127,15 @@
     "Заголовок 2 вопроса": "Wie weiß ich, ob mein Kanal bereits hinzugefügt wurde?",
     "Подзаголовок 2 вопроса": "Verwenden Sie dazu die Suche auf der Website und geben Sie in die Suchleiste den Link zu Ihrem Kanal ein, den Sie beim Hinzufügen des Kanals zum Katalog angegeben haben."
   },
+  "BurgerMenu": {
+    "Каталог": "Katalog",
+    "Чаты": "Chats",
+    "Боты": "Bots",
+    "Статьи": "Artikel",
+    "Поддержка": "Support",
+    "Наш канал": "Unser Kanal"
+},
+
   "Footer": {
     "Права": "2024 teleshtorm.com — Suche in Telegram, die Seite speichert keine persönlichen Daten",
     "Ссылка телеграм": "Unser Telegram-Kanal",

@@ -125,6 +125,14 @@
     "Заголовок 2 вопроса": "How do I know that my channel has already been added?",
     "Подзаголовок 2 вопроса": "To do this, use the site search, enter in the search bar the link to your channel that you specified when adding the channel to the catalog."
   },
+  "BurgerMenu": {
+    "Каталог": "Catalog",
+    "Чаты": "Chats",
+    "Боты": "Bots",
+    "Статьи": "Articles",
+    "Поддержка": "Support",
+    "Наш канал": "Our Channel"
+},
   "Footer": {
     "Права": "© 2024 teleshtorm.com — Telegram search, the site does not store personal data",
     "Ссылка телеграм": "Our Telegram channel",
