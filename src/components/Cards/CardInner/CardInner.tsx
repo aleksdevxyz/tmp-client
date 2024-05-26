@@ -7,7 +7,9 @@ import Link from "next/link";
 import hiddenImg from "../../../../public/+18.png";
 import { useLocale, useTranslations } from "next-intl";
 import Modal from "../Modal/Modal";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
+import AdvertisementCard from "../AdvertisementCard/AdvertisementCard";
+import ShareModal from "../ShareModal/ShareModal";
 export interface Props {
   name: string;
   description: string;
@@ -16,7 +18,7 @@ export interface Props {
   link_tg: string;
   hidden: boolean;
   category: Category;
-  id: string
+  id: string;
 }
 
 export interface Category {
@@ -33,42 +35,41 @@ export default function CardInner({
   subscribers,
   category,
   hidden,
-  id
+  id,
 }: Props) {
   const locale = useLocale();
   const [openModal, setOpenModal] = React.useState(false);
-  const t = useTranslations('Card')
-  const pathame = usePathname();
-  
+  const [shareModal, setShareModal] = React.useState(false);
+  const t = useTranslations("Card");
+  const pathName = usePathname();
 
   return (
     <>
+      <ShareModal open={shareModal} setOpen={setShareModal}/>
       <Modal open={openModal} setOpen={setOpenModal} />
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.social_container}>
+            <button onClick={() => setShareModal(true)} className={styles.share_button} />
+
             <Link
-              href={`https://vkontakte.ru/share.php?url=${pathame}`}
+              href={`https://vkontakte.ru/share.php?url=${pathName}`}
               target="_blank"
               className={styles.vk}
             />
             <Link
-              href={`https://telegram.me/share/url?url=${pathame}`}
+              href={`https://telegram.me/share/url?url=${pathName}`}
               target="_blank"
               className={styles.TG}
             />
             <Link
-              href={`https://twitter.com/intent/tweet?text=${pathame}`}
+              href={`https://twitter.com/intent/tweet?text=${pathName}`}
               target="_blank"
               className={styles.tw}
             />
+            <Link href={`${pathName}`} target="_blank" className={styles.fb} />
             <Link
-              href={`${pathame}`}
-              target="_blank"
-              className={styles.fb}
-            />
-            <Link
-              href={`https://api.whatsapp.com/send/?text=${pathame}`}
+              href={`https://api.whatsapp.com/send/?text=${pathName}`}
               target="_blank"
               className={styles.wp}
             />
@@ -81,6 +82,7 @@ export default function CardInner({
             width={24}
             height={24}
           />
+          <h3 className={styles.title_mb}>{name}</h3>
           <Image
             alt="Avatar"
             className={styles.image}
@@ -91,9 +93,7 @@ export default function CardInner({
           <div className={styles.info}>
             {hidden ? (
               <>
-                <p className={styles.channel_description_ban}>
-                  {t('18+')}
-                </p>
+                <p className={styles.channel_description_ban}>{t("18+")}</p>
                 <hr className={styles.line} />
               </>
             ) : (
@@ -106,7 +106,9 @@ export default function CardInner({
                     </Link>
                   ) : null}
 
-                  <p className={styles.people}>{subscribers} {t('подписчиков')}</p>
+                  <p className={styles.people}>
+                    {subscribers} {t("подписчиков")}
+                  </p>
                   {category ? (
                     <Link
                       className={styles.category_link}
@@ -119,7 +121,7 @@ export default function CardInner({
                 <hr className={styles.line} />
                 <p className={styles.channel_description}>{description}</p>
                 <Link href={link_tg} className={styles.button}>
-                  {t('Открыть канал')}
+                  {t("Открыть канал")}
                 </Link>
               </>
             )}

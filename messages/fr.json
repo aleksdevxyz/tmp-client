@@ -113,6 +113,12 @@
     "Другое": "Autre",
     "Отправить": "Envoyer"
   },
+  "ShareModal": {
+    "Поделиться": "Partager",
+    "Скопировать": "Copier",
+    "Ссылка скопирована": "Lien copié"
+  }
+  ,
   "AddForm": {
     "Заголовок формы": "Ajouter une chaîne",
     "Подзаголовок формы": "Votre chaîne sera ajoutée à la base de données lors de la prochaine mise à jour",

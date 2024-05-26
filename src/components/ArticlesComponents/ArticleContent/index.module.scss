@@ -3,12 +3,27 @@
     gap: 34px;
     position: relative;
     max-width: 1110px;
+
+    @media screen and (max-width: 480px) {
+        flex-direction: column;
+        align-items: center;
+    }
+
     
     .content {
         max-width: 756px;
 
+        @media screen and (max-width: 480px) {
+            max-width: 364px;
+        }
+
         .image{
             border-radius: 9px;
+
+            @media screen and (max-width: 480px) {
+                max-width: 364px;
+                height: 199px;
+            }
         }
         .category {
             display: flex;
@@ -40,8 +55,7 @@
 
         .content_container {
             padding-bottom: 25px;
-        padding-inline: 19px;
-
+            padding-inline: 19px;
 
             .title {
                 color: rgb(62, 67, 71);
@@ -51,6 +65,11 @@
                 line-height: 49px;
                 margin: 0;
                 margin-top: 12px;
+
+                @media screen and (max-width: 480px) {
+                    font-size: 28px;
+                    max-width: 326px;
+                }
             }
 
             .description {

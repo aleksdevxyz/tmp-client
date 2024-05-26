@@ -7,6 +7,7 @@ import ArticleSwiper from "@/components/ArticlesComponents/ArticleSwiper/Article
 import ArticleCategorySwiper from "@/components/ArticlesComponents/ArticleCategorySwiper/ArticleCategorySwiper";
 import RecList from "@/components/ArticlesComponents/ArticleList/ArticleList";
 import { getTranslations } from "next-intl/server";
+import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("IndexArticles");
@@ -74,11 +75,11 @@ export default async function HomePage({
   const RecArticles: Article[] = await getRecArticles();
   const categoriesArticle = await getArticlesCategories();
   
-  const totalPages = getTotalPages(currentPage, RecArticles);
 
   return (
     <>
       <div className={styles.section}>
+        <BreadCrumbs/>
         <ArticleSwiper articles={RecArticles} />
         <ArticleCategorySwiper categories={categoriesArticle}/>
         <RecList articles={RecArticles}/>

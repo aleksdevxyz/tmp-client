@@ -15,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: t("keywords"),
     robots: {
       index: true,
-      follow: true
-    }
+      follow: true,
+    },
   };
 }
 
@@ -42,15 +42,15 @@ export default async function HomePage({
   const t = await getTranslations("Bots");
   return (
     <>
-      <h2 className={styles.title}>{t('Каталог телеграмм ботов')}</h2>
+      <h2 className={styles.title}>{t("Каталог телеграмм ботов")}</h2>
       <div className={styles.section}>
-        <h3 className={styles.subtitle}>{t('Телеграм боты')}</h3>
+        <h3 className={styles.subtitle}>{t("Телеграм боты")}</h3>
         <ChannelsList path="bots" data={data} />
       </div>
-      <Pagination
-        data={data}
-      />
+      <Pagination data={data} />
+      <div className={styles.section}>
         <RecList />
+      </div>
     </>
   );
 }

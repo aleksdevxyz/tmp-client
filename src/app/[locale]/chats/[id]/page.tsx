@@ -7,27 +7,25 @@ import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import { getTranslations } from "next-intl/server";
 
 type Props = {
-  params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-export async function generateMetadata(
-  { params }: Props
-): Promise<Metadata>{
-  const id = params.id
-  const data = await getChat(id)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const id = params.id;
+  const data = await getChat(id);
 
-  const t = await getTranslations("IndexChat")
-  
+  const t = await getTranslations("IndexChat");
+
   return {
     title: `${t("title", { name: data.name })}`,
-    description: `${t('description')} ${data.name}. ${data.description}.`,
-    keywords: `${t('keywords')}, ${data.name}`,
+    description: `${t("description")} ${data.name}. ${data.description}.`,
+    keywords: `${t("keywords")}, ${data.name}`,
     robots: {
       index: true,
-      follow: true
-    }
-  }
+      follow: true,
+    },
+  };
 }
 
 async function getChat(id: string) {
@@ -51,35 +49,36 @@ export default async function ChannelCard({
 }: {
   params: { id: string };
 }) {
-  
   const data = await getChat(id);
   const similarChannels = await getSimilarChats(id);
-  const t = await getTranslations("Card")
+  const t = await getTranslations("Card");
 
-  
   return (
-      <div className={styles.section}>
-      <BreadCrumbs name={data.name}/>
-        <div className={styles.card_section}>
-          <CardInner
-            id={id}
-            hidden={data.hidden}
-            category={data.category}
-            subscribers={data.subscribers}
-            description={data.description}
-            link_tg={data.link_tg}
-            name={data.name}
-            image={data.image}
-          />
-        </div>
-        <div className={styles.advertisement_section}>
-          <AdvertisementCard />
-          <AdvertisementCard />
-        </div>
-        <div className={styles.simular_section}>
-          <h2 className={styles.title}>{t('Похожие каналы')}</h2>
-          <ChannelsList path="chats" data={similarChannels} />
-        </div>
+    <div className={styles.section}>
+      <BreadCrumbs name={data.name} />
+      <div className={styles.advertisement_mb} >
+      <AdvertisementCard />
       </div>
+      <div className={styles.card_section}>
+        <CardInner
+          id={id}
+          hidden={data.hidden}
+          category={data.category}
+          subscribers={data.subscribers}
+          description={data.description}
+          link_tg={data.link_tg}
+          name={data.name}
+          image={data.image}
+        />
+      </div>
+      <div className={styles.advertisement_section}>
+        <AdvertisementCard />
+        <AdvertisementCard />
+      </div>
+      <div className={styles.simular_section}>
+        <h2 className={styles.title}>{t("Похожие каналы")}</h2>
+        <ChannelsList advertisement={false} path="chats" data={similarChannels} />
+      </div>
+    </div>
   );
 }

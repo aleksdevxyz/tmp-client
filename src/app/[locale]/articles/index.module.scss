@@ -3,10 +3,11 @@
     margin: 0 auto;
     height: 100%;
     text-align: left;
-    padding-top: 134px;
+    padding-top: 94px;
 
 
     @media screen and (max-width: 480px) {
-        padding-top: 129px;
+        padding-top: 101px;
+        padding-inline: 12px;
     }
 }

@@ -14,8 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: t("keywords"),
     robots: {
       index: true,
-      follow: true
-    }
+      follow: true,
+    },
   };
 }
 
@@ -49,7 +49,7 @@ export default async function Home({
   const currentPage = Number(searchParams?.page) || 0;
 
   const ChannelsData = await getChannelsList(currentPage);
-  
+
   const t = await getTranslations("Main");
 
   return (
@@ -57,18 +57,18 @@ export default async function Home({
       <MainSection />
       <div className={styles.section}>
         <h2 className={styles.title}>{t("Телеграм каналы")}</h2>
-        <ChannelsList data={ChannelsData} />
+        <ChannelsList advertisement={true} data={ChannelsData} />
       </div>
       <div className={styles.section}>
         <h2 className={styles.title}>{t("Новые каналы")}</h2>
         <NewChannels />
       </div>
       <div className={styles.counter}>
-        <Pagination
-          data={ChannelsData}
-        />
+        <Pagination data={ChannelsData} />
       </div>
+      <div className={styles.section}>
         <RecList />
+      </div>
     </main>
   );
 }

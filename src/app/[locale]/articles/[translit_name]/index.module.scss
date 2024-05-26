@@ -1,6 +1,14 @@
-.section{
-    max-width: 1110px;
-    flex: 1;
-    margin: auto;
-    padding-top: 12px;
+.container{
+    padding-top: 94px;
+
+    @media screen and (max-width: 480px) {
+        padding-inline: 12px;
+    }
+    .section{
+        max-width: 1110px;
+        flex: 1;
+        margin: auto;
+        padding-top: 12px;
+    }
 }
+

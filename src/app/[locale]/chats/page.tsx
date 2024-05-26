@@ -53,7 +53,10 @@ export default async function HomePage({
       <Pagination
         data={data}
       />
-        <RecList />
+      <div className={styles.section}>
+      <RecList />
+
+      </div>
     </>
   );
 }

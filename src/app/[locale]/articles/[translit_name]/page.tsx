@@ -61,7 +61,7 @@ export default async function HomePage({
   const data: Article = await getArticle(translit_name);
 
   return (
-    <div style={{paddingTop: '94px'}}>
+    <div className={styles.container} style={{paddingTop: '94px'}}>
       <BreadCrumbs name={data.name} />
       <section className={styles.section}>
         <ArticleContent

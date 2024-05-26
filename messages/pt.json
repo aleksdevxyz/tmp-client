@@ -113,6 +113,11 @@
     "Другое": "Outro",
     "Отправить": "Enviar"
   },
+  "ShareModal": {
+    "Поделиться": "Compartilhar",
+    "Скопировать": "Copiar",
+    "Ссылка скопирована": "Link copiado"
+  },
   "AddForm": {
     "Заголовок формы": "Adicionar canal",
     "Подзаголовок формы": "Seu canal será adicionado ao banco de dados na próxima atualização",
