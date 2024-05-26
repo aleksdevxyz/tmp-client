@@ -33,6 +33,12 @@ export default async function Footer() {
       </div>
       <div className={styles.container_480}>
         <div className={styles.links_480}>
+        <Link
+            href="https://t.me/teleshtorm_com"
+            className={styles.footer__link_480}
+          >
+            {t("Ссылка телеграм")}
+          </Link>          
           <Link
             href={`/${locale}/articles/dmca`}
             className={styles.footer__link_480}

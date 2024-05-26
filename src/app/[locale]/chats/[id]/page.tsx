@@ -56,9 +56,6 @@ export default async function ChannelCard({
   return (
     <div className={styles.section}>
       <BreadCrumbs name={data.name} />
-      <div className={styles.advertisement_mb} >
-      <AdvertisementCard />
-      </div>
       <div className={styles.card_section}>
         <CardInner
           id={id}

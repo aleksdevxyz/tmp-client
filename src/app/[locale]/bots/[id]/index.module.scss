@@ -7,16 +7,6 @@
         padding-inline: 12px;
     }
 
-    .advertisement_mb{
-        display: none;
-
-        @media screen and (max-width: 480px) {
-            display: block;
-            margin-bottom: 15px;
-            margin-top: 12px;
-        }
-    }
-
     .card_section {
         margin: 0 auto;
         margin-top: 12px;
