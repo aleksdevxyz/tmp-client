@@ -5,6 +5,7 @@ import Image from "next/image";
 import ArticleInnerContent from "../ArticleInnerContent/ArticleInnerContent";
 import ArticleRecSidebar from "../ArticleRecSidebar/ArticleRecSidebar";
 import styles from "./index.module.scss";
+import ArticleShareButton from "../ArticleShareButton/ArticleShareButton";
 export default async function ArticleContent({
   created_at,
   category,
@@ -37,6 +38,8 @@ export default async function ArticleContent({
           <p className={styles.description}>{description}</p>
         </div>
         <ArticleInnerContent content={content} />
+        <ArticleShareButton/>
+
       </div>
       <ArticleRecSidebar translit_name={translit_name} />
     </div>

@@ -24,14 +24,14 @@ export default function SwiperRec({ data }: any) {
       breakpoints={{
         1920:{
           slidesPerView:3,
+          spaceBetween: 21,
           
         },
         480: {
           slidesPerView: 1,
-          spaceBetween: 0,
+          spaceBetween: 20,
         }
       }}
-      spaceBetween={21}
     >
       {data.map((item:any, index:any) => {
         return <SwiperSlide style={{maxWidth: '366px',marginBottom:'29px'}} key={index}>

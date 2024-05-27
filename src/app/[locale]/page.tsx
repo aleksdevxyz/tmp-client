@@ -65,8 +65,6 @@ export default async function Home({
       </div>
       <div className={styles.counter}>
         <Pagination data={ChannelsData} />
-      </div>
-      <div className={styles.section}>
         <RecList />
       </div>
     </main>

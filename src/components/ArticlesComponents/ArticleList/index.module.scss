@@ -1,7 +1,6 @@
 .section {
     max-width: 1110px;
     margin: auto;
-    padding-bottom: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px 21px;
@@ -15,7 +14,6 @@
         max-width: 356px;
         display: flex;
         flex-direction: column;
-        gap: 4px;
         transition: all .3s ease-in-out;
         text-decoration: none;
 
@@ -28,6 +26,7 @@
             border: 1px solid rgb(222, 226, 228);
             border-radius: 15px;
             transition: all .3s ease-in-out;
+            margin-bottom: 15px;
 
             @media screen and (max-width: 480px) {
                 width: 366px;
@@ -35,12 +34,10 @@
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
 
             .title {
                 margin: 0;
+                margin-bottom: 10px;
                 color: rgb(62, 67, 71);
                 font-family: 'Roboto-SemiBold';
                 font-size: 19px;
@@ -51,14 +48,14 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 white-space: normal;
             }
 
             .text {
                 margin: 0;
-                margin-top: auto;
+                margin-bottom: 15px;
                 color: rgb(120, 129, 137);
                 font-family: 'Roboto-Light';
                 font-size: 14px;
@@ -70,7 +67,7 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 white-space: normal;
             }

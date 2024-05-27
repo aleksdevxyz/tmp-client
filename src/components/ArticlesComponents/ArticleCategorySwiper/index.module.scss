@@ -100,6 +100,11 @@
             padding: 8.5px 0 8.5px 0;
             transition: background-color .3s ease-in-out;
 
+            &:hover{
+                background-color: rgb(230, 233, 240);
+                cursor: pointer;
+            }
+
             @media screen and (max-width: 480px) {
                 max-width: 131px;
                 margin-right: 10px;

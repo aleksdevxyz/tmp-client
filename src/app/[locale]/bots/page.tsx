@@ -43,12 +43,12 @@ export default async function HomePage({
   return (
     <>
       <h2 className={styles.title}>{t("Каталог телеграмм ботов")}</h2>
-      <div className={styles.section}>
+      <div style={{ marginBottom: "15px" }} className={styles.section}>
         <h3 className={styles.subtitle}>{t("Телеграм боты")}</h3>
         <ChannelsList path="bots" data={data} />
       </div>
       <Pagination data={data} />
-      <div className={styles.section}>
+      <div style={{ paddingInline: "12px" }}>
         <RecList />
       </div>
     </>
