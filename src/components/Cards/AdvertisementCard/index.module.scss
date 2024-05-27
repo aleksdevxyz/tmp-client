@@ -101,6 +101,7 @@
         grid-column: 1/1;
         padding: 15px;
         display: flex;
+        max-height: 140px;
     }
 
     .advertisement {
@@ -129,6 +130,7 @@
 
         @media screen and (max-width: 480px) {
             order: 2;
+            margin-bottom: 7px;
         }
     }
 
@@ -137,6 +139,11 @@
         flex-direction: column;
         margin-left: 15px;
         gap: 5px;
+
+        @media screen and (max-width: 480px) {
+            margin-left: 0;
+            margin-bottom: 7px;
+        }
 
         .title {
             margin: 0;

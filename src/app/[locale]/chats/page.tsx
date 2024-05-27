@@ -3,7 +3,6 @@ import styles from "./index.module.scss";
 
 import Pagination from "@/components/Pagination/Pagination";
 import RecList from "@/components/RecListMain/RecListMain";
-import { getTotalPages } from "@/helpers/getTotalPages";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -48,7 +47,7 @@ export default async function HomePage({
       <h2 className={styles.title}>{t('Каталог телеграмм чатов')}</h2>
       <div style={{marginBottom:'15px'}} className={styles.section}>
         <h3 className={styles.subtitle}>{t('Телеграм чаты')}</h3>
-        <ChannelsList path="chats" data={data} />
+        <ChannelsList  path="chats" data={data} />
       </div>
       <Pagination
         data={data}

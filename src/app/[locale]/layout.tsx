@@ -54,7 +54,6 @@ export default async function RootLayout({
             <BurgerMenu/>
             {children}
             <Footer />
-            
           </NextIntlClientProvider>
         </main>
       </body>

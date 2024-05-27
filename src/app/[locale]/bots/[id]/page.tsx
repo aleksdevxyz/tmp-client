@@ -52,6 +52,7 @@ export default async function BotsCard({
   const data = await getBots(id);
   const similarChannels = await getSimilarBots(id);
   const t = await getTranslations("Card");
+  
 
   return (
     <div className={styles.section}>

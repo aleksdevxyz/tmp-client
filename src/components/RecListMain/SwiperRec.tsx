@@ -29,13 +29,13 @@ export default function SwiperRec({ data }: any) {
         },
         480: {
           slidesPerView: 1,
-          spaceBetween: 20,
         }
       }}
+      loop={true}
     >
       {data.map((item:any, index:any) => {
-        return <SwiperSlide style={{maxWidth: '366px',marginBottom:'29px'}} key={index}>
-          <Link href={`/${locale}/articles/${item.translit_name}`} key={index} className={styles.slide}>
+        return <SwiperSlide className={styles.slide} key={index}>
+          <Link style={{width: '100%', textDecoration: 'none'}} href={`/${locale}/articles/${item.translit_name}`} key={index} >
             <Image
               alt={item.name}
               width={366}

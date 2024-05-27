@@ -7,7 +7,7 @@ export default async function ChannelsList({data, path, advertisement}: {data:an
   
   return ( 
     <section className={styles.list}>
-      {advertisement && <AdvertisementCard/>}
+      {advertisement && <AdvertisementCard />}
       {data?.map((item: any) => {
         return (
           <CardWrapper

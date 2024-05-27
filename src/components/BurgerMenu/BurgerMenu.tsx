@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./index.module.scss";
 import Image from "next/image";
 import SearchInput from "../SearchInput/SearchInput";
@@ -12,20 +12,41 @@ import { useLocale, useTranslations } from "next-intl";
 export default function BurgerMenu() {
   const [openMenu, setOpenMenu] = React.useState(false);
   const [openSearch, setOpenSearch] = React.useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("BurgerMenu");
   const locale = useLocale();
+
+  useEffect(() => {
+    if (openMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [openMenu]);
+
+  useEffect(() => {    
+    if(!openMenu) return;
+    const handleClick = (event: MouseEvent) => {
+      if(!menuRef.current?.contains(event.target as Node)) {
+        setOpenMenu(false);
+    }
+  }
+    document.addEventListener("mousedown", handleClick);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    }
+  },[openMenu,setOpenMenu])
 
   return (
     <nav className={styles.menu}>
       <div
-        onClick={() => setOpenMenu(false)}
         className={classNames(styles.overlay, !openMenu && styles.hidden)}
       ></div>
       <div
-        onClick={() => setOpenMenu(!openMenu)}
+        ref={menuRef}
         className={classNames(styles.burger_menu, !openMenu && styles.hidden)}
       >
-        <Link href={"/"} className={styles.link}>
+        <Link href={"/"} onClick={() => setOpenMenu(false)} className={styles.link}>
           {t("Каталог")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -34,7 +55,7 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={`/${locale}/chats`} className={styles.link}>
+        <Link href={`/${locale}/chats`} onClick={() => setOpenMenu(false)} className={styles.link}>
           {t("Чаты")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -43,7 +64,7 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={`/${locale}/bots`} className={styles.link}>
+        <Link href={`/${locale}/bots`} onClick={() => setOpenMenu(false)} className={styles.link}>
           {t("Боты")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -52,7 +73,7 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={`/${locale}/articles`} className={styles.link}>
+        <Link href={`/${locale}/articles`} onClick={() => setOpenMenu(false)} className={styles.link}>
           {t("Статьи")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -61,7 +82,7 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={"https://t.me/teleshtorm_bot"} className={styles.link}>
+        <Link href={"https://t.me/teleshtorm_bot"} onClick={() => setOpenMenu(false)} className={styles.link}>
           {t("Поддержка")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -70,7 +91,7 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={"https://t.me/teleshtorm_com"} className={styles.link}>
+        <Link href={"https://t.me/teleshtorm_com"} onClick={() => setOpenMenu(false)} className={styles.link}>
           {t("Наш канал")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -80,7 +101,7 @@ export default function BurgerMenu() {
           />
         </Link>
       </div>
-      <div className={classNames(styles.left, openSearch && styles.hidden)}>
+      <div  className={classNames(styles.left, openSearch && styles.hidden)}>
         <div
           onClick={() => setOpenMenu(!openMenu)}
           className={classNames(styles.burger, openMenu && styles.open)}

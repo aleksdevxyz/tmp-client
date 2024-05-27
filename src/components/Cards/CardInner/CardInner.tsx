@@ -8,7 +8,6 @@ import hiddenImg from "../../../../public/+18.png";
 import { useLocale, useTranslations } from "next-intl";
 import Modal from "../Modal/Modal";
 import { usePathname } from "next/navigation";
-import AdvertisementCard from "../AdvertisementCard/AdvertisementCard";
 import ShareModal from "../ShareModal/ShareModal";
 export interface Props {
   name: string;

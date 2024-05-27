@@ -52,6 +52,7 @@ export default async function ChannelCard({
   const data = await getChat(id);
   const similarChannels = await getSimilarChats(id);
   const t = await getTranslations("Card");
+  
 
   return (
     <div className={styles.section}>

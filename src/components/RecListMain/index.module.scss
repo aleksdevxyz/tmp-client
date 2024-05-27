@@ -1,11 +1,12 @@
-.section {
-    max-width: 1110px;
-    display: block;
-    margin: 0 auto;
-    padding-inline: 0;
+
 
     .container {
-        width: 100%;
+        width: 1110px;
+        margin: 0 auto;
+
+        @media screen and (max-width: 480px) {
+                max-width: 100%;
+        }
 
         .slide {
             display: block;
@@ -14,6 +15,10 @@
             text-align: left;
             text-decoration: none;
             margin-bottom: 29px;
+
+            @media screen and (max-width: 480px) {
+                max-width: 100%;
+            }
 
             &:hover {
                 cursor: pointer;
@@ -28,6 +33,10 @@
                 border-radius: 14px 10px 10px 14px;
                 height: 192px;
                 margin-bottom: 15px;
+
+                @media screen and (max-width: 480px) {
+                    width: 100%;
+                }
             }
 
             .text_container {
@@ -82,9 +91,3 @@
             font-weight: 700;
         }
     }
-
-
-
-
-
-}
