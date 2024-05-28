@@ -40,6 +40,23 @@ export default function ShareModal({
     };
   }, [setOpen, open]);
 
+  useEffect(() => {
+    let touchStartY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => (touchStartY = e.changedTouches[0].screenY);
+    const handleTouchEnd = (e: TouchEvent) => {
+      const touchEndY = e.changedTouches[0].screenY;
+      if (touchEndY - touchStartY > 10) setOpen(false); 
+
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }}, [setOpen, open]);
+
   const copyToClipboard = () => {
     if (inputRef.current) {
       navigator.clipboard
