@@ -17,7 +17,7 @@
     }
 }
 
-.counter{
+.counter {
     max-width: 1140px;
     margin: auto;
 
@@ -27,3 +27,43 @@
 }
 
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: auto;
+    align-items: center;
+
+    .title_not_found {
+        margin: 0;
+        color: rgb(22, 27, 34);
+        font-family: 'Roboto-Bold';
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28px;
+        text-align: left;
+    }
+
+    .numbers {
+        margin: 0;
+        color: rgb(22, 27, 34);
+        font-family: 'Roboto-Bold';
+        font-size: 199px;
+        font-weight: 700;
+        line-height: 233px;
+        text-align: left;
+    }
+
+    .link {
+        border-radius: 7px;
+        text-decoration: none;
+        padding: 14px 44px;
+        background-color: rgb(22, 27, 34);
+        color: rgb(255, 255, 255);
+        font-family: 'Roboto-Bold';
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16px;
+        text-align: left;
+    }
+}

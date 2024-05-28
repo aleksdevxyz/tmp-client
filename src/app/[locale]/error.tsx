@@ -1,10 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
 import styles from './page.module.scss'
 
-type Props = {}
 
-export default function NotFound({}: Props) {
+export default function ErrorBoundary() {
   return (
     <div className={styles.container}>
       <h2 className={styles.title_not_found}>Страница не найдена</h2>
