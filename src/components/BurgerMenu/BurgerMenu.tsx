@@ -24,18 +24,18 @@ export default function BurgerMenu() {
     }
   }, [openMenu]);
 
-  useEffect(() => {    
-    if(!openMenu) return;
+  useEffect(() => {
+    if (!openMenu) return;
     const handleClick = (event: MouseEvent) => {
-      if(!menuRef.current?.contains(event.target as Node)) {
+      if (!menuRef.current?.contains(event.target as Node)) {
         setOpenMenu(false);
-    }
-  }
+      }
+    };
     document.addEventListener("mousedown", handleClick);
     return () => {
       document.removeEventListener("mousedown", handleClick);
-    }
-  },[openMenu,setOpenMenu])
+    };
+  }, [openMenu, setOpenMenu]);
 
   return (
     <nav className={styles.menu}>
@@ -46,7 +46,11 @@ export default function BurgerMenu() {
         ref={menuRef}
         className={classNames(styles.burger_menu, !openMenu && styles.hidden)}
       >
-        <Link href={"/"} onClick={() => setOpenMenu(false)} className={styles.link}>
+        <Link
+          href={"/"}
+          onClick={() => setOpenMenu(false)}
+          className={styles.link}
+        >
           {t("Каталог")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -55,7 +59,11 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={`/${locale}/chats`} onClick={() => setOpenMenu(false)} className={styles.link}>
+        <Link
+          href={`/${locale}/chats`}
+          onClick={() => setOpenMenu(false)}
+          className={styles.link}
+        >
           {t("Чаты")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -64,7 +72,11 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={`/${locale}/bots`} onClick={() => setOpenMenu(false)} className={styles.link}>
+        <Link
+          href={`/${locale}/bots`}
+          onClick={() => setOpenMenu(false)}
+          className={styles.link}
+        >
           {t("Боты")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -73,7 +85,11 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={`/${locale}/articles`} onClick={() => setOpenMenu(false)} className={styles.link}>
+        <Link
+          href={`/${locale}/articles`}
+          onClick={() => setOpenMenu(false)}
+          className={styles.link}
+        >
           {t("Статьи")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -82,7 +98,11 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={"https://t.me/teleshtorm_bot"} onClick={() => setOpenMenu(false)} className={styles.link}>
+        <Link
+          href={"https://t.me/teleshtorm_bot"}
+          onClick={() => setOpenMenu(false)}
+          className={styles.link}
+        >
           {t("Поддержка")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -91,7 +111,11 @@ export default function BurgerMenu() {
             alt={"forward"}
           />
         </Link>
-        <Link href={"https://t.me/teleshtorm_com"} onClick={() => setOpenMenu(false)} className={styles.link}>
+        <Link
+          href={"https://t.me/teleshtorm_com"}
+          onClick={() => setOpenMenu(false)}
+          className={styles.link}
+        >
           {t("Наш канал")}
           <Image
             src={"/BurgerIcon.svg"}
@@ -101,14 +125,16 @@ export default function BurgerMenu() {
           />
         </Link>
       </div>
-      <div  className={classNames(styles.left, openSearch && styles.hidden)}>
+      <div className={classNames(styles.left, openSearch && styles.hidden)}>
         <div
           onClick={() => setOpenMenu(!openMenu)}
           className={classNames(styles.burger, openMenu && styles.open)}
         >
           <span></span>
         </div>
-        <Image alt="logo" src={"/Logo.svg"} width={50} height={40} />
+        <Link href={"/"}>
+          <Image alt="logo" src={"/Logo.svg"} width={50} height={50} />
+        </Link>
       </div>
       <div className={styles.right}>
         <Image

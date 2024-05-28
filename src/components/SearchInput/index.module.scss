@@ -113,6 +113,10 @@
             max-height: 385px;
             max-width: 325px;
 
+            @media screen and (max-width: 480px) {
+                max-height: 290px;
+            }
+
             &::-webkit-scrollbar {
                 width: 5px;
             }

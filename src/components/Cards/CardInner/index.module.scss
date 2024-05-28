@@ -188,6 +188,11 @@
             padding: 3px;
             border-radius: 214px;
             border: 1px solid #DEE2E4;
+
+            @media screen and (max-width: 480px) {
+                width: 120px;
+                height: 120px;
+            }
         }
 
         .title {

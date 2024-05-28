@@ -5,6 +5,10 @@
     align-items: center;
     padding-bottom: 25px;
 
+    @media screen and (max-width: 480px) {
+        padding-inline: 12px;
+    }
+
 
 
     .title {

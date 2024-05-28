@@ -13,9 +13,6 @@
     z-index: 24;
     transition: all 0.3s ease-in-out;
 
-    
-
-
     &.close {
         visibility: hidden;
         opacity: 0;
@@ -35,7 +32,7 @@
         align-items: flex-start;
 
         @media screen and (max-width: 480px) {
-            max-width: 366px;
+            width: 390px;
             padding: 25px 14px;
 
         }
@@ -154,8 +151,8 @@
             background-color: rgb(240, 240, 240);
 
             @media screen and (max-width: 480px) {
-                width: 338px;
-                max-width: 338px;
+                width: 360px;
+                max-width: 360px;
                 min-width: 338px;
             }
 

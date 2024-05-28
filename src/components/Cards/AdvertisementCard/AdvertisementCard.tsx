@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./index.module.scss";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import Markdown from "markdown-to-jsx";
 
 export interface advertisement {
   title: string;
@@ -26,7 +27,9 @@ export default async function AdvertisementCard() {
   const data = await GetAdvertisement();
   const randomAd = getRandomAdvertisement(data);
   const t = await getTranslations("Card");
-
+  
+  const text = randomAd.content.split('\n');
+  
   return (
     <>
       <div className={styles.section_mobile}>
@@ -39,7 +42,11 @@ export default async function AdvertisementCard() {
         />
         <div className={styles.text_container}>
           <h3 className={styles.title}>{randomAd.title}</h3>
-          <p className={styles.subtitle}>{randomAd.content}</p>
+          <div className={styles.subtitle}>
+         {text.map((text, index) => (
+            <p key={index} className={styles.formatted_text}>{text}</p>
+          ))}
+          </div>
           <button className={styles.button}>
             <Link className={styles.button_link} href={`${randomAd.link}`}>
               {t("Открыть канал")}

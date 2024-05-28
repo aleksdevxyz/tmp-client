@@ -90,8 +90,8 @@
         padding: 6px 12px;
 
         @media screen and (max-width: 480px) {
-        padding: 6px;
-    }
+            padding: 6px;
+        }
 
         &:hover {
             background-color: #DDD;
@@ -111,6 +111,22 @@
 
         @media screen and (max-width: 480px) {
             display: none;
+        }
+    }
+
+    .title_menu_mobile {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        color: #788189;
+        font-family: 'Roboto-Light';
+        font-size: 16px;
+        text-decoration: none;
+        margin: 0;
+        text-decoration: none;
+
+        @media screen and (max-width: 480px) {
+            display: flex;
         }
     }
 
