@@ -31,11 +31,37 @@ export default function BurgerMenu() {
         setOpenMenu(false);
       }
     };
+
     document.addEventListener("mousedown", handleClick);
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
   }, [openMenu, setOpenMenu]);
+
+  useEffect(() => {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    document.addEventListener("touchstart", (e: TouchEvent) => {
+      touchStartX = e.changedTouches[0].pageX;
+      touchStartY = e.changedTouches[0].pageY;
+    });
+    document.addEventListener("touchend", (e: TouchEvent) => {
+      touchEndX = e.changedTouches[0].pageX;
+      touchEndY = e.changedTouches[0].pageY;
+      console.log(Math.abs(touchEndY - touchStartY));
+
+      if (
+        Math.abs(touchEndY - touchStartY) < 30 &&
+        touchEndY - touchStartY < 40 &&
+        touchEndX > touchStartX
+      )
+        setOpenMenu(true);
+
+      if (touchStartX>touchEndX) setOpenMenu(false);
+    });
+  }, []);
 
   return (
     <nav className={styles.menu}>
