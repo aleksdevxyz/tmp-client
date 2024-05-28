@@ -44,13 +44,11 @@ export default function CardInner({
 
   return (
     <>
-      <ShareModal open={shareModal} setOpen={setShareModal}/>
+      <ShareModal open={shareModal} setOpen={setShareModal} />
       <Modal open={openModal} setOpen={setOpenModal} />
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.social_container}>
-            <button onClick={() => setShareModal(true)} className={styles.share_button} />
-
             <Link
               href={`https://vkontakte.ru/share.php?url=${pathName}`}
               target="_blank"
@@ -119,6 +117,15 @@ export default function CardInner({
                 </div>
                 <hr className={styles.line} />
                 <p className={styles.channel_description}>{description}</p>
+                <div className={styles.share_links_mb}>
+                  <Link href={link_tg} className={styles.button_mb}>
+                    {t("Открыть канал")}
+                  </Link>
+                  <button
+                    onClick={() => setShareModal(true)}
+                    className={styles.share_button}
+                  />
+                </div>
                 <Link href={link_tg} className={styles.button}>
                   {t("Открыть канал")}
                 </Link>
