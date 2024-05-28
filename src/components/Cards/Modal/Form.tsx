@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./index.module.scss";
 import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
@@ -35,6 +35,7 @@ export default function Form({
     setIsLoading(false);
   };
 
+  
   return (
     <form
       onClick={(e) => e.stopPropagation()}

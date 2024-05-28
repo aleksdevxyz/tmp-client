@@ -269,6 +269,10 @@
                         position: absolute;
                         top: -25%;
                         right: -13.5px;
+
+                        @media screen and (max-width: 480px) {  
+                            content: '';
+                        }
                     }
                 }
 
@@ -283,7 +287,6 @@
                     margin: 0;
 
                     @media screen and (max-width: 480px) {
-                        font-weight: 700;
                         font-family: 'Inter-Bold';
                         font-size: 14px;
 
@@ -300,6 +303,10 @@
                         position: absolute;
                         top: -25%;
                         right: -11.5px;
+
+                        @media screen and (max-width: 480px) {
+                            content: '';
+                        }
                     }
                 }
 

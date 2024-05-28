@@ -32,9 +32,8 @@
         align-items: flex-start;
 
         @media screen and (max-width: 480px) {
-            width: 390px;
+            max-width: 390px;
             padding: 25px 14px;
-
         }
         
         .text_container {
@@ -49,7 +48,6 @@
                 font-size: 14px;
                 font-weight: 300;
                 line-height: 16px;
-                letter-spacing: 0%;
                 text-align: center;
                 margin: 0;
                 margin-bottom: 12px;
@@ -117,6 +115,9 @@
                     text-align: center;
                     cursor: pointer;
 
+                    @media screen and (max-width: 480px) {
+                        font-size: 10px;
+                    }
                 }
             }
         }
@@ -127,7 +128,6 @@
             font-size: 14px;
             font-weight: 300;
             line-height: 16px;
-            letter-spacing: 0%;
             text-align: center;
             margin: 0;
             margin-top: 12px;
@@ -151,9 +151,9 @@
             background-color: rgb(240, 240, 240);
 
             @media screen and (max-width: 480px) {
-                width: 360px;
-                max-width: 360px;
-                min-width: 338px;
+                width: 336px;
+                max-width: 336px;
+                min-width: 336px;
             }
 
             &:focus {
