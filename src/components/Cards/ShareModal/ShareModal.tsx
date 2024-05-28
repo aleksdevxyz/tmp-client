@@ -33,29 +33,23 @@ export default function ShareModal({
         setOpen(false);
       }
     };
-
-    document.addEventListener("click", handleClick);
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-  }, [setOpen, open]);
-
-  useEffect(() => {
     let touchStartY = 0;
 
     const handleTouchStart = (e: TouchEvent) => (touchStartY = e.changedTouches[0].screenY);
     const handleTouchEnd = (e: TouchEvent) => {
       const touchEndY = e.changedTouches[0].screenY;
-      if (touchEndY - touchStartY > 10) setOpen(false); 
-
+      if (touchEndY > touchStartY) setOpen(false); 
+    }
     document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleTouchEnd);
 
+    document.addEventListener("click", handleClick);
     return () => {
+      document.removeEventListener("click", handleClick);
       document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
     };
-  }}, [setOpen, open]);
+  }, [setOpen, open]);
 
   const copyToClipboard = () => {
     if (inputRef.current) {
