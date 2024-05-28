@@ -40,6 +40,8 @@
         padding: 3px;
         transition: all .3s;
         object-fit: cover;
+        width: 100px;
+        height: 100px;
 
         @media screen and (max-width: 480px) {
             order: 2;
@@ -58,7 +60,6 @@
             font-family: 'Roboto-Bold';
             font-size: 16px;
             font-weight: 700;
-            line-height: 24px;
             text-align: left;
             transition: all .3s;
             white-space: nowrap;
@@ -69,12 +70,16 @@
         .subtitle {
             max-width: 300px;
             margin: 0;
-            color: rgb(120, 129, 137);
-            font-family: 'Inter-Normal';
-            font-size: 14px;
-            font-weight: 300;
-            line-height: 17px;
-            text-align: left;
+
+            .formatted_text {
+                margin: 0;
+                color: rgb(120, 129, 137);
+                font-family: 'Inter-Normal';
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 1;
+                text-align: left;
+            }
 
             @media screen and (max-width: 480px) {
                 font-size: 10px;

@@ -64,8 +64,10 @@ export default async function AdvertisementCard() {
           alt="Advertisement"
         />
         <div className={styles.text_container}>
-          <h3 className={styles.title}>{randomAd.title}</h3>
-          <p className={styles.subtitle}>{randomAd.content}</p>
+          <p className={styles.title}>{randomAd.title}</p>
+          <div className={styles.subtitle}>{text.map((text, index) => (
+            <p key={index} className={styles.formatted_text}>{text}</p>
+          ))}</div>
         </div>
         <p className={styles.advertisement}>#Реклама</p>
       </Link>

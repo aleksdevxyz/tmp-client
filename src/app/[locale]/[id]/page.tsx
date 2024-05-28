@@ -5,6 +5,8 @@ import AdvertisementCard from "@/components/Cards/AdvertisementCard/Advertisemen
 import CardInner from "@/components/Cards/CardInner/CardInner";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import { getTranslations } from "next-intl/server";
+import { getAdvertisement } from "@/app/api/GetAdvertisement";
+import AdvertisementSwiper from "@/components/AdvertisementSwiper/AdvertisementSwiper";
 
 type Props = {
   params: { id: string }
@@ -54,10 +56,13 @@ export default async function ChannelCard({ params: { id } }:{
   const data = await getCard(id)
   const similarChannels = await getSimilarChannels(id)
   const t = await getTranslations("Card")
+  const advertisement = await getAdvertisement()
 
   return <div className={styles.section}>
     <BreadCrumbs name={data.name}/>
+    
     <div className={styles.card_section}>
+      <AdvertisementSwiper data={advertisement}/>
       <CardInner hidden={data.hidden} category={data.category} subscribers={data.subscribers} description={data.description} link_tg={data.link_tg} name={data.name} id={id} image={data.image}/>
     </div>
     <div className={styles.advertisement_section}>

@@ -1,0 +1,124 @@
+
+    .slide {
+        position: relative;
+        display: none;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 15px;
+        border: 1px solid rgb(222, 226, 228);
+        border-radius: 10px;
+        background: rgb(255, 255, 255);
+        text-decoration: none;
+
+        .advertisement {
+            position: absolute;
+            margin: 0;
+            right: 15px;
+            bottom: 15px;
+            color: rgb(120, 129, 137);
+            font-family: 'Roboto-Light';
+            font-size: 10px;
+            font-weight: 300;
+            text-align: left;
+    
+            @media screen and (max-width: 480px) {
+                bottom: 5px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            padding: 15px;
+            display: flex;
+            max-height: 140px;
+            justify-content: space-between;
+        }
+
+        .image {
+            border-radius: 89px;
+            border: 1px solid #DEE2E4;
+            padding: 3px;
+            transition: all .3s;
+            object-fit: cover;
+
+            @media screen and (max-width: 480px) {
+                order: 2;
+                margin-bottom: 7px;
+            }
+        }
+
+        .text_container {
+
+            .title {
+                margin: 0;
+                color: rgb(103, 113, 121);
+                font-family: 'Roboto-Bold';
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 24px;
+                text-align: left;
+                transition: all .3s;
+                white-space: nowrap;
+                overflow: hidden;
+                max-width: 212px;
+
+                @media screen and (max-width: 480px) {
+                    margin: 0;
+                    margin-bottom: 8px;
+                    font-size: 14px;
+                }
+            }
+
+            .subtitle {
+                max-width: 190px;
+                margin: 0;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                margin: 0;
+    
+    
+                .formatted_text {
+                    margin: 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100%;
+                    color: rgb(120, 129, 137);
+                    font-family: 'Inter-Normal';
+                    font-size: 10px;
+                    font-weight: 300;
+                    line-height: 1;
+                    text-align: left;
+                }
+    
+                @media screen and (max-width: 480px) {
+                    margin-bottom: 10px;
+                }
+            }
+
+            .button {
+                margin: 0;
+                padding: 8px 15px;
+                border-radius: 5px;
+                background: #161B22;
+                max-width: 106px;
+                border: none;
+                display: flex;
+                align-items: center;
+    
+                @media screen and (max-width: 480px) {
+                    padding: 11px 18px;
+                    height: 22px;
+                }
+    
+                .button_link {
+                    text-decoration: none;
+                    color: rgb(255, 255, 255);
+                    font-family: 'Roboto-Light';
+                    font-size: 10px;
+                    font-weight: 300;
+                    text-align: center;
+                }
+            }
+        }
+
+    }
