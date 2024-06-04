@@ -12,9 +12,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const translitName = params.translit_name;
   const categoryList = await getCategory();
-  const matchingCategory = categoryList.find(
-    (item) => item.translit_name === translitName
-  );
+  const matchingCategory = categoryList.find((item) => item.translit_name === translitName);
   const name = matchingCategory ? matchingCategory.name : "";
 
   const t = await getTranslations("IndexCategory");
@@ -32,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 async function getAcuurateCategory(translit_name: string) {
   const res = await fetch(
-    `${process.env.BASE_URL}/categories/channels?page=0&limit=31&category_translit=${translit_name}`
+    `${process.env.BASE_URL}/categories/channels?page=0&limit=31&category_translit=${translit_name}`,
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -48,20 +46,16 @@ export default async function Categories({
   const translitName = params.translit_name;
   const AccurateCategory = await getAcuurateCategory(translitName);
   const categoryList = await getCategory();
-  const matchingCategory = categoryList.find(
-    (item) => item.translit_name === translitName
-  );
+  const matchingCategory = categoryList.find((item) => item.translit_name === translitName);
   const name = matchingCategory ? matchingCategory.name : "";
   const t = await getTranslations("SearchPage");
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.title}>
-        {`${t('Каталог телеграм каналов в категории')} : ${name}`}
-      </h2>
+      <h2 className={styles.title}>{`${t("Каталог телеграм каналов в категории")} : ${name}`}</h2>
       <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>
-        <h3 className={styles.subtitle}>{t('Телеграмм каналы')}</h3>
+        <h3 className={styles.subtitle}>{t("Телеграм каналы")}</h3>
         <ChannelsList path="channel" data={AccurateCategory} />
       </div>
     </div>

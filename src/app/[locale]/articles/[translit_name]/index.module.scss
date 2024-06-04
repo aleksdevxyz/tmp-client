@@ -5,10 +5,14 @@
         padding-inline: 12px;
     }
     .section{
-        max-width: 1110px;
+        max-width: 1140px;
         flex: 1;
         margin: auto;
-        padding-top: 12px;
+        padding: 16px 15px 0 15px;
+
+        @media screen and (max-width: 480px) {
+            padding-inline: 0;
+        }
     }
 }
 

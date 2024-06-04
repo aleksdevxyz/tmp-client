@@ -1,4 +1,8 @@
-
+    .swiper {
+        @media screen and (max-width: 576px) {
+            margin-bottom: 15px;
+        }                                  
+    }
     .slide {
         position: relative;
         display: none;
@@ -21,12 +25,12 @@
             font-weight: 300;
             text-align: left;
     
-            @media screen and (max-width: 480px) {
+            @media screen and (max-width: 576px) {
                 bottom: 5px;
             }
         }
 
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 576px) {
             padding: 15px;
             display: flex;
             max-height: 140px;
@@ -40,7 +44,7 @@
             transition: all .3s;
             object-fit: cover;
 
-            @media screen and (max-width: 480px) {
+            @media screen and (max-width: 576px) {
                 order: 2;
                 margin-bottom: 7px;
             }
@@ -61,7 +65,7 @@
                 overflow: hidden;
                 max-width: 212px;
 
-                @media screen and (max-width: 480px) {
+                @media screen and (max-width: 576px) {
                     margin: 0;
                     margin-bottom: 8px;
                     font-size: 14px;
@@ -90,7 +94,7 @@
                     text-align: left;
                 }
     
-                @media screen and (max-width: 480px) {
+                @media screen and (max-width: 576px) {
                     margin-bottom: 10px;
                 }
             }
@@ -105,7 +109,7 @@
                 display: flex;
                 align-items: center;
     
-                @media screen and (max-width: 480px) {
+                @media screen and (max-width: 576px) {
                     padding: 11px 18px;
                     height: 22px;
                 }
@@ -117,6 +121,7 @@
                     font-size: 10px;
                     font-weight: 300;
                     text-align: center;
+                    white-space: nowrap;
                 }
             }
         }

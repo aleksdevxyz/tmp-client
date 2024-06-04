@@ -16,6 +16,10 @@
     padding-top: 21.5px;
     padding-bottom: 21.5px;
 
+    @include index.mobile {
+        padding-inline: 10px;
+    }
+
     .burger_menu {
         display: flex;
         flex-direction: column;
@@ -30,17 +34,6 @@
         transition: all .3s ease-in-out;
         width: 234px;
         height: 100vh;
-
-        &::before {
-            position: absolute;
-            width: 199px;
-            height: 159px;
-            content: '';
-            background-image: url('/logo-mob.svg');
-            bottom: 35px;
-            left: -40px;
-        }
-
 
         .link {
             display: flex;
@@ -82,23 +75,31 @@
         }
     }
 
-    @media screen and (min-width: 481px) {
+    @media screen and (min-width: 992px) {
         display: none;
     }
 
     .left {
         display: flex;
         align-items: center;
-        visibility: visible;
-        opacity: 1;
+        visibility: visible !important;
+        opacity: 1 !important;
         gap: 10px;
         transition: all .3s ease-in-out;
         max-height: 50px;
 
-        &.hidden {
-            visibility: hidden;
-            opacity: 0;
-            transition: all .3s ease-in-out;
+        @media screen and (max-width: 480px) {
+            &.hidden {
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+        }
+
+        a {
+            img {
+                height: 45px;
+                width: 45px;
+            }
         }
     }
 
@@ -121,17 +122,24 @@
         .search {
             position: absolute;
             top: 0;
-            right: 38px;
+            right: 142px;
             visibility: visible;
             opacity: 1;
             transition: all .3s ease-in-out;
             width: 328px;
 
+            @include index.small-tablet {
+                right: 38px;
+            }
+
+            @media screen and (max-width: 480px) {
+                width: 420px;
+            }
+
             &.hidden {
                 visibility: hidden;
                 opacity: 0;
                 top: -100px;
-                transition: all .3s ease-in-out;
             }
         }
 

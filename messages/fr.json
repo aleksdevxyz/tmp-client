@@ -58,7 +58,7 @@
   },
   "SearchPage": {
     "Каталог телеграм каналов в категории": "Catalogue des chaînes Telegram dans la catégorie",
-    "Телеграмм каналы": "Chaînes Telegram"
+    "Телеграм каналы": "Chaînes Telegram"
   },
   "Article": {
     "Рекомендуем статьи": "Articles recommandés",
@@ -76,7 +76,7 @@
   },
   "Main": {
     "Телеграм каналы": "Chaînes Telegram",
-    "Каталог телеграмм каналов": "Catalogue des chaînes Telegram",
+    "Каталог телеграм каналов": "Catalogue des chaînes Telegram",
     "Все категории": "Toutes les catégories",
     "Новые каналы": "Nouvelles chaînes",
     "Рекомендуем почитать": "Nous recommandons de lire",
@@ -84,11 +84,11 @@
     "Добавить канал": "Ajouter une chaîne"
   },
   "Chats": {
-    "Каталог телеграмм чатов": "Catalogue des chats Telegram",
+    "Каталог телеграм чатов": "Catalogue des chats Telegram",
     "Телеграм чаты": "Chats Telegram"
   },
   "Bots": {
-    "Каталог телеграмм ботов": "Catalogue des bots Telegram",
+    "Каталог телеграм ботов": "Catalogue des bots Telegram",
     "Телеграм боты": "Bots Telegram"
   },
   "Card": {
@@ -117,8 +117,7 @@
     "Поделиться": "Partager",
     "Скопировать": "Copier",
     "Ссылка скопирована": "Lien copié"
-  }
-  ,
+  },
   "AddForm": {
     "Заголовок формы": "Ajouter une chaîne",
     "Подзаголовок формы": "Votre chaîne sera ajoutée à la base de données lors de la prochaine mise à jour",

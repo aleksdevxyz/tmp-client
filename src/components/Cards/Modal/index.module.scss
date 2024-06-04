@@ -31,8 +31,9 @@
         flex-direction: column;
         align-items: flex-start;
 
-        @media screen and (max-width: 480px) {
-            max-width: 390px;
+        @media screen and (max-width: 520px) {
+            top: 15%;
+            width: 92%;
             padding: 25px 14px;
         }
         
@@ -115,7 +116,7 @@
                     text-align: center;
                     cursor: pointer;
 
-                    @media screen and (max-width: 480px) {
+                    @media screen and (max-width: 520px) {
                         font-size: 10px;
                     }
                 }
@@ -138,7 +139,7 @@
             border-radius: 10px;
             width: 450px;
             max-width: 450px;
-            min-width: 450px;
+            resize: vertical;
             height: 101px;
             padding: 12px;
             color: rgb(103, 113, 121);
@@ -150,10 +151,10 @@
             letter-spacing: 0%;
             background-color: rgb(240, 240, 240);
 
-            @media screen and (max-width: 480px) {
-                width: 336px;
-                max-width: 336px;
-                min-width: 336px;
+            @media screen and (max-width: 520px) {
+                width: 100%;
+                max-width: none;
+                min-width: max-content;
             }
 
             &:focus {

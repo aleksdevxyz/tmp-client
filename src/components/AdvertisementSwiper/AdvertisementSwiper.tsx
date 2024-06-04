@@ -19,7 +19,7 @@ export default function AdvertisementSwiper({
 
   return (
     <Swiper
-    style={{marginBottom: '12px'}}
+      className={styles.swiper}
       onSwiper={(swiper) =>
         ref.current ? (ref.current.swiper = swiper) : null
       }

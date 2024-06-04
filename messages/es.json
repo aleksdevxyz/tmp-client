@@ -58,7 +58,7 @@
   },
   "SearchPage": {
     "Каталог телеграм каналов в категории": "Catálogo de canales de Telegram en la categoría",
-    "Телеграмм каналы": "Canales de Telegram"
+    "Телеграм каналы": "Canales de Telegram"
   },
   "Article": {
     "Рекомендуем статьи": "Artículos recomendados",
@@ -76,7 +76,7 @@
   },
   "Main": {
     "Телеграм каналы": "Canales de Telegram",
-    "Каталог телеграмм каналов": "Catálogo de canales de Telegram",
+    "Каталог телеграм каналов": "Catálogo de canales de Telegram",
     "Все категории": "Todas las categorías",
     "Новые каналы": "Nuevos canales",
     "Рекомендуем почитать": "Recomendamos leer",
@@ -84,11 +84,11 @@
     "Добавить канал": "Agregar canal"
   },
   "Chats": {
-    "Каталог телеграмм чатов": "Catálogo de chats de Telegram",
+    "Каталог телеграм чатов": "Catálogo de chats de Telegram",
     "Телеграм чаты": "Chats de Telegram"
   },
   "Bots": {
-    "Каталог телеграмм ботов": "Catálogo de bots de Telegram",
+    "Каталог телеграм ботов": "Catálogo de bots de Telegram",
     "Телеграм боты": "Bots de Telegram"
   },
   "Card": {
@@ -117,8 +117,7 @@
     "Поделиться": "Compartir",
     "Скопировать": "Copiar",
     "Ссылка скопирована": "Enlace copiado"
-  }
-  ,
+  },
   "AddForm": {
     "Заголовок формы": "Agregar canal",
     "Подзаголовок формы": "Su canal será agregado a la base en la próxima actualización",

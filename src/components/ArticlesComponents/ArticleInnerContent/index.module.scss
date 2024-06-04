@@ -29,7 +29,6 @@
     opacity: 0;
     overflow: hidden;
     padding-top: 25px;
-    padding-inline: 19px;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
     &.hidden {
@@ -42,78 +41,78 @@
         opacity: 1;
     }
 
-    .markdown {
-        h2 {
-            color: rgb(62, 67, 71);
-            font-family: 'Roboto-Bold';
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 28px;
-            text-align: left;
-            margin: 0;
-            margin-bottom: 12px;
-        }
+}
+.markdown {
+    h2 {
+        color: rgb(62, 67, 71);
+        font-family: 'Roboto-Bold';
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28px;
+        text-align: left;
+        margin: 0;
+        margin-bottom: 12px;
+    }
+
+    p {
+        color: rgb(62, 67, 71);
+        font-family: 'Roboto-Light';
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 24px;
+        text-align: left;
+        margin: 0;
+        margin-bottom: 12px;
+    }
+
+    ol {
+        margin: 0;
+        margin-bottom: 12px;
+        padding-left: 20px;
+
+    }
+
+    li {
+        color: rgb(62, 67, 71);
+        font-family: 'Roboto-Light';
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 24px;
+        text-align: left;
+        margin: 0;
+        list-style: disc;
+
+    }
+
+
+    a {
+        color: rgb(62, 67, 71);
+        text-decoration: underline;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    blockquote {
+        position: relative;
+        margin: 0;
+        border-radius: 10px;
+        background: rgb(242, 244, 247);
+        padding: 15px;
 
         p {
-            color: rgb(62, 67, 71);
-            font-family: 'Roboto-Light';
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 24px;
-            text-align: left;
             margin: 0;
-            margin-bottom: 12px;
         }
 
-        ol {
-            margin: 0;
-            margin-bottom: 12px;
-            padding-left: 20px;
-
+        &::after {
+            content: url('/arrow-small.svg');
+            position: absolute;
+            top: 40%;
+            right: 30px;
+            width: 8px;
+            height: 14px;
         }
 
-        li {
-            color: rgb(62, 67, 71);
-            font-family: 'Roboto-Light';
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 24px;
-            text-align: left;
-            margin: 0;
-            list-style: disc;
-
-        }
-
-
-        a {
-            color: rgb(62, 67, 71);
-            text-decoration: underline;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        blockquote {
-            position: relative;
-            margin: 0;
-            border-radius: 10px;
-            background: rgb(242, 244, 247);
-            padding: 15px;
-
-            p {
-                margin: 0;
-            }
-
-            &::after {
-                content: url('/arrow-small.svg');
-                position: absolute;
-                top: 40%;
-                right: 30px;
-                width: 8px;
-                height: 14px;
-            }
-
-        }
     }
 }

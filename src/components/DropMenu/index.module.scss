@@ -11,6 +11,9 @@
     list-style: none;
     position: relative;
 
+    @include index.mobile {
+        padding-right: 2px;
+    }
 
     .item {
         display: flex;
@@ -21,7 +24,7 @@
         .chevron {
             display: block;
 
-            @media screen and (max-width: 480px) {
+            @include index.small-tablet {
                 display: none;
             }
         }
@@ -45,7 +48,7 @@
         margin: 0;
         text-decoration: none;
 
-        @media screen and (max-width: 480px) {
+        @include index.small-tablet {
             display: none;
         }
     }

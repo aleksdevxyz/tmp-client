@@ -77,13 +77,18 @@ export default function SwiperNewComponent({ data, count }: Props) {
           }
         }}
         breakpoints={{
-          1920: {
-            slidesPerView: count,
+          992: {
+            slidesPerView: 4,
           },
-          480: {
+          768: {
+            slidesPerView: 3,
+          },
+          552: {
+            slidesPerView: 2,
+          },
+          420: {
             slidesPerView: 1,
-            width: 366,
-          }
+          },
         }}
         loop={true}
         modules={[Navigation]}

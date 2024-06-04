@@ -1,14 +1,10 @@
 .section {
-    max-width: 1110px;
+    max-width: 1140px;
+    padding: 0 15px;
     margin: auto;
     margin-top: 35px;
     margin-bottom: 25px;
     position: relative;
-
-    @media screen and (max-width: 480px) {
-        margin-top: 0;
-        max-width: 366px;
-    }
 
     &:hover .arrow_next_active {
         visibility: visible;
@@ -41,7 +37,6 @@
 
         @media screen and (max-width: 480px) {
             left: 0px;
-            
         }
 
 
@@ -85,7 +80,7 @@
         border-radius: 25px;
 
         @media screen and (max-width: 480px) {
-            width: 366px;
+            width:100%;
         }
 
         &:hover {
@@ -106,9 +101,7 @@
             }
 
             @media screen and (max-width: 480px) {
-                max-width: 131px;
                 margin-right: 10px;
-                border: none;
             }
 
             &.active {

@@ -25,11 +25,9 @@ export default async function RecListMain() {
   const t = await getTranslations("Main");
 
   return (
-    <div style={{margin: '0 auto'}}>
       <div className={styles.container}>
         <h2 className={styles.title}>{t("Рекомендуем почитать")}</h2>
         <SwiperRec data={recData} />
-    </div>
-    </div>
+      </div>  
   );
 }

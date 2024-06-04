@@ -15,22 +15,23 @@ export default function SwiperRec({ data }: any) {
   const swiperRef = useRef<SwiperRef>(null);
   return (
     <Swiper
-      style={{width: '100%'}}
       onSwiper={(swiper) => {
         if (swiperRef.current) {
           swiperRef.current.swiper = swiper;
         }
       }}
       breakpoints={{
-        1920:{
-          slidesPerView:3,
-          spaceBetween: 21,
-          
+        992: {
+          slidesPerView: 3,
+        },
+        576: {
+          slidesPerView: 2,
         },
         480: {
           slidesPerView: 1,
-        }
+        },
       }}
+      spaceBetween={21}
       loop={true}
     >
       {data.map((item:any, index:any) => {

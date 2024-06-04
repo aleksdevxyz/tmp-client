@@ -2,7 +2,7 @@
   "Index": {
     "title": "Teleshtorm – search in Telegram channels. Catalog of Telegram channels.",
     "description": "Teleshtorm – convenient search in Telegram channels, as well as a structured catalog containing more than 150,000 Telegram channels.",
-    "keywords":"каталог, телеграм, telegram, канал, тг"
+    "keywords": "каталог, телеграм, telegram, канал, тг"
   },
   "IndexChannel": {
     "title": "Telegram channel {name}. Search in Telegram channels. Catalog of Telegram channels.",
@@ -56,12 +56,12 @@
   },
   "SearchPage": {
     "Каталог телеграм каналов в категории": "Catalog of telegram channels in the category",
-    "Телеграмм каналы": "Telegram channels"
+    "Телеграм каналы": "Telegram channels"
   },
   "Article": {
     "Рекомендуем статьи": "We recommend articles",
     "Содержание": "Content",
-    "Поделиться":"To share"
+    "Поделиться": "To share"
   },
   "Header": {
     "Каталог": "Catalog",
@@ -74,7 +74,7 @@
   },
   "Main": {
     "Телеграм каналы": "Telegramm channels",
-    "Каталог телеграмм каналов": "Catalog of telegram channels",
+    "Каталог телеграм каналов": "Catalog of telegram channels",
     "Все категории": "All categories",
     "Новые каналы": "New channels",
     "Рекомендуем почитать": "Recommended to read",
@@ -82,11 +82,11 @@
     "Добавить канал": "Add channel"
   },
   "Chats": {
-    "Каталог телеграмм чатов": "Catalog of telegram chats",
+    "Каталог телеграм чатов": "Catalog of telegram chats",
     "Телеграм чаты": "Telegram chats"
   },
   "Bots": {
-    "Каталог телеграмм ботов": "Catalog of telegram bots",
+    "Каталог телеграм ботов": "Catalog of telegram bots",
     "Телеграм боты": "Telegram bots"
   },
   "Card": {
@@ -137,7 +137,7 @@
     "Статьи": "Articles",
     "Поддержка": "Support",
     "Наш канал": "Our Channel"
-},
+  },
   "Footer": {
     "Права": "© 2024 teleshtorm.com — Telegram search, the site does not store personal data",
     "Ссылка телеграм": "Our Telegram channel",

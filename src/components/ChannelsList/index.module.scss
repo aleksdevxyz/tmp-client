@@ -1,12 +1,15 @@
-.list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    max-width: 1110px;
-    margin: auto;
+@use "../../styles/index.scss" as index;
 
-    @media screen and (max-width: 480px) {
-        max-width: 100%;
-        grid-template-columns: 1fr;
-    }
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+
+  @include index.mini-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include index.small-tablet {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

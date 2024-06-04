@@ -16,7 +16,7 @@ export default async function NewChannels() {
   
   return (
     <div className={styles.swipper}>
-      <SwiperNewComponent count={4} data={data} />
+      <SwiperNewComponent count={5} data={data} />
     </div>
   );
 }

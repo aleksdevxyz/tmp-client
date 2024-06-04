@@ -1,7 +1,7 @@
 @use '../../styles/index.scss' as index;
 
 .header {
-    padding: 15px 0 15px 0;
+    padding: 15px 0;
     background-color: index.$base-color;
     position: fixed;
     top: 0;
@@ -10,7 +10,7 @@
     height: 76px;
     z-index: 2;
 
-    @media screen and (max-width: 480px) {
+    @include index.tablet {
         display: none;
     }
 

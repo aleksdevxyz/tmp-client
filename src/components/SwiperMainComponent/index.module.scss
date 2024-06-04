@@ -15,10 +15,15 @@
 
 
 .subtitle {
-    margin: auto;
+    max-width: 1140px;
+    padding: 0 15px;
+    margin: 0 auto;
     width: 100%;
-    max-width: 1110px;
     box-sizing: border-box;
+
+    @media screen and (max-width: 480px) {
+        padding: 0;
+    }
 
     .subtitle_container {
         display: flex;
@@ -146,6 +151,7 @@
         overflow: hidden;
 
         @media screen and (max-width: 480px) {
+            padding: 27px 23px;
             max-width: 100%;
         }
 

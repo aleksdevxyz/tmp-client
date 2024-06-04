@@ -39,7 +39,6 @@ export default async function ArticleContent({
         </div>
         <ArticleInnerContent content={content} />
         <ArticleShareButton/>
-
       </div>
       <ArticleRecSidebar translit_name={translit_name} />
     </div>

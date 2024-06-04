@@ -13,7 +13,7 @@ export default function ArticleInnerContent({ content }: { content: string }) {
 
   return (
     <>
-      <button
+      {/* <button
         type="button"
         onClick={() => setShowContent(!showContent)}
         className={styles.button}
@@ -32,8 +32,8 @@ export default function ArticleInnerContent({ content }: { content: string }) {
           [styles.hidden]: !showContent,
         })}
       >
+      </div> */}
         <Markdown className={styles.markdown}>{content}</Markdown>
-      </div>
     </>
   );
 }

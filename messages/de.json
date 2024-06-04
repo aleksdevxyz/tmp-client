@@ -58,12 +58,12 @@
   },
   "SearchPage": {
     "Каталог телеграм каналов в категории": "Katalog der Telegram-Kanäle in der Kategorie",
-    "Телеграмм каналы": "Telegram-Kanäle"
+    "Телеграм каналы": "Telegram-Kanäle"
   },
   "Article": {
     "Рекомендуем статьи": "Empfohlene Artikel",
     "Содержание": "Inhalt",
-    "Поделиться":"Teilen"
+    "Поделиться": "Teilen"
   },
   "Header": {
     "Каталог": "Katalog",
@@ -76,7 +76,7 @@
   },
   "Main": {
     "Телеграм каналы": "Telegram-Kanäle",
-    "Каталог телеграмм каналов": "Katalog der Telegram-Kanäle",
+    "Каталог телеграм каналов": "Katalog der Telegram-Kanäle",
     "Все категории": "Alle Kategorien",
     "Новые каналы": "Neue Kanäle",
     "Рекомендуем почитать": "Empfohlene Lektüre",
@@ -84,11 +84,11 @@
     "Добавить канал": "Kanal hinzufügen"
   },
   "Chats": {
-    "Каталог телеграмм чатов": "Katalog der Telegram-Chats",
+    "Каталог телеграм чатов": "Katalog der Telegram-Chats",
     "Телеграм чаты": "Telegram-Chats"
   },
   "Bots": {
-    "Каталог телеграмм ботов": "Katalog der Telegram-Bots",
+    "Каталог телеграм ботов": "Katalog der Telegram-Bots",
     "Телеграм боты": "Telegram-Bots"
   },
   "Card": {
@@ -117,8 +117,7 @@
     "Поделиться": "Teilen",
     "Скопировать": "Kopieren",
     "Ссылка скопирована": "Link kopiert"
-  }
-  ,
+  },
   "AddForm": {
     "Заголовок формы": "Kanal hinzufügen",
     "Подзаголовок формы": "Ihr Kanal wird bei der nächsten Aktualisierung zur Datenbank hinzugefügt",
@@ -140,7 +139,7 @@
     "Статьи": "Artikel",
     "Поддержка": "Support",
     "Наш канал": "Unser Kanal"
-},
+  },
 
   "Footer": {
     "Права": "2024 teleshtorm.com — Suche in Telegram, die Seite speichert keine persönlichen Daten",

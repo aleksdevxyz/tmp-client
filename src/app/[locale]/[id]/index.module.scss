@@ -8,10 +8,15 @@
     }
 
     .card_section {
+        max-width: 1140px;
+        padding: 0 15px;
         margin: 0 auto;
         margin-top: 12px;
-        max-width: 1110px;
         height: 100%;
+
+        @media screen and (max-width: 480px) {
+        padding: 0;
+        }
 
         .advertisement_mb{
             display: none;
@@ -19,6 +24,7 @@
             @media screen and (max-width: 480px) {
                 display: block;
             margin-bottom: 15px;
+            padding: 0;
 
             }
         }
@@ -30,11 +36,15 @@
         gap: 6px;
         margin: 0 auto;
         margin-top: 12px;
-        max-width: 1110px;
+        max-width: 1140px;
+        padding: 0 15px;
 
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
 
         @media screen and (max-width: 480px) {
-            flex-direction: column;
+        padding: 0;
         }
     }
 

@@ -1,17 +1,17 @@
-
-
     .container {
-        width: 1110px;
-        margin: 0 auto;
+        max-width: 1140px;
+        margin: 0 auto;         
+        padding: 15px 15px 0 15px;
+        width: 100%;
 
         @media screen and (max-width: 480px) {
                 max-width: 100%;
+                padding: 0;
         }
 
         .slide {
             display: block;
             gap: 15px;
-            max-width: 366px;
             text-align: left;
             text-decoration: none;
             margin-bottom: 29px;
@@ -31,11 +31,15 @@
             .image {
                 border: 1px solid rgb(222, 226, 228);
                 border-radius: 14px 10px 10px 14px;
-                height: 192px;
                 margin-bottom: 15px;
+                width: 100%;
+                height: auto;   
+                object-fit: cover;
 
                 @media screen and (max-width: 480px) {
                     width: 100%;
+                    height: auto;
+                    object-fit: cover;
                 }
             }
 
