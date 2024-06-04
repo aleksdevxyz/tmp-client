@@ -1,6 +1,6 @@
 ARG NODE_VERSION=20.10.0
 
-FROM node:${NODE_VERSION}-alpine as base
+FROM mirror.gcr.io/node:${NODE_VERSION}-alpine as base
 
 # хост апихи
 ARG BASE_URL 
