@@ -85,6 +85,8 @@ export default function CardInner({
             className={styles.image}
             width={208}
             height={208}
+            loading="eager"
+            priority={true}
             src={hidden ? hiddenImg : image}
           />
           <div className={styles.info}>
