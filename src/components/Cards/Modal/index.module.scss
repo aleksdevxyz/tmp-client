@@ -33,7 +33,7 @@
 
         @media screen and (max-width: 520px) {
             top: 15%;
-            width: 92%;
+            width: clamp(18.5rem, -0.9rem + 97vw, 30.625rem);
             padding: 25px 14px;
         }
         

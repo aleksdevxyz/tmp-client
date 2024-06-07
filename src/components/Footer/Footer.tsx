@@ -31,29 +31,6 @@ export default async function Footer() {
           </Link>
         </div>
       </div>
-      <div className={styles.container_480}>
-        <div className={styles.links_480}>
-        <Link
-            href="https://t.me/teleshtorm_com"
-            className={styles.footer__link_480}
-          >
-            {t("Ссылка телеграм")}
-          </Link>          
-          <Link
-            href={`/${locale}/articles/dmca`}
-            className={styles.footer__link_480}
-          >
-            {t("Правообладатели")}
-          </Link>
-          <Link
-            href="https://t.me/teleshtorm_bot"
-            className={styles.footer__link_480}
-          >
-            {t("Техподдержка")}
-          </Link>
-        </div>
-        <p className={styles.paragraph_480}>{t("Права")}</p>
-      </div>
     </footer>
   );
 }
