@@ -138,6 +138,7 @@ export default function ShareModal({
             type="text"
             className={styles.input}
             value={`https://teleshtorm.org${pathName}`}
+            aria-label={t("Ссылка на канал")}
             readOnly
           />
         </div>

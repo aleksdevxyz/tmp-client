@@ -3,7 +3,6 @@
 import { CategoryResponse } from "@/app/api/categoryApi";
 import cn from "classnames";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import React from "react";
 import ChatForm from "../BotsForm/BotsForm";
 import ChannelsForm from "../ChannelsForm/ChannelsForm";
@@ -22,7 +21,7 @@ export default function AddForm({
   return (
     <div className={styles.container}>
       <div className={styles.form_container}>
-        <h2 className={styles.title}>{t("Заголовок формы")}</h2>
+        <h1 className={styles.title}>{t("Заголовок формы")}</h1>
         <p className={styles.subtitle}>{t("Подзаголовок формы")}</p>
         <div className={styles.button_container}>
           <div

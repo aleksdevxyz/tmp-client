@@ -47,9 +47,9 @@
     "keywords": "ricerca, catalogo, telegram, categoria"
   },
   "AddChannel": {
-    "title": "Aggiungi canale",
-    "description": "Aggiungi canale",
-    "keywords": "catalogo, telegram, canale, tg"
+    "title": "Aggiungi canale a Teleshtorm",
+    "description": "Aggiungi canale Telegram alla directory teleshtorm",
+    "keywords": "canali, tg, Aggiungi canale, telegram, Aggiungi a teleshtorm"
   },
   "Search": {
     "title": "Risultati della ricerca per {name}",
@@ -95,7 +95,8 @@
     "Открыть канал": "Apri canale",
     "Похожие каналы": "Canali simili",
     "подписчиков": "iscritti",
-    "18+": "Contenuto nascosto a causa di contenuti illegali"
+    "18+": "Contenuto nascosto a causa di contenuti illegali",
+    "Поделиться": "Condividi"
   },
   "Breadcrumb": {
     "Каталог": "Catalogo",
@@ -116,7 +117,8 @@
   "ShareModal": {
     "Поделиться": "Condividi",
     "Скопировать": "Copia",
-    "Ссылка скопирована": "Link copiato"
+    "Ссылка скопирована": "Link copiato",
+    "Ссылка на канал": "Collegamento al canale"
   },
   "AddForm": {
     "Заголовок формы": "Aggiungi canale",

@@ -14,13 +14,8 @@
   width: 100%;
   transition: all 0.3s;
 
-  &:hover,
-  &:hover .image {
-    border-color: rgb(97, 97, 97);
-  }
-
-  &:hover .text_container .title {
-    color: rgb(97, 97, 97);
+  &:hover {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
   }
 
   @include index.small-tablet {

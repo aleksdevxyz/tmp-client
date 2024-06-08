@@ -23,14 +23,7 @@
   }
 
   &:hover {
-    border-color: rgb(97, 97, 97);
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-
-  &:hover .title {
-    color: rgb(97, 97, 97);
-    transition: all 0.3s;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
     cursor: pointer;
   }
 

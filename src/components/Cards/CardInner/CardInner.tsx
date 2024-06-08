@@ -126,6 +126,7 @@ export default function CardInner({
                   <button
                     onClick={() => setShareModal(true)}
                     className={styles.share_button}
+                    aria-label={t("Поделиться")}
                   />
                 </div>
                 <Link href={link_tg} className={styles.button}>

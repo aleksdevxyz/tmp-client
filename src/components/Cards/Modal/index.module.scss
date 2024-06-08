@@ -33,8 +33,12 @@
 
         @media screen and (max-width: 520px) {
             top: 15%;
-            width: clamp(18.5rem, -0.9rem + 97vw, 30.625rem);
+            width: clamp(18.125rem, -1.875rem + 100vw, 30.625rem);
             padding: 25px 14px;
+        }
+
+        @media screen and (max-width: 390px) {
+            width: clamp(18.125rem, -3.589rem + 108.67vw, 22.875rem);
         }
         
         .text_container {

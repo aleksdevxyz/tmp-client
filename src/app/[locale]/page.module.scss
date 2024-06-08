@@ -19,6 +19,12 @@
   }
 }
 
+.hidden {
+  font-size: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
 .counter {
   max-width: 1140px;
   margin: auto;

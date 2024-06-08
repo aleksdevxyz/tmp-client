@@ -45,8 +45,8 @@
     "keywords": "поиск, каталог, телеграм, telegram, категория, "
   },
   "AddChannel": {
-    "title": "Add channel",
-    "description": "Add channel",
+    "title": "Add a channel to Teleshtorm",
+    "description": "Add a Telegram channel to the teleshtorm directoryAdd a Telegram channel to the teleshtorm directory",
     "keywords": "каталог, телеграм, telegram, канал, тг"
   },
   "Search": {
@@ -93,7 +93,8 @@
     "Открыть канал": "Open channel",
     "Похожие каналы": "Similar channels",
     "подписчиков": "subscribers",
-    "18+": "The content is hidden due to the presence of content that violates the law"
+    "18+": "The content is hidden due to the presence of content that violates the law",
+    "Поделиться": "Share"
   },
   "Breadcrumb": {
     "Каталог": "Catalog",
@@ -114,7 +115,8 @@
   "ShareModal": {
     "Поделиться": "Share",
     "Скопировать": "Copy",
-    "Ссылка скопирована": "Link copied"
+    "Ссылка скопирована": "Link copied",
+    "Ссылка на канал": "Link to the channel"
   },
   "AddForm": {
     "Заголовок формы": "Add a channel",

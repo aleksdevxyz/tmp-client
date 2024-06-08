@@ -15,8 +15,8 @@ export default function CategorySlide({id, name, translit_name, channels_count}:
     <div key={id} className={styles.list_item}>
       <Link href={`/${locale}/category/${translit_name}`} className={styles.list_title}>
         {name}
-      <p className={styles.list_subscribers}>{channels_count}</p>
       </Link>
+      <p className={styles.list_subscribers}>{channels_count}</p>
     </div>
   );
 }
