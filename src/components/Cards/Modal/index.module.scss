@@ -32,7 +32,7 @@
         align-items: flex-start;
 
         @media screen and (max-width: 520px) {
-            top: 15%;
+            top: 22.5%;
             width: clamp(18.125rem, -1.875rem + 100vw, 30.625rem);
             padding: 25px 14px;
         }
