@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       images: [
         {
-          url: "./logolink.jpg",
+          url: "/logolink.jpg",
           width: 800,
           height: 418,
         },

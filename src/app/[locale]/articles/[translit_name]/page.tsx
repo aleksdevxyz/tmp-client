@@ -29,6 +29,7 @@ export async function generateMetadata(
       images: [
         {
           url: data.image,
+          type: "article",
         },
       ],
     },

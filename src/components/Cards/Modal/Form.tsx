@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./index.module.scss";
 import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
@@ -17,11 +17,28 @@ export default function Form({
   const curent_type =
     type === "channel" ? "Канал" : type === "bots" ? "Бот" : "Чат";
   const t = useTranslations("Modal");
+
   const [msg, setMsg] = useState({
     msg: "",
     status: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [formState, setFormState] = useState({
+    link_not_work: false,
+    drugs: false,
+    false_information: false,
+    child_abuse: false,
+    other: "",
+  });
+
+  useEffect(() => {
+    const isAnyCheckboxChecked = Object.values(formState).some(
+      (value) => value === true
+    );
+    const isTextareaFilled = formState.other.trim() !== "";
+    setIsFormValid(isAnyCheckboxChecked || isTextareaFilled);
+  }, [formState]);
 
   const handleAction = async (formData: FormData) => {
     setIsLoading(true);
@@ -35,12 +52,28 @@ export default function Form({
     setIsLoading(false);
   };
 
-  
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormState((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.checked,
+    }));
+  };
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setFormState((prevState) => ({
+      ...prevState,
+      other: e.target.value,
+    }));
+  };
+
   return (
     <form
       onClick={(e) => e.stopPropagation()}
       className={styles.form}
-      action={handleAction}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleAction(new FormData(e.target as HTMLFormElement));
+      }}
     >
       <div className={styles.text_container}>
         <p className={styles.title}>{t('Опишите причину жалобы')}</p>
@@ -62,6 +95,7 @@ export default function Form({
             id="link_not_work"
             name="link_not_work"
             className={styles.input}
+            onChange={handleCheckboxChange}
           />
           <label htmlFor="link_not_work" className={styles.label}>
             {t('Ссылка на телеграм канал/чат/бот не работает')}
@@ -73,6 +107,7 @@ export default function Form({
             id="drugs"
             name="drugs"
             className={styles.input}
+            onChange={handleCheckboxChange}
           />
           <label htmlFor="drugs" className={styles.label}>
             {t('Пропаганда наркотиков')}
@@ -84,6 +119,7 @@ export default function Form({
             id="false_information"
             name="false_information"
             className={styles.input}
+            onChange={handleCheckboxChange}
           />
           <label htmlFor="false_information" className={styles.label}>
             {t('Ложная информация')}
@@ -95,6 +131,7 @@ export default function Form({
             id="child_abuse"
             name="child_abuse"
             className={styles.input}
+            onChange={handleCheckboxChange}
           />
           <label htmlFor="child_abuse" className={styles.label}>
             {t('Жестокое обращение с детьми')}
@@ -102,11 +139,11 @@ export default function Form({
         </li>
       </ul>
       <h3 className={styles.subtitle}>{`${t('Другое')}:`}</h3>
-
       <textarea
         onClick={(e) => e.stopPropagation()}
         name="other"
         className={styles.text_area}
+        onChange={handleTextareaChange}
       ></textarea>
       {msg.msg != "" && (
         <div
@@ -118,7 +155,7 @@ export default function Form({
           <h3 className={styles.text_error}>{msg.msg}</h3>
         </div>
       )}
-      <Button isLoading={isLoading} />
+      <Button isLoading={isLoading} isDisabled={!isFormValid} />
     </form>
   );
 }
