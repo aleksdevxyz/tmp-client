@@ -40,6 +40,9 @@
             }
 
             .image {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
                 border-radius: 10px;
                 margin-top: 12px;
             }

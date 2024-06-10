@@ -64,7 +64,11 @@ export default function CardInner({
               target="_blank"
               className={styles.tw}
             />
-            <Link href={`${pathName}`} target="_blank" className={styles.fb} />
+            <Link
+              href={`http://www.facebook.com/sharer.php?u=${pathName}`}
+              target="_blank"
+              className={styles.fb}
+            />
             <Link
               href={`https://api.whatsapp.com/send/?text=${pathName}`}
               target="_blank"

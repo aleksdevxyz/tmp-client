@@ -24,7 +24,14 @@ export async function generateMetadata(
     robots: {
       index: true,
       follow: true
-    }
+    },
+    openGraph: {
+      images: [
+        {
+          url: data.image,
+        },
+      ],
+    },
   }
 }
 
@@ -61,7 +68,7 @@ export default async function HomePage({
   const data: Article = await getArticle(translit_name);
 
   return (
-    <div className={styles.container} style={{paddingTop: '108px'}}>
+    <div className={styles.container}>
       <BreadCrumbs name={data.name} />
       <section className={styles.section}>
         <ArticleContent

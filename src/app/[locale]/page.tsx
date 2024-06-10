@@ -16,6 +16,15 @@ export async function generateMetadata(): Promise<Metadata> {
       index: true,
       follow: true,
     },
+    openGraph: {
+      images: [
+        {
+          url: "./logolink.jpg",
+          width: 800,
+          height: 418,
+        },
+      ],
+    },
   };
 }
 
