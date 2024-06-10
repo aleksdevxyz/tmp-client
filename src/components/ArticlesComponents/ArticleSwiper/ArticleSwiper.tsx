@@ -44,6 +44,8 @@ export default function ArticleSwiper({ articles }: Articles) {
                   height={260}
                   alt="article"
                   src={article.image}
+                  loading="eager"
+                  priority={true}
                 />
                 <div className={styles.container}>
                   <h2 className={styles.title}>{article.name}</h2>

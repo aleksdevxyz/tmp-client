@@ -26,6 +26,8 @@ export default async function ArticleContent({
           alt="Article"
           width={756}
           height={413}
+          loading="eager"
+          priority={true}
         />
         <div className={styles.category}>
           <p className={styles.creadet_at}>{formatDate(created_at, locale)}</p>
