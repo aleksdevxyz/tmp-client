@@ -8,6 +8,8 @@ import ArticleCategorySwiper from "@/components/ArticlesComponents/ArticleCatego
 import RecList from "@/components/ArticlesComponents/ArticleList/ArticleList";
 import { getTranslations } from "next-intl/server";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
+import { loadArticles, loadCategories, loadRecommendedArticles } from "./api";
+import { useMemo } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("IndexArticles");
@@ -40,27 +42,6 @@ export interface Category {
   categories: Category[];
 }
 
-
-async function getRecArticles() {
-  const res = await fetch(
-    `${process.env.BASE_URL}/articles/recommended`
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-}
-
-async function getArticlesCategories() {
-  const res = await fetch(
-    `${process.env.BASE_URL}/articles/categories`
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-}
-
 export default async function HomePage({
   searchParams,
 }: {
@@ -72,17 +53,18 @@ export default async function HomePage({
   const currentPage = Number(searchParams?.page) || 0;
   const accuracyCategory = searchParams?.category || '';
   
-  const RecArticles: Article[] = await getRecArticles();
-  const categoriesArticle = await getArticlesCategories();
-  
+  const [RecArticles, articles] = await Promise.all([
+    loadRecommendedArticles(),
+    await loadArticles(accuracyCategory),
+  ]);
 
   return (
     <>
       <div className={styles.section}>
         <BreadCrumbs/>
         <ArticleSwiper articles={RecArticles} />
-        <ArticleCategorySwiper categories={categoriesArticle}/>
-        <RecList articles={RecArticles}/>
+        <ArticleCategorySwiper currentCategory={accuracyCategory} />
+        <RecList articles={articles}/>
         <Pagination data={RecArticles}/>
       </div>
     </>

@@ -42,7 +42,7 @@ export default function Form({
 
   const handleAction = async (formData: FormData) => {
     setIsLoading(true);
-    const res = await fetch("/api/post_complaint", {
+    const res = await fetch(`${process.env.BASE_URL}/api/post_complaint`, {
       method: "POST",
       body: formData,
     });

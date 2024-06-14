@@ -54,7 +54,7 @@ export async function postChannel(prevState: any, formData: FormData) {
 }
 
 export async function postBots(prevState: any, formData: FormData) {
-"use server";
+  "use server";
 
   const req = await fetch(`${process.env.BASE_URL}/get_csrf_tokens`);
   const res_signed_token = req.headers.getSetCookie();

@@ -80,13 +80,6 @@ export default function DropMenu() {
             >
               Russian
             </Link>
-            <Link
-              href={`${pathName}`}
-              locale="ru"
-              className={styles.title_menu_mobile}
-            >
-              Ru
-            </Link>
           </div>
           <div className={styles.item_menu}>
             <Link href={`${pathName}`} locale="de">
@@ -106,13 +99,6 @@ export default function DropMenu() {
             >
               Deutsch
             </Link>
-            <Link
-              href={`${pathName}`}
-              locale="de"
-              className={styles.title_menu_mobile}
-            >
-              De
-            </Link>
           </div>
           <div className={styles.item_menu}>
             <Link href={`${pathName}`} locale="en">
@@ -130,13 +116,6 @@ export default function DropMenu() {
               className={styles.title_menu}
             >
               English
-            </Link>
-            <Link
-              href={`${pathName}`}
-              locale="en"
-              className={styles.title_menu_mobile}
-            >
-              En
             </Link>
           </div>
           <div className={styles.item_menu}>
@@ -157,13 +136,6 @@ export default function DropMenu() {
             >
               Español
             </Link>
-            <Link
-              href={`${pathName}`}
-              locale="es"
-              className={styles.title_menu_mobile}
-            >
-              Es
-            </Link>
           </div>
           <div className={styles.item_menu}>
             <Link href={`${pathName}`} locale="fr">
@@ -182,13 +154,6 @@ export default function DropMenu() {
               className={styles.title_menu}
             >
               Français
-            </Link>
-            <Link
-              href={`${pathName}`}
-              locale="fr"
-              className={styles.title_menu_mobile}
-            >
-              Fr
             </Link>
           </div>
           <div className={styles.item_menu}>
@@ -209,13 +174,6 @@ export default function DropMenu() {
             >
               Italiano
             </Link>
-            <Link
-              href={`${pathName}`}
-              locale="it"
-              className={styles.title_menu_mobile}
-            >
-              It
-            </Link>
           </div>
           <div className={styles.item_menu}>
             <Link href={`${pathName}`} locale="pt">
@@ -234,13 +192,6 @@ export default function DropMenu() {
               className={styles.title_menu}
             >
               Português
-            </Link>
-            <Link
-              href={`${pathName}`}
-              locale="pt"
-              className={styles.title_menu_mobile}
-            >
-              Pt
             </Link>
           </div>
         </div>

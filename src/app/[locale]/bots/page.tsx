@@ -21,11 +21,17 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function getBotsList(page: number) {
-  const res = await fetch(`${process.env.BASE_URL}/bots?page=${page}&limit=31`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/bots?page=${page}&limit=31`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch(error) {
+    console.log(error);
   }
-  return res.json();
+
+  return [];
 }
 
 export default async function HomePage({

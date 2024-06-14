@@ -12,11 +12,16 @@ export interface advertisement {
 }
 
 async function GetAdvertisement() {
-  const res = await fetch(`${process.env.BASE_URL}/advertisement`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/advertisement`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch(error) {
+    console.log(error);
   }
-  return res.json();
+  return [];
 }
 
 function getRandomAdvertisement(advertisements: advertisement[]) {
@@ -27,6 +32,9 @@ export default async function AdvertisementCard() {
   const data = await GetAdvertisement();
   const randomAd = getRandomAdvertisement(data);
   const t = await getTranslations("Card");
+  
+  if (!randomAd)
+  return <div>Empty ad</div>
   
   const text = randomAd.content.split('\n');
   

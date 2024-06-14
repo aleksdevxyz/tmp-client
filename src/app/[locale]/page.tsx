@@ -6,27 +6,28 @@ import RecList from "@/components/RecListMain/RecListMain";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import styles from "./page.module.scss";
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Index");
-  return {
-    title: t("title"),
-    description: t("description"),
-    keywords: t("keywords"),
-    robots: {
-      index: true,
-      follow: true,
-    },
-    openGraph: {
-      images: [
-        {
-          url: "/logolink.jpg",
-          width: 800,
-          height: 418,
-        },
-      ],
-    },
-  };
-}
+
+// export async function generateMetadata(): Promise<Metadata> {
+//   const t = await getTranslations("Index");
+//   return {
+//     title: t("title"),
+//     description: t("description"),
+//     keywords: t("keywords"),
+//     robots: {
+//       index: true,
+//       follow: true,
+//     },
+//     openGraph: {
+//       images: [
+//         {
+//           url: "/logolink.jpg",
+//           width: 800,
+//           height: 418,
+//         },
+//       ],
+//     },
+//   };
+// }
 
 export interface ChannelsProps {
   id: number;
@@ -38,13 +39,15 @@ export interface ChannelsProps {
 }
 
 async function getChannelsList(page: number) {
-  const res = await fetch(
-    `${process.env.BASE_URL}/channels?page=${page}&limit=31`
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/channels?page=${page}&limit=31`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch(error) {
+    console.log(error)
   }
-  return res.json();
 }
 
 export default async function Home({

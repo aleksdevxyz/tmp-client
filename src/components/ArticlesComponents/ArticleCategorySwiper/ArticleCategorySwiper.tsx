@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import styles from "./index.module.scss";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
@@ -14,16 +14,19 @@ import { Category } from "@/app/[locale]/articles/page";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { Navigation } from "swiper/modules";
+import { breakpoints } from "./constants";
+import { loadCategories } from "@/app/[locale]/articles/api";
 
 export default function ArticleCategorySwiper({
-  categories,
+  currentCategory,
 }: {
-  categories: Category[];
+  currentCategory: string
 }) {
   const slideRef = useRef<SwiperRef>(null);
   const { replace } = useRouter();
-  const [activeCategory, setActiveCategory] = useState("1");
+  const [activeCategory, setActiveCategory] = useState(currentCategory);
   const locale = useLocale();
+  const [categories, setCategories] = useState<Category[]>([]);
 
   const handlePrev = useCallback(() => {
     if (!slideRef.current) return;
@@ -35,12 +38,24 @@ export default function ArticleCategorySwiper({
     slideRef.current.swiper.slideNext();
   }, []);
 
-  const handleClick = (transilt_name: string) => {
+  const handleClick = (catId: string = "") => {
     const params = new URLSearchParams();
-    params.set("category", transilt_name);
-    setActiveCategory(transilt_name);
-    replace(`?${params.toString()}`);
+    if (catId.toString() == activeCategory) {
+      catId = ""
+      params.delete("category");
+    } else {
+      params.set("category", catId.toString());
+    }
+
+    setActiveCategory(catId.toString());
+    replace(`?${params.toString()}`, {});
   };
+
+  useEffect(() => {
+    loadCategories().then((data: Category[]) => {
+      setCategories(data);
+    });
+  }, [])
 
   return (
     <section className={styles.section}>
@@ -69,28 +84,7 @@ export default function ArticleCategorySwiper({
             slideRef.current.swiper = swiper;
           }
         }}
-        breakpoints={{
-          1920: {
-            slidesPerView: 7,
-            spaceBetween: 23,
-          },
-          768: {
-            slidesPerView: 5,
-            spaceBetween: 15,
-          },
-          576: {
-            slidesPerView: 4,
-            spaceBetween: 12,
-          },
-          480: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          350: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-        }}
+        breakpoints={breakpoints}
         className={styles.swiper}
         modules={[Navigation]}
       >
@@ -98,49 +92,22 @@ export default function ArticleCategorySwiper({
           return (
             <SwiperSlide
               key={category.id}
-              onClick={() => handleClick(category.translit_name)}
+              onClick={() => handleClick(category.id.toString())}
               className={classNames(
                 styles.slide,
-                activeCategory === category.translit_name && styles.active
+                activeCategory == category.id.toString() && styles.active
               )}
             >
               <Link
-                href={`/${locale}/articles/${category.translit_name}`}
+                href={`/${locale}/articles/?category=${category.id}`}
                 className={styles.link}
+                // onClick={(event) => event.preventDefault()}
               >
                 {category.name}
               </Link>
             </SwiperSlide>
           );
         })}
-
-        <SwiperSlide
-          onClick={() => handleClick("Категория 2")}
-          className={classNames(
-            styles.slide,
-            activeCategory === "1" && styles.active
-          )}
-        >
-          <Link href={"/"} className={styles.link}>
-            Кат
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide
-          onClick={() => handleClick("Категория 2")}
-          className={styles.slide}
-        >
-          <Link href={"/"} className={styles.link}>
-            Кат
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide
-          onClick={() => handleClick("Категория 2")}
-          className={styles.slide}
-        >
-          <Link href={"/"} className={styles.link}>
-            Кат
-          </Link>
-        </SwiperSlide>
       </Swiper>
     </section>
   );

@@ -53,11 +53,16 @@ export interface Category {
 }
 
 async function getArticle(translit_name: string): Promise<Article> {
-  const res = await fetch(`${process.env.BASE_URL}/article/${translit_name}`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/article/${translit_name}`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch (error) {
+    console.log(error);
   }
-  return res.json();
+  return undefined as unknown as Article;
 }
 export default async function HomePage({
   params,

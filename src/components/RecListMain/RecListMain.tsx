@@ -13,11 +13,17 @@ export interface recRes {
 }
 
 async function getRec() {
-  const res = await fetch(`${process.env.BASE_URL}/articles/recommended`);
-  if (res.ok) {
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/articles/recommended`);
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
     return res.json();
+  } catch(error) {
+    console.log(error);
   }
-  throw new Error(res.statusText);
+
+  return []
 }
 
 export default async function RecListMain() {
