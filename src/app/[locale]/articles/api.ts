@@ -1,4 +1,4 @@
-import { Category } from "./page";
+import { Article, Category } from "./page";
 
 export async function loadRecommendedArticles() {
   try {
@@ -35,11 +35,11 @@ export async function loadArticles(catId: string) {
 }
 
 export async function loadArticlesByCatId(catId: string) {
-  return await fetch(`${process.env.BASE_URL}/categories/articles?category_id=${catId}`);
+  return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/categories/articles?category_id=${catId}`) ;
 }
 
 export async function loadAllArticles() {
-  return await fetch(`${process.env.BASE_URL}/articles`);
+  return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/articles`);
 }
 
 export async function loadCategories(): Promise<Category[]> {

@@ -4,12 +4,10 @@ import { Metadata } from "next";
 import Pagination from "@/components/Pagination/Pagination";
 import { getTotalPages } from "@/helpers/getTotalPages";
 import ArticleSwiper from "@/components/ArticlesComponents/ArticleSwiper/ArticleSwiper";
-import ArticleCategorySwiper from "@/components/ArticlesComponents/ArticleCategorySwiper/ArticleCategorySwiper";
-import RecList from "@/components/ArticlesComponents/ArticleList/ArticleList";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import { loadArticles, loadCategories, loadRecommendedArticles } from "./api";
-import { useMemo } from "react";
+import ArticlesRecomended from "@/components/ArticlesComponents/ArticlesRecomended/ArticlesRecomended";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("IndexArticles");
@@ -52,10 +50,17 @@ export default async function HomePage({
 }) {
   const currentPage = Number(searchParams?.page) || 0;
   const accuracyCategory = searchParams?.category || '';
+  const locale = await getLocale();
   
-  const [RecArticles, articles] = await Promise.all([
+  // const [RecArticles, articles, categories] = await Promise.all([
+  //   loadRecommendedArticles(),
+  //   await loadArticles(accuracyCategory),
+  //   loadCategories()
+  // ]);
+  const [RecArticles, articles, categories] = await Promise.all([
     loadRecommendedArticles(),
     await loadArticles(accuracyCategory),
+    loadCategories()
   ]);
 
   return (
@@ -63,9 +68,10 @@ export default async function HomePage({
       <div className={styles.section}>
         <BreadCrumbs/>
         <ArticleSwiper articles={RecArticles} />
-        <ArticleCategorySwiper currentCategory={accuracyCategory} />
+        {/* <ArticleCategorySwiper categories={categories} currentCategory={accuracyCategory} />
         <RecList articles={articles}/>
-        <Pagination data={RecArticles}/>
+        <Pagination data={RecArticles}/> */}
+        <ArticlesRecomended articles={articles} categories={categories} accuracyCategory={accuracyCategory} locale={locale} />
       </div>
     </>
   );

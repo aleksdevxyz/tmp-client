@@ -1,12 +1,11 @@
+"use client"
+
 import Image from "next/image";
 import styles from "./index.module.scss";
-import { Articles } from "@/app/[locale]/articles/page";
+import { Article, Articles } from "@/app/[locale]/articles/page";
 import Link from "next/link";
-import { getLocale } from "next-intl/server";
 
-export default async function ArticleList({ articles }: Articles) {
-  const locale = await getLocale()
-  
+export default function ArticleList({ articles, locale  }: { articles: Article[], locale: string }) {
   return (
     <section className={styles.section}>
       {articles.map((article, index) => {

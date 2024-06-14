@@ -15,18 +15,17 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 import { Navigation } from "swiper/modules";
 import { breakpoints } from "./constants";
-import { loadCategories } from "@/app/[locale]/articles/api";
 
 export default function ArticleCategorySwiper({
   currentCategory,
+  categories,
+  onClick,
 }: {
   currentCategory: string
+  categories: Category[],
+  onClick: (catId: string) => void
 }) {
   const slideRef = useRef<SwiperRef>(null);
-  const { replace } = useRouter();
-  const [activeCategory, setActiveCategory] = useState(currentCategory);
-  const locale = useLocale();
-  const [categories, setCategories] = useState<Category[]>([]);
 
   const handlePrev = useCallback(() => {
     if (!slideRef.current) return;
@@ -39,23 +38,8 @@ export default function ArticleCategorySwiper({
   }, []);
 
   const handleClick = (catId: string = "") => {
-    const params = new URLSearchParams();
-    if (catId.toString() == activeCategory) {
-      catId = ""
-      params.delete("category");
-    } else {
-      params.set("category", catId.toString());
-    }
-
-    setActiveCategory(catId.toString());
-    replace(`?${params.toString()}`, {});
+    onClick(catId === currentCategory ? "" : catId);
   };
-
-  useEffect(() => {
-    loadCategories().then((data: Category[]) => {
-      setCategories(data);
-    });
-  }, [])
 
   return (
     <section className={styles.section}>
@@ -95,16 +79,14 @@ export default function ArticleCategorySwiper({
               onClick={() => handleClick(category.id.toString())}
               className={classNames(
                 styles.slide,
-                activeCategory == category.id.toString() && styles.active
+                currentCategory == category.id.toString() && styles.active
               )}
             >
-              <Link
-                href={`/${locale}/articles/?category=${category.id}`}
+              <button
                 className={styles.link}
-                // onClick={(event) => event.preventDefault()}
               >
                 {category.name}
-              </Link>
+              </button>
             </SwiperSlide>
           );
         })}
