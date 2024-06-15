@@ -4,6 +4,9 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    env: {
+        BASE_URL: process.env.BASE_URL,
+    },
     async rewrites(){
         return {
             
