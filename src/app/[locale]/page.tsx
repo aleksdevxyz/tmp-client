@@ -1,33 +1,28 @@
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import MainSection from "@/components/MainSection/MainSection";
-import NewChannels from "@/components/NewChannels/NewChannels";
 import Pagination from "@/components/Pagination/Pagination";
-import RecList from "@/components/RecListMain/RecListMain";
+// import NewChannels from "@/components/NewChannels/NewChannels";
+// import RecList from "@/components/RecListMain/RecListMain";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import styles from "./page.module.scss";
+import dynamic from "next/dynamic";
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   const t = await getTranslations("Index");
-//   return {
-//     title: t("title"),
-//     description: t("description"),
-//     keywords: t("keywords"),
-//     robots: {
-//       index: true,
-//       follow: true,
-//     },
-//     openGraph: {
-//       images: [
-//         {
-//           url: "/logolink.jpg",
-//           width: 800,
-//           height: 418,
-//         },
-//       ],
-//     },
-//   };
-// }
+const RecList = dynamic(() => import("@/components/RecListMain/RecListMain"));
+const NewChannels = dynamic(() => import("@/components/NewChannels/NewChannels"));
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Index");
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export interface ChannelsProps {
   id: number;
