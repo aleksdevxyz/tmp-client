@@ -68,9 +68,6 @@ export default async function HomePage({
       <div className={styles.section}>
         <BreadCrumbs/>
         <ArticleSwiper articles={RecArticles} />
-        {/* <ArticleCategorySwiper categories={categories} currentCategory={accuracyCategory} />
-        <RecList articles={articles}/>
-        <Pagination data={RecArticles}/> */}
         <ArticlesRecomended articles={articles} categories={categories} accuracyCategory={accuracyCategory} locale={locale} />
       </div>
     </>

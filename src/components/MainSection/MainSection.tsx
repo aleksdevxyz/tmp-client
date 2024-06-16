@@ -1,7 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { getCategory } from "../../app/api/categoryApi";
-import SwiperMainComponent from "../SwiperMainComponent/SwiperMainComponent";
 import styles from "./MainSection.module.scss";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const SwiperMainComponent = dynamic(() => import("../SwiperMainComponent/SwiperMainComponent"));
 
 export default async function MainSection() {
   const data = await getCategory();

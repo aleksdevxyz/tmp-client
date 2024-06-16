@@ -1,15 +1,16 @@
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import MainSection from "@/components/MainSection/MainSection";
 import Pagination from "@/components/Pagination/Pagination";
-// import NewChannels from "@/components/NewChannels/NewChannels";
-// import RecList from "@/components/RecListMain/RecListMain";
+import NewChannels from "@/components/NewChannels/NewChannels";
+import RecList from "@/components/RecListMain/RecListMain";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import styles from "./page.module.scss";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
-const RecList = dynamic(() => import("@/components/RecListMain/RecListMain"));
-const NewChannels = dynamic(() => import("@/components/NewChannels/NewChannels"));
+// const RecList = dynamic(() => import("@/components/RecListMain/RecListMain"));
+// const NewChannels = dynamic(() => import("@/components/NewChannels/NewChannels"));
+// const MainSection = dynamic(() => import("@/components/MainSection/MainSection"));
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Index");
@@ -62,7 +63,9 @@ export default async function Home({
   return (
     <main>
       <h1 className={styles.hidden}>Каталог Telegram-каналов и чатов</h1>
-      <MainSection />
+      {/* <section style={{ minHeight: "414px", paddingTop: "94px" }}> */}
+        <MainSection />
+      {/* </section> */}
       <div className={styles.section}>
         <h2 className={styles.title}>{t("Телеграм каналы")}</h2>
         <ChannelsList advertisement={true} data={ChannelsData} />
@@ -78,3 +81,7 @@ export default async function Home({
     </main>
   );
 }
+
+// export const getStaticProps = async () => {
+
+// }

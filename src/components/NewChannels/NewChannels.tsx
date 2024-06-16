@@ -1,5 +1,8 @@
-import SwiperNewComponent from "../SwiperNewComponent/SwiperNewComponent";
+import dynamic from "next/dynamic";
+// import SwiperNewComponent from "../SwiperNewComponent/SwiperNewComponent";
 import styles from "./index.module.scss";
+
+const SwiperNewComponent = dynamic(() => import("../SwiperNewComponent/SwiperNewComponent"));
 
 async function getData() {
   try {

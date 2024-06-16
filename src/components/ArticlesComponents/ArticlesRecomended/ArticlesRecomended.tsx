@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import ArticleCategorySwiper from '../ArticleCategorySwiper/ArticleCategorySwiper'
 import RecList from "@/components/ArticlesComponents/ArticleList/ArticleList";
 import Pagination from '@/components/Pagination/Pagination';
-import { loadArticles, loadArticlesByCatId } from '@/app/[locale]/articles/api';
+import { loadArticles } from '@/app/[locale]/articles/api';
 
 const ArticlesRecomended = ({
   articles,

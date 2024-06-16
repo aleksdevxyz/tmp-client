@@ -3,7 +3,10 @@ import styles from "./index.module.scss";
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
-import SwiperRec from "./SwiperRec";
+import dynamic from "next/dynamic";
+// import SwiperRec from "./SwiperRec";
+
+const SwiperRec = dynamic(() => import("./SwiperRec"));
 
 export interface recRes {
   name: string;
