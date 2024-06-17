@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import styles from "./index.module.scss";
+import styles from "./SwiperMainComponent.module.scss";
 
 import { CategoryResponse } from "@/app/api/categoryApi";
 import { useLocale, useTranslations } from "next-intl";
@@ -16,7 +16,7 @@ type Props = {
   count: number;
 };
 
-const splitToChunks = (categories: CategoryResponse[]): React.ReactNode[] => {
+const splitToChunks = (categories: CategoryResponse[], locale: string): React.ReactNode[] => {
   const chunkSize = 8;
   const slides: React.ReactNode[] = [];
 
@@ -32,6 +32,7 @@ const splitToChunks = (categories: CategoryResponse[]): React.ReactNode[] => {
             id={id}
             translit_name={translit_name}
             channels_count={channels_count}
+            locale={locale}
           />
         ))}
       </div>
@@ -51,7 +52,7 @@ export default function SwiperMainComponent({ data, count }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
 
   useEffect(() => {
-    setSlides(splitToChunks(data));
+    setSlides(splitToChunks(data, locale));
   }, []);
 
   return (

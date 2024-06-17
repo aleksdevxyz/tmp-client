@@ -2,9 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import styles from "./index.module.scss";
+import styles from "./ArticleCategorySwiper.module.scss";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import Link from "next/link";
 
 import "swiper/css";
 

@@ -1,6 +1,6 @@
 'use client'
 
-import styles from "./index.module.scss";
+import styles from "./Modal.module.scss";
 import cn from "classnames";
 import Form from "./Form";
 import { useEffect } from "react";

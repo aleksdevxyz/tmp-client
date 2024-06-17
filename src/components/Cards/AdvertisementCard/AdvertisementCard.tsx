@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./index.module.scss";
+import styles from "./AdvertisementCard.module.scss";
 import Link from "next/link";
 import AdvertisementCardMob from "../AdvertisementCardMob/AdvertisementCardMob";
 

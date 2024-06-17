@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import styles from "./index.module.scss";
+import styles from "./BurgerMenu.module.scss";
 import Image from "next/image";
 import SearchInput from "../SearchInput/SearchInput";
 import classNames from "classnames";

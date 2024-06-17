@@ -1,4 +1,4 @@
-import styles from './index.module.scss'
+import styles from './Modal.module.scss'
 import { useTranslations } from 'next-intl';
 
 export default function Button({isLoading, isDisabled}: {isLoading: boolean, isDisabled: boolean}) {

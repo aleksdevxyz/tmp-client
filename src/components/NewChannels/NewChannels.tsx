@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import styles from "./index.module.scss";
 
 const SwiperNewComponent = dynamic(() => import("../SwiperNewComponent/SwiperNewComponent"));
 
@@ -23,8 +22,6 @@ export default async function NewChannels() {
   const data = await getData();
   
   return (
-    <div className={styles.swipper}>
-      <SwiperNewComponent count={5} data={data} />
-    </div>
+    <SwiperNewComponent count={5} data={data} />
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import styles from "./index.module.scss";
+import styles from "./BreadCrumbs.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 export default function BreadCrumbs({ name, category }: { name?: any, category?: string }) {

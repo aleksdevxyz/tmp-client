@@ -1,6 +1,6 @@
 
 import React from 'react'
-import styles from './index.module.scss'
+import styles from './CardWrapper.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLocale } from 'next-intl'

@@ -1,14 +1,10 @@
 "use client";
 import React from "react";
-import styles from "./index.module.scss";
-import Image from "next/image";
-import cn from "classnames";
+import styles from "./ArticleInnerContent.module.scss";
 import Markdown from "markdown-to-jsx";
 import { useTranslations } from "next-intl";
-import ArticleShareButton from "../ArticleShareButton/ArticleShareButton";
 
 export default function ArticleInnerContent({ content }: { content: string }) {
-  const [showContent, setShowContent] = React.useState(false);
   const t = useTranslations("Article");
 
   return (

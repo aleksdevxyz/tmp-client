@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./index.module.scss";
+import styles from "./CardInner.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import hiddenImg from "../../../../public/+18.png";

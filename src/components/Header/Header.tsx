@@ -1,4 +1,4 @@
-import styles from "./index.module.scss";
+import styles from "./Header.module.scss";
 import { CatalogLogo, Logo, StaticLogo, ChatsLogo, BotsLogo } from "../svgs";
 import SearchInput from "../SearchInput/SearchInput";
 import DropMenu from "../DropMenu/DropMenu";

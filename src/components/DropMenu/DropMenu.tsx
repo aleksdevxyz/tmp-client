@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import styles from "./index.module.scss";
+import styles from "./DropMenu.module.scss";
 import Image from "next/image";
 import cn from "classnames";
 import { Link, usePathname } from "@/navigation";

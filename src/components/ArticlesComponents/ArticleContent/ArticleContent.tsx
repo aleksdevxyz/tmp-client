@@ -4,7 +4,7 @@ import { getLocale } from "next-intl/server";
 import Image from "next/image";
 import ArticleInnerContent from "../ArticleInnerContent/ArticleInnerContent";
 import ArticleRecSidebar from "../ArticleRecSidebar/ArticleRecSidebar";
-import styles from "./index.module.scss";
+import styles from "./ArticleContent.module.scss";
 import ArticleShareButton from "../ArticleShareButton/ArticleShareButton";
 export default async function ArticleContent({
   created_at,

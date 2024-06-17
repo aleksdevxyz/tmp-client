@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import styles from "./index.module.scss";
+import styles from "./SearchInput.module.scss";
 import { SearchIcon } from "../svgs";
 import Link from "next/link";
 import cn from "classnames";

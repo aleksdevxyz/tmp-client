@@ -1,6 +1,6 @@
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import { Metadata } from "next";
-import styles from "./index.module.scss";
+import styles from "./ChannelCard.module.scss";
 import AdvertisementCard from "@/components/Cards/AdvertisementCard/AdvertisementCard";
 import CardInner from "@/components/Cards/CardInner/CardInner";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";

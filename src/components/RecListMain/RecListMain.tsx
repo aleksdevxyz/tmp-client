@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./index.module.scss";
+import styles from "./RecListMain.module.scss";
 import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
 

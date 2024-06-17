@@ -1,5 +1,5 @@
 import { use, useEffect, useRef, useState } from "react";
-import styles from "./index.module.scss";
+import styles from "./ShareModal.module.scss";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";

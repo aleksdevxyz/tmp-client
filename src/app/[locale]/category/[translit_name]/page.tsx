@@ -2,7 +2,7 @@ import { getCategory } from "@/app/api/categoryApi";
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
 import { Metadata } from "next";
-import styles from "./index.module.scss";
+import styles from "./Categories.module.scss";
 import { getTranslations } from "next-intl/server";
 
 type Props = {

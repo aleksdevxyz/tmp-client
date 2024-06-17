@@ -4,7 +4,7 @@ import { CategoryResponse } from "@/app/api/categoryApi";
 import cn from "classnames";
 import { useTranslations } from "next-intl";
 import SubmitButton from "../../SubmitButton/SubmitButton";
-import styles from "./index.module.scss";
+import styles from "./ChannelsForm.module.scss";
 import { postChannel } from "@/app/actions";
 import { useFormState } from "react-dom";
 

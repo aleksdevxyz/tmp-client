@@ -3,7 +3,7 @@ import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import RecList from "@/components/RecListMain/RecListMain";
 import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
 import { Metadata } from "next";
-import styles from "./index.module.scss";
+import styles from "./SearchPage.module.scss";
 import { getTranslations } from "next-intl/server";
 
 type Props = {
@@ -35,7 +35,7 @@ async function searchCategory(query: string) {
   return res.json();
 }
 
-export default async function HomePage({
+export default async function SearchPage({
   searchParams,
 }: {
   searchParams?: { term?: string };

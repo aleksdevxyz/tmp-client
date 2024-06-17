@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./index.module.scss";
+import styles from "./Footer.module.scss";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 

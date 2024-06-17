@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import styles from "./index.module.scss";
+import styles from "./ArticleSwiper.module.scss";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import Image from "next/image";

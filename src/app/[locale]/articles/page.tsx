@@ -1,8 +1,6 @@
-import styles from "./index.module.scss";
+import styles from "./HomePage.module.scss";
 
 import { Metadata } from "next";
-import Pagination from "@/components/Pagination/Pagination";
-import { getTotalPages } from "@/helpers/getTotalPages";
 import ArticleSwiper from "@/components/ArticlesComponents/ArticleSwiper/ArticleSwiper";
 import { getLocale, getTranslations } from "next-intl/server";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
@@ -52,11 +50,6 @@ export default async function HomePage({
   const accuracyCategory = searchParams?.category || '';
   const locale = await getLocale();
   
-  // const [RecArticles, articles, categories] = await Promise.all([
-  //   loadRecommendedArticles(),
-  //   await loadArticles(accuracyCategory),
-  //   loadCategories()
-  // ]);
   const [RecArticles, articles, categories] = await Promise.all([
     loadRecommendedArticles(),
     await loadArticles(accuracyCategory),

@@ -3,7 +3,7 @@
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
 import SubmitButton from "../../SubmitButton/SubmitButton";
-import styles from "./index.module.scss";
+import styles from "./BotsForm.module.scss";
 import { postBots } from "@/app/actions";
 import { useFormState } from "react-dom";
 

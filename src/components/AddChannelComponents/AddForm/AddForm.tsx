@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import React from "react";
 import ChatForm from "../BotsForm/BotsForm";
 import ChannelsForm from "../ChannelsForm/ChannelsForm";
-import styles from "./index.module.scss";
+import styles from "./AddForm.module.scss";
 
 const chanelActive = cn(styles._active, styles.button_select);
 

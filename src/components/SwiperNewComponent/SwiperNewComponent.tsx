@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 
-import styles from "./index.module.scss";
+import styles from "./SwiperNewComponent.module.scss";
 
 import NewChannelsSlide from "../Slides/NewChannelsSlide/NewChannelsSlide";
 import Image from "next/image";
 import classNames from "classnames";
+import { useLocale } from "next-intl";
 
 type Props = {
   data: any;
@@ -15,7 +16,7 @@ type Props = {
 };
 
 
-const splitToChunks = (data: any): React.ReactNode[] => {
+const splitToChunks = (data: any, locale: string): React.ReactNode[] => {
   const chunkSize = 3;
   const slides: React.ReactNode[] = [];
 
@@ -31,6 +32,7 @@ const splitToChunks = (data: any): React.ReactNode[] => {
             name={item.name}
             image={item.image}
             subscribers={item.subscribers}
+            locale={locale}
           />
         ))}
       </div>
@@ -44,11 +46,12 @@ const splitToChunks = (data: any): React.ReactNode[] => {
 
 export default function SwiperNewComponent({ data, count }: Props) {
   const [slides, setSlides] = useState<React.ReactNode[]>([]);
+  const locale = useLocale();
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
 
   useEffect(() => {
-    setSlides(splitToChunks(data));
+    setSlides(splitToChunks(data, locale));
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import styles from "./index.module.scss";
+import styles from "./HomePage.module.scss";
 import ArticleContent from "@/components/ArticlesComponents/ArticleContent/ArticleContent";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import RecListMain from "@/components/RecListMain/RecListMain";

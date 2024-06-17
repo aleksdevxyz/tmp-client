@@ -1,11 +1,14 @@
 "use client"
 
 import { Article, Category } from '@/app/[locale]/articles/page'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ArticleCategorySwiper from '../ArticleCategorySwiper/ArticleCategorySwiper'
 import RecList from "@/components/ArticlesComponents/ArticleList/ArticleList";
-import Pagination from '@/components/Pagination/Pagination';
+// import Pagination from '@/components/Pagination/Pagination';
 import { loadArticles } from '@/app/[locale]/articles/api';
+import dynamic from "next/dynamic";
+
+const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
 
 const ArticlesRecomended = ({
   articles,

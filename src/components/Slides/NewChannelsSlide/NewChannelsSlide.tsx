@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./index.module.scss";
+import styles from "./NewChannelsSlide.module.scss";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 
@@ -8,6 +8,7 @@ interface slideRes {
   name: string;
   image: string;
   subscribers: number;
+  locale: string
 }
 
 export default function NewChannelsSlide({
@@ -15,8 +16,8 @@ export default function NewChannelsSlide({
   name,
   image,
   subscribers,
+  locale
 }: slideRes) {
-  const locale = useLocale()
   return (
     <Link href={`/${locale}/${id}`} className={styles.item} key={id}>
       <Image width={46} height={46} src={image} alt={name} className={styles.image} />

@@ -1,11 +1,14 @@
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
-import styles from "./index.module.scss";
+import styles from "./BotsPage.module.scss";
 
-import Pagination from "@/components/Pagination/Pagination";
+// import Pagination from "@/components/Pagination/Pagination";
 import RecList from "@/components/RecListMain/RecListMain";
-import { getTotalPages } from "@/helpers/getTotalPages";
+// import { getTotalPages } from "@/helpers/getTotalPages";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import dynamic from "next/dynamic";
+
+const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("IndexBots");
@@ -34,7 +37,7 @@ async function getBotsList(page: number) {
   return [];
 }
 
-export default async function HomePage({
+export default async function BotsPage({
   searchParams,
 }: {
   searchParams?: {

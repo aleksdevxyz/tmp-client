@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './index.module.scss'
+import styles from './ArticleShareButton.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 

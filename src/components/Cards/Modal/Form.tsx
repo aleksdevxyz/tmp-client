@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "./index.module.scss";
+import styles from "./Modal.module.scss";
 import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
 import Button from "./Button";

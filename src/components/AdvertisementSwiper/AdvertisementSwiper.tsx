@@ -4,7 +4,7 @@ import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import type { advertisement } from "../Cards/AdvertisementCard/AdvertisementCard";
 import classNames from "classnames";
-import styles from "./index.module.scss";
+import styles from "./AdvertisementSwiper.module.scss";
 import AdvertisementCardMob from "../Cards/AdvertisementCardMob/AdvertisementCardMob";
 
 export default function AdvertisementSwiper({

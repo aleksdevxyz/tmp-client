@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import styles from "./index.module.scss";
+import styles from "./Pagination.module.scss";
 import Link from "next/link";
 import { BackButton, ForwardButton } from "../svgs";
 

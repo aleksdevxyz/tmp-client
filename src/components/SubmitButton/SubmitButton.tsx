@@ -1,6 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
-import styles from "./index.module.scss";
+import styles from "./SubmitButton.module.scss";
 import { useFormStatus } from "react-dom";
 
 export default function SubmitButton() {

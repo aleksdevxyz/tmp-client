@@ -1,7 +1,7 @@
 import React from 'react'
 import { default as cn} from 'classnames'
 import Image from 'next/image'
-import styles from "./index.module.scss";
+import styles from "./AdvertisementCardMob.module.scss";
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 

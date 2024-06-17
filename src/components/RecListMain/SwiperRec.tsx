@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import styles from "./index.module.scss";
+import styles from "./RecListMain.module.scss";
 import classNames from "classnames";
 import useEmblaCarousel from "embla-carousel-react";
 

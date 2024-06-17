@@ -1,11 +1,14 @@
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import MainSection from "@/components/MainSection/MainSection";
-import Pagination from "@/components/Pagination/Pagination";
+// import Pagination from "@/components/Pagination/Pagination";
 import NewChannels from "@/components/NewChannels/NewChannels";
 import RecList from "@/components/RecListMain/RecListMain";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import styles from "./page.module.scss";
+import styles from "./Home.module.scss";
+import dynamic from "next/dynamic";
+
+const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Index");

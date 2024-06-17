@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./index.module.scss";
+import styles from "./ChannelsList.module.scss";
 import CardWrapper from "../Cards/CardWrapper/CardWrapper";
 import AdvertisementCard from "../Cards/AdvertisementCard/AdvertisementCard";
 import AdvertisementCardMob, { advertisement } from "../Cards/AdvertisementCardMob/AdvertisementCardMob";

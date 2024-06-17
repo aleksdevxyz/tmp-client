@@ -1,6 +1,6 @@
 import AddForm from "@/components/AddChannelComponents/AddForm/AddForm";
 import { getCategory } from "../../api/categoryApi";
-import styles from "./index.module.scss";
+import styles from "./AddChannel.module.scss";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function HomePage() {
+export default async function AddChannel() {
   const category = await getCategory();
   return (
     <div className={styles.section}>
