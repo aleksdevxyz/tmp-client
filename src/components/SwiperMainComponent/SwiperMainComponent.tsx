@@ -59,17 +59,13 @@ export default function SwiperMainComponent({ data, count }: Props) {
       <div className={styles.subtitle}>
         <div className={styles.subtitle_container}>
           <h3 className={styles.subtitle_text}>{t("Все категории")}</h3>
-          <button className={styles.button}>
+          <Link href={`/${locale}/add_channel`} className={styles.button_text}>
             <AddSquare className={styles.icon_add} />
-            <Link href={`/${locale}/add_channel`} className={styles.button_text}>
-              {t("Добавить канал")}
-            </Link>
-          </button>
+            {t("Добавить канал")}
+          </Link>
         </div>
 
-        <div className={styles.content_container}>
           <div className={styles.content}>
-            <div className={styles.content_list}>
               <ArrowBack
                 onClick={() => emblaApi && emblaApi.scrollPrev()}
                 className={classNames("embla__prev", styles.arrow, styles.arrow_prev)}
@@ -83,9 +79,7 @@ export default function SwiperMainComponent({ data, count }: Props) {
                 onClick={() => emblaApi && emblaApi.scrollNext()}
                 className={classNames("embla__next", styles.arrow, styles.arrow_next)}
               />
-            </div>
           </div>
-        </div>
       </div>
     </div>
   );

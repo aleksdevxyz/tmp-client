@@ -34,10 +34,14 @@
     border: 1px solid rgb(222, 226, 228);
     border-radius: 10px;
     background: rgb(255, 255, 255);
-    --controls-offset: -10px;
+    --controls-offset: -20px;
 
     @media screen and (max-width: 480px) {
         padding: 10px 20px;
+    }
+
+    @include index.mini-desktop {
+        --controls-offset: -10px;
     }
 
     .arrow {

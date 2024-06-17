@@ -1,35 +1,28 @@
 "use client";
 
-import React, { useRef } from "react";
-import { advertisement } from "../Cards/AdvertisementCard/AdvertisementCard";
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import styles from "./index.module.scss";
+import React from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import type { advertisement } from "../Cards/AdvertisementCard/AdvertisementCard";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import "swiper/css";
+import classNames from "classnames";
+import styles from "./index.module.scss";
 
 export default function AdvertisementSwiper({
   data,
 }: {
   data: advertisement[];
 }) {
-  const ref = useRef<SwiperRef>(null);
   const t = useTranslations("Card");
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" });
 
   return (
-    <Swiper
-      className={styles.swiper}
-      onSwiper={(swiper) =>
-        ref.current ? (ref.current.swiper = swiper) : null
-      }
-      slidesPerView={1}
-      loop={true}
-    >
-      {data.map((item, index) => {
-        return (
-          <SwiperSlide key={index} >
-            <div className={styles.slide}>
+    <div className={classNames("embla", styles.embla)} ref={emblaRef}>
+      <div className={classNames("embla__container", styles.embla__container)}>
+        {data.map((slide) => {
+          return (
+            <article className={classNames("embla__slide", styles.embla__slide, styles.slide)} key={slide.link}>
               <Image
                 className={styles.image}
                 src={data[0].image}
@@ -37,26 +30,24 @@ export default function AdvertisementSwiper({
                 height={94}
                 alt={data[0].title}
               />
-              <div className={styles.text_container}>
-                <p className={styles.title}>{item.title}</p>
-                <div className={styles.subtitle}>
-                  {item.content.split("\n").map((text, index) => (
-                    <p key={index} className={styles.formatted_text}>
+              <div className={styles.content}>
+                <h3 className={styles.title}>{slide.title}</h3>
+                <div className={styles.descr}>
+                  {slide.content.split("\n").map((text) => (
+                    <p key={text} className={styles.descr_item}>
                       {text}
                     </p>
                   ))}
                 </div>
-                <button className={styles.button}>
-                  <Link className={styles.button_link} href={`${item.link}`}>
-                    {t("Открыть канал")}
-                  </Link>
-                </button>
+                <Link className={styles.link} href={`${slide.link}`}>
+                  {t("Открыть канал")}
+                </Link>
               </div>
-              <p className={styles.advertisement}>#Реклама</p>
-            </div>
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+              <div className={styles.tag}>#Реклама</div>
+            </article>
+          )
+        })}
+      </div>
+    </div>
   );
 }
