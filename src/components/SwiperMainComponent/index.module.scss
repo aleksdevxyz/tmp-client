@@ -2,17 +2,33 @@
 
 .section {
     width: 100%;
-    &:hover .arrow_back {
-        opacity: 1;
-        transition: opacity .5s ease-in-out;
-    }
-
-    &:hover .arrow_forward {
-        opacity: 1;
-        transition: opacity .5s ease-in-out;
-    }
 }
 
+.embla {
+    overflow: hidden;
+
+    &__container {
+        display: flex;
+    }
+
+    &__slide {
+        display: flex;
+        flex: 0 0 33%;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+        min-width: 0;
+        padding: 0 10px;
+
+        @include index.tablet {
+            flex: 0 0 50%;
+        }
+
+        @include index.small-tablet {
+            flex: 0 0 100%;
+        }
+    }
+}
 
 .subtitle {
     max-width: 1140px;
@@ -84,57 +100,39 @@
 }
 
 .content_container {
+    --controls-offset: -10px;
     display: flex;
     margin: 0;
     box-sizing: border-box;
     position: relative;
     justify-content: center;
 
-
-    .arrow_back {
-        visibility: visible;
-        opacity: 0;
-        background-color: transparent;
-        border: none;
+    .arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left: -20px;
-        width: 12px;
-        height: 24px;
         cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        visibility: hidden;
+        opacity: 0;
 
         @media screen and (max-width: 480px) {
             display: none;
         }
 
-        &:hover {
-            opacity: 1;
-            transition: opacity .5s ease-in-out;
+        &_prev {
+            left: var(--controls-offset);
         }
 
+        &_next {
+            right: var(--controls-offset);
+        }
     }
 
-    .arrow_forward {
-        background-color: transparent;
-        border: none;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: -20px;
-        width: 12px;
-        height: 24px;
-        cursor: pointer;
-        opacity: 0;
-
-        @media screen and (max-width: 480px) {
-            display: none;
-        }
-
-
-        &:hover {
+    &:hover {
+        .arrow {
+            visibility: visible;
             opacity: 1;
-            transition: opacity .5s ease-in-out;
         }
     }
 
@@ -155,28 +153,10 @@
             max-width: 100%;
         }
 
-
         .content_list {
             display: block;
             max-width: 1140px;
             box-sizing: border-box;
-
-
-            .slide {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                justify-content: space-between;
-                padding: 0 10px 0 10px;
-                width: 354px;
-                flex-wrap: wrap;
-                height: 100%;
-
-                @media screen and (max-width: 480px) {
-                    width: 400px;
-                }
-
-            }
         }
     }
 }

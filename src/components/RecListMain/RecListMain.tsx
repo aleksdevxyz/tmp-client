@@ -1,10 +1,7 @@
 import React from "react";
 import styles from "./index.module.scss";
-import Image from "next/image";
-import { getLocale, getTranslations } from "next-intl/server";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
-// import SwiperRec from "./SwiperRec";
 
 const SwiperRec = dynamic(() => import("./SwiperRec"));
 
@@ -34,9 +31,9 @@ export default async function RecListMain() {
   const t = await getTranslations("Main");
 
   return (
-      <div className={styles.container}>
-        <h2 className={styles.title}>{t("Рекомендуем почитать")}</h2>
-        <SwiperRec data={recData} />
-      </div>  
+    <div className={styles.container}>
+      <h2 className={styles.title}>{t("Рекомендуем почитать")}</h2>
+      <SwiperRec data={recData} />
+    </div>  
   );
 }

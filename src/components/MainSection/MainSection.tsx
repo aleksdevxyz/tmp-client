@@ -2,7 +2,6 @@ import { getTranslations } from "next-intl/server";
 import { getCategory } from "../../app/api/categoryApi";
 import styles from "./MainSection.module.scss";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 
 const SwiperMainComponent = dynamic(() => import("../SwiperMainComponent/SwiperMainComponent"));
 

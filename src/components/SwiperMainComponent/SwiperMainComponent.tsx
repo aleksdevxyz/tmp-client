@@ -1,68 +1,58 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { Navigation } from "swiper/modules";
+import React, { useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import styles from "./index.module.scss";
-
-import "swiper/css";
 
 import { CategoryResponse } from "@/app/api/categoryApi";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import ChannelSlide from "../Slides/CategorySlide/CategorySlide";
 import { AddSquare, ArrowBack, ArrowForward } from "../svgs";
+import classNames from "classnames";
 
 type Props = {
   data: CategoryResponse[];
   count: number;
 };
 
+const splitToChunks = (categories: CategoryResponse[]): React.ReactNode[] => {
+  const chunkSize = 8;
+  const slides: React.ReactNode[] = [];
+
+  for (let i = 0; i < categories.length; i += chunkSize) {
+    const chunk = categories.slice(i, i + chunkSize);
+
+    const slide = (
+      <div className={classNames("embla__slide", styles.embla__slide)} key={i} >
+        {chunk.map(({ id, name, translit_name, channels_count }) => (
+          <ChannelSlide
+            key={id}
+            name={name}
+            id={id}
+            translit_name={translit_name}
+            channels_count={channels_count}
+          />
+        ))}
+      </div>
+    );
+
+    slides.push(slide);
+  }
+
+  return slides;
+}
+
 export default function SwiperMainComponent({ data, count }: Props) {
   const locale = useLocale();
-  const t = useTranslations('Main')
+  const t = useTranslations('Main');
+  const [slides, setSlides] = useState<React.ReactNode[]>([]);
 
-  const slideRef = useRef<SwiperRef>(null);
-
-  const [slides, setSlides] = React.useState<React.ReactNode[]>([]);
-
-  const handlePrev = React.useCallback(() => {
-    if (!slideRef.current) return;
-    slideRef.current.swiper.slidePrev();
-  }, []);
-
-  const handleNext = React.useCallback(() => {
-    if (!slideRef.current) return;
-    slideRef.current.swiper.slideNext();
-  }, []);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
 
   useEffect(() => {
-    if (data) {
-      const chunkSize = 8;
-      const swiperSlides: any = [];
-
-      for (let i = 0; i < data.length; i += chunkSize) {
-        const chunk = data.slice(i, i + chunkSize);
-
-        const slide = (
-          <SwiperSlide key={i} className={styles.slide}>
-            {chunk.map(({ id, name, translit_name, channels_count }) => (
-              <ChannelSlide
-                key={id}
-                name={name}
-                id={id}
-                translit_name={translit_name}
-                channels_count={channels_count}
-              />
-            ))}
-          </SwiperSlide>
-        );
-        swiperSlides.push(slide);
-      }
-
-      setSlides(swiperSlides);
-    }
-  }, [data]);
+    setSlides(splitToChunks(data));
+  }, []);
 
   return (
     <div className={styles.section}>
@@ -76,36 +66,22 @@ export default function SwiperMainComponent({ data, count }: Props) {
             </Link>
           </button>
         </div>
+
         <div className={styles.content_container}>
           <div className={styles.content}>
             <div className={styles.content_list}>
-              <ArrowBack onClick={handlePrev} className={styles.arrow_back} />
-              <Swiper
-                ref={slideRef}
-                onSwiper={(swiper) => {
-                  if (slideRef.current) {
-                    slideRef.current.swiper = swiper;
-                  }
-                }}
-                breakpoints={{
-                  992: {
-                    slidesPerView: 3,
-                  },
-                  768: {
-                    slidesPerView: 2,
-                  },
-                  480: {
-                    slidesPerView: 1,
-                  },
-                }}
-                loop={data && true}
-                modules={[Navigation]}
-              >
-                {slides}
-              </Swiper>
+              <ArrowBack
+                onClick={() => emblaApi && emblaApi.scrollPrev()}
+                className={classNames("embla__prev", styles.arrow, styles.arrow_prev)}
+              />
+              <div className={classNames("embla", styles.embla)} ref={emblaRef}>
+                <div className={classNames("embla__container", styles.embla__container)}>
+                  {slides}
+                </div>
+              </div>
               <ArrowForward
-                onClick={handleNext}
-                className={styles.arrow_forward}
+                onClick={() => emblaApi && emblaApi.scrollNext()}
+                className={classNames("embla__next", styles.arrow, styles.arrow_next)}
               />
             </div>
           </div>

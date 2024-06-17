@@ -1,13 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { Navigation } from "swiper/modules";
+import React, { useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 import styles from "./index.module.scss";
 
-import "swiper/css";
-
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import NewChannelsSlide from "../Slides/NewChannelsSlide/NewChannelsSlide";
 import Image from "next/image";
 import classNames from "classnames";
@@ -17,47 +14,42 @@ type Props = {
   count: number;
 };
 
+
+const splitToChunks = (data: any): React.ReactNode[] => {
+  const chunkSize = 3;
+  const slides: React.ReactNode[] = [];
+
+  for (let i = 0; i < data.length; i += chunkSize) {
+    const chunk = data.slice(i, i + chunkSize);
+
+    const slide = (
+      <div className={classNames("embla__slide", styles.embla__slide)} key={i} >
+        {chunk.map((item: any) => (
+          <NewChannelsSlide
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            image={item.image}
+            subscribers={item.subscribers}
+          />
+        ))}
+      </div>
+    );
+
+    slides.push(slide);
+  }
+
+  return slides;
+}
+
 export default function SwiperNewComponent({ data, count }: Props) {
-  const slideNewRef = useRef<SwiperRef>(null);
+  const [slides, setSlides] = useState<React.ReactNode[]>([]);
 
-  const [slidesNew, setSlidesNew] = React.useState<React.ReactNode[]>([]);
-
-  const handlePrev = React.useCallback(() => {
-    if (!slideNewRef.current) return;
-    slideNewRef.current.swiper.slidePrev();
-  }, []);
-
-  const handleNext = React.useCallback(() => {
-    if (!slideNewRef.current) return;
-    slideNewRef.current.swiper.slideNext();
-  }, []);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
 
   useEffect(() => {
-    if (data) {
-      const chunkSize = 3;
-      const swiperSlides: any = [];
-
-      for (let i = 0; i < data.length; i += chunkSize) {
-        const chunk = data.slice(i, i + chunkSize);
-        const slide = (
-          <SwiperSlide key={i} className={styles.slider}>
-            {chunk.map((item: any) => (
-              <NewChannelsSlide
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                image={item.image}
-                subscribers={item.subscribers}
-              />
-            ))}
-          </SwiperSlide>
-        );
-        swiperSlides.push(slide);
-      }
-
-      setSlidesNew(swiperSlides);
-    }
-  }, [data]);
+    setSlides(splitToChunks(data));
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -66,42 +58,21 @@ export default function SwiperNewComponent({ data, count }: Props) {
         height={24}
         alt="arrow-back"
         src={"/Arrow-Back.svg"}
-        onClick={handlePrev}
-        className={classNames(styles.arrow_new_back, styles.arrow_new_back_visible)}
+        onClick={() => emblaApi && emblaApi.scrollPrev()}
+        className={classNames("embla__prev", styles.arrow, styles.arrow_prev)}
       />
-      <Swiper
-        ref={slideNewRef}
-        onSwiper={(swiper) => {
-          if (slideNewRef.current) {
-            slideNewRef.current.swiper = swiper;
-          }
-        }}
-        breakpoints={{
-          992: {
-            slidesPerView: 4,
-          },
-          768: {
-            slidesPerView: 3,
-          },
-          552: {
-            slidesPerView: 2,
-          },
-          420: {
-            slidesPerView: 1,
-          },
-        }}
-        loop={true}
-        modules={[Navigation]}
-      >
-        {slidesNew}
-      </Swiper>
+      <div className={classNames("embla", styles.embla)} ref={emblaRef}>
+        <div className={classNames("embla__container", styles.embla__container)}>
+          {slides}
+        </div>
+      </div>
       <Image
         width={12}
         height={24}
         alt="arrow-forward"
         src={"/Arrow-forward.svg"}
-        onClick={handleNext}
-        className={classNames(styles.arrow_new_forward, styles.arrow_new_forward_visible)}
+        onClick={() => emblaApi && emblaApi.scrollNext()}
+        className={classNames("embla__next", styles.arrow, styles.arrow_next)}
       />
     </div>
   );
