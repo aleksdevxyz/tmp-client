@@ -8,7 +8,8 @@ import hiddenImg from "../../../../public/+18.png";
 import { useLocale, useTranslations } from "next-intl";
 import Modal from "../Modal/Modal";
 import { usePathname } from "next/navigation";
-import ShareModal from "../ShareModal/ShareModal";
+import dynamic from "next/dynamic";
+
 export interface Props {
   name: string;
   description: string;
@@ -25,6 +26,8 @@ export interface Category {
   name: string;
   translit_name: string;
 }
+
+const ShareModal = dynamic(() => import("../ShareModal/ShareModal"));
 
 export default function CardInner({
   image,

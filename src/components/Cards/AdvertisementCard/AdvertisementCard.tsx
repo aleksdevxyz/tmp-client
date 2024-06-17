@@ -1,8 +1,7 @@
 import Image from "next/image";
 import styles from "./index.module.scss";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
-import Markdown from "markdown-to-jsx";
+import AdvertisementCardMob from "../AdvertisementCardMob/AdvertisementCardMob";
 
 export interface advertisement {
   title: string;
@@ -31,7 +30,6 @@ function getRandomAdvertisement(advertisements: advertisement[]) {
 export default async function AdvertisementCard() {
   const data = await GetAdvertisement();
   const randomAd = getRandomAdvertisement(data);
-  const t = await getTranslations("Card");
   
   if (!randomAd)
   return <div>Empty ad</div>
@@ -40,29 +38,8 @@ export default async function AdvertisementCard() {
   
   return (
     <>
-      <div className={styles.section_mobile}>
-        <Image
-          className={styles.image}
-          src={randomAd.image}
-          width={94}
-          height={94}
-          alt="Advertisement"
-        />
-        <div className={styles.text_container}>
-          <h3 className={styles.title}>{randomAd.title}</h3>
-          <div className={styles.subtitle}>
-         {text.map((text, index) => (
-            <p key={index} className={styles.formatted_text}>{text}</p>
-          ))}
-          </div>
-          <button className={styles.button}>
-            <Link className={styles.button_link} href={`${randomAd.link}`}>
-              {t("Открыть канал")}
-            </Link>
-          </button>
-        </div>
-        <p className={styles.advertisement}>#Реклама</p>
-      </div>
+      <AdvertisementCardMob data={randomAd} />
+
       <Link href={`${randomAd.link}`} className={styles.section}>
         <Image
           className={styles.image}

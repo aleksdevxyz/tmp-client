@@ -1,4 +1,4 @@
-.section_mobile {
+.ad {
   position: relative;
   display: none;
   align-items: center;
@@ -7,121 +7,94 @@
   border: 1px solid rgb(222, 226, 228);
   border-radius: 10px;
   background: rgb(255, 255, 255);
-  text-decoration: none;
 
-  @media screen and (max-width: 480px) {
-    padding: 15px;
-    display: flex;
-    max-height: 140px;
-    justify-content: space-between;
-  }
-
-  .advertisement {
-    position: absolute;
-    margin: 0;
-    right: 15px;
-    bottom: 15px;
-    color: rgb(120, 129, 137);
-    font-family: "Roboto-Light";
-    font-size: 10px;
-    font-weight: 300;
-    text-align: left;
-
-    @media screen and (max-width: 480px) {
-      bottom: 5px;
-    }
+  @media screen and (max-width: 576px) {
+      display: flex;
+      justify-content: space-between;
+      max-height: 140px;
+      padding: 15px;
   }
 
   .image {
-    border-radius: 89px;
-    border: 1px solid #dee2e4;
-    padding: 3px;
-    transition: all 0.3s;
-    object-fit: cover;
+      border-radius: 89px;
+      padding: 3px;
+      border: 1px solid #DEE2E4;
+      transition: all .3s;
+      object-fit: cover;
 
-    @media screen and (max-width: 480px) {
-      order: 2;
-      margin-bottom: 7px;
-    }
+      @media screen and (max-width: 576px) {
+          order: 2;
+          margin-bottom: 7px;
+      }
   }
 
-  .text_container {
-    margin-left: 15px;
-    max-width: 189.41px;
-
-    @media screen and (max-width: 480px) {
-      margin-left: 0;
-    }
-
-    .title {
-      margin: 0;
+  .title {
       color: rgb(103, 113, 121);
-      font-family: "Roboto-Bold";
       font-size: 16px;
-      font-weight: 700;
+      font-family: 'Roboto-Bold';
       line-height: 24px;
-      text-align: left;
-      transition: all 0.3s;
+      transition: all .3s;
       white-space: nowrap;
-      overflow: hidden;
       max-width: 212px;
+      overflow: hidden;
 
-      @media screen and (max-width: 480px) {
-        margin-bottom: 8px;
-        font-size: 14px;
+      @media screen and (max-width: 576px) {
+          margin: 0;
+          margin-bottom: 8px;
+          font-size: 14px;
       }
-    }
+  }
 
-    .subtitle {
+  .descr {
       max-width: 190px;
-      margin: 0;
       text-overflow: ellipsis;
       overflow: hidden;
-      margin: 0;
 
-      .formatted_text {
-        margin: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
-        color: rgb(120, 129, 137);
-        font-family: "Inter-Normal";
-        font-size: 10px;
-        font-weight: 300;
-        line-height: 1;
-        text-align: left;
+      @media screen and (max-width: 576px) {
+          margin-bottom: 10px;
       }
 
-      @media screen and (max-width: 480px) {
-        margin-bottom: 10px;
+      &_item {
+          max-width: 100%;
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: rgb(120, 129, 137);
+          font-family: 'Inter-Normal';
+          font-size: 10px;
+          font-weight: 300;
       }
-    }
+  }
 
-    .button {
-      margin: 0;
-      padding: 8px 15px;
-      border-radius: 5px;
-      background: #161b22;
-      max-width: 106px;
-      border: none;
+  .link {
       display: flex;
       align-items: center;
+      max-width: 106px;
+      padding: 8px 15px;
+      border-radius: 5px;
+      background: #161B22;
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+      font-family: 'Roboto-Light';
+      font-size: 10px;
 
-      @media screen and (max-width: 480px) {
-        padding: 11px 18px;
-        height: 22px;
+      @media screen and (max-width: 576px) {
+          padding: 11px 18px;
+          height: 22px;
       }
+  }
 
-      .button_link {
-        text-decoration: none;
-        color: rgb(255, 255, 255);
-        font-family: "Roboto-Light";
-        font-size: 10px;
-        font-weight: 300;
-        text-align: center;
-        white-space: nowrap;
+  .tag {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      color: rgb(120, 129, 137);
+      font-size: 10px;
+      font-family: 'Roboto-Light';
+
+      @media screen and (max-width: 576px) {
+          bottom: 5px;
       }
-    }
   }
 }
