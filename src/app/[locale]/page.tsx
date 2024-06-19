@@ -1,13 +1,18 @@
 //Components
-const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
-const ChannelsList = dynamic(() => import("@/components/ChannelsList/ChannelsList"));
-const MainSection = dynamic(() => import("@/components/MainSection/MainSection"));
-const NewChannels = dynamic(() => import("@/components/NewChannels/NewChannels"));
-const RecList = dynamic(() => import("@/components/RecListMain/RecListMain"));
+// const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
+// const ChannelsList = dynamic(() => import("@/components/ChannelsList/ChannelsList"));
+// const MainSection = dynamic(() => import("@/components/MainSection/MainSection"));
+// const NewChannels = dynamic(() => import("@/components/NewChannels/NewChannels"));
+// const RecList = dynamic(() => import("@/components/RecListMain/RecListMain"));
+import Pagination from "@/components/Pagination/Pagination";
+import ChannelsList from "@/components/ChannelsList/ChannelsList";
+import MainSection from "@/components/MainSection/MainSection";
+import NewChannels from "@/components/NewChannels/NewChannels";
+import RecList from "@/components/RecListMain/RecListMain";
 //Other
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 //server
 import { getChannelsList } from "../actions";
 //styles
