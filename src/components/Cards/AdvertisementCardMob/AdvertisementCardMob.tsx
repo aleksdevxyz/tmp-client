@@ -34,6 +34,7 @@ const AdvertisementCardMob = ({ data, classNames }: Props) => {
         width={94}
         height={94}
         alt={title}
+        loading='lazy'
       />
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
