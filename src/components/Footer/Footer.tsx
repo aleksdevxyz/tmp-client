@@ -4,8 +4,11 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
 export default async function Footer() {
-  const t = await getTranslations("Footer");
-  const locale = await getLocale();
+
+
+  const [t,locale] = await Promise.all([getTranslations("Footer"),getLocale()])
+
+  
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>

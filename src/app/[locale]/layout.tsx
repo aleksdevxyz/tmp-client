@@ -1,15 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("@/components/Header/Header"));
+const Footer = dynamic(() => import("@/components/Footer/Footer"));
+const BurgerMenu = dynamic(() => import("@/components/BurgerMenu/BurgerMenu"));
+// import Header from "@/components/Header/Header";
+// import Footer from "@/components/Footer/Footer";
+// import BurgerMenu from "@/components/BurgerMenu/BurgerMenu";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
-import BurgerMenu from "@/components/BurgerMenu/BurgerMenu";
 //styles
 import "./globals.scss";
-import "normalize.css";
+
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 

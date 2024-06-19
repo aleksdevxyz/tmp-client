@@ -20,7 +20,7 @@ export default function SwiperRec({ data }: any) {
     <div className={classNames("embla", styles.embla)} ref={emblaRef}>
       <div className={classNames("embla__container", styles.embla__container)}>
         {data?.map((item: any, index: number) => (
-          <div className={classNames("embla__slide", styles.embla__slide, styles.slide)} key={item.id}>
+          <div className={classNames("embla__slide", styles.embla__slide, styles.slide)} key={index}>
             <Link href={`/${memoizedLocale}/articles/${item.translit_name}`}>
                 <Image
                   alt={item?.name}

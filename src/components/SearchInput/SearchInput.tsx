@@ -4,7 +4,7 @@ import styles from "./SearchInput.module.scss";
 import { SearchIcon } from "../svgs";
 import Link from "next/link";
 import cn from "classnames";
-import axios from "axios";
+// import axios from "axios";
 import Image from "next/image";
 import { useDebouncedCallback } from "use-debounce";
 import { useLocale, useTranslations } from "next-intl";
@@ -37,15 +37,23 @@ export default function SearchInput({open,setOpenSearch = () => {}}: {open?: boo
   const dropRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const searchRequest = (value: string) => {
     if (value) {
-      axios
-        .get(
-          `https://test-api-teleshtorm.teleshtorm.org/channels/search_suggest?query=${value}`
-        )
-        .then((res) => {
-          setSearchResult(res.data);
+      fetch(`https://test-api-teleshtorm.teleshtorm.org/channels/search_suggest?query=${encodeURIComponent(value)}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // парсим JSON ответ
+        })
+        .then(data => {
+          setSearchResult(data); // устанавливаем результат поиска
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+          // обрабатываем ошибку, например, показываем пользователю сообщение
         });
     }
   };
+  
 
   const handleSearch = useDebouncedCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {

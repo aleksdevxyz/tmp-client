@@ -41,7 +41,6 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
 
   return (
     <main>
-      <h1 className={styles.hidden}>Каталог Telegram-каналов и чатов</h1>
       <MainSection />
 
       <div className={styles.section}>
