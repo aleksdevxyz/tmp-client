@@ -7,6 +7,7 @@ export interface ChannelsProps {
     subscribers: number;
   }
 
+  
   export interface recRes {
     name: string;
     translit_name: string;
