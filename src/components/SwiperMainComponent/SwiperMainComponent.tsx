@@ -3,7 +3,7 @@
 import React, { useMemo } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./SwiperMainComponent.module.scss";
-import { CategoryResponse } from "@/app/api/categoryApi";
+import { CategoryResponse } from "@/types/types";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import ChannelSlide from "../Slides/CategorySlide/CategorySlide";

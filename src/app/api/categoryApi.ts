@@ -1,11 +1,6 @@
 const BASE_URL = process.env.BASE_URL;
+import { CategoryResponse } from "@/types/types";
 
-interface CategoryResponse {
-    id: string
-    name: string
-    translit_name: string
-    channels_count: number
-}
 
 const request = async (url: string): Promise<CategoryResponse[]> => {
   try {

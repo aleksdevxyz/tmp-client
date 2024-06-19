@@ -7,7 +7,12 @@ export interface ChannelsProps {
     subscribers: number;
   }
 
-  
+  export interface CategoryResponse {
+    id: string
+    name: string
+    translit_name: string
+    channels_count: number
+}
   
   export interface recRes {
     name: string;

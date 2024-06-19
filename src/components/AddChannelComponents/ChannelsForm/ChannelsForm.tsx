@@ -1,6 +1,6 @@
 "use client";
 
-import { CategoryResponse } from "@/app/api/categoryApi";
+import { CategoryResponse } from "@/types/types";
 import cn from "classnames";
 import { useTranslations } from "next-intl";
 import SubmitButton from "../../SubmitButton/SubmitButton";
