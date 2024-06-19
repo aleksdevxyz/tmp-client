@@ -17,9 +17,9 @@ export default function AdvertisementSwiper({
   return (
     <div className={classNames("embla", styles.embla)} ref={emblaRef}>
       <div className={classNames("embla__container", styles.embla__container)}>
-        {data.map((slide) => {
+        {/* {data.map((slide) => {
           return <AdvertisementCardMob data={slide} classNames={styles.embla__slide} key={slide.link} />
-        })}
+        })} */}
       </div>
     </div>
   );

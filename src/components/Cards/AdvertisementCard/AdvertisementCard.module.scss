@@ -20,7 +20,13 @@
   }
 
   @media screen and (max-width: 576px) {
-    display: none;
+    // display: none;
+    max-height: 140px;
+    padding: 15px;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    
+    
   }
 
   @media screen and (max-width: 380px) {
@@ -64,6 +70,12 @@
     margin-left: 15px;
     gap: 5px;
 
+    @media screen and (max-width: 576px) {
+      // display: none;
+      gap: 0px;
+      margin-left: 0px;
+    }
+
     .title {
       margin: 0;
       color: rgb(103, 113, 121);
@@ -75,11 +87,31 @@
       white-space: nowrap;
       overflow: hidden;
       max-width: 212px;
+
+      @media screen and (max-width: 576px) {
+        color: rgb(103, 113, 121);
+        font-size: 14px;
+        font-family: 'Roboto-Bold';
+        line-height: 24px;
+        transition: all .3s;
+        white-space: nowrap;
+        max-width: 212px;
+        overflow: hidden;
+          
+      }
     }
 
     .subtitle {
       max-width: 300px;
       margin: 0;
+
+      @media screen and (max-width: 576px) {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 0px;
+      }
+      
 
       .formatted_text {
         margin: 0;
@@ -89,6 +121,9 @@
         font-weight: 300;
         line-height: 1;
         text-align: left;
+        @media screen and (max-width: 576px) {
+          font-size: 10px;
+        }
       }
 
       @media screen and (max-width: 480px) {
@@ -104,7 +139,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 10px 15px;
-  border: 1px solid rgb(222, 226, 228);
+  border: 1px solid rgb(14, 16, 17);
   border-radius: 10px;
   background: rgb(255, 255, 255);
   text-decoration: none;

@@ -1,7 +1,9 @@
+// 'use client'
 import Image from "next/image";
 import styles from "./AdvertisementCard.module.scss";
 import Link from "next/link";
 import AdvertisementCardMob from "../AdvertisementCardMob/AdvertisementCardMob";
+// import { useTranslations } from 'next-intl';
 
 export interface advertisement {
   title: string;
@@ -30,6 +32,8 @@ function getRandomAdvertisement(advertisements: advertisement[]) {
 export default async function AdvertisementCard() {
   const data = await GetAdvertisement();
   const randomAd = getRandomAdvertisement(data);
+  // const t = useTranslations("Card");
+
   
   if (!randomAd)
   return <div>Empty ad</div>
@@ -38,7 +42,7 @@ export default async function AdvertisementCard() {
   
   return (
     <>
-      <AdvertisementCardMob data={randomAd} />
+      {/* <AdvertisementCardMob data={randomAd} /> */}
 
       <Link href={`${randomAd.link}`} className={styles.section}>
         <Image
@@ -54,6 +58,9 @@ export default async function AdvertisementCard() {
           <div className={styles.subtitle}>{text.map((text, index) => (
             <p key={index} className={styles.formatted_text}>{text}</p>
           ))}</div>
+          {/* <Link className={styles.link} href={`${'link'}`}>
+          {'t("Открыть канал")'}
+         </Link> */}
         </div>
         <p className={styles.advertisement}>#Реклама</p>
       </Link>
