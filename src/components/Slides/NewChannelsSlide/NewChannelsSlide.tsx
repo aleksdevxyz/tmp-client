@@ -21,6 +21,7 @@ const NewChannelsSlide: React.FC<SlideRes> = React.memo(({ id, name, image, subs
         alt={name}
         className={styles.image}
         loading="lazy"
+        
       />
       <div className={styles.text_container}>
         <p className={styles.title}>{name}</p>

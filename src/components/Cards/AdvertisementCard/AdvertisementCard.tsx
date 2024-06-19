@@ -52,6 +52,7 @@ export default async function AdvertisementCard() {
           height={94}
           alt="Advertisement"
           loading='lazy'
+          
         />
         <div className={styles.text_container}>
           <p className={styles.title}>{randomAd.title}</p>

@@ -27,7 +27,7 @@ export default function CardWrapper({src, title, description, count, id, path}: 
                 Подписчиков
             </div>
         </div>
-        <Image loading='lazy' width={91} height={91} className={styles.image} src={src} alt={title}/>
+        <Image  loading='lazy' width={91} height={91} className={styles.image} src={src} alt={title}/>
     </Link>
   )
 }

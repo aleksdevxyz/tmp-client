@@ -29,6 +29,7 @@ export default function SwiperRec({ data }: any) {
                   className={styles.image}
                   src={item?.image}
                   loading="lazy"
+                  
                 />
                 <div className={styles.text_container}>
                   <h3 className={styles.title}>{item.name}</h3>
