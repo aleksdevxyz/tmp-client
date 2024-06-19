@@ -102,3 +102,47 @@ export async function postBots(prevState: any, formData: FormData) {
     status: post.status,
   };
 }
+
+export async function getChannelsList(page: number) {
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/channels?page=${page}&limit=31`);
+
+    if (!res?.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    
+    return res.json();
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+export async function getData() {
+  try {
+    const res = await fetch(
+      `${process.env.BASE_URL}/channels?page=0&limit=31`
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch(error) {
+    console.log(error);
+  }
+
+  return []
+}
+
+export async function getRec() {
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/articles/recommended`);
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
+    return res.json();
+  } catch(error) {
+    console.log(error);
+  }
+
+  return []
+}

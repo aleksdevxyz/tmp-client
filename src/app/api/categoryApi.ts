@@ -1,6 +1,6 @@
 const BASE_URL = process.env.BASE_URL;
 
-export interface CategoryResponse {
+interface CategoryResponse {
     id: string
     name: string
     translit_name: string

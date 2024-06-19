@@ -1,6 +1,6 @@
 const BASE_URL =process.env.BASE_URL;
 
-export interface AdvertisementResponse {
+interface AdvertisementResponse {
     title: string
     content: string
     image: string
@@ -16,3 +16,16 @@ const request = async (url: string): Promise<AdvertisementResponse[]> => {
 export async function getAdvertisement() {
     return request('advertisement/mobile')
 }
+
+export async function GetAdvertisement() {
+    try {
+      const res = await fetch(`${process.env.BASE_URL}/advertisement`);
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      return res.json();
+    } catch(error) {
+      console.log(error);
+    }
+    return [];
+  }

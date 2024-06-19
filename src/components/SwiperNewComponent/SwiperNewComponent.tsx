@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-
 import styles from "./SwiperNewComponent.module.scss";
-
 import NewChannelsSlide from "../Slides/NewChannelsSlide/NewChannelsSlide";
 import Image from "next/image";
 import classNames from "classnames";
@@ -15,7 +13,6 @@ type Props = {
   count: number;
 };
 
-
 const splitToChunks = (data: any, locale: string): React.ReactNode[] => {
   const chunkSize = 3;
   const slides: React.ReactNode[] = [];
@@ -24,8 +21,8 @@ const splitToChunks = (data: any, locale: string): React.ReactNode[] => {
     const chunk = data.slice(i, i + chunkSize);
 
     const slide = (
-      <div className={classNames("embla__slide", styles.embla__slide)} key={i} >
-        {chunk.map((item: any) => (
+      <div className={classNames("embla__slide", styles.embla__slide)} key={i}>
+        {chunk?.map((item: any) => (
           <NewChannelsSlide
             key={item.id}
             id={item.id}
@@ -42,17 +39,18 @@ const splitToChunks = (data: any, locale: string): React.ReactNode[] => {
   }
 
   return slides;
-}
+};
 
-export default function SwiperNewComponent({ data, count }: Props) {
-  const [slides, setSlides] = useState<React.ReactNode[]>([]);
+export default function SwiperNewComponent({ data }: Props) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const locale = useLocale();
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const slides = useMemo(() => splitToChunks(data, locale), [data, locale]);
 
   useEffect(() => {
-    setSlides(splitToChunks(data, locale));
-  }, []);
+    if (emblaApi) emblaApi.reInit();
+    
+  }, [slides, emblaApi]);
 
   return (
     <div className={styles.container}>
@@ -61,6 +59,7 @@ export default function SwiperNewComponent({ data, count }: Props) {
         height={24}
         alt="arrow-back"
         src={"/Arrow-Back.svg"}
+        loading="lazy"
         onClick={() => emblaApi && emblaApi.scrollPrev()}
         className={classNames("embla__prev", styles.arrow, styles.arrow_prev)}
       />
@@ -72,6 +71,7 @@ export default function SwiperNewComponent({ data, count }: Props) {
       <Image
         width={12}
         height={24}
+        loading="lazy"
         alt="arrow-forward"
         src={"/Arrow-forward.svg"}
         onClick={() => emblaApi && emblaApi.scrollNext()}

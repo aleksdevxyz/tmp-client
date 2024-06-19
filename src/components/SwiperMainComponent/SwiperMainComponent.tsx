@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./SwiperMainComponent.module.scss";
-
 import { CategoryResponse } from "@/app/api/categoryApi";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
@@ -20,11 +19,11 @@ const splitToChunks = (categories: CategoryResponse[], locale: string): React.Re
   const chunkSize = 8;
   const slides: React.ReactNode[] = [];
 
-  for (let i = 0; i < categories.length; i += chunkSize) {
+  for (let i = 0; i < categories?.length; i += chunkSize) {
     const chunk = categories.slice(i, i + chunkSize);
 
     const slide = (
-      <div className={classNames("embla__slide", styles.embla__slide)} key={i} >
+      <div className={classNames("embla__slide", styles.embla__slide)} key={i}>
         {chunk.map(({ id, name, translit_name, channels_count }) => (
           <ChannelSlide
             key={id}
@@ -42,18 +41,14 @@ const splitToChunks = (categories: CategoryResponse[], locale: string): React.Re
   }
 
   return slides;
-}
+};
 
-export default function SwiperMainComponent({ data, count }: Props) {
+export default function SwiperMainComponent({ data }: Props) {
   const locale = useLocale();
-  const t = useTranslations('Main');
-  const [slides, setSlides] = useState<React.ReactNode[]>([]);
-
+  const t = useTranslations("Main");
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
 
-  useEffect(() => {
-    setSlides(splitToChunks(data, locale));
-  }, []);
+  const slides = useMemo(() => splitToChunks(data, locale), [data, locale]);
 
   return (
     <div className={styles.section}>
@@ -66,21 +61,21 @@ export default function SwiperMainComponent({ data, count }: Props) {
           </Link>
         </div>
 
-          <div className={styles.content}>
-              <ArrowBack
-                onClick={() => emblaApi && emblaApi.scrollPrev()}
-                className={classNames("embla__prev", styles.arrow, styles.arrow_prev)}
-              />
-              <div className={classNames("embla", styles.embla)} ref={emblaRef}>
-                <div className={classNames("embla__container", styles.embla__container)}>
-                  {slides}
-                </div>
-              </div>
-              <ArrowForward
-                onClick={() => emblaApi && emblaApi.scrollNext()}
-                className={classNames("embla__next", styles.arrow, styles.arrow_next)}
-              />
+        <div className={styles.content}>
+          <ArrowBack
+            onClick={() => emblaApi && emblaApi.scrollPrev()}
+            className={classNames("embla__prev", styles.arrow, styles.arrow_prev)}
+          />
+          <div className={classNames("embla", styles.embla)} ref={emblaRef}>
+            <div className={classNames("embla__container", styles.embla__container)}>
+              {slides}
+            </div>
           </div>
+          <ArrowForward
+            onClick={() => emblaApi && emblaApi.scrollNext()}
+            className={classNames("embla__next", styles.arrow, styles.arrow_next)}
+          />
+        </div>
       </div>
     </div>
   );

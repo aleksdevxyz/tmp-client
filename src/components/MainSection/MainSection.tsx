@@ -2,12 +2,11 @@ import { getTranslations } from "next-intl/server";
 import { getCategory } from "../../app/api/categoryApi";
 import styles from "./MainSection.module.scss";
 import dynamic from "next/dynamic";
-
 const SwiperMainComponent = dynamic(() => import("../SwiperMainComponent/SwiperMainComponent"));
 
 export default async function MainSection() {
-  const data = await getCategory();
-  const t = await getTranslations("Main");
+
+  const [data,t] = await Promise.all([getCategory(),getTranslations("Main")]);
 
   return (
     <div className={styles.main_section}>

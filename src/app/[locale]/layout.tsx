@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import "./globals.scss";
-import "normalize.css";
+
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import BurgerMenu from "@/components/BurgerMenu/BurgerMenu";
+//styles
+import "./globals.scss";
+import "normalize.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -29,6 +31,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  
   const messages = await getMessages();
   unstable_setRequestLocale(locale);
 
