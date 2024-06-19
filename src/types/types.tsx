@@ -8,6 +8,7 @@ export interface ChannelsProps {
   }
 
   
+  
   export interface recRes {
     name: string;
     translit_name: string;
