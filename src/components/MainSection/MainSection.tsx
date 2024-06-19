@@ -11,7 +11,7 @@ export default async function MainSection() {
 
   return (
     <div className={styles.main_section}>
-      <h2 className={styles.title}>{t("Каталог телеграм каналов") || "Каталог телеграм каналов"}</h2>
+      {/* <h2 className={styles.title}>{t("Каталог телеграм каналов") || "Каталог телеграм каналов"}</h2> */}
       <SwiperMainComponent count={3} data={data} />
     </div>
   );
