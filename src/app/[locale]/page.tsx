@@ -4,6 +4,7 @@ import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import MainSection from "@/components/MainSection/MainSection";
 import NewChannels from "@/components/NewChannels/NewChannels";
 import RecList from "@/components/RecListMain/RecListMain";
+import { getLocale } from "next-intl/server";
 //Other
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -16,6 +17,8 @@ import styles from "./Home.module.scss";
 export async function generateMetadata(): Promise<Metadata> {
 
   const t = await getTranslations("Index");
+  const locale = await getLocale();
+
 
   return {
     title: t("title"),
@@ -27,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       images: [{
-        url:'/mainPageLogo.png',
+        url:`https://front-05-test-teleshtorm.teleshtorm.org/${locale}/mainPageLogo.png`,
         width:800,
         height:630,
         alt:'MainPageLogo'
@@ -47,9 +50,7 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
     getTranslations("Main")
   ]);
 
-
   return (
-    <>
     <main>
       <MainSection />
       <div className={styles.section}>
@@ -68,6 +69,5 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
       </div>
 
     </main>
-  </>
   );
 }
