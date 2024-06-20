@@ -28,15 +28,14 @@ export async function generateMetadata(): Promise<Metadata> {
       index: true,
       follow: true,
     },
-    openGraph: {
-      images: [{
-        url:`https://front-05-test-teleshtorm.teleshtorm.org/${locale}/mainPageLogo.png`,
-        width:800,
-        height:630,
-        alt:'MainPageLogo'
-      }],
-      
-    },
+    // openGraph: {
+    //   images: [{
+    //     url:`/mainPageLogo.png`,
+    //     width:800,
+    //     height:630,
+    //     alt:'MainPageLogo'
+    //   }],
+    // },
   };
 }
 
