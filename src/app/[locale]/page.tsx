@@ -10,6 +10,7 @@ import MainSection from "@/components/MainSection/MainSection";
 import NewChannels from "@/components/NewChannels/NewChannels";
 import RecList from "@/components/RecListMain/RecListMain";
 import Head from 'next/head';
+import { getLocale } from "next-intl/server";
 //Other
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -44,6 +45,10 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
     getTranslations("Main")
   ]);
 
+  const locale = await getLocale();
+
+  const url = `https://front-05-test-teleshtorm.teleshtorm.org/${locale}`
+
   return (
   <>
    <Head>
@@ -52,6 +57,7 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
         <meta property="og:image:height" content="418" />
         <meta property="og:title" content={t("title")} />
         <meta property="og:description" content={t("description")} />
+        <meta property="og:url" content={url} />
       </Head>
     <main>
       <MainSection />
