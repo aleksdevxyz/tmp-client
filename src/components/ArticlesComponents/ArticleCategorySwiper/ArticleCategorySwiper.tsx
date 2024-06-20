@@ -71,7 +71,7 @@ export default function ArticleCategorySwiper({
         className={styles.swiper}
         modules={[Navigation]}
       >
-        {categories.map((category) => {
+        {categories?.map((category) => {
           return (
             <SwiperSlide
               key={category.id}

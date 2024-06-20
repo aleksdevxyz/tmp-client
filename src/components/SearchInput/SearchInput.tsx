@@ -4,7 +4,6 @@ import styles from "./SearchInput.module.scss";
 import { SearchIcon } from "../svgs";
 import Link from "next/link";
 import cn from "classnames";
-// import axios from "axios";
 import Image from "next/image";
 import { useDebouncedCallback } from "use-debounce";
 import { useLocale, useTranslations } from "next-intl";
@@ -141,7 +140,7 @@ export default function SearchInput({open,setOpenSearch = () => {}}: {open?: boo
         <div onClick={() => {
           handleSearchParams()
           setActiveMenu(false);
-          }} className={styles.dropdown_button} />
+          }} className={styles.dropdown_button}>{t("Показать больше")}</div>
       </div>
       <div onClick={() => setActiveMenu(false)} className={classNames(styles.overlay, !activeMenu && styles.hidden)}></div>
     </div>

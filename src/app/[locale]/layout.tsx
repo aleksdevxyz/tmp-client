@@ -4,15 +4,11 @@ import dynamic from "next/dynamic";
 const Header = dynamic(() => import("@/components/Header/Header"));
 const Footer = dynamic(() => import("@/components/Footer/Footer"));
 const BurgerMenu = dynamic(() => import("@/components/BurgerMenu/BurgerMenu"));
-// import Header from "@/components/Header/Header";
-// import Footer from "@/components/Footer/Footer";
-// import BurgerMenu from "@/components/BurgerMenu/BurgerMenu";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 //styles
 import "./globals.scss";
-
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 

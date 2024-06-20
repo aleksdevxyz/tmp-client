@@ -1,13 +1,15 @@
-"use client"
+// "use client"
 
 import Image from "next/image";
 import styles from "./ArticleList.module.scss";
 import { Article, Articles } from "@/app/[locale]/articles/page";
 import Link from "next/link";
 
+
 export default function ArticleList({ articles, locale  }: { articles: Article[], locale: string }) {
   return (
     <section className={styles.section}>
+      
       {articles.map((article, index) => {
         return (
           <Link href={`/${locale}/articles/${article.translit_name}`} key={index} className={styles.card}>

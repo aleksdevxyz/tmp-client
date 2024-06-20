@@ -36,6 +36,7 @@ export default function DropMenu() {
     return () => document.removeEventListener("click", handleOverlayClick);
   });
 
+
   return (
     <>
       <ul onClick={onClickMenu} className={styles.container}>
@@ -61,7 +62,7 @@ export default function DropMenu() {
           onClick={onClickChild}
           className={activeMenu ? active : styles.list}
         >
-          <p className={styles.header}>Язык сайта</p>
+          <p className={styles.header}>{t('Язык сайта')}</p>
           <div className={styles.item_menu}>
             <Link href={`${pathName}`} locale="ru">
               <Image

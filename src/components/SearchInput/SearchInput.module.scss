@@ -206,7 +206,11 @@
     }
 
     .dropdown_button {
-      display: block;
+      text-align: center;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      // display: block;
       width: 322.5px;
       position: sticky;
       text-align: center;
@@ -228,7 +232,6 @@
       }
 
       &::before {
-        content: "Показать больше";
         color: rgb(103, 113, 121);
         font-size: 15px;
         font-weight: 300;
@@ -240,7 +243,7 @@
 
         @media screen and (max-width: 480px) {
             left: 0;
-            width: clamp(16rem, -4rem + 100vw, 26rem);
+            width: clamp(1rem, -4rem + 100vw, 16rem);
           }
       }
     }
