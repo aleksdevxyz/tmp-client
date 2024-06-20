@@ -4,8 +4,6 @@ import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import MainSection from "@/components/MainSection/MainSection";
 import NewChannels from "@/components/NewChannels/NewChannels";
 import RecList from "@/components/RecListMain/RecListMain";
-import Head from 'next/head';
-import { getLocale } from "next-intl/server";
 //Other
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -27,6 +25,15 @@ export async function generateMetadata(): Promise<Metadata> {
       index: true,
       follow: true,
     },
+    openGraph: {
+      images: [{
+        url:'/mainPageLogo.png',
+        width:800,
+        height:630,
+        alt:'MainPageLogo'
+      }],
+      
+    },
   };
 }
 
@@ -40,19 +47,9 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
     getTranslations("Main")
   ]);
 
-  const locale = await getLocale();
-
-  const imageUrl = "https://cdn.teleshtorm.org/opengraph-image.png";
-  const url = `https://front-05-test-teleshtorm.teleshtorm.org/${locale}`;
 
   return (
     <>
-      <Head>
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="418" />
-        <meta property="og:url" content={url} />
-      </Head>
     <main>
       <MainSection />
       <div className={styles.section}>
