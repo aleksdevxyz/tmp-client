@@ -8,6 +8,14 @@ import styles from "./ArticleContent.module.scss";
 import ArticleShareButton from "../ArticleShareButton/ArticleShareButton";
 import Head from 'next/head';
 
+const getAbsoluteUrl = (path: string) => {
+  const baseUrl = process.env.BASE_URL || 'https://front-05-test-teleshtorm.teleshtorm.org/';
+  if (path.startsWith('http')) {
+    return path; 
+  }
+  return `${baseUrl}${path}`;
+};
+
 export default async function ArticleContent({
   created_at,
   category,
@@ -19,6 +27,7 @@ export default async function ArticleContent({
 }: Article) {
   const locale = await getLocale();
   const url = `https://front-05-test-teleshtorm.teleshtorm.org/${locale}/articles/${translit_name}`;
+  const absoluteImageUrl = getAbsoluteUrl(image);
 
   return (
     <>
@@ -26,7 +35,7 @@ export default async function ArticleContent({
         <title>{name}</title>
         <meta property="og:title" content={name} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
+        <meta property="og:image" content={absoluteImageUrl} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content={locale} />
