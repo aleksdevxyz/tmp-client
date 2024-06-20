@@ -1,9 +1,4 @@
 //Components
-// const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
-// const ChannelsList = dynamic(() => import("@/components/ChannelsList/ChannelsList"));
-// const MainSection = dynamic(() => import("@/components/MainSection/MainSection"));
-// const NewChannels = dynamic(() => import("@/components/NewChannels/NewChannels"));
-// const RecList = dynamic(() => import("@/components/RecListMain/RecListMain"));
 import Pagination from "@/components/Pagination/Pagination";
 import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import MainSection from "@/components/MainSection/MainSection";
