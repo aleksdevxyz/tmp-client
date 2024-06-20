@@ -46,14 +46,6 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
 
   return (
   <>
-   <Head>
-        <meta property="og:image" content="/mainPageLogo.png" />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="418" />
-        <meta property="og:title" content={t("title")} />
-        <meta property="og:description" content={t("description")} />
-        <meta property="og:url" content={url} />
-      </Head>
     <main>
       <MainSection />
       <div className={styles.section}>
