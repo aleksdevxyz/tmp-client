@@ -49,7 +49,7 @@ const ChannelsList: React.FC<ChannelsListProps> = async ({ data, path, advertise
           description={item?.description}
           path={path}
         />
-        {/* {adslist?.length > 0 && index === 0 && <AdvertisementCardMob data={getRandomAdvertisement(adslist)} />} */}
+        {adslist?.length > 0 && index === 0 && <AdvertisementCardMob data={getRandomAdvertisement(adslist)} />}
       </React.Fragment>
     ))
   )
