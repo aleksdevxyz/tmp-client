@@ -16,6 +16,8 @@ import styles from "./Home.module.scss";
 export async function generateMetadata(): Promise<Metadata> {
 
   const t = await getTranslations("Index");
+  const locale = await getLocale();
+
 
   return {
     title: t("title"),
@@ -27,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       images: [{
-        url:'/mainPageLogo.png',
+        url:`https://front-05-test-teleshtorm.teleshtorm.org/${locale}/mainPageLogo.png`,
         width:800,
         height:630,
         alt:'MainPageLogo'
