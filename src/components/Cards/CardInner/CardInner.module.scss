@@ -35,11 +35,21 @@
             color: #677179;
             font-size: 24px;
             font-family: 'Inter-Bold';
+            max-width: 60vh;
+            text-align: center;
             display: none;
-
 
             @media screen and (max-width: 576px) {
                 display: block;
+            }
+
+            @media screen and (max-width: 375px) {
+                max-width: 55vh;
+            }
+
+            @media screen and (max-width: 320px) {
+                max-width: 50vh;
+                font-size: 22px;
             }
         }
 
