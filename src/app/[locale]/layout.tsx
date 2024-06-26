@@ -45,6 +45,7 @@ export default async function RootLayout({
             minHeight: "100vh",
             position: "relative",
             backgroundColor: "rgb(250, 251, 254)",
+            paddingBottom: "42px",
           }}
         >
           <NextIntlClientProvider locale={locale} messages={messages}>
