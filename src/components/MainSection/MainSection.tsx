@@ -11,7 +11,15 @@ export default async function MainSection() {
 
   return (
     <div className={styles.main_section}>
-      <h2 className={styles.title}>{t("Каталог телеграм каналов")}</h2>
+      <h2 className={styles.title} style={{
+            color: "#677179",
+            textAlign: "center",
+            fontSize: "30px",
+            fontFamily: '"Roboto-Bold", sans-serif',
+            fontWeight: 700,
+            margin: 0,
+            marginBottom: "25px",
+          }} >{t("Каталог телеграм каналов")}</h2>
       <SwiperMainComponent count={3} data={data} />
     </div>
   );

@@ -2,6 +2,7 @@ import ChannelsList from "@/components/ChannelsList/ChannelsList"
 import { Metadata } from "next";
 import styles from './ChannelCard.module.scss'
 import AdvertisementCard from "@/components/Cards/AdvertisementCard/AdvertisementCard";
+import AdvertisementCardMob from "@/components/Cards/AdvertisementCardMob/AdvertisementCardMob";
 import CardInner from "@/components/Cards/CardInner/CardInner";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import { getTranslations } from "next-intl/server";
@@ -68,6 +69,8 @@ export default async function ChannelCard({ params: { id } }:{
     <div className={styles.advertisement_section}>
     <AdvertisementCard />
     <AdvertisementCard />
+    <AdvertisementCardMob data={advertisement[0]} />
+    <AdvertisementCardMob data={advertisement[1]} />
     </div>
     <div className={styles.simular_section}>
       <h2 className={styles.title}>{t('Похожие каналы')}</h2>
