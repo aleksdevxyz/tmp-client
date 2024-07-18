@@ -50,7 +50,7 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
   ]);
 
   return (
-    <main>
+    <>
       <MainSection />
       <div className={styles.section}>
         <h2 className={styles.title}>{t("Телеграм каналы")}</h2>
@@ -67,6 +67,6 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
         <RecList />
       </div>
 
-    </main>
+    </>
   );
 }

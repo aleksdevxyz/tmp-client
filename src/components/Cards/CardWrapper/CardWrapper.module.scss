@@ -11,7 +11,6 @@
   align-items: center;
   transition: all 0.3s;
   max-width: 366px;
-  max-height: 120px;
   text-decoration: none;
 
   @include index.mini-desktop {
@@ -49,7 +48,6 @@
   }
 
   .title {
-    font-family: "Roboto-Bold";
     color: #677179;
     font-size: clamp(0.875rem, 0.815rem + 0.27vw, 1rem);
     font-weight: 700;
@@ -69,7 +67,6 @@
   }
 
   .subtitle {
-    font-family: "Roboto-Light";
     color: #788189;
     font-size: clamp(0.75rem, 0.72rem + 0.13vw, 0.813rem);
     font-weight: 300;

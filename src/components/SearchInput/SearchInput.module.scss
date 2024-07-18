@@ -81,7 +81,6 @@
     margin: 0;
     caret-color: rgb(48, 54, 61);
     color: rgb(117, 117, 117);
-    font-family: "Roboto-Normal";
     font-size: 1rem;
     line-height: 1.19rem;
     letter-spacing: 0%;
@@ -90,7 +89,6 @@
 
     &::placeholder {
       color: rgb(117, 117, 117);
-      font-family: "Roboto-Normal";
       font-size: 1rem;
       line-height: 1.19rem;
       letter-spacing: 0%;
@@ -179,14 +177,12 @@
             max-width: 200px;
 
             .dropdown_name {
-              font-family: "Roboto-Light";
               color: #677179;
               font-size: 15px;
               margin: 0;
             }
 
             .dropdown_subscribe {
-              font-family: "Roboto-Light";
               color: #677179;
               font-size: 10px;
               margin: 0;
