@@ -51,31 +51,29 @@ export default function SwiperMainComponent({ data }: Props) {
   const slides = useMemo(() => splitToChunks(data, locale), [data, locale]);
 
   return (
-    <div className={styles.section}>
-      <div className={styles.subtitle}>
-        <div className={styles.subtitle_container}>
-          <h3 className={styles.subtitle_text}>{t("Все категории")}</h3>
-          <Link href={`/${locale}/add_channel`} className={styles.button_text}>
-            <AddSquare className={styles.icon_add} />
-            {t("Добавить канал")}
-          </Link>
-        </div>
+    <div className={styles.subtitle}>
+      <div className={styles.subtitle_container}>
+        <h3 className={styles.subtitle_text}>{t("Все категории")}</h3>
+        <Link href={`/${locale}/add_channel`} className={styles.button_text}>
+          <AddSquare className={styles.icon_add} />
+          {t("Добавить канал")}
+        </Link>
+      </div>
 
-        <div className={styles.content}>
-          <ArrowBack
-            onClick={() => emblaApi && emblaApi.scrollPrev()}
-            className={classNames("embla__prev", styles.arrow, styles.arrow_prev)}
-          />
-          <div className={classNames("embla", styles.embla)} ref={emblaRef}>
-            <div className={classNames("embla__container", styles.embla__container)}>
-              {slides}
-            </div>
+      <div className={styles.content}>
+        <ArrowBack
+          onClick={() => emblaApi && emblaApi.scrollPrev()}
+          className={classNames("embla__prev", styles.arrow, styles.arrow_prev)}
+        />
+        <div className={classNames("embla", styles.embla)} ref={emblaRef}>
+          <div className={classNames("embla__container", styles.embla__container)}>
+            {slides}
           </div>
-          <ArrowForward
-            onClick={() => emblaApi && emblaApi.scrollNext()}
-            className={classNames("embla__next", styles.arrow, styles.arrow_next)}
-          />
         </div>
+        <ArrowForward
+          onClick={() => emblaApi && emblaApi.scrollNext()}
+          className={classNames("embla__next", styles.arrow, styles.arrow_next)}
+        />
       </div>
     </div>
   );
