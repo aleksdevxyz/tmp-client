@@ -4,7 +4,7 @@ import styles from "./index.module.scss";
 import AdvertisementCard from "@/components/Cards/AdvertisementCard/AdvertisementCard";
 import CardInner from "@/components/Cards/CardInner/CardInner";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import AdvertisementSwiper from "@/components/AdvertisementSwiper/AdvertisementSwiper";
 import { getAdvertisement } from "@/app/api/GetAdvertisement";
 
@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 async function getBots(id: string) {
-  const res = await fetch(`${process.env.BASE_URL}/bot/${id}`);
+  const locale = await getLocale() || "ru";
+  const res = await fetch(`${process.env.BASE_URL}/bot/${id}?lang=${locale}`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

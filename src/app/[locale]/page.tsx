@@ -43,9 +43,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home({searchParams,}: {searchParams?: {page?: number;totalPages?: number;};}) {
 
   const currentPage = Number(searchParams?.page) || 0;
+  const locale = await getLocale() || "ru";
 
   const [ChannelsData, t] = await Promise.all([
-    getChannelsList(currentPage),
+    getChannelsList(currentPage, locale),
     getTranslations("Main")
   ]);
 

@@ -103,9 +103,9 @@ export async function postBots(prevState: any, formData: FormData) {
   };
 }
 
-export async function getChannelsList(page: number) {
+export async function getChannelsList(page: number, lang: string) {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/channels?page=${page}&limit=31`);
+    const res = await fetch(`${process.env.BASE_URL}/channels?page=${page}&limit=31&lang=${lang}`);
 
     if (!res?.ok) {
       throw new Error("Failed to fetch data");
