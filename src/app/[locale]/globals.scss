@@ -8,6 +8,28 @@ html {
     scroll-behavior: smooth;
 }
 
+#main {
+    padding-bottom: 42px;     
+    @media screen and (max-width: 1080px) {
+        padding-bottom: 57px;
+    }
+
+    @media screen and (max-width: 850px) {
+        padding-bottom: 72px;
+    }
+
+    @media screen and (max-width: 576px) {
+        padding-bottom: 87px;
+    }
+
+    @media screen and (max-width: 480px) {
+        padding-bottom: 130px;
+    }
+    @media screen and (max-width: 320px) {
+        padding-bottom: 160px;
+    }
+}
+
 
 * {
     padding: 0;

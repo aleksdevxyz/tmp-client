@@ -42,5 +42,8 @@
         line-height: 16px;
         text-align: left;
         cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }

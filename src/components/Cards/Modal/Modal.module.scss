@@ -7,8 +7,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     max-height: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 24;
     transition: all 0.3s ease-in-out;
@@ -21,7 +22,6 @@
 
     .form {
         position: fixed;
-        top: 20%;
         padding: 25px;
         background-color: #fff;
         border-radius: 15px;
