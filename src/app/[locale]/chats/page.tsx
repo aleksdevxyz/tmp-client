@@ -4,7 +4,7 @@ import styles from "./ChatsPage.module.scss";
 // import Pagination from "@/components/Pagination/Pagination";
 import RecList from "@/components/RecListMain/RecListMain";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 
 const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
@@ -24,7 +24,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function getChatsList(page: number) {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/chats?page=${page}&limit=31`);
+    const locale = await getLocale() || "ru";
+    const res = await fetch(`${process.env.BASE_URL}/chats?page=${page}&limit=31&lang=${locale}`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }

@@ -5,7 +5,7 @@ import AdvertisementCard from "@/components/Cards/AdvertisementCard/Advertisemen
 import AdvertisementCardMob from "@/components/Cards/AdvertisementCardMob/AdvertisementCardMob";
 import CardInner from "@/components/Cards/CardInner/CardInner";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { getAdvertisement } from "@/app/api/GetAdvertisement";
 import AdvertisementSwiper from "@/components/AdvertisementSwiper/AdvertisementSwiper";
 
@@ -35,7 +35,8 @@ export async function generateMetadata(
 
  
 async function getCard(id: string) {
-  const res = await fetch(`${process.env.BASE_URL}/channel/${id}`)
+  const locale = await getLocale() || "ru";
+  const res = await fetch(`${process.env.BASE_URL}/channel/${id}?lang=${locale}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
