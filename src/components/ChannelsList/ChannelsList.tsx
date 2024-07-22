@@ -40,7 +40,7 @@ const ChannelsList: React.FC<ChannelsListProps> = async ({ data, path, advertise
   const renderCards = () => (
     data?.map((item, index) => (
       <React.Fragment key={item.id}>
-        {adslist?.length > 1 && index === 1 && <AdvertisementCardMob data={getRandomAdvertisement(adslist)} />}
+        {adslist?.length > 0 && index === 0 && <AdvertisementCardMob data={getRandomAdvertisement(adslist)} />}
         <CardWrapper
           id={item?.id}
           key={item?.id}

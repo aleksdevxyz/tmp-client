@@ -30,11 +30,13 @@
         }
 
         .title_mb {
+            padding-inline: 25px;
+            text-wrap: balance;
             margin: 0;
             margin-bottom: 15px;
             color: #677179;
             font-size: 24px;
-            max-width: 60vh;
+            font-family: 'Inter-Bold';
             text-align: center;
             display: none;
 
@@ -43,11 +45,9 @@
             }
 
             @media screen and (max-width: 375px) {
-                max-width: 55vh;
             }
 
             @media screen and (max-width: 320px) {
-                max-width: 50vh;
                 font-size: 22px;
             }
         }

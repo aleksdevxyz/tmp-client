@@ -11,6 +11,7 @@
   align-items: center;
   transition: all 0.3s;
   max-width: 366px;
+  max-height: 126px;
   text-decoration: none;
 
   @include index.mini-desktop {
@@ -71,17 +72,13 @@
     font-size: clamp(0.75rem, 0.72rem + 0.13vw, 0.813rem);
     font-weight: 300;
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     max-width: 233px;
-
-    @media screen and (max-width: 480px) {
-      max-height: none;
-    }
   }
 
   .count {

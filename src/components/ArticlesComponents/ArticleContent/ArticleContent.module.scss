@@ -24,22 +24,17 @@
             justify-content: space-between;
             padding-top: 25px;
 
-
-            .creadet_at {
-                color: rgb(62, 67, 71);
+            p, a {
+                color: #3e4347;
                 font-size: 16px;
                 font-weight: 300;
                 line-height: 24px;
-                text-align: left;
                 margin: 0;
+                text-decoration: none;
             }
 
-            .category_name {
-                color: rgb(62, 67, 71);
-                font-size: 16px;
-                font-weight: 300;
-                line-height: 24px;
-                margin: 0;
+            .creadet_at {
+                text-align: left;
             }
         }
 
