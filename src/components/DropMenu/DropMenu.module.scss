@@ -40,13 +40,11 @@
 
     .title {
         color: rgb(120, 129, 137);
-        font-family: 'Roboto-Light';
         font-size: 1rem;
         line-height: 1.19rem;
         letter-spacing: 0%;
         text-align: left;
         margin: 0;
-        text-decoration: none;
 
         @include index.small-tablet {
             display: none;
@@ -70,7 +68,6 @@
 
     .header {
         color: #788189;
-        font-family: 'Roboto-Light';
         font-size: 13px;
         margin: 0;
         padding: 0;
@@ -91,6 +88,7 @@
         border-radius: 4px;
         transition: all 0.3s;
         padding: 6px 12px;
+        text-decoration: none;
 
         @media screen and (max-width: 480px) {
             padding: 6px;
@@ -106,7 +104,6 @@
         align-items: center;
         gap: 8px;
         color: #788189;
-        font-family: 'Roboto-Light';
         font-size: 16px;
         text-decoration: none;
         margin: 0;

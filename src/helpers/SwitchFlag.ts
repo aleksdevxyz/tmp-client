@@ -1,18 +1,18 @@
 export const switchFlag = (locale: string) => {
     switch (locale) {
       case 'en':
-        return '/English.svg'
+        return 'English.svg'
       case 'de':
-        return "/Deutsch.svg"
+        return "German.svg"
       case 'ru':
-        return "/Russian.svg"
+        return "Russian.svg"
         case 'es':
-        return '/Español.svg'
+        return 'Spanish.svg'
       case 'fr':
-        return "/Français.svg"
+        return "French.svg"
       case 'it':
-        return "/Italiano.svg"
+        return "Italian.svg"
         case 'pt':
-          return "/Portugal.svg"
+          return "Portuguese.svg"
     }
   }

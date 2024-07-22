@@ -31,7 +31,6 @@
     .title {
         color: rgb(103, 113, 121);
         font-size: 16px;
-        font-family: 'Roboto-Bold';
         line-height: 24px;
         transition: all .3s;
         white-space: nowrap;
@@ -61,7 +60,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
             color: rgb(120, 129, 137);
-            font-family: 'Inter-Normal';
             font-size: 10px;
             font-weight: 300;
         }
@@ -76,7 +74,6 @@
         background: #161B22;
         text-decoration: none;
         color: rgb(255, 255, 255);
-        font-family: 'Roboto-Light';
         font-size: 10px;
   
         @media screen and (max-width: 576px) {
@@ -94,7 +91,6 @@
         bottom: 15px;
         color: rgb(120, 129, 137);
         font-size: 10px;
-        font-family: 'Roboto-Light';
   
         @media screen and (max-width: 576px) {
             bottom: 5px;

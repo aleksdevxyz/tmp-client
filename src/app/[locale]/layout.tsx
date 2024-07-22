@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("@/components/Header/Header"));
 const Footer = dynamic(() => import("@/components/Footer/Footer"));
@@ -9,8 +8,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 //styles
 import "./globals.scss";
-
-const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   icons: {
@@ -36,13 +33,11 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body suppressHydrationWarning={true} className={inter.className}>
+      <body suppressHydrationWarning={true}>
         <main
           id={"main"}
           style={{
             maxWidth: "100vw",
-            display: "flex",
-            flexDirection: "column",
             minHeight: "100vh",
             position: "relative",
             backgroundColor: "rgb(250, 251, 254)",

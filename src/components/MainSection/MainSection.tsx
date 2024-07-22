@@ -15,7 +15,6 @@ export default async function MainSection() {
             color: "#677179",
             textAlign: "center",
             fontSize: "30px",
-            fontFamily: '"Roboto-Bold", sans-serif',
             fontWeight: 700,
             margin: 0,
             marginBottom: "25px",
