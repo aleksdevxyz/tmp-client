@@ -44,7 +44,8 @@ async function getCard(id: string) {
 }
 
 async function getSimilarChannels(id: string) {
-  const res = await fetch(`${process.env.BASE_URL}/channel/${id}/similar_channels`)
+  const locale = await getLocale() || "ru";
+  const res = await fetch(`${process.env.BASE_URL}/channel/${id}/similar_channels?lang=${locale}`)
   if (!res.ok) {
     throw new Error(res.statusText)
   }
