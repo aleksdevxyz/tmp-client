@@ -40,7 +40,8 @@ async function getChat(id: string) {
 }
 
 async function getSimilarChats(id: string) {
-  const res = await fetch(`${process.env.BASE_URL}/chat/${id}/similar_chats`);
+  const locale = await getLocale() || "ru";
+  const res = await fetch(`${process.env.BASE_URL}/chat/${id}/similar_chats?lang=${locale}`);
   if (!res.ok) {
     throw new Error(res.statusText);
   }

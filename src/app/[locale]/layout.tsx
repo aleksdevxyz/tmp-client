@@ -13,6 +13,14 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  openGraph: {
+    images: [{
+      url:`/opengraph-image.png`,
+      width:800,
+      height:418,
+      alt:'MainPageLogo',
+    }],
+  },
 };
 
 export const viewport: Viewport ={

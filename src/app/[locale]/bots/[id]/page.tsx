@@ -40,7 +40,8 @@ async function getBots(id: string) {
 }
 
 async function getSimilarBots(id: string) {
-  const res = await fetch(`${process.env.BASE_URL}/bot/${id}/similar_bots`);
+  const locale = await getLocale() || "ru";
+  const res = await fetch(`${process.env.BASE_URL}/bot/${id}/similar_bots?lang=${locale}`);
   if (!res.ok) {
     throw new Error(res.statusText);
   }

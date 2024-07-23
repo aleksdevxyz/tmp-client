@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import setCookie from "set-cookie-parser";
+import { getLocale } from "next-intl/server";
 
 export async function postChannel(prevState: any, formData: FormData) {
   "use server";
@@ -119,8 +120,9 @@ export async function getChannelsList(page: number, lang: string) {
 
 export async function getData() {
   try {
+    const locale = await getLocale() || "ru";
     const res = await fetch(
-      `${process.env.BASE_URL}/channels?page=0&limit=31`
+      `${process.env.BASE_URL}/channels?page=0&limit=31&lang=${locale}`
     );
     if (!res.ok) {
       throw new Error("Failed to fetch data");
@@ -135,7 +137,8 @@ export async function getData() {
 
 export async function getRec() {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/articles/recommended`);
+    const locale = await getLocale() || "ru";
+    const res = await fetch(`${process.env.BASE_URL}/articles/recommended?lang=${locale}`);
     if (!res.ok) {
       throw new Error(res.statusText);
     }
