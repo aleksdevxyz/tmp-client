@@ -1,7 +1,9 @@
 import { Article } from "@/app/[locale]/articles/[translit_name]/page";
+import { Category } from "@/app/[locale]/articles/page";
 import { formatDate } from "@/helpers/formatDate";
 import { getLocale } from "next-intl/server";
 import Image from "next/image";
+import Link from "next/link";
 import ArticleInnerContent from "../ArticleInnerContent/ArticleInnerContent";
 import ArticleRecSidebar from "../ArticleRecSidebar/ArticleRecSidebar";
 import styles from "./ArticleContent.module.scss";
@@ -53,9 +55,9 @@ export default async function ArticleContent({
           />
           <div className={styles.category}>
             <p className={styles.created_at}>{formatDate(created_at, locale)}</p>
-            <p className={styles.category_name}>
-              {category != null ? category.name : ""}
-            </p>
+            <Link href={`../../${locale}/articles?category=${category != null ? category.id : ""}`}>
+                {category != null ? category.name : ""}
+            </Link>
           </div>
           <div className={styles.content_container}>
             <h2 className={styles.title}>{name}</h2>
@@ -63,6 +65,7 @@ export default async function ArticleContent({
           </div>
           <ArticleInnerContent content={content} />
           <ArticleShareButton/>
+          <p className={styles.comments}>Комментарии (2)</p>
         </div>
         <ArticleRecSidebar translit_name={translit_name} />
       </div>

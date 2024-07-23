@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import styles from "./ArticleList.module.scss";
-import { Article, Articles } from "@/app/[locale]/articles/page";
+import { Article } from "@/app/[locale]/articles/page";
 import Link from "next/link";
 
 

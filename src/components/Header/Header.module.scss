@@ -57,6 +57,10 @@
             align-items: center;
             text-decoration: none;
 
+            p, svg, g, path {
+                transition: all 0.3s;
+            }
+
             @media screen and (max-width: 480px) {
                 display: none;
             }
