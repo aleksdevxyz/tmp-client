@@ -5,7 +5,6 @@
   justify-content: space-between;
   gap: 10px;
   padding: 15px;
-  border-radius: 10px;
   border: 1px solid #dee2e4;
   background: #fff;
   align-items: center;
@@ -13,6 +12,7 @@
   max-width: 366px;
   max-height: 126px;
   text-decoration: none;
+  border-radius: 9px;
 
   @include index.mini-desktop {
     max-width: none;
@@ -24,6 +24,7 @@
 
   &:hover {
     cursor: pointer;
+    border: 1px solid rgb(103 113 121 / 50%);
   }
 
   .image {

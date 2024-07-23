@@ -3,7 +3,6 @@ import styles from "./ChannelsList.module.scss";
 import CardWrapper from "../Cards/CardWrapper/CardWrapper";
 import AdvertisementCard from "../Cards/AdvertisementCard/AdvertisementCard";
 import AdvertisementCardMob, { advertisement } from "../Cards/AdvertisementCardMob/AdvertisementCardMob";
-import { useLocale, useTranslations } from "next-intl";
 
 //server
 import { GetAdvertisement } from "@/app/api/GetAdvertisement";
