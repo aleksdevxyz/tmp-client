@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import setCookie from "set-cookie-parser";
+import { getLocale } from "next-intl/server";
 
 export async function postChannel(prevState: any, formData: FormData) {
   "use server";
@@ -135,7 +136,8 @@ export async function getData() {
 
 export async function getRec() {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/articles/recommended`);
+    const locale = await getLocale();
+    const res = await fetch(`${process.env.BASE_URL}/articles/recommended?lang=${locale}`);
     if (!res.ok) {
       throw new Error(res.statusText);
     }
