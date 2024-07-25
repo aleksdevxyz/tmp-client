@@ -5,7 +5,7 @@ import styles from "./BotsPage.module.scss";
 import RecList from "@/components/RecListMain/RecListMain";
 // import { getTotalPages } from "@/helpers/getTotalPages";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 
 const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
@@ -25,7 +25,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function getBotsList(page: number) {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/bots?page=${page}&limit=31`);
+    const locale = await getLocale() || "ru";
+    const res = await fetch(`${process.env.BASE_URL}/bots?page=${page}&limit=31&lang=${locale}`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }

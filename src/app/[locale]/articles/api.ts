@@ -1,4 +1,5 @@
 import { Article, Category } from "./page";
+import { getLocale } from "next-intl/server";
 
 export async function loadRecommendedArticles() {
   try {
@@ -44,8 +45,9 @@ export async function loadAllArticles() {
 
 export async function loadCategories(): Promise<Category[]> {
   try {
+    const locale = await getLocale() || "ru";
     const res = await fetch(
-      `${process.env.BASE_URL}/articles/categories`
+      `${process.env.BASE_URL}/articles/categories?lang=${locale}`
     );
 
     if (!res.ok) {

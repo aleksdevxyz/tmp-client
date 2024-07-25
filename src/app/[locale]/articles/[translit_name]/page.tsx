@@ -3,7 +3,7 @@ import ArticleContent from "@/components/ArticlesComponents/ArticleContent/Artic
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import RecListMain from "@/components/RecListMain/RecListMain";
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 
 type Props = {
   params: { translit_name: string }
@@ -54,7 +54,8 @@ export interface Category {
 
 async function getArticle(translit_name: string): Promise<Article> {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/article/${translit_name}`);
+    const locale = await getLocale() || "ru";
+    const res = await fetch(`${process.env.BASE_URL}/article/${translit_name}?lang=${locale}`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }

@@ -42,7 +42,7 @@ export default function DropMenu() {
       <ul onClick={onClickMenu} className={styles.container}>
         <li className={styles.item}>
           <Image
-            src={`${switchFlag(locale)}`}
+            src={`/DropMenu/${switchFlag(locale)}`}
             alt="image"
             width={22}
             height={16}
@@ -63,138 +63,76 @@ export default function DropMenu() {
           className={activeMenu ? active : styles.list}
         >
           <p className={styles.header}>{t('Язык сайта')}</p>
-          <div className={styles.item_menu}>
-            <Link href={`${pathName}`} locale="ru">
-              <Image
-                src={"/Russian.svg"}
-                width={22}
-                height={16}
-                alt="image"
-                className={styles.image}
-              />
-            </Link>
-
-            <Link
-              href={`${pathName}`}
-              locale="ru"
-              className={styles.title_menu}
-            >
-              Russian
-            </Link>
-          </div>
-          <div className={styles.item_menu}>
-            <Link href={`${pathName}`} locale="de">
-              <Image
-                src={"/Deutsch.svg"}
-                alt="image"
-                width={22}
-                height={16}
-                className={styles.image}
-              />
-            </Link>
-
-            <Link
-              href={`${pathName}`}
-              locale="de"
-              className={styles.title_menu}
-            >
-              Deutsch
-            </Link>
-          </div>
-          <div className={styles.item_menu}>
-            <Link href={`${pathName}`} locale="en">
-              <Image
-                src={"/English.svg"}
-                alt="image"
-                width={22}
-                height={16}
-                className={styles.image}
-              />
-            </Link>
-            <Link
-              href={`${pathName}`}
-              locale="en"
-              className={styles.title_menu}
-            >
-              English
-            </Link>
-          </div>
-          <div className={styles.item_menu}>
-            <Link href={`${pathName}`} locale="es">
-              <Image
-                src={"/Español.svg"}
-                alt="image"
-                width={22}
-                height={16}
-                className={styles.image}
-              />
-            </Link>
-
-            <Link
-              href={`${pathName}`}
-              locale="es"
-              className={styles.title_menu}
-            >
-              Español
-            </Link>
-          </div>
-          <div className={styles.item_menu}>
-            <Link href={`${pathName}`} locale="fr">
-              <Image
-                src={"/Français.svg"}
-                alt="image"
-                width={22}
-                height={16}
-                className={styles.image}
-              />
-            </Link>
-
-            <Link
-              href={`${pathName}`}
-              locale="fr"
-              className={styles.title_menu}
-            >
-              Français
-            </Link>
-          </div>
-          <div className={styles.item_menu}>
-            <Link href={`${pathName}`} locale="it">
-              <Image
-                src={"/Italiano.svg"}
-                alt="image"
-                width={22}
-                height={16}
-                className={styles.image}
-              />
-            </Link>
-
-            <Link
-              href={`${pathName}`}
-              locale="it"
-              className={styles.title_menu}
-            >
-              Italiano
-            </Link>
-          </div>
-          <div className={styles.item_menu}>
-            <Link href={`${pathName}`} locale="pt">
-              <Image
-                src={"/Portugal.svg"}
-                alt="image"
-                width={22}
-                height={16}
-                className={styles.image}
-              />
-            </Link>
-
-            <Link
-              href={`${pathName}`}
-              locale="pt"
-              className={styles.title_menu}
-            >
-              Português
-            </Link>
-          </div>
+          <Link href={`${pathName}`} className={styles.item_menu} locale="ru">
+            <Image
+              src={"/DropMenu/Russian.svg"}
+              width={22}
+              height={16}
+              alt="image"
+              className={styles.image}
+            />
+            <span className={styles.title_menu}>Russian</span>
+          </Link>
+          <Link href={`${pathName}`} className={styles.item_menu} locale="de">
+            <Image
+              src={"/DropMenu/German.svg"}
+              alt="image"
+              width={22}
+              height={16}
+              className={styles.image}
+            />
+            <span className={styles.title_menu}>Deutsch</span>
+          </Link>
+          <Link href={`${pathName}`} className={styles.item_menu} locale="en">
+            <Image
+              src={"/DropMenu/English.svg"}
+              alt="image"
+              width={22}
+              height={16}
+              className={styles.image}
+            />
+            <span className={styles.title_menu}>English</span>
+          </Link>
+          <Link href={`${pathName}`} className={styles.item_menu} locale="es">
+            <Image
+              src={"/DropMenu/Spanish.svg"}
+              alt="image"
+              width={22}
+              height={16}
+              className={styles.image}
+            />
+            <span className={styles.title_menu}>Español</span>
+          </Link>
+          <Link href={`${pathName}`} className={styles.item_menu} locale="fr">
+            <Image
+              src={"/DropMenu/French.svg"}
+              alt="image"
+              width={22}
+              height={16}
+              className={styles.image}
+            />
+            <span className={styles.title_menu}>Français</span>
+          </Link>
+          <Link href={`${pathName}`} className={styles.item_menu} locale="it">
+            <Image
+              src={"/DropMenu/Italian.svg"}
+              alt="image"
+              width={22}
+              height={16}
+              className={styles.image}
+            />
+            <span className={styles.title_menu}>Italiano</span>
+          </Link>
+          <Link href={`${pathName}`} className={styles.item_menu} locale="pt">
+            <Image
+              src={"/DropMenu/Portuguese.svg"}
+              alt="image"
+              width={22}
+              height={16}
+              className={styles.image}
+            />
+            <span className={styles.title_menu}>Português</span>
+          </Link>
         </div>
       </ul>
     </>

@@ -107,6 +107,7 @@ export default function SearchInput({open,setOpenSearch = () => {}}: {open?: boo
         className={styles.input}
         type="text"
         value={inputValue}
+        name="search"
       />
       <div className={activeMenu ? active : styles.dropdown}>
         <div className={styles.dropdown_list}>
