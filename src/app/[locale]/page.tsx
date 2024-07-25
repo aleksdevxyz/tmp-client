@@ -4,10 +4,9 @@ import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import MainSection from "@/components/MainSection/MainSection";
 import NewChannels from "@/components/NewChannels/NewChannels";
 import RecList from "@/components/RecListMain/RecListMain";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 //Other
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 //server
 import { getChannelsList } from "../actions";
 //styles

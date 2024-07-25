@@ -111,15 +111,14 @@
 
                 .label {
                     color: rgb(103, 113, 121);
-                    font-size: 14px;
+                    font-family: 'Roboto-Light';
+                    font-size: 15px;
                     font-weight: 300;
                     line-height: 16px;
-                    letter-spacing: 0%;
-                    text-align: center;
                     cursor: pointer;
 
                     @media screen and (max-width: 520px) {
-                        font-size: 10px;
+                        font-size: 14px;
                     }
                 }
             }

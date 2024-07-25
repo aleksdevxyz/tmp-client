@@ -27,8 +27,7 @@ export default async function ArticleRecSidebar({
   const locale = await getLocale();
   const articles = await getRec();
   const t = await getTranslations("Article");
-  const href = `/${locale}/articles/${translit_name}`;
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.PUBLIC_SITE_URL;
 
   return (
     <div className={styles.container}>
@@ -53,7 +52,7 @@ export default async function ArticleRecSidebar({
       <div className={styles.links_container}>
         <Link
           className={styles.link}
-          href={`${baseUrl}/${locale}/articles/${translit_name}/#`}
+          href={`${baseUrl}/${locale}/articles/${translit_name}/`}
         >
           <Image src={"/Share.svg"} width={21} height={19} alt={"share"} />
           {t("Поделиться")}
