@@ -44,6 +44,7 @@ export interface Article {
   content: string;
   created_at: string;
   category: Category;
+  telegram_post_id: number | null;
 }
 
 export interface Category {
@@ -86,6 +87,7 @@ export default async function HomePage({
           name={data.name}
           description={data.description}
           content={data.content}
+          telegram_post_id={data.telegram_post_id}
         />
         <RecListMain />
       </section>
