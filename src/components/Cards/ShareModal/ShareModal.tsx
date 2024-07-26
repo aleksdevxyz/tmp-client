@@ -17,6 +17,7 @@ export default function ShareModal({
   const modalRef = useRef<HTMLDivElement>(null);
   const [showNotification, setShowNotification] = useState(false);
   const t = useTranslations("ShareModal");
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   useEffect(() => {
     if (open) {
@@ -66,8 +67,6 @@ export default function ShareModal({
         });
     }
   };
-
-  const baseUrl = process.env.PUBLIC_SITE_URL;
 
   return (
     <>
@@ -139,7 +138,7 @@ export default function ShareModal({
             ref={inputRef}
             type="text"
             className={styles.input}
-            value={`https://teleshtorm.org${pathName}`}
+            value={`${baseUrl}${pathName}`}
             aria-label={t("Ссылка на канал")}
             readOnly
           />

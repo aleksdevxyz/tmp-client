@@ -9,8 +9,7 @@ import { unstable_setRequestLocale } from "next-intl/server";
 //styles
 import "./globals.scss";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
-const baseUrl = process.env.PUBLIC_SITE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
   icons: {

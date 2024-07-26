@@ -44,7 +44,7 @@ export default function CardInner({
   const [shareModal, setShareModal] = React.useState(false);
   const t = useTranslations("Card");
   const pathName = usePathname();
-  const baseUrl = process.env.PUBLIC_SITE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   return (
     <>

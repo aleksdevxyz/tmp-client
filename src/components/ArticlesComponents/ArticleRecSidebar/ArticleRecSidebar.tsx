@@ -27,7 +27,7 @@ export default async function ArticleRecSidebar({
   const locale = await getLocale();
   const articles = await getRec();
   const t = await getTranslations("Article");
-  const baseUrl = process.env.PUBLIC_SITE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   return (
     <div className={styles.container}>
