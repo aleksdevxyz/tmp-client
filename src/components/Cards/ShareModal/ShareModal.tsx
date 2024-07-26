@@ -67,6 +67,8 @@ export default function ShareModal({
     }
   };
 
+  const baseUrl = process.env.PUBLIC_SITE_URL;
+
   return (
     <>
     <div
@@ -84,19 +86,19 @@ export default function ShareModal({
         />
         <div className={styles.links}>
           <Link
-            href={`https://vkontakte.ru/share.php?url=${pathName}`}
+            href={`https://vkontakte.ru/share.php?url=${baseUrl}${pathName}`}
             target="_blank"
           >
             <Image src={"/VkMb.svg"} width={64} height={64} alt="vk" />
           </Link>
           <Link
-            href={`https://telegram.me/share/url?url=${pathName}`}
+            href={`https://telegram.me/share/url?url=${baseUrl}${pathName}`}
             target="_blank"
           >
             <Image src={"/TgMb.svg"} width={64} height={64} alt="tg" />
           </Link>
           <Link
-            href={`https://twitter.com/intent/tweet?text=${pathName}`}
+            href={`https://twitter.com/intent/tweet?text=${baseUrl}${pathName}`}
             target="_blank"
           >
             <Image
@@ -107,12 +109,12 @@ export default function ShareModal({
             />
           </Link>
           <Link
-            href={`https://api.whatsapp.com/send/?text=${pathName}`}
+            href={`https://api.whatsapp.com/send/?text=${baseUrl}${pathName}`}
             target="_blank"
           >
             <Image src={"/WpMb.svg"} width={64} height={64} alt={"wp"} />
           </Link>
-          <Link href={`${pathName}`} target="_blank">
+          <Link href={`http://www.facebook.com/sharer.php?u=${baseUrl}${pathName}`} target="_blank">
             <Image src={"/FbMb.svg"} width={64} height={64} alt={"fb"} />
           </Link>
         </div>
