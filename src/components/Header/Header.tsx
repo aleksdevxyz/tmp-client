@@ -25,7 +25,7 @@ export default function Header() {
               height={43}
             />
           </Link>
-          <Link href={"/"} className={styles.menu_item}>
+          <Link href={`/${locale}`} className={styles.menu_item}>
             <Image
               src={"/Header/Catalog.svg"}
               className={styles.item_icon}
