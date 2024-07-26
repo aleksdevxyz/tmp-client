@@ -69,6 +69,10 @@
     gap: 3px;
   }
 
+  .robots {
+    display: none;
+  }
+
   .subtitle {
     color: #788189;
     font-size: clamp(0.75rem, 0.72rem + 0.13vw, 0.813rem);

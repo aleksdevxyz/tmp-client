@@ -8,10 +8,12 @@ import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 //styles
 import "./globals.scss";
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 // import {Inter} from "next/font/google";
 //
 // const inter = Inter({ subsets: ["latin"], display: "swap" });
-const baseUrl = process.env.PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
   icons: {
