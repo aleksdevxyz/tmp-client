@@ -14,7 +14,7 @@ export default function ArticleComments({ telegram_post_id, telegram_channel }: 
             script.async = true;
             script.setAttribute('data-telegram-discussion', `${telegram_channel}/${telegram_post_id}`);
             script.setAttribute('data-comments-limit', '5');
-            script.setAttribute('data-color', '677');
+            script.setAttribute('data-color', '161B22');
 
             document.querySelector('.telegram-comments')?.appendChild(script);
             scriptAdded.current = true;
