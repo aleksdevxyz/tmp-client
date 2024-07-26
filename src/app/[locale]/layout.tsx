@@ -11,6 +11,10 @@ import "./globals.scss";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
+// import {Inter} from "next/font/google";
+//
+// const inter = Inter({ subsets: ["latin"], display: "swap" });
+
 export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
