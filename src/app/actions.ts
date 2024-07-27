@@ -122,7 +122,7 @@ export async function getData() {
   try {
     const locale = await getLocale() || "ru";
     const res = await fetch(
-      `${process.env.BASE_URL}/channels?page=0&limit=31&lang=${locale}`
+      `${process.env.BASE_URL}/channels/new?lang=${locale}`
     );
     if (!res.ok) {
       throw new Error("Failed to fetch data");
