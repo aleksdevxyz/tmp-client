@@ -19,46 +19,46 @@ export default function Pagination({ data }: { data: any }) {
   const params = useMemo(() => new URLSearchParams(pageParams), [pageParams]);
 
   const getCurrentQuery = useMemo(() => {
-
     return (page: number) => {
       const newParams = new URLSearchParams(params);
       if (page > 0) {
-        newParams.set("page", String(page));
+        newParams.set("page", String(page - 1));
       } else {
         newParams.delete("page");
       }
       return `?${newParams.toString()}`;
     };
-
   }, [params]);
 
   const handleClick = (page: number) => {
     const newParams = new URLSearchParams(params);
+    const apiPage = page - 1;
 
-    if (page > 0){
-      newParams.set("page", String(page));
-    } else{
+    if (apiPage >= 0) {
+      newParams.set("page", String(apiPage));
+    } else {
       newParams.delete("page");
     }
-    
+
     setPageNumber(page);
     router.replace(`?${newParams.toString()}`);
   };
 
   useEffect(() => {
     const page = pageParams.get("page");
-    if (page) setPageNumber(Number(page));
+    
+    if (page) {
+      setPageNumber(Number(page) + 1);
+    } else {
+      setPageNumber(1);
+    }
     
   }, [pageParams]);
-
 
   return (
     <div className={styles.container}>
       {pageNumber > 1 && (
-        <div
-          onClick={() => handleClick(pageNumber - 1)}
-          className={styles.next_button}
-        >
+        <div onClick={() => handleClick(pageNumber - 1)} className={styles.next_button}>
           <BackButton style={{ transform: "rotate(180deg)" }} />
         </div>
       )}
@@ -80,10 +80,7 @@ export default function Pagination({ data }: { data: any }) {
             )}
       </div>
       {totalPages && pageNumber < totalPages[totalPages.length - 1] && (
-        <div
-          onClick={() => handleClick(pageNumber + 1)}
-          className={styles.next_button}
-        >
+        <div onClick={() => handleClick(pageNumber + 1)} className={styles.next_button}>
           <ForwardButton />
         </div>
       )}

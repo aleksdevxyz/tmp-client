@@ -15,14 +15,15 @@ interface CardWrapperProps {
 }
 
 export default function CardWrapper({src, title, description, count, id, path}: CardWrapperProps) {
-  const locale = useLocale()
+  const locale = useLocale();
+  const innerStyle = path === 'bots' ? { display: 'none' } : {};
 
   return (
     <Link href={`/${locale}${path ? `/${path}` : ''}/${id}`} className={styles.card}>
         <div className={styles.container}>
             <h3 className={styles.title}>{title}</h3>
             <p className={styles.subtitle}>{description}</p>
-            <div className={`${styles.inner} ${styles.robots}`}>
+            <div className={styles.inner} style={innerStyle}>
                 <span className={styles.count}>{count}</span>
                 Подписчиков
             </div>
