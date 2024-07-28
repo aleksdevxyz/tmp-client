@@ -13,7 +13,7 @@ interface SlideRes {
 
 const NewChannelsSlide: React.FC<SlideRes> = React.memo(({ id, name, image, subscribers, locale }) => {
   return (
-    <Link href={`/${locale}/${id}`} className={styles.item}>
+    <Link href={`/${locale}/channel/${id}`} className={styles.item}>
       <Image
         width={46}
         height={46}

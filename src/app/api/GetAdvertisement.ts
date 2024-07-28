@@ -9,8 +9,7 @@ interface AdvertisementResponse {
     link: string
   }
 const request = async (url: string): Promise<AdvertisementResponse[]> => {
-    const locale = await getLocale() || "ru";
-    const res = await fetch(`${BASE_URL}/${url}?lang=${locale}`);
+    const res = await fetch(`${BASE_URL}/${url}`);
     if (!res.ok) {
         throw new Error("Failed to fetch data");
     }
@@ -24,7 +23,7 @@ export async function getAdvertisement() {
 export async function GetAdvertisement() {
     try {
       const locale = await getLocale() || "ru";
-      const res = await fetch(`${process.env.BASE_URL}/advertisement?lang=${locale}`);
+      const res = await fetch(`${process.env.BASE_URL}/advertsement?lang=${locale}`);
       if (!res.ok) {
         throw new Error("Failed to fetch data");
       }
