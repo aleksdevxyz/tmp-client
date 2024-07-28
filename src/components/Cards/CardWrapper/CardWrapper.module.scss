@@ -13,12 +13,12 @@
   max-height: 126px;
   text-decoration: none;
   border-radius: 9px;
-  box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
+  box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.3);
 
   @include index.mini-desktop {
     max-width: none;
   }
-  
+
   @media screen and (max-width: 380px) {
     max-width: clamp(18.438rem, -1.563rem + 100vw, 22.188rem);
   }

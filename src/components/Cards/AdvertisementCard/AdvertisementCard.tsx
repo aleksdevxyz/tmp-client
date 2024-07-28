@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./AdvertisementCard.module.scss";
 import Link from "next/link";
+import { getLocale } from "next-intl/server";
 
 export interface advertisement {
   title: string;
@@ -10,8 +11,9 @@ export interface advertisement {
 }
 
 async function GetAdvertisement() {
-  try {
-    const res = await fetch(`${process.env.BASE_URL}/advertisement`);
+  try { 
+    const locale = await getLocale() || "ru";
+    const res = await fetch(`${process.env.BASE_URL}/advertisement?lang=${locale}`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }

@@ -121,7 +121,7 @@ export default function CardInner({
                       className={styles.category_link}
                       href={`/${locale}/category/${category.translit_name}`}
                     >
-                      {category.translit_name}
+                      {category.name}
                     </Link>
                   ) : null}
                 </div>

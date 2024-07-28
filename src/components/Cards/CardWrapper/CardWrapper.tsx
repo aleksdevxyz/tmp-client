@@ -1,4 +1,3 @@
-
 import React from 'react'
 import styles from './CardWrapper.module.scss'
 import Link from 'next/link'
@@ -16,10 +15,12 @@ interface CardWrapperProps {
 
 export default function CardWrapper({src, title, description, count, id, path}: CardWrapperProps) {
   const locale = useLocale();
-  const innerStyle = path === 'bots' ? { display: 'none' } : {};
+  const innerStyle = path === 'bots' || path === 'chats' ? { display: 'none' } : {};
+  const basePath = path === 'bots' || path === 'chats' ? '' : '/channel';
+  const href = `/${locale}${basePath}${path ? `/${path}` : ''}/${id}`;
 
   return (
-    <Link href={`/${locale}${path ? `/${path}` : ''}/${id}`} className={styles.card}>
+    <Link href={href} className={styles.card}>
         <div className={styles.container}>
             <h3 className={styles.title}>{title}</h3>
             <p className={styles.subtitle}>{description}</p>
@@ -28,7 +29,7 @@ export default function CardWrapper({src, title, description, count, id, path}: 
                 Подписчиков
             </div>
         </div>
-        <Image  loading='lazy' width={91} height={91} className={styles.image} src={src} alt={title}/>
+        <Image loading='lazy' width={91} height={91} className={styles.image} src={src} alt={title}/>
     </Link>
   )
 }
