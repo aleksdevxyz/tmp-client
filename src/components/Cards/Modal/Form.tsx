@@ -72,7 +72,9 @@ export default function Form({
       className={styles.form}
       onSubmit={(e) => {
         e.preventDefault();
-        handleAction(new FormData(e.target as HTMLFormElement));
+        const formData = new FormData(e.target as HTMLFormElement);
+        formData.append("other", formState.other);
+        handleAction(formData);
       }}
     >
       <div className={styles.text_container}>
@@ -144,6 +146,7 @@ export default function Form({
         name="other"
         className={styles.text_area}
         onChange={handleTextareaChange}
+        value={formState.other}
       ></textarea>
       {msg.msg != "" && (
         <div
