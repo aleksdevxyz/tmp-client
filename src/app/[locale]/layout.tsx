@@ -6,6 +6,7 @@ const BurgerMenu = dynamic(() => import("@/components/BurgerMenu/BurgerMenu"));
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import YandexMetrika from "@/components/YandexMetrika/YandexMetrika";
 //styles
 import "./globals.scss";
 
@@ -63,6 +64,7 @@ export default async function RootLayout({
             {children}
             <Footer />
           </NextIntlClientProvider>
+          <YandexMetrika />
         </main>
       </body>
     </html>

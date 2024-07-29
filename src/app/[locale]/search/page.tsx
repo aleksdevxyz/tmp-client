@@ -49,7 +49,7 @@ export default async function SearchPage({
       <h2 className={styles.title}>Поиск телеграм каналов по {query}</h2>
       <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>
-        <ChannelsList path="channel" data={AccurateCategory} />
+        <ChannelsList path="" data={AccurateCategory} />
       </div>
       <RecList />
     </div>
