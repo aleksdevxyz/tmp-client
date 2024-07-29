@@ -23,7 +23,7 @@ export async function getAdvertisement() {
 export async function GetAdvertisement() {
     try {
       const locale = await getLocale() || "ru";
-      const res = await fetch(`${process.env.BASE_URL}/advertsement?lang=${locale}`);
+      const res = await fetch(`${process.env.BASE_URL}/advertisement?lang=${locale}`);
       if (!res.ok) {
         throw new Error("Failed to fetch data");
       }
