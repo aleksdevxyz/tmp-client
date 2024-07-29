@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    gap: 34px;
+    position: relative;
+    max-width: 1140px;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    
+    .content {
+        .image{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 9px;
+        }
+        .category {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            padding-top: 25px;
+
+            p, a {
+                color: #3e4347;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 24px;
+                margin: 0;
+                text-decoration: none;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+
+            .creadet_at {
+                text-align: left;
+            }
+        }
+
+        .content_container {
+            padding-bottom: 25px;
+
+            .title {
+                color: rgb(62, 67, 71);
+                font-size: 42px;
+                font-weight: 700;
+                line-height: 49px;
+                margin: 0;
+                margin-top: 12px;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 36px;
+                    line-height: 34px;
+                }
+
+                @media screen and (max-width: 480px) {
+                    font-size: 30px;
+                    line-height: 30px;
+                }
+            }
+
+            .description {
+                color: rgb(62, 67, 71);
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 24px;
+                margin: 0;
+                margin-top: 12px;
+            }
+
+        }
+        .comments {
+            color: #677179;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18.75px;
+            padding-bottom: 12px;
+            position: relative;
+        }
+
+        .comments::after {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            height: 2px;
+            background: #DEE2E4;
+        }
+    }
+}
