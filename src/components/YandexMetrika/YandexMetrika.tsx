@@ -49,7 +49,7 @@ const YandexMetrika: React.FC = () => {
             />
             <noscript>
                 <div>
-                    <Image
+                    <img
                         src="https://mc.yandex.ru/watch/96816924"
                         style={{ position: 'absolute', left: '-9999px' }}
                         alt=""
