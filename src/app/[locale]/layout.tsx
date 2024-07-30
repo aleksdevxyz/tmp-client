@@ -1,12 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
+import Script from 'next/script';
+import { Suspense } from 'react';
 const Header = dynamic(() => import("@/components/Header/Header"));
 const Footer = dynamic(() => import("@/components/Footer/Footer"));
 const BurgerMenu = dynamic(() => import("@/components/BurgerMenu/BurgerMenu"));
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
-import YandexMetrika from "@/components/YandexMetrika/YandexMetrika";
+import YandexMetrika from '@/components/YandexMetrika/YandexMetrika';
 //styles
 import "./globals.scss";
 
@@ -49,6 +51,25 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body suppressHydrationWarning={true}>
+      <Script id="metrika-counter" strategy="afterInteractive">
+            {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+              m[i].l=1*new Date();
+              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+              (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+              ym(96816924, "init", {
+                    defer: true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+              });`
+            }
+          </Script>
+          <Suspense fallback={<></>}>
+            <YandexMetrika />
+          </Suspense>
         <main
           id={"main"}
           style={{
@@ -64,7 +85,6 @@ export default async function RootLayout({
             {children}
             <Footer />
           </NextIntlClientProvider>
-          <YandexMetrika />
         </main>
       </body>
     </html>
