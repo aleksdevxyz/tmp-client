@@ -12,7 +12,7 @@ declare global {
 const YandexMetrika: React.FC = () => {
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            window.onload = () => {
+            setTimeout(() => {
                 window.ym = window.ym || function () {
                     (window.ym.a = window.ym.a || []).push(arguments);
                 };
@@ -22,7 +22,7 @@ const YandexMetrika: React.FC = () => {
                     accurateTrackBounce: true,
                     webvisor: true
                 });
-            };
+            }, 5000);
         }
     }, []);
 
