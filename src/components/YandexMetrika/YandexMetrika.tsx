@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import Script from 'next/script';
-import Image from 'next/image';
 
 declare global {
     interface Window {
@@ -13,15 +12,17 @@ declare global {
 const YandexMetrika: React.FC = () => {
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            window.ym = window.ym || function () {
-                (window.ym.a = window.ym.a || []).push(arguments);
+            window.onload = () => {
+                window.ym = window.ym || function () {
+                    (window.ym.a = window.ym.a || []).push(arguments);
+                };
+                window.ym(96816924, 'init', {
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true,
+                    webvisor: true
+                });
             };
-            window.ym(96816924, 'init', {
-                clickmap: true,
-                trackLinks: true,
-                accurateTrackBounce: true,
-                webvisor: true
-            });
         }
     }, []);
 
