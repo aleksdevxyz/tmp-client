@@ -36,7 +36,7 @@ export default function SearchInput({open,setOpenSearch = () => {}}: {open?: boo
   const dropRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const searchRequest = (value: string) => {
     if (value) {
-      fetch(`https://test-api-teleshtorm.teleshtorm.org/channels/search_suggest?query=${encodeURIComponent(value)}`)
+      fetch(`${process.env.BASE_URL}/channels/search_suggest?query=${encodeURIComponent(value)}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
