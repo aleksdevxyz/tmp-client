@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [ "main", "dev" ]
+
+env:
+  web_app_container: next_web_app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Сборка приложения
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Установка Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Сборка приложения
+        run: docker build --build-arg BASE_URL=${{secrets.API_URL_DEV}} --build-arg NEXT_PUBLIC_SITE_URL=${{secrets.PUBLIC_SITE_URL_DEV}} --build-arg TELEGRAM_CHANNEL=${{secrets.TELEGRAM_CHANNEL_DEV}} -t $web_app_container:latest .
