@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./AdvertisementCard.module.scss";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 export interface advertisement {
   title: string;
@@ -32,6 +33,7 @@ export default async function AdvertisementCard() {
 
   const data = await GetAdvertisement();
   const randomAd = getRandomAdvertisement(data);
+  const t = await getTranslations("AdvertisementCard");
 
   
   if (!randomAd)
@@ -57,7 +59,7 @@ export default async function AdvertisementCard() {
             <p key={index} className={styles.formatted_text}>{text}</p>
           ))}</div>
         </div>
-        <p className={styles.advertisement}>#Реклама</p>
+        <p className={styles.advertisement}>{t("реклама")}</p>
       </Link>
     </>
   );

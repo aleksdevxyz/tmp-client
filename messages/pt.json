@@ -147,5 +147,11 @@
     "Ссылка телеграм": "Nosso canal no Telegram",
     "Правообладатели": "Para detentores de direitos",
     "Техподдержка": "Contatar o suporte técnico"
+  },
+  "CardWrapper": {
+    "подписчиков": "assinante"
+  },
+  "AdvertisementCard": {
+    "реклама": "#publicidade"
   }
 }
