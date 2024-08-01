@@ -117,7 +117,7 @@ export default function SearchInput({open,setOpenSearch = () => {}}: {open?: boo
             <Image className={styles.arrow} alt="arrow" src={'/arrow-return-right.svg'} width={15} height={15}/>
               <Link
                 className={styles.dropdown_item}
-                href={`/${locale}/${item.id}`}
+                href={`/${locale}/channel/${item.id}`}
               >
                 <Image
                   width={55}
