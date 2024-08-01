@@ -5,12 +5,14 @@
     border: 1px solid #DEE2E4;
     display: flex;
     margin-bottom: 25px;
+    box-shadow: 0 0 35px 0 rgba(154, 161, 171, .3);
 
     @media screen and (max-width: 576px) {
         flex-direction: column;
         border: none;
         background-color: rgb(250, 251, 254);
         padding: 0;
+        box-shadow: none;
     }
 
     .content {

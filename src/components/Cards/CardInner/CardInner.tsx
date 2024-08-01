@@ -44,6 +44,7 @@ export default function CardInner({
   const [shareModal, setShareModal] = React.useState(false);
   const t = useTranslations("Card");
   const pathName = usePathname();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   return (
     <>
@@ -53,27 +54,27 @@ export default function CardInner({
         <div className={styles.content}>
           <div className={styles.social_container}>
             <Link
-              href={`https://vkontakte.ru/share.php?url=${pathName}`}
+              href={`https://vkontakte.ru/share.php?url=${baseUrl}${pathName}`}
               target="_blank"
               className={styles.vk}
             />
             <Link
-              href={`https://telegram.me/share/url?url=${pathName}`}
+              href={`https://telegram.me/share/url?url=${baseUrl}${pathName}`}
               target="_blank"
               className={styles.TG}
             />
             <Link
-              href={`https://twitter.com/intent/tweet?text=${pathName}`}
+              href={`https://twitter.com/intent/tweet?text=${baseUrl}${pathName}`}
               target="_blank"
               className={styles.tw}
             />
             <Link
-              href={`http://www.facebook.com/sharer.php?u=${pathName}`}
+              href={`http://www.facebook.com/sharer.php?u=${baseUrl}${pathName}`}
               target="_blank"
               className={styles.fb}
             />
             <Link
-              href={`https://api.whatsapp.com/send/?text=${pathName}`}
+              href={`https://api.whatsapp.com/send/?text=${baseUrl}${pathName}`}
               target="_blank"
               className={styles.wp}
             />
@@ -120,7 +121,7 @@ export default function CardInner({
                       className={styles.category_link}
                       href={`/${locale}/category/${category.translit_name}`}
                     >
-                      {category.translit_name}
+                      {category.name}
                     </Link>
                   ) : null}
                 </div>

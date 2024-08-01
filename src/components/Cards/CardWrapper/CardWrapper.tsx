@@ -1,9 +1,9 @@
-
 import React from 'react'
 import styles from './CardWrapper.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLocale } from 'next-intl'
+import { useTranslations } from "next-intl";
 
 interface CardWrapperProps {
     src: string
@@ -15,19 +15,23 @@ interface CardWrapperProps {
 }
 
 export default function CardWrapper({src, title, description, count, id, path}: CardWrapperProps) {
-  const locale = useLocale()
+  const locale = useLocale();
+  const innerStyle = path === 'bots' || path === 'chats' ? { display: 'none' } : {};
+  const basePath = path === 'bots' || path === 'chats' ? '' : '/channel';
+  const href = `/${locale}${basePath}${path ? `/${path}` : ''}/${id}`;
+  const t = useTranslations("CardWrapper");
 
   return (
-    <Link href={`/${locale}${path ? `/${path}` : ''}/${id}`} className={styles.card}>
+    <Link href={href} className={styles.card}>
         <div className={styles.container}>
             <h3 className={styles.title}>{title}</h3>
             <p className={styles.subtitle}>{description}</p>
-            <div className={styles.inner}>
+            <div className={styles.inner} style={innerStyle}>
                 <span className={styles.count}>{count}</span>
-                Подписчиков
+                {t("подписчиков")}
             </div>
         </div>
-        <Image  loading='lazy' width={91} height={91} className={styles.image} src={src} alt={title}/>
+        <Image loading='lazy' width={91} height={91} className={styles.image} src={src} alt={title}/>
     </Link>
   )
 }

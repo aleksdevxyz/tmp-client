@@ -9,13 +9,19 @@ import { unstable_setRequestLocale } from "next-intl/server";
 //styles
 import "./globals.scss";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+// import {Inter} from "next/font/google";
+//
+// const inter = Inter({ subsets: ["latin"], display: "swap" });
+
 export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
     images: [{
-      url:`/opengraph-image.png`,
+      url:`${baseUrl}/opengraph-image.png`,
       width:800,
       height:418,
       alt:'MainPageLogo',

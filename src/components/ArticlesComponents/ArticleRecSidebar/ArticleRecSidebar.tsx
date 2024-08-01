@@ -27,15 +27,15 @@ export default async function ArticleRecSidebar({
   const locale = await getLocale();
   const articles = await getRec();
   const t = await getTranslations("Article");
-  const href = `/${locale}/articles/${translit_name}`;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   return (
     <div className={styles.container}>
       <div className={styles.article_container}>
         <h2 className={styles.title}>{t("Рекомендуем статьи")}</h2>
-        {articles.map(({ image, name }, index) => {
+        {articles.map(({ image, name, translit_name }, index) => {
           return (
-            <Link className={styles.article} key={index} href={href}>
+            <Link className={styles.article} key={index} href={`/${locale}/articles/${translit_name}`}>
               <Image
                 className={styles.image}
                 src={image}
@@ -52,26 +52,26 @@ export default async function ArticleRecSidebar({
       <div className={styles.links_container}>
         <Link
           className={styles.link}
-          href={`/${locale}/articles/${translit_name}/#`}
+          href={`${baseUrl}/${locale}/articles/${translit_name}/`}
         >
           <Image src={"/Share.svg"} width={21} height={19} alt={"share"} />
           {t("Поделиться")}
         </Link>
         <div className={styles.links}>
           <Link
-            href={`https://vkontakte.ru/share.php?url=${href}`}
+            href={`https://vkontakte.ru/share.php?url=${baseUrl}/${locale}/articles/${translit_name}`}
             className={styles.vk}
           />
           <Link
-            href={`https://telegram.me/share/url?url=${href}`}
+            href={`https://telegram.me/share/url?url=${baseUrl}/${locale}/articles/${translit_name}`}
             className={styles.TG}
           />
           <Link
-            href={`https://twitter.com/intent/tweet?text=${href}`}
+            href={`https://twitter.com/intent/tweet?text=${baseUrl}/${locale}/articles/${translit_name}`}
             className={styles.Twitter}
           />
 
-          <Link href={href} className={styles.FaceBook} />
+          <Link href={`${baseUrl}/${locale}/articles/${translit_name}`} className={styles.FaceBook} />
         </div>
       </div>
     </div>

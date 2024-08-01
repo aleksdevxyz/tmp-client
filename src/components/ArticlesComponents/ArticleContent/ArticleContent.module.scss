@@ -33,6 +33,10 @@
                 text-decoration: none;
             }
 
+            a {
+                text-decoration: underline;
+            }
+
             .creadet_at {
                 text-align: left;
             }
@@ -68,6 +72,25 @@
                 margin: 0;
                 margin-top: 12px;
             }
+
+        }
+        .comments {
+            color: #677179;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18.75px;
+            padding-bottom: 12px;
+            position: relative;
+        }
+
+        .comments::after {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            height: 2px;
+            background: #DEE2E4;
         }
     }
 }

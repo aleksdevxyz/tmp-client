@@ -11,8 +11,9 @@ export interface advertisement {
 }
 
 async function GetAdvertisement() {
-  try {
-    const res = await fetch(`${process.env.BASE_URL}/advertisement`);
+  try { 
+    const locale = await getLocale() || "ru";
+    const res = await fetch(`${process.env.BASE_URL}/advertisement?lang=${locale}`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }

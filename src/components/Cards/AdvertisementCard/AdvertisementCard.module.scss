@@ -8,11 +8,18 @@
   justify-content: flex-start;
   padding: 10px 15px;
   border: 1px solid rgb(222, 226, 228);
-  border-radius: 10px;
+  border-radius: 9px;
   background: rgb(255, 255, 255);
   text-decoration: none;
   width: 100%;
   transition: all 0.3s;
+  border-radius: 9px;
+  box-shadow: 0 0 10px 0 rgba(154, 161, 171, 0.2);
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid rgb(103 113 121 / 50%);
+  }
 
   @include index.small-tablet {
     grid-column: 1/1;
@@ -72,7 +79,7 @@
       transition: all 0.3s;
       white-space: nowrap;
       overflow: hidden;
-      max-width: 212px;
+      max-width: 230px;
     }
 
     .subtitle {
@@ -102,7 +109,7 @@
   justify-content: flex-start;
   padding: 10px 15px;
   border: 1px solid rgb(222, 226, 228);
-  border-radius: 10px;
+  border-radius: 9px;
   background: rgb(255, 255, 255);
   text-decoration: none;
 

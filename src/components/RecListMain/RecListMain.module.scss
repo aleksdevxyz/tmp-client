@@ -7,12 +7,12 @@
 
     &__container {
         display: flex;
+        gap: 10px;
         
     }
 
     &__slide {
         flex: 0 0 33%;
-        padding: 5px;
 
         a {
             text-decoration: none;
@@ -30,8 +30,8 @@
 
 .container {
     max-width: 1140px;
-    margin: 0 auto;         
-    padding: 15px 15px 0 15px;
+    margin: 0 auto;
+    padding: 15px 0 0 0;
     width: 100%;
 
     @media screen and (max-width: 480px) {
