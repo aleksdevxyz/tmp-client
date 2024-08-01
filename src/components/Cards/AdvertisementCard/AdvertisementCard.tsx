@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./AdvertisementCard.module.scss";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 
 export interface advertisement {
   title: string;
