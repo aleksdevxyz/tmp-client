@@ -150,5 +150,8 @@
   },
   "CardWrapper": {
     "подписчиков": "sottoscrittori"
+  },
+  "AdvertisementCard": {
+    "реклама": "#pubblicità"
   }
 }
