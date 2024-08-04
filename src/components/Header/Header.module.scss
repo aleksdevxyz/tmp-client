@@ -79,6 +79,10 @@
         .item_icon * {
           fill: index.$focus_color;
         }
+
+        svg * {
+          fill: index.$focus_color;
+        }
       }
     }
 
