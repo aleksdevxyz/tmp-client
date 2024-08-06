@@ -29,7 +29,18 @@ export async function generateMetadata(
     robots: {
       index: true,
       follow: true
-    }
+    },
+    openGraph: {
+      images: [{
+        url:`${data.image}`,
+        width:240,
+        height:240,
+        alt:`${data.name}`
+      }],
+    },
+    twitter: {
+      card: "summary",
+    },
   }
 }
 
