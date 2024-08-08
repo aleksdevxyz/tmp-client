@@ -145,5 +145,11 @@
     "Ссылка телеграм": "Our Telegram channel",
     "Правообладатели": "For copyright holders",
     "Техподдержка": "Contact support"
+  },
+  "CardWrapper": {
+    "подписчиков": "subscribers"
+  },
+  "AdvertisementCard": {
+    "реклама": "#advertisement"
   }
 }

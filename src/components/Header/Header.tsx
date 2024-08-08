@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./Header.module.scss";
 import SearchInput from "../SearchInput/SearchInput";
 import DropMenu from "../DropMenu/DropMenu";
+import { Articles, Bots, Chats, Logo, Catalog } from "../svgs";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -17,8 +18,7 @@ export default function Header() {
       <div className={styles.header_container}>
         <nav className={styles.menu_container}>
           <Link locale={locale} href={`/${locale}`} className={styles.logo}>
-            <Image
-              src={"/Header/Logo.svg"}
+            <Logo
               className={styles.logo}
               alt="Logo"
               width={50}
@@ -26,8 +26,7 @@ export default function Header() {
             />
           </Link>
           <Link href={`/${locale}`} className={styles.menu_item}>
-            <Image
-              src={"/Header/Catalog.svg"}
+            <Catalog
               className={styles.item_icon}
               alt="Catalog"
               width={22}
@@ -38,8 +37,7 @@ export default function Header() {
             </p>
           </Link>
           <Link href={`/${locale}/chats`} className={styles.menu_item}>
-            <Image
-              src={"/Header/Chats.svg"}
+            <Chats
               className={styles.item_icon}
               alt="Chats"
               width={22}
@@ -48,8 +46,7 @@ export default function Header() {
             <p className={styles.title}>{t('Чаты')}</p>
           </Link>
           <Link href={`/${locale}/bots`} className={styles.menu_item}>
-            <Image
-              src={"/Header/Bots.svg"}
+            <Bots
               className={styles.item_icon}
               alt="Bots"
               width={22}
@@ -58,8 +55,7 @@ export default function Header() {
             <p className={styles.title}>{t('Боты')}</p>
           </Link>
           <Link href={`/${locale}/articles`} className={styles.menu_item}>
-            <Image
-              src={"/Header/Articles.svg"}
+            <Articles
               className={styles.item_icon}
               alt="Articles"
               width={22}

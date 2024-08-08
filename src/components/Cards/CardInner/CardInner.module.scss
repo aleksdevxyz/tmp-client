@@ -5,7 +5,7 @@
     border: 1px solid #DEE2E4;
     display: flex;
     margin-bottom: 25px;
-    box-shadow: 0 0 35px 0 rgba(154, 161, 171, .5);
+    box-shadow: 0 0 35px 0 rgba(154, 161, 171, .3);
 
     @media screen and (max-width: 576px) {
         flex-direction: column;
@@ -38,7 +38,6 @@
             margin-bottom: 15px;
             color: #677179;
             font-size: 24px;
-            font-family: 'Inter-Bold';
             text-align: center;
             display: none;
 

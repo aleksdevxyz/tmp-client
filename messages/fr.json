@@ -147,5 +147,11 @@
     "Ссылка телеграм": "Notre chaîne Telegram",
     "Правообладатели": "Pour les titulaires de droits",
     "Техподдержка": "Contacter le support technique"
+  },
+  "CardWrapper": {
+    "подписчиков": "abonnés"
+  },
+  "AdvertisementCard": {
+    "реклама": "#publicité"
   }
 }

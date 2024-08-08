@@ -9,6 +9,11 @@
   max-width: 1140px;
   width: 100%;
 
+  @media screen and (max-width: 480px) {
+    padding-inline: 12px;
+}
+  
+
   .title {
     color: #677179;
     text-align: center;
@@ -23,6 +28,10 @@
     width: 100%;
     max-width: 1140px;
     padding: 0 15px;
+    @media screen and (max-width: 480px) {
+      padding: 0;
+      margin-bottom: 15px;
+  }
     .subtitle {
       color: #677179;
       font-size: 20px;
