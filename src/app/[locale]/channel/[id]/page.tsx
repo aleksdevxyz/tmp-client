@@ -29,7 +29,18 @@ export async function generateMetadata(
     robots: {
       index: true,
       follow: true
-    }
+    },
+    openGraph: {
+      images: [{
+        url:`${data.image}`,
+        width:240,
+        height:240,
+        alt:`${data.name}`
+      }],
+    },
+    twitter: {
+      card: "summary",
+    },
   }
 }
 
@@ -62,7 +73,7 @@ export default async function ChannelCard({ params: { id } }:{
   const advertisement = await getAdvertisement()
 
   return <div className={styles.section}>
-    <BreadCrumbs name={data.name}/>
+    <BreadCrumbs name={data.name} categoryName={data.category.name} categoryLink={data.category.translit_name}/>
     
     <div className={styles.card_section}>
       <AdvertisementSwiper data={advertisement}/>
