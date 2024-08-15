@@ -16,6 +16,7 @@ export interface Props {
   image: string;
   subscribers: number;
   link_tg: string;
+  username: string;
   hidden: boolean;
   category: Category;
   id: string;
@@ -33,6 +34,7 @@ export default function CardInner({
   image,
   name,
   link_tg,
+  username,
   description,
   subscribers,
   category,
@@ -107,9 +109,9 @@ export default function CardInner({
               <>
                 <h3 className={styles.title}>{name}</h3>
                 <div className={styles.description_container}>
-                  {link_tg ? (
+                  {username ? (
                     <Link className={styles.link} href={`${link_tg}`}>
-                      {link_tg}
+                      {username}
                     </Link>
                   ) : null}
 
