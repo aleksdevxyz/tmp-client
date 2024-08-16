@@ -28,7 +28,7 @@ const AdvertisementCardMob = ({ data, classNames }: Props) => {
   const tA = useTranslations("AdvertisementCard");
 
   return (
-    <article className={cn(styles.ad, classNames)}>
+    <Link href={`${link}`} className={cn(styles.ad, classNames)}>
       <Image
         className={styles.image}
         src={image}
@@ -46,12 +46,12 @@ const AdvertisementCardMob = ({ data, classNames }: Props) => {
             </p>
           ))}
         </div>
-        <Link className={styles.link} href={`${link}`}>
+        <p className={styles.link}>
           {t("Открыть канал")}
-        </Link>
+        </p>
       </div>
       <div className={styles.tag}>{tA("реклама")}</div>
-    </article>
+    </Link>
   )
 }
 
