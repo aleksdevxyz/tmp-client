@@ -9,6 +9,7 @@ import { unstable_setRequestLocale } from "next-intl/server";
 //styles
 import "./globals.scss";
 import GoogleTag from "@/components/GoogleTag/GoogleTag";
+import YandexMetrika from "@/components/YandexMetrika/YandexMetrika";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
@@ -65,6 +66,7 @@ export default async function RootLayout({
             <Footer />
           </NextIntlClientProvider>
           <GoogleTag/>
+          <YandexMetrika/>
         </main>
       </body>
     </html>
