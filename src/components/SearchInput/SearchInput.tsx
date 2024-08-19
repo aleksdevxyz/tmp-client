@@ -10,6 +10,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { changeSubscribers } from "@/helpers/changeSubs";
 import classNames from "classnames";
+import zamenaImg from "../../../public/zamena.png";
 
 interface SearchResult {
   id: number;
@@ -30,6 +31,7 @@ export default function SearchInput({ open, setOpenSearch = () => {} }: { open?:
   const [searchResult, setSearchResult] = React.useState<SearchResult[] | null>(null);
   const { replace } = useRouter();
   const locale = useLocale();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   const dropRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const searchRequest = (value: string) => {
@@ -119,7 +121,17 @@ export default function SearchInput({ open, setOpenSearch = () => {} }: { open?:
             <div onClick={() => setActiveMenu(false)} key={item.id} className={styles.dropdown_content}>
               <Image className={styles.arrow} alt="arrow" src={'/arrow-return-right.svg'} width={15} height={15} />
               <Link className={styles.dropdown_item} href={`/${locale}/channel/${item.id}`}>
-                <Image width={55} height={55} alt="Картинка из поиска" className={styles.dropdown_img} src={item.image} />
+              <Image
+                width={55}
+                height={55}
+                alt="Картинка из поиска"
+                className={styles.dropdown_img}
+                src={item.image}
+                onError={(e) => {
+                  e.currentTarget.src = `${baseUrl}/${zamenaImg.src}`;
+                  e.currentTarget.srcset = '';
+                }}                                            
+              />
                 <div className={styles.dropdown_text}>
                   <p className={styles.dropdown_name}>{item.name}</p>
                   <p className={styles.dropdown_subscribe}>

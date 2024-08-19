@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CardInner.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import hiddenImg from "../../../../public/+18.png";
+import zamenaImg from "../../../../public/zamena.png";
 import { useLocale, useTranslations } from "next-intl";
 import Modal from "../Modal/Modal";
 import { usePathname } from "next/navigation";
@@ -16,6 +17,7 @@ export interface Props {
   image: string;
   subscribers: number;
   link_tg: string;
+  username: string;
   hidden: boolean;
   category: Category;
   id: string;
@@ -33,6 +35,7 @@ export default function CardInner({
   image,
   name,
   link_tg,
+  username,
   description,
   subscribers,
   category,
@@ -40,11 +43,16 @@ export default function CardInner({
   id,
 }: Props) {
   const locale = useLocale();
-  const [openModal, setOpenModal] = React.useState(false);
-  const [shareModal, setShareModal] = React.useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [shareModal, setShareModal] = useState(false);
+  const [imgSrc, setImgSrc] = useState(hidden ? hiddenImg : image);
   const t = useTranslations("Card");
   const pathName = usePathname();
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+  const handleError = () => {
+    setImgSrc(zamenaImg);
+  };
 
   return (
     <>
@@ -95,7 +103,8 @@ export default function CardInner({
             height={208}
             loading="eager"
             priority={true}
-            src={hidden ? hiddenImg : image}
+            src={imgSrc}
+            onError={handleError}
           />
           <div className={styles.info}>
             {hidden ? (
@@ -107,9 +116,9 @@ export default function CardInner({
               <>
                 <h3 className={styles.title}>{name}</h3>
                 <div className={styles.description_container}>
-                  {link_tg ? (
+                  {username ? (
                     <Link className={styles.link} href={`${link_tg}`}>
-                      {link_tg}
+                      {username}
                     </Link>
                   ) : null}
 

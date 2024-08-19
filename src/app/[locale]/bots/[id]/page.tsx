@@ -82,6 +82,7 @@ export default async function BotsCard({
           subscribers={data.subscribers}
           description={data.description}
           link_tg={data.link_tg}
+          username={data.username}
           name={data.name}
           image={data.image}
         />
