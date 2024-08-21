@@ -82,8 +82,8 @@ export default async function ChannelCard({ params: { id } }:{
     <div className={styles.advertisement_section}>
     <AdvertisementCard />
     <AdvertisementCard />
-    <AdvertisementCardMob data={advertisement[0]} />
     <AdvertisementCardMob data={advertisement[1]} />
+    <AdvertisementCardMob data={advertisement[2]} />
     </div>
     <div className={styles.simular_section}>
       <h2 className={styles.title}>{t('Похожие каналы')}</h2>
