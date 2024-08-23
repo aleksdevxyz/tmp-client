@@ -12,10 +12,11 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const translitName = params.translit_name;
+  const translitName = decodeURIComponent(params.translit_name);
   const categoryList = await getCategory();
   const matchingCategory = categoryList.find((item) => item.translit_name === translitName);
   const name = matchingCategory ? matchingCategory.name : "";
+
 
   const t = await getTranslations("IndexCategory");
 
@@ -48,9 +49,10 @@ export default async function Categories({
   searchParams?: {page?: number; totalPages?: number;}
 }) {
   const currentPage = Number(searchParams?.page) || 0;
-  const translitName = params.translit_name;
+  let translitName = params.translit_name;
   const AccurateCategory = await getAcuurateCategory(translitName, currentPage);
   const categoryList = await getCategory();
+  translitName = decodeURIComponent(params.translit_name);
   const matchingCategory = categoryList.find((item) => item.translit_name === translitName);
   const name = matchingCategory ? matchingCategory.name : "";
   const t = await getTranslations("SearchPage");
