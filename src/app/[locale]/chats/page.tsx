@@ -50,7 +50,7 @@ export default async function ChatsPage({
 
   return (
     <>
-      <h2 className={styles.title}>{t("Каталог телеграм чатов")}</h2>
+      <h1 className={styles.title}>{t("Каталог телеграм чатов")}</h1>
       <div style={{ marginBottom: "15px" }} className={styles.section}>
         <h3 className={styles.subtitle}>{t("Телеграм чаты")}</h3>
         <ChannelsList path="chats" data={data} />

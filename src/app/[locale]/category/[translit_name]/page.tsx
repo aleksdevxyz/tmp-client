@@ -52,7 +52,7 @@ export default async function Categories({
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.title}>{`${t("Каталог телеграм каналов в категории")} : ${name}`}</h2>
+      <h1 className={styles.title}>{`${t("Каталог телеграм каналов в категории")} : ${name}`}</h1>
       <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>
         <h3 className={styles.subtitle}>{t("Телеграм каналы")}</h3>

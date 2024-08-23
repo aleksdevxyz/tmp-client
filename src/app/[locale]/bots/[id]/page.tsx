@@ -72,6 +72,7 @@ export default async function BotsCard({
 
   return (
     <div className={styles.section}>
+      <h1 className={styles.hidden}>{data.name}</h1>
       <BreadCrumbs name={data.name} />
       <div className={styles.card_section}>
         <AdvertisementSwiper data={advertisementData}/>
