@@ -67,7 +67,6 @@ export default async function Categories({
         </div>
         <div className={styles.counter}>
           <Pagination data={AccurateCategory}/>
-          <RecList/>
         </div>
       </div>
   );
