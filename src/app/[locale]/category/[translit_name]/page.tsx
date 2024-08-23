@@ -56,7 +56,7 @@ export default async function Categories({
       <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>
         <h3 className={styles.subtitle}>{t("Телеграм каналы")}</h3>
-        <ChannelsList path="" data={AccurateCategory} />
+        <ChannelsList path="" data={AccurateCategory} advertisement={true} />
       </div>
     </div>
   );
