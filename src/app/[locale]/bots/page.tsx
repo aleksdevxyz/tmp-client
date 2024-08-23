@@ -52,7 +52,7 @@ export default async function BotsPage({
   const t = await getTranslations("Bots");
   return (
     <>
-      <h2 className={styles.title}>{t("Каталог телеграм ботов")}</h2>
+      <h1 className={styles.title}>{t("Каталог телеграм ботов")}</h1>
       <div style={{ marginBottom: "15px" }} className={styles.section}>
         <h3 className={styles.subtitle}>{t("Телеграм боты")}</h3>
         <ChannelsList path="bots" data={data} />

@@ -77,6 +77,7 @@ export default async function HomePage({
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.hidden}>{data.name}</h1>
       <BreadCrumbs name={data.name} />
       <section className={styles.section}>
         <ArticleContent
