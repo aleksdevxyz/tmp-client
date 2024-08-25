@@ -112,7 +112,7 @@ export default function CardInner({
               </>
             ) : (
               <>
-                <h3 className={styles.title}>{name}</h3>
+                <h1 className={styles.title}>{name}</h1>
                 <div className={styles.description_container}>
                   {link_tg ? (
                     <Link className={styles.link} href={`${link_tg}`}>
