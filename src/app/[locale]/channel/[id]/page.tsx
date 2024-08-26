@@ -74,7 +74,6 @@ export default async function ChannelCard({ params: { id } }:{
 
   return <div className={styles.section}>
     <BreadCrumbs name={data.name} categoryName={data.category.name} categoryLink={data.category.translit_name}/>
-    <h1 className={styles.hidden}>{data.name}</h1>
     <div className={styles.card_section}>
       <AdvertisementSwiper data={advertisement}/>
       <CardInner hidden={data.hidden} category={data.category} subscribers={data.subscribers} description={data.description} link_tg={data.link_tg} username={data.username} name={data.name} id={id} image={data.image}/>
