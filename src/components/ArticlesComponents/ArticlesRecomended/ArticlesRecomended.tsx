@@ -41,8 +41,8 @@ const ArticlesRecomended = ({
   return (
     <>
       <ArticleCategorySwiper categories={categories} currentCategory={category} onClick={handleClick}/>
-      <RecList articles={filteredArticles} locale={locale} />
-      <Pagination data={filteredArticles}/>
+      <RecList articles={filteredArticles.articles} locale={locale} />
+      <Pagination totalPages={filteredArticles.pages}/>
     </>
   )
 }

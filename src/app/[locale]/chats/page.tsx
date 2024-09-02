@@ -53,9 +53,9 @@ export default async function ChatsPage({
       <h1 className={styles.title}>{t("Каталог телеграм чатов")}</h1>
       <div style={{ marginBottom: "15px" }} className={styles.section}>
         <h3 className={styles.subtitle}>{t("Телеграм чаты")}</h3>
-        <ChannelsList path="chats" data={data} />
+        <ChannelsList path="chats" data={data.chats} />
       </div>
-      <Pagination data={data} />
+      <Pagination totalPages={data.pages} />
       <div style={{ paddingInline: "12px" }}>
         <RecList />
       </div>

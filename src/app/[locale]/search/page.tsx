@@ -25,7 +25,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   };
 }
 
-async function searchCategory(query: string) {
+async function searchCategory(query: string) { // Надо бы заренеймить функцию
   const res = await fetch(
     `${process.env.BASE_URL}/channels/search?query=${query}&page=0&limit=31`
   );
@@ -49,7 +49,7 @@ export default async function SearchPage({
       <h2 className={styles.title}>Поиск телеграм каналов по {query}</h2>
       <SwiperMainComponent count={3} data={categoryList} />
       <div className={styles.channel_section}>
-        <ChannelsList path="" data={AccurateCategory} />
+        <ChannelsList path="" data={AccurateCategory.channels} />
       </div>
       <RecList />
     </div>
