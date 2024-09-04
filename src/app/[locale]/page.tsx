@@ -55,7 +55,7 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
       <MainSection />
       <div className={styles.section}>
         <h2 className={styles.title}>{t("Телеграм каналы")}</h2>
-        <ChannelsList advertisement={true} data={ChannelsData} />
+        <ChannelsList advertisement={true} data={ChannelsData.channels} />
       </div>
 
       <div className={styles.section}>
@@ -64,7 +64,7 @@ export default async function Home({searchParams,}: {searchParams?: {page?: numb
       </div>
 
       <div className={styles.counter}>
-        <Pagination data={ChannelsData} />
+        <Pagination totalPages={ChannelsData.pages} />
         <RecList />
       </div>
 

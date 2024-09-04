@@ -3,7 +3,7 @@ import ChannelsList from "@/components/ChannelsList/ChannelsList";
 import SwiperMainComponent from "@/components/SwiperMainComponent/SwiperMainComponent";
 import { Metadata } from "next";
 import styles from "./Categories.module.scss";
-import { getTranslations } from "next-intl/server";
+import {getLocale, getTranslations} from "next-intl/server";
 import Pagination from "@/components/Pagination/Pagination";
 import RecList from "@/components/RecListMain/RecListMain";
 
@@ -31,9 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-async function getAcuurateCategory(translit_name: string, page: number) {
+async function getAcuurateCategory(translit_name: string, page: number, lang: string) {
   const res = await fetch(
-    `${process.env.BASE_URL}/categories/channels?page=${page}&limit=31&category_translit=${translit_name}`,
+    `${process.env.BASE_URL}/categories/channels?page=${page}&limit=31&category_translit=${translit_name}&lang=${lang}`,
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -48,9 +48,10 @@ export default async function Categories({
   params: { translit_name: string; locale: string};
   searchParams?: {page?: number; totalPages?: number;}
 }) {
+  const locale = await getLocale();
   const currentPage = Number(searchParams?.page) || 0;
   let translitName = params.translit_name;
-  const AccurateCategory = await getAcuurateCategory(translitName, currentPage);
+  const AccurateCategory = await getAcuurateCategory(translitName, currentPage, locale);
   const categoryList = await getCategory();
   translitName = decodeURIComponent(params.translit_name);
   const matchingCategory = categoryList.find((item) => item.translit_name === translitName);
@@ -63,10 +64,10 @@ export default async function Categories({
         <SwiperMainComponent count={3} data={categoryList}/>
         <div className={styles.channel_section}>
           <h3 className={styles.subtitle}>{t("Телеграм каналы")}</h3>
-          <ChannelsList path="" data={AccurateCategory} advertisement={true}/>
+          <ChannelsList path="" data={AccurateCategory.channels} advertisement={true}/>
         </div>
         <div className={styles.counter}>
-          <Pagination data={AccurateCategory}/>
+          <Pagination totalPages={AccurateCategory.pages}/>
         </div>
       </div>
   );

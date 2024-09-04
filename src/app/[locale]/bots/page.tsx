@@ -55,9 +55,9 @@ export default async function BotsPage({
       <h1 className={styles.title}>{t("Каталог телеграм ботов")}</h1>
       <div style={{ marginBottom: "15px" }} className={styles.section}>
         <h3 className={styles.subtitle}>{t("Телеграм боты")}</h3>
-        <ChannelsList path="bots" data={data} />
+        <ChannelsList path="bots" data={data.bots} />
       </div>
-      <Pagination data={data} />
+      <Pagination totalPages={data.pages} />
       <div style={{ paddingInline: "12px" }}>
         <RecList />
       </div>
