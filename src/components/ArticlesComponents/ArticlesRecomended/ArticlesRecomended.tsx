@@ -10,13 +10,18 @@ import dynamic from "next/dynamic";
 
 const Pagination = dynamic(() => import("@/components/Pagination/Pagination"));
 
+type LoadArticlesResponse = {
+  articles: Article[];
+  pages: number;
+};
+
 const ArticlesRecomended = ({
   articles,
   categories,
   accuracyCategory,
   locale
 } : {
-  articles: Article[]
+  articles: LoadArticlesResponse,
   categories: Category[],
   accuracyCategory: string,
   locale: string
