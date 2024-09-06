@@ -21,8 +21,8 @@ jobs:
         script_stop: true
         script: |
                 cd /home/teleshtorm_reps/teleshtorm_front
-                git pull https://${{ secrets.GH_TOKEN }}@github.com/Delitel-WEB/teleshtorm_front.git main
                 git checkout main
+                git pull https://${{ secrets.GH_TOKEN }}@github.com/Delitel-WEB/teleshtorm_front.git main
                 docker build --build-arg BASE_URL=${{secrets.API_URL_PROD}} --build-arg NEXT_PUBLIC_SITE_URL=${{secrets.PUBLIC_SITE_URL_PROD}} --build-arg TELEGRAM_CHANNEL=${{secrets.TELEGRAM_CHANNEL_PROD}} -t teleshtorm_front:prod .
                 cd /home/Teleshtorm
                 docker-compose stop teleshtorm_front_prod

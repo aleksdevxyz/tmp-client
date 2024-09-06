@@ -10,25 +10,32 @@ import { getTotalPages } from "@/helpers/getTotalPages";
 
 const active = cn(styles._active, styles.link);
 
-export default function Pagination({ data }: { data: any }) {
+export default function Pagination({ totalPages }: { totalPages: number }) {
   const [pageNumber, setPageNumber] = useState(1);
   const router = useRouter();
   const pageParams = useSearchParams();
 
-  const totalPages = useMemo(() => getTotalPages(pageNumber, data), [pageNumber, data]);
+  useEffect(() => {
+    const page = pageParams.get("page");
+
+    if (page) {
+      setPageNumber(Number(page) + 1); 
+    } else {
+      setPageNumber(1); 
+    }
+  }, [pageParams]);
+
   const params = useMemo(() => new URLSearchParams(pageParams), [pageParams]);
 
-  const getCurrentQuery = useMemo(() => {
-    return (page: number) => {
-      const newParams = new URLSearchParams(params);
-      if (page > 0) {
-        newParams.set("page", String(page - 1));
-      } else {
-        newParams.delete("page");
-      }
-      return `?${newParams.toString()}`;
-    };
-  }, [params]);
+  const getCurrentQuery = (page: number) => {
+    const newParams = new URLSearchParams(params);
+    if (page > 0) {
+      newParams.set("page", String(page - 1));
+    } else {
+      newParams.delete("page");
+    }
+    return `?${newParams.toString()}`;
+  };
 
   const handleClick = (page: number) => {
     const newParams = new URLSearchParams(params);
@@ -44,46 +51,42 @@ export default function Pagination({ data }: { data: any }) {
     router.replace(`?${newParams.toString()}`);
   };
 
-  useEffect(() => {
-    const page = pageParams.get("page");
-    
-    if (page) {
-      setPageNumber(Number(page) + 1);
-    } else {
-      setPageNumber(1);
+  // Определяем страницы для отображения
+  const visiblePages = useMemo(() => {
+    const pages: number[] = [];
+    const startPage = Math.max(1, pageNumber - 3);
+    const endPage = Math.min(totalPages, pageNumber + 3);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
     }
-    
-  }, [pageParams]);
+
+    return pages;
+  }, [pageNumber, totalPages]);
 
   return (
-    <div className={styles.container}>
-      {pageNumber > 1 && (
-        <div onClick={() => handleClick(pageNumber - 1)} className={styles.next_button}>
-          <BackButton style={{ transform: "rotate(180deg)" }} />
-        </div>
-      )}
-      <div className={styles.counter}>
-        {totalPages && totalPages.length > 0
-          ? totalPages.map((item, index) => (
+      <div className={styles.container}>
+        {pageNumber > 1 && (
+            <div onClick={() => handleClick(pageNumber - 1)} className={styles.next_button}>
+              <BackButton style={{ transform: "rotate(180deg)" }} />
+            </div>
+        )}
+        <div className={styles.counter}>
+          {visiblePages.map((item) => (
               <Link
-                key={index}
-                href={getCurrentQuery(item)}
-                className={pageNumber === item ? active : styles.link}
+                  key={item}
+                  href={getCurrentQuery(item)}
+                  className={pageNumber === item ? active : styles.link}
               >
                 <p style={{ margin: "0", padding: "0" }}>{item}</p>
               </Link>
-            ))
-          : (
-              <Link href={getCurrentQuery(1)} className={active}>
-                <p style={{ margin: "0", padding: "0" }}>1</p>
-              </Link>
-            )}
-      </div>
-      {totalPages && pageNumber < totalPages[totalPages.length - 1] && (
-        <div onClick={() => handleClick(pageNumber + 1)} className={styles.next_button}>
-          <ForwardButton />
+          ))}
         </div>
-      )}
-    </div>
+        {pageNumber < totalPages && (
+            <div onClick={() => handleClick(pageNumber + 1)} className={styles.next_button}>
+              <ForwardButton />
+            </div>
+        )}
+      </div>
   );
 }
