@@ -19,7 +19,12 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     const page = pageParams.get("page");
 
     if (page) {
-      setPageNumber(Number(page) + 1); 
+      const currentPage = Number(page) + 1;
+      setPageNumber(Number(page) + 1);
+
+      if (currentPage > totalPages) {
+        router.replace(getCurrentQuery(totalPages)); // Редирект на последнюю страницу
+      }
     } else {
       setPageNumber(1); 
     }
