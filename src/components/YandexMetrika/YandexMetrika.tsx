@@ -26,6 +26,7 @@ const YandexMetrika: React.FC = () => {
                 clickmap: true,
                 trackLinks: true,
                 accurateTrackBounce: true,
+                webvisor:true
             });
         }, 5000);
 
