@@ -11,6 +11,7 @@ import "./globals.scss";
 import GoogleTag from "@/components/GoogleTag/GoogleTag";
 import YandexMetrika from "@/components/YandexMetrika/YandexMetrika";
 import CanonicalURL from "@/components/CanonicalURL/CanonicalURL";
+import AlternateURL from "@/components/AlternateURL/AlternateURL";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
@@ -69,6 +70,7 @@ export default async function RootLayout({
           <GoogleTag/>
           <YandexMetrika/>
           <CanonicalURL/>
+          <AlternateURL/>
         </main>
       </body>
     </html>
