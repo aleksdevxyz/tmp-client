@@ -13,6 +13,9 @@ export default async function middleware(request: NextRequest) {
   });
   const response = handleI18nRouting(request);
 
+  const currentUrl = request.nextUrl.pathname;
+  response.headers.set('x-current-url', currentUrl);
+
   return response;
 }
 export const config = {
