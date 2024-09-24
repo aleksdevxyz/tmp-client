@@ -28,7 +28,7 @@ export async function postChannel(prevState: any, formData: FormData) {
   const category = formData.get("category");
 
   const post = await fetch(
-    `${process.env.BASE_URL}/request_to_add?type=Канал&link=${link}&category=${category}`,
+    `${process.env.BASE_URL}/request_to_add?type=Канал&link=${link}&category_id=${category}`,
     {
       method: "POST",
       headers: {
