@@ -114,7 +114,7 @@ export default function BurgerMenu() {
           />
         </Link>
         <Link
-          href={"https://t.me/teleshtorm_com"}
+          href={"https://t.me/teleshtorm"}
           onClick={() => setOpenMenu(false)}
           className={styles.link}
         >
