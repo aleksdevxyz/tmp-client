@@ -15,7 +15,7 @@ export default async function Footer() {
         <p className={styles.paragraph}>{t("Права")}</p>
         <div className={styles.links}>
           <Link
-            href="https://t.me/teleshtorm_com"
+            href="https://t.me/teleshtorm"
             className={styles.footer__link}
           >
             {t("Ссылка телеграм")}
