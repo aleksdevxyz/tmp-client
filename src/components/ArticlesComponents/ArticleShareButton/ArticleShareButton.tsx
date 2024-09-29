@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function ArticleShareButton() {
   return (
-    <Link href={'https://t.me/teleshtorm_com'} className={styles.button}>
+    <Link href={'https://t.me/teleshtorm'} className={styles.button}>
         <Image src={'/telegramArticleShare.svg'} width={40} height={40} alt='tg'/>
         <div>
         <h3 className={styles.title}>Подписывайтесь на новости каталога в Telegram</h3>
