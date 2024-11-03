@@ -1,5 +1,9 @@
 User-agent: Googlebot
+Disallow: 
+
 User-agent: *
+Disallow: 
+
 Sitemap: https://teleshtorm.org/sitemap.xml
 Sitemap: https://teleshtorm.org/ru/sitemap.xml
 Sitemap: https://teleshtorm.org/en/sitemap.xml
@@ -8,4 +12,3 @@ Sitemap: https://teleshtorm.org/es/sitemap.xml
 Sitemap: https://teleshtorm.org/fr/sitemap.xml
 Sitemap: https://teleshtorm.org/it/sitemap.xml
 Sitemap: https://teleshtorm.org/pt/sitemap.xml
-
