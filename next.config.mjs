@@ -4,14 +4,6 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    env: {
-        BASE_URL: process.env.BASE_URL,
-    },
-    async rewrites(){
-        return {
-            
-        }
-    },
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
@@ -28,7 +20,8 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'cdn.teleshtorm.org'
+                hostname: 'teleshtorm.net',
+                pathname: '/static/**'
             }
         ]
     }
