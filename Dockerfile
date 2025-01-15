@@ -13,7 +13,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm i
+RUN yarn
 
 RUN yarn build
 
