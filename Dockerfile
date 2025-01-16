@@ -13,12 +13,9 @@ ENV TELEGRAM_CHANNEL ${TELEGRAM_CHANNEL}
 
 WORKDIR /usr/src/app
 
-RUN yarn install
-RUN yarn build
-
 COPY . .
 
-RUN yarn
+RUN yarn install
 RUN yarn build
 
 ENV NODE_ENV production
