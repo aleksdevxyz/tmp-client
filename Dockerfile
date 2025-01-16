@@ -1,8 +1,6 @@
 ARG NODE_VERSION=20.10.0
 
-FROM node:${NODE_VERSION}-alpine3.19 as base
-
-COPY yarn.lock package.json ./
+FROM mirror.gcr.io/node:${NODE_VERSION}-alpine as base
 
 # хост апихи
 ARG NEXT_PUBLIC_SITE_URL
@@ -15,12 +13,12 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN yarn install
-RUN yarn
-RUN yarn build
+RUN npm i
+
+RUN npm run build
 
 ENV NODE_ENV production
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD npm start
