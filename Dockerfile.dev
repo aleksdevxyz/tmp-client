@@ -1,6 +1,8 @@
 ARG NODE_VERSION=20.10.0
 
-FROM mirror.gcr.io/node:${NODE_VERSION}-alpine as base
+FROM node:${NODE_VERSION}-alpine3.19 as base
+
+COPY yarn.lock package.json ./
 
 # хост апихи
 ARG NEXT_PUBLIC_SITE_URL
@@ -11,10 +13,8 @@ ENV TELEGRAM_CHANNEL ${TELEGRAM_CHANNEL}
 
 WORKDIR /usr/src/app
 
-RUN npm install -g -s --no-progress yarn && \
-    yarn && \
-    yarn run build && \
-    yarn cache clean
+RUN yarn install
+RUN yarn build
 
 COPY . .
 
