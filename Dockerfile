@@ -16,6 +16,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN yarn install
+RUN yarn
 RUN yarn build
 
 ENV NODE_ENV production
