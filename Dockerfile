@@ -11,6 +11,11 @@ ENV TELEGRAM_CHANNEL ${TELEGRAM_CHANNEL}
 
 WORKDIR /usr/src/app
 
+RUN npm install -g -s --no-progress yarn && \
+    yarn && \
+    yarn run build && \
+    yarn cache clean
+
 COPY . .
 
 RUN yarn
