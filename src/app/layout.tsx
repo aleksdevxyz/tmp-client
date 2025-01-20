@@ -7,7 +7,7 @@ import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 //styles
-import "./globals.scss";
+import "./[locale]/globals.scss";
 import GoogleTag from "@/components/GoogleTag/GoogleTag";
 import YandexMetrika from "@/components/YandexMetrika/YandexMetrika";
 import CanonicalURL from "@/components/CanonicalURL/CanonicalURL";
