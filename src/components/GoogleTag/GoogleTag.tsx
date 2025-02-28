@@ -5,7 +5,7 @@ const GoogleTag = () => (
     <>
         <Script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-KBE6C3VXYS"
+            src="https://www.googletagmanager.com/gtag/js?id=G-WRXQCLJ2HC"
         />
         <Script
             id="google-gtag"
@@ -14,7 +14,7 @@ const GoogleTag = () => (
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-KBE6C3VXYS');
+          gtag('config', 'G-WRXQCLJ2HC');
         `,
             }}
         />

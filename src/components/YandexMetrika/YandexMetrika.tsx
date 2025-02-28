@@ -22,7 +22,7 @@ const YandexMetrika: React.FC = () => {
                 a.parentNode?.insertBefore(k, a);
             })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-            (window as any).ym(96816924, 'init', {
+            (window as any).ym(99917923, 'init', {
                 clickmap: true,
                 trackLinks: true,
                 accurateTrackBounce: true,
@@ -37,7 +37,7 @@ const YandexMetrika: React.FC = () => {
         <noscript>
             <div>
                 <img
-                    src="https://mc.yandex.ru/watch/96816924"
+                    src="https://mc.yandex.ru/watch/99917923"
                     style={{ position: 'absolute', left: '-9999px' }}
                     alt=""
                 />
