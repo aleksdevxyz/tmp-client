@@ -4,11 +4,11 @@ Disallow:
 User-agent: *
 Disallow: 
 
-Sitemap: https://teleshtorm.org/sitemap.xml
-Sitemap: https://teleshtorm.org/ru/sitemap.xml
-Sitemap: https://teleshtorm.org/en/sitemap.xml
-Sitemap: https://teleshtorm.org/de/sitemap.xml
-Sitemap: https://teleshtorm.org/es/sitemap.xml
-Sitemap: https://teleshtorm.org/fr/sitemap.xml
-Sitemap: https://teleshtorm.org/it/sitemap.xml
-Sitemap: https://teleshtorm.org/pt/sitemap.xml
+Sitemap: https://teleshtorm.xyz/sitemap.xml
+Sitemap: https://teleshtorm.xyz/ru/sitemap.xml
+Sitemap: https://teleshtorm.xyz/en/sitemap.xml
+Sitemap: https://teleshtorm.xyz/de/sitemap.xml
+Sitemap: https://teleshtorm.xyz/es/sitemap.xml
+Sitemap: https://teleshtorm.xyz/fr/sitemap.xml
+Sitemap: https://teleshtorm.xyz/it/sitemap.xml
+Sitemap: https://teleshtorm.xyz/pt/sitemap.xml
