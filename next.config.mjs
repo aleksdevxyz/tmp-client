@@ -20,7 +20,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'teleshtorm.net',
+                hostname: 'teleshtorm.xyz',
                 pathname: '/static/**'
             }
         ]
